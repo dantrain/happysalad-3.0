@@ -23,6 +23,7 @@
     "eslint-plugin-react": "^7.12.4",
     "gatsby": "^2.3.22",
     "gh-pages": "^2.0.1",
+    "http-server": "^0.11.1",
     "prettier": "^1.17.0"
   },
   "scripts": {
@@ -30,6 +31,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettify": "prettier --write 'src/**/*.js' 'src/**/*.md'",
     "build": "gatsby build",
+    "serve": "http-server -o",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "start": "gatsby develop"
   }

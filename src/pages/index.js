@@ -15,6 +15,7 @@ const Index = ({
       siteMetadata: { title: siteTitle },
     },
   },
+  location,
 }) => (
   <Layout location={location}>
     <div style={{ background: '#fff' }}>
