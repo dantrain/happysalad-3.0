@@ -1,9 +1,9 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import Helmet from 'react-helmet'
-import Hero from '../components/Hero'
-import Layout from '../components/layout'
-import ArticlePreview from '../components/ArticlePreview'
+import React from 'react';
+import { graphql } from 'gatsby';
+import Helmet from 'react-helmet';
+import Hero from '../components/Hero';
+import Layout from '../components/layout';
+import ArticlePreview from '../components/ArticlePreview';
 
 const Index = ({
   data: {
@@ -28,15 +28,15 @@ const Index = ({
               <li key={node.slug}>
                 <ArticlePreview article={node} />
               </li>
-            )
+            );
           })}
         </ul>
       </div>
     </div>
   </Layout>
-)
+);
 
-export default Index
+export default Index;
 
 export const pageQuery = graphql`
   query HomeQuery {
@@ -89,4 +89,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

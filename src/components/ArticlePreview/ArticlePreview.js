@@ -1,8 +1,8 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import React from 'react';
+import { Link } from 'gatsby';
+import Img from 'gatsby-image';
 
-import styles from './article-preview.module.css'
+import styles from './article-preview.module.css';
 
 const ArticlePreview = ({
   article: { heroImage, slug, title, publishDate, description, tags },
@@ -24,6 +24,6 @@ const ArticlePreview = ({
       </p>
     ))}
   </div>
-)
+);
 
-export default ArticlePreview
+export default ArticlePreview;

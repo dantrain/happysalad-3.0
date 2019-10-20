@@ -1,10 +1,10 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import Helmet from 'react-helmet'
-import Img from 'gatsby-image'
-import Layout from '../../components/layout'
+import React from 'react';
+import { graphql } from 'gatsby';
+import Helmet from 'react-helmet';
+import Img from 'gatsby-image';
+import Layout from '../../components/layout';
 
-import heroStyles from '../../components/Hero/hero.module.css'
+import heroStyles from '../../components/Hero/hero.module.css';
 
 const BlogPost = ({
   data: {
@@ -42,9 +42,9 @@ const BlogPost = ({
       </div>
     </div>
   </Layout>
-)
+);
 
-export default BlogPost
+export default BlogPost;
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
@@ -68,4 +68,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

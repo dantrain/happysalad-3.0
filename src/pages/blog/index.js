@@ -1,9 +1,9 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import Helmet from 'react-helmet'
-import styles from './blog.module.css'
-import Layout from '../../components/layout'
-import ArticlePreview from '../../components/ArticlePreview'
+import React from 'react';
+import { graphql } from 'gatsby';
+import Helmet from 'react-helmet';
+import styles from './blog.module.css';
+import Layout from '../../components/layout';
+import ArticlePreview from '../../components/ArticlePreview';
 
 const Blog = ({
   data: {
@@ -26,15 +26,15 @@ const Blog = ({
               <li key={node.slug}>
                 <ArticlePreview article={node} />
               </li>
-            )
+            );
           })}
         </ul>
       </div>
     </div>
   </Layout>
-)
+);
 
-export default Blog
+export default Blog;
 
 export const pageQuery = graphql`
   query BlogIndexQuery {
@@ -64,4 +64,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

@@ -1,6 +1,6 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import styles from './navigation.module.css'
+import React from 'react';
+import { Link } from 'gatsby';
+import styles from './navigation.module.css';
 
 const Navigation = () => (
   <nav role="navigation">
@@ -13,6 +13,6 @@ const Navigation = () => (
       </li>
     </ul>
   </nav>
-)
+);
 
-export default Navigation
+export default Navigation;
