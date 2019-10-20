@@ -1,4 +1,5 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
 import styles from './hero.module.css';
@@ -22,3 +23,23 @@ const Hero = ({
 );
 
 export default Hero;
+
+export const query = graphql`
+  fragment Hero on ContentfulPerson {
+    name
+    shortBio {
+      shortBio
+    }
+    title
+    heroImage: image {
+      fluid(
+        maxWidth: 1180
+        maxHeight: 480
+        resizingBehavior: PAD
+        background: "rgb:000000"
+      ) {
+        ...GatsbyContentfulFluid_tracedSVG
+      }
+    }
+  }
+`;

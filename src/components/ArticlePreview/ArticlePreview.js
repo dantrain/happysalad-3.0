@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
 import styles from './article-preview.module.css';
@@ -27,3 +27,22 @@ const ArticlePreview = ({
 );
 
 export default ArticlePreview;
+
+export const query = graphql`
+  fragment ArticlePreview on ContentfulBlogPost {
+    title
+    slug
+    publishDate(formatString: "MMMM Do, YYYY")
+    tags
+    heroImage {
+      fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
+        ...GatsbyContentfulFluid_tracedSVG
+      }
+    }
+    description {
+      childMarkdownRemark {
+        html
+      }
+    }
+  }
+`;
