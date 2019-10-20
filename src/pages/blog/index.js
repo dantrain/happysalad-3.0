@@ -1,25 +1,23 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
-import Hero from '../components/Hero'
-import Layout from '../components/layout'
-import ArticlePreview from '../components/ArticlePreview'
+import styles from './blog.module.css'
+import Layout from '../../components/layout'
+import ArticlePreview from '../../components/ArticlePreview'
 
-const Index = ({
+const Blog = ({
   data: {
     allContentfulBlogPost: { edges: posts },
-    allContentfulPerson: {
-      edges: [author],
-    },
     site: {
       siteMetadata: { title: siteTitle },
     },
   },
+  location,
 }) => (
   <Layout location={location}>
     <div style={{ background: '#fff' }}>
       <Helmet title={siteTitle} />
-      <Hero data={author.node} />
+      <div className={styles.hero}>Blog</div>
       <div className="wrapper">
         <h2 className="section-headline">Recent articles</h2>
         <ul className="article-list">
@@ -36,10 +34,10 @@ const Index = ({
   </Layout>
 )
 
-export default Index
+export default Blog
 
 export const pageQuery = graphql`
-  query HomeQuery {
+  query BlogIndexQuery {
     site {
       siteMetadata {
         title
@@ -60,29 +58,6 @@ export const pageQuery = graphql`
           description {
             childMarkdownRemark {
               html
-            }
-          }
-        }
-      }
-    }
-    allContentfulPerson(
-      filter: { contentful_id: { eq: "15jwOBqpxqSAOy2eOO4S0m" } }
-    ) {
-      edges {
-        node {
-          name
-          shortBio {
-            shortBio
-          }
-          title
-          heroImage: image {
-            fluid(
-              maxWidth: 1180
-              maxHeight: 480
-              resizingBehavior: PAD
-              background: "rgb:000000"
-            ) {
-              ...GatsbyContentfulFluid_tracedSVG
             }
           }
         }

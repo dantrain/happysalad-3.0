@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import Img from 'gatsby-image'
 import Layout from '../../components/layout'
 
-import heroStyles from '../../components/hero.module.css'
+import heroStyles from '../../components/Hero/hero.module.css'
 
 const BlogPost = ({
   data: {
