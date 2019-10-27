@@ -8,12 +8,16 @@ const ArticlePreview = ({
   article: { heroImage, slug, title, publishDate, description, tags },
 }) => (
   <div className={styles.preview}>
-    <Link to={`/blog/${slug}`}>
-      <Img alt="" fluid={heroImage.fluid} fadeIn={false} />
-      <h3 className={styles.previewTitle}>{title}</h3>
-    </Link>
-    <small>{publishDate}</small>
-    <p
+    <div>
+      <Link to={`/blog/${slug}`}>
+        <Img alt="" fluid={heroImage.fluid} fadeIn={false} />
+        <h3 className={styles.previewTitle}>{title}</h3>
+      </Link>
+    </div>
+    <div>
+      <small>{publishDate}</small>
+    </div>
+    <div
       dangerouslySetInnerHTML={{
         __html: description.childMarkdownRemark.html,
       }}
