@@ -8,7 +8,7 @@ const ArticlePreview = ({
   article: { heroImage, slug, title, publishDate, description, tags },
 }) => (
   <div className={styles.preview}>
-    <Img alt="" fluid={heroImage.fluid} />
+    <Img alt="" fluid={heroImage.fluid} fadeIn={false} />
     <h3 className={styles.previewTitle}>
       <Link to={`/blog/${slug}`}>{title}</Link>
     </h3>
@@ -36,7 +36,7 @@ export const query = graphql`
     tags
     heroImage {
       fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
-        ...GatsbyContentfulFluid_tracedSVG
+        ...GatsbyContentfulFluid_noBase64
       }
     }
     description {

@@ -13,7 +13,12 @@ const Hero = ({
   },
 }) => (
   <div className={styles.hero}>
-    <Img className={styles.heroImage} alt={name} fluid={heroImage.fluid} />
+    <Img
+      className={styles.heroImage}
+      alt={name}
+      fluid={heroImage.fluid}
+      fadeIn={false}
+    />
     <div className={styles.heroDetails}>
       <h3 className={styles.heroHeadline}>{name}</h3>
       <p className={styles.heroTitle}>{title}</p>
@@ -38,7 +43,7 @@ export const query = graphql`
         resizingBehavior: PAD
         background: "rgb:000000"
       ) {
-        ...GatsbyContentfulFluid_tracedSVG
+        ...GatsbyContentfulFluid_noBase64
       }
     }
   }
