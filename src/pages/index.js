@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import Hero from '../components/Hero';
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 import ArticlePreview from '../components/ArticlePreview';
 
 const Index = ({

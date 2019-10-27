@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import styles from './blog.module.css';
-import Layout from '../../components/layout';
+import Layout from '../../components/Layout';
 import ArticlePreview from '../../components/ArticlePreview';
 
 const Blog = ({
