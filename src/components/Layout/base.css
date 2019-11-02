@@ -13,6 +13,7 @@ body {
   color: #373f49;
   background: #eee;
   margin: 0;
+  overflow-y: scroll;
 }
 
 img {

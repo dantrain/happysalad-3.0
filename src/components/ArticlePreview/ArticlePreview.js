@@ -40,7 +40,7 @@ export const query = graphql`
     tags
     heroImage {
       fluid(maxWidth: 1180) {
-        ...GatsbyContentfulFluid_noBase64
+        ...GatsbyContentfulFluid
       }
     }
     description {

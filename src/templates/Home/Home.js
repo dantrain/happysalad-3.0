@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import { useGlobalState } from '../../components/GlobalState';
 import Layout from '../../components/Layout';
+import InfiniteScroll from '../../components/InfiniteScroll';
 import ArticlePreview from '../../components/ArticlePreview';
 
 const Home = ({
@@ -15,23 +16,13 @@ const Home = ({
   location,
 }) => {
   const {
-    state: { posts, pageInfo },
-    dispatch,
-  } = useGlobalState({ posts: initialPosts, pageInfo: initialPageInfo });
-
-  const loadNextPage = async () => {
-    try {
-      const response = await fetch(
-        `/page-data/${pageInfo.currentPage + 1}/page-data.json`
-      );
-      const data = await response.json();
-      const newPage = data.result.data.allContentfulBlogPost;
-
-      dispatch({ type: 'DATA_LOAD', payload: newPage });
-    } catch (err) {
-      console.error(err);
-    }
-  };
+    state: { posts, pageInfo, loading },
+    loadNextPage,
+  } = useGlobalState({
+    posts: initialPosts,
+    pageInfo: initialPageInfo,
+    loading: false,
+  });
 
   return (
     <Layout location={location}>
@@ -39,18 +30,21 @@ const Home = ({
         <Helmet title={siteTitle} />
         <div className="wrapper">
           <h2 className="section-headline">Recent articles</h2>
-          <ul className="article-list">
-            {posts.map(({ node }) => {
-              return (
-                <li key={node.slug}>
-                  <ArticlePreview article={node} />
-                </li>
-              );
-            })}
-          </ul>
-          {pageInfo.hasNextPage && (
-            <button onClick={loadNextPage}>Load moar!</button>
-          )}
+          <InfiniteScroll
+            isLoading={loading}
+            hasMore={pageInfo.hasNextPage}
+            onLoadMore={loadNextPage}
+          >
+            <ul className="article-list">
+              {posts.map(({ node }) => {
+                return (
+                  <li key={node.slug}>
+                    <ArticlePreview article={node} />
+                  </li>
+                );
+              })}
+            </ul>
+          </InfiniteScroll>
         </div>
       </div>
     </Layout>
