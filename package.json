@@ -30,8 +30,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettify": "prettier --write 'src/**/*.js' 'src/**/*.md'",
     "build": "gatsby build",
-    "serve": "http-server -o -c-1",
-    "prod": "npm run build && npm run serve",
+    "clean": "gatsby clean",
+    "serve": "http-server -o -s -c-1 -a localhost",
+    "prod": "npm run clean && npm run build && npm run serve",
     "start": "gatsby develop"
   }
 }

@@ -9,7 +9,7 @@ const ArticlePreview = ({
 }) => (
   <div className={styles.preview}>
     <div>
-      <Link to={`/blog/${slug}`}>
+      <Link to={`/${slug}`}>
         <Img alt="" fluid={heroImage.fluid} fadeIn={false} />
         <h3 className={styles.previewTitle}>{title}</h3>
       </Link>

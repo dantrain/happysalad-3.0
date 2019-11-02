@@ -1,13 +1,7 @@
 import React from 'react';
-import base from './base.css';
 import Container from '../Container';
-import Navigation from '../Navigation';
+import './base.css';
 
-const Layout = ({ children }) => (
-  <Container>
-    <Navigation />
-    {children}
-  </Container>
-);
+const Layout = ({ children }) => <Container>{children}</Container>;
 
 export default Layout;

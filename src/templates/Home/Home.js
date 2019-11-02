@@ -1,16 +1,12 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
-import Hero from '../components/Hero';
-import Layout from '../components/Layout';
-import ArticlePreview from '../components/ArticlePreview';
+import Layout from '../../components/Layout';
+import ArticlePreview from '../../components/ArticlePreview';
 
-const Index = ({
+const Home = ({
   data: {
     allContentfulBlogPost: { edges: posts },
-    allContentfulPerson: {
-      edges: [author],
-    },
     site: {
       siteMetadata: { title: siteTitle },
     },
@@ -20,7 +16,6 @@ const Index = ({
   <Layout location={location}>
     <div style={{ background: '#fff' }}>
       <Helmet title={siteTitle} />
-      <Hero data={author.node} />
       <div className="wrapper">
         <h2 className="section-headline">Recent articles</h2>
         <ul className="article-list">
@@ -37,28 +32,23 @@ const Index = ({
   </Layout>
 );
 
-export default Index;
+export default Home;
 
 export const pageQuery = graphql`
-  query HomeQuery {
+  query HomeQuery($limit: Int!, $skip: Int!) {
     site {
       siteMetadata {
         title
       }
     }
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
-      edges {
-        node {
-          ...ArticlePreview
-        }
-      }
-    }
-    allContentfulPerson(
-      filter: { contentful_id: { eq: "15jwOBqpxqSAOy2eOO4S0m" } }
+    allContentfulBlogPost(
+      sort: { fields: [publishDate], order: DESC }
+      limit: $limit
+      skip: $skip
     ) {
       edges {
         node {
-          ...Hero
+          ...ArticlePreview
         }
       }
     }
