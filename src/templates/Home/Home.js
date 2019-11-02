@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
+import { useGlobalState } from '../../components/GlobalState';
 import Layout from '../../components/Layout';
 import ArticlePreview from '../../components/ArticlePreview';
 
@@ -13,8 +14,10 @@ const Home = ({
   },
   location,
 }) => {
-  const [posts, setPosts] = useState(initialPosts);
-  const [pageInfo, setPageInfo] = useState(initialPageInfo);
+  const {
+    state: { posts, pageInfo },
+    dispatch,
+  } = useGlobalState({ posts: initialPosts, pageInfo: initialPageInfo });
 
   const loadNextPage = async () => {
     try {
@@ -24,8 +27,7 @@ const Home = ({
       const data = await response.json();
       const newPage = data.result.data.allContentfulBlogPost;
 
-      setPosts(posts => [...posts, ...newPage.edges]);
-      setPageInfo(newPage.pageInfo);
+      dispatch({ type: 'DATA_LOAD', payload: newPage });
     } catch (err) {
       console.error(err);
     }
