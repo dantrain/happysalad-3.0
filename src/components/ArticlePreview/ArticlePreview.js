@@ -39,7 +39,7 @@ export const query = graphql`
     publishDate(formatString: "MMMM Do, YYYY")
     tags
     heroImage {
-      fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
+      fluid(maxWidth: 1180) {
         ...GatsbyContentfulFluid_noBase64
       }
     }
