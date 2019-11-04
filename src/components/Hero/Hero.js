@@ -4,14 +4,7 @@ import Img from 'gatsby-image';
 
 import styles from './hero.module.css';
 
-const Hero = ({
-  data: {
-    name,
-    heroImage,
-    title,
-    shortBio: { shortBio },
-  },
-}) => (
+const Hero = ({ data: { name, heroImage } }) => (
   <div className={styles.hero}>
     <Img
       className={styles.heroImage}
@@ -21,8 +14,6 @@ const Hero = ({
     />
     <div className={styles.heroDetails}>
       <h3 className={styles.heroHeadline}>{name}</h3>
-      <p className={styles.heroTitle}>{title}</p>
-      <p>{shortBio}</p>
     </div>
   </div>
 );
@@ -32,10 +23,6 @@ export default Hero;
 export const query = graphql`
   fragment Hero on ContentfulPerson {
     name
-    shortBio {
-      shortBio
-    }
-    title
     heroImage: image {
       fluid(
         maxWidth: 1180
