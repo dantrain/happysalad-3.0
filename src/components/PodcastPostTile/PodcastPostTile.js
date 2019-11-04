@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import Img from 'gatsby-image';
+import remarkAstToReact from '../../utils/remarkAstToReact';
 
 import s from './podcast-post-tile.module.css';
 
@@ -35,11 +36,7 @@ const PodcastPostTile = ({
       Your browser does not support the
       <code>audio</code> element.
     </audio>
-    <div
-      dangerouslySetInnerHTML={{
-        __html: body.childMarkdownRemark.html,
-      }}
-    />
+    {remarkAstToReact(body.childMarkdownRemark.htmlAst)}
   </article>
 );
 
@@ -65,7 +62,7 @@ export const query = graphql`
     }
     body {
       childMarkdownRemark {
-        html
+        htmlAst
       }
     }
   }

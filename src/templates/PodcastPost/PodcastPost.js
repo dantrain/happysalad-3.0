@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
+import remarkAstToReact from '../../utils/remarkAstToReact';
 import Layout from '../../components/Layout';
 
 import s from './podcast-post.module.css';
@@ -45,11 +46,7 @@ const PodcastPost = ({
           Your browser does not support the
           <code>audio</code> element.
         </audio>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: body.childMarkdownRemark.html,
-          }}
-        />
+        {remarkAstToReact(body.childMarkdownRemark.htmlAst)}
       </article>
     </div>
   </Layout>
@@ -83,7 +80,7 @@ export const pageQuery = graphql`
       }
       body {
         childMarkdownRemark {
-          html
+          htmlAst
         }
       }
     }
