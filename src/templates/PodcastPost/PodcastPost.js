@@ -24,7 +24,7 @@ const PodcastPost = ({
   location,
 }) => (
   <Layout location={location}>
-    <Helmet title={`${title} | ${siteTitle}`} />
+    <Helmet title={`SaladCast ${episodeNumber} - ${title} · ${siteTitle}`} />
     <div className="wrapper">
       <article className={s.article}>
         <header className={s.header}>
