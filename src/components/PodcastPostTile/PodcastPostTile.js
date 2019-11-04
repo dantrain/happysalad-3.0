@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import remarkAstToReact from '../../utils/remarkAstToReact';
+import Markdown from '../../components/Markdown';
 
 import s from './podcast-post-tile.module.css';
 
@@ -36,7 +36,7 @@ const PodcastPostTile = ({
       Your browser does not support the
       <code>audio</code> element.
     </audio>
-    {remarkAstToReact(body.childMarkdownRemark.htmlAst)}
+    <Markdown ast={body.childMarkdownRemark.htmlAst} />
   </article>
 );
 

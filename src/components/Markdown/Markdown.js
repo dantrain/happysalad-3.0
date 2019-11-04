@@ -7,4 +7,6 @@ const processor = unified()
   .use(remarkToRehype)
   .use(rehypeToReact, { createElement: React.createElement });
 
-export default htmlAst => processor.stringify(htmlAst);
+const Markdown = ({ ast }) => processor.stringify(ast);
+
+export default Markdown;

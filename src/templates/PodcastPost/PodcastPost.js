@@ -1,8 +1,8 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
-import remarkAstToReact from '../../utils/remarkAstToReact';
 import Layout from '../../components/Layout';
+import Markdown from '../../components/Markdown';
 
 import s from './podcast-post.module.css';
 
@@ -46,7 +46,7 @@ const PodcastPost = ({
           Your browser does not support the
           <code>audio</code> element.
         </audio>
-        {remarkAstToReact(body.childMarkdownRemark.htmlAst)}
+        <Markdown ast={body.childMarkdownRemark.htmlAst} />
       </article>
     </div>
   </Layout>
