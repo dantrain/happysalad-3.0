@@ -15,7 +15,7 @@ body {
   font-size: 17px;
   line-height: 1.6;
   color: #004d00;
-  background: #89a147 url('/texture.png') fixed;
+  background: #89a147 url('/image/texture.png') fixed;
   margin: 0;
   overflow-y: scroll;
 }

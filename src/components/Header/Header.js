@@ -7,8 +7,8 @@ import s from './header.module.css';
 const Header = () => (
   <header className={s.header}>
     <Container>
-      <Link to="/">
-        <img className={s.logo} src="/logo.png" />
+      <Link to="/" title="Home">
+        <img className={s.logo} src="/images/logo.png" />
       </Link>
     </Container>
   </header>
