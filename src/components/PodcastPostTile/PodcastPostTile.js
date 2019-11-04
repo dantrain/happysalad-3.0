@@ -26,7 +26,12 @@ const PodcastPostTile = ({
         by {author.name}
       </p>
     </header>
-    <audio className={s.audio} controls src={audioFile.file.url}>
+    <audio
+      className={s.audio}
+      controls
+      src={audioFile.file.url}
+      preload="metadata"
+    >
       Your browser does not support the
       <code>audio</code> element.
     </audio>
