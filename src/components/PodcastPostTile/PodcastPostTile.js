@@ -22,9 +22,11 @@ const PodcastPostTile = ({
           SaladCast {episodeNumber} - {title}
         </h2>
       </Link>
-      <p>
-        <time dateTime={recordingDate}>{recordingDateFormatted}</time> - Posted
-        by {author.name}
+      <p className={s.byline}>
+        <strong>
+          <time dateTime={recordingDate}>{recordingDateFormatted}</time>
+        </strong>{' '}
+        - Posted by <strong>{author.name}</strong>
       </p>
     </header>
     <audio

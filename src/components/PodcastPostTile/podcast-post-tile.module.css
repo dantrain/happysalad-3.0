@@ -10,12 +10,18 @@
 }
 
 .title {
-  margin: 0 0 1em;
+  margin: 0 0 0.8em;
   line-height: 1;
 }
 
+.byline {
+  margin: 0;
+}
+
 .audio {
+  display: block;
   width: 100%;
+  margin-bottom: 1.5em;
 }
 
 .article p:last-of-type {
