@@ -1,7 +1,9 @@
 import React from 'react';
 
+import s from './container.module.css';
+
 const Container = ({ children }) => (
-  <div style={{ maxWidth: 1180, margin: '0 auto' }}>{children}</div>
+  <div className={s.container}>{children}</div>
 );
 
 export default Container;

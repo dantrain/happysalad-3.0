@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
-import Layout from '../../components/Layout';
+import Page from '../../components/Page';
 import Markdown from '../../components/Markdown';
 
 import s from './podcast-post.module.css';
@@ -24,7 +24,7 @@ const PodcastPost = ({
   },
   location,
 }) => (
-  <Layout location={location}>
+  <Page>
     <Helmet title={`SaladCast ${episodeNumber} - ${title} · ${siteTitle}`} />
     <div className="wrapper">
       <article className={s.article}>
@@ -51,7 +51,7 @@ const PodcastPost = ({
         <Markdown ast={body.childMarkdownRemark.htmlAst} />
       </article>
     </div>
-  </Layout>
+  </Page>
 );
 
 export default PodcastPost;

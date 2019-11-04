@@ -2,9 +2,11 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import { useGlobalState } from '../../components/GlobalState';
-import Layout from '../../components/Layout';
+import Page from '../../components/Page';
 import InfiniteScroll from '../../components/InfiniteScroll';
 import PodcastPostTile from '../../components/PodcastPostTile';
+
+import s from './home.module.css';
 
 const Home = ({
   data: {
@@ -16,7 +18,6 @@ const Home = ({
       siteMetadata: { title: siteTitle },
     },
   },
-  location,
 }) => {
   const {
     state: { posts, pageInfo, loading },
@@ -28,28 +29,24 @@ const Home = ({
   });
 
   return (
-    <Layout location={location}>
-      <div>
-        <Helmet title={siteTitle} />
-        <div className="wrapper">
-          <InfiniteScroll
-            isLoading={loading}
-            hasMore={pageInfo.hasNextPage}
-            onLoadMore={loadNextPage}
-          >
-            <ul className="article-list">
-              {posts.map(({ node }) => {
-                return (
-                  <li key={node.slug}>
-                    <PodcastPostTile {...node} />
-                  </li>
-                );
-              })}
-            </ul>
-          </InfiniteScroll>
-        </div>
-      </div>
-    </Layout>
+    <Page>
+      <Helmet title={siteTitle} />
+      <InfiniteScroll
+        isLoading={loading}
+        hasMore={pageInfo.hasNextPage}
+        onLoadMore={loadNextPage}
+      >
+        <ul className={s.postList}>
+          {posts.map(({ node }) => {
+            return (
+              <li key={node.slug}>
+                <PodcastPostTile {...node} />
+              </li>
+            );
+          })}
+        </ul>
+      </InfiniteScroll>
+    </Page>
   );
 };
 
