@@ -4,11 +4,14 @@ import Helmet from 'react-helmet';
 import { useGlobalState } from '../../components/GlobalState';
 import Layout from '../../components/Layout';
 import InfiniteScroll from '../../components/InfiniteScroll';
-import ArticlePreview from '../../components/ArticlePreview';
+import PodcastPostTile from '../../components/PodcastPostTile';
 
 const Home = ({
   data: {
-    allContentfulBlogPost: { edges: initialPosts, pageInfo: initialPageInfo },
+    allContentfulPodcastPost: {
+      edges: initialPosts,
+      pageInfo: initialPageInfo,
+    },
     site: {
       siteMetadata: { title: siteTitle },
     },
@@ -26,10 +29,9 @@ const Home = ({
 
   return (
     <Layout location={location}>
-      <div style={{ background: '#fff' }}>
+      <div>
         <Helmet title={siteTitle} />
         <div className="wrapper">
-          <h2 className="section-headline">Recent articles</h2>
           <InfiniteScroll
             isLoading={loading}
             hasMore={pageInfo.hasNextPage}
@@ -39,7 +41,7 @@ const Home = ({
               {posts.map(({ node }) => {
                 return (
                   <li key={node.slug}>
-                    <ArticlePreview article={node} />
+                    <PodcastPostTile {...node} />
                   </li>
                 );
               })}
@@ -60,14 +62,14 @@ export const pageQuery = graphql`
         title
       }
     }
-    allContentfulBlogPost(
-      sort: { fields: [publishDate], order: DESC }
+    allContentfulPodcastPost(
+      sort: { fields: [recordingDate], order: DESC }
       limit: $limit
       skip: $skip
     ) {
       edges {
         node {
-          ...ArticlePreview
+          ...PodcastPostTile
         }
       }
       pageInfo {

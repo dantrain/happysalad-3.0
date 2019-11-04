@@ -1,0 +1,22 @@
+.article {
+  background-color: white;
+  padding: 2.5em 2em;
+  margin: 1em 0;
+}
+
+.header {
+  margin-bottom: 1.5em;
+}
+
+.title {
+  margin: 0 0 1em;
+  line-height: 1;
+}
+
+.audio {
+  width: 100%;
+}
+
+.article p:last-of-type {
+  margin-bottom: 0;
+}

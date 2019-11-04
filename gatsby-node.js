@@ -23,7 +23,7 @@ exports.createPages = ({ graphql, actions }) => {
     resolve(
       graphql(`
         {
-          allContentfulBlogPost {
+          allContentfulPodcastPost {
             edges {
               node {
                 slug
@@ -37,19 +37,21 @@ exports.createPages = ({ graphql, actions }) => {
           reject(result.errors);
         }
 
-        const posts = result.data.allContentfulBlogPost.edges;
+        const posts = result.data.allContentfulPodcastPost.edges;
 
         posts.forEach(post => {
           createPage({
             path: `/${post.node.slug}/`,
-            component: path.resolve('./src/templates/BlogPost/BlogPost.js'),
+            component: path.resolve(
+              './src/templates/PodcastPost/PodcastPost.js'
+            ),
             context: {
               slug: post.node.slug,
             },
           });
         });
 
-        const postsPerPage = 2;
+        const postsPerPage = 5;
         const numPages = Math.ceil(posts.length / postsPerPage);
 
         times(numPages, i => {

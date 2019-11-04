@@ -32,7 +32,7 @@ const GlobalState = ({ children }) => {
           `/page-data/${state.pageInfo.currentPage + 1}/page-data.json`
         );
         const data = await response.json();
-        const newPage = data.result.data.allContentfulBlogPost;
+        const newPage = data.result.data.allContentfulPodcastPost;
 
         dispatch({ type: 'DATA_FETCH_SUCCESS', payload: newPage });
       } catch (err) {
