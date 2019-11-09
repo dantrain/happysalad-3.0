@@ -1,20 +1,22 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
+import YouTube from 'react-youtube';
 import Page from '../../components/Page';
 import Markdown from '../../components/Markdown';
 
-import s from './podcast-post.module.css';
+import s from './video-post.module.css';
 
-const PodcastPost = ({
+const videoIdRegex = /(?:.*|\/|v=)([a-zA-Z\d_-]{11})/;
+
+const VideoPost = ({
   data: {
-    contentfulPodcastPost: {
+    contentfulVideoPost: {
       title,
-      episodeNumber,
       recordingDateFormatted,
       recordingDate,
       author,
-      audioFile,
+      youTubeUrl,
       body,
     },
     site: {
@@ -23,13 +25,11 @@ const PodcastPost = ({
   },
 }) => (
   <Page>
-    <Helmet title={`SaladCast ${episodeNumber} - ${title} · ${siteTitle}`} />
+    <Helmet title={`Gameplay - ${title} · ${siteTitle}`} />
     <div className="wrapper">
       <article className={s.article}>
         <header className={s.header}>
-          <h2 className={s.title}>
-            SaladCast {episodeNumber} - {title}
-          </h2>
+          <h2 className={s.title}>Gameplay - {title}</h2>
           <p className={s.byline}>
             <strong>
               <time dateTime={recordingDate}>{recordingDateFormatted}</time>
@@ -37,47 +37,34 @@ const PodcastPost = ({
             - Posted by <strong>{author.name}</strong>
           </p>
         </header>
-        <audio
-          className={s.audio}
-          controls
-          src={audioFile.file.url}
-          preload="auto"
-        >
-          Your browser does not support the
-          <code>audio</code> element.
-        </audio>
+        <YouTube
+          className={s.youTubePlayer}
+          videoId={videoIdRegex.exec(youTubeUrl)[1]}
+        />
         <Markdown ast={body.childMarkdownRemark.htmlAst} />
       </article>
     </div>
   </Page>
 );
 
-export default PodcastPost;
+export default VideoPost;
 
 export const pageQuery = graphql`
-  query PodcastPostBySlug($slug: String!) {
+  query VideoPostBySlug($slug: String!) {
     site {
       siteMetadata {
         title
       }
     }
-    contentfulPodcastPost(slug: { eq: $slug }) {
+    contentfulVideoPost(slug: { eq: $slug }) {
       slug
       title
-      episodeNumber
       recordingDateFormatted: recordingDate(formatString: "Do MMMM YYYY")
       recordingDate
       author {
         name
       }
-      audioFile {
-        file {
-          url
-          details {
-            size
-          }
-        }
-      }
+      youTubeUrl
       body {
         childMarkdownRemark {
           htmlAst

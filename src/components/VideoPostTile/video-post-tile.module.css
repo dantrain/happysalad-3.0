@@ -1,0 +1,30 @@
+.article {
+  background-color: white;
+  padding: 2.5em 2em;
+  margin: 1em 0;
+  border-radius: 3px;
+}
+
+.header {
+  margin-bottom: 1.5em;
+}
+
+.title {
+  margin: 0 0 0.8em;
+  line-height: 1;
+}
+
+.byline {
+  margin: 0;
+}
+
+.youTubePlayer {
+  display: block;
+  width: 640px;
+  height: 360px;
+  background-color: black;
+}
+
+.article p:last-of-type {
+  margin-bottom: 0;
+}

@@ -4,16 +4,13 @@ import Helmet from 'react-helmet';
 import { useGlobalState } from '../../components/GlobalState';
 import Page from '../../components/Page';
 import InfiniteScroll from '../../components/InfiniteScroll';
-import PodcastPostTile from '../../components/PodcastPostTile';
+import VideoPostTile from '../../components/VideoPostTile';
 
 import s from './home.module.css';
 
 const Home = ({
   data: {
-    allContentfulPodcastPost: {
-      edges: initialPosts,
-      pageInfo: initialPageInfo,
-    },
+    allContentfulVideoPost: { edges: initialPosts, pageInfo: initialPageInfo },
     site: {
       siteMetadata: { title: siteTitle },
     },
@@ -40,7 +37,7 @@ const Home = ({
           {posts.map(({ node }) => {
             return (
               <li key={node.slug}>
-                <PodcastPostTile {...node} />
+                <VideoPostTile {...node} />
               </li>
             );
           })}
@@ -59,14 +56,14 @@ export const pageQuery = graphql`
         title
       }
     }
-    allContentfulPodcastPost(
+    allContentfulVideoPost(
       sort: { fields: [recordingDate], order: DESC }
       limit: $limit
       skip: $skip
     ) {
       edges {
         node {
-          ...PodcastPostTile
+          ...VideoPostTile
         }
       }
       pageInfo {
