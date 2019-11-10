@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { graphql } from 'gatsby';
+import Post from '../../components/Post';
 import Markdown from '../../components/Markdown';
 
-import s from './podcast-post-tile.module.css';
+import s from './podcast-post.module.css';
 
-const PodcastPostTile = ({
+const PodcastPost = ({
   title,
   slug,
   episodeNumber,
@@ -15,20 +15,13 @@ const PodcastPostTile = ({
   audioFile,
   body,
 }) => (
-  <article className={s.article}>
-    <header className={s.header}>
-      <Link to={`/${slug}`}>
-        <h2 className={s.title}>
-          SaladCast {episodeNumber} - {title}
-        </h2>
-      </Link>
-      <p className={s.byline}>
-        <strong>
-          <time dateTime={recordingDate}>{recordingDateFormatted}</time>
-        </strong>{' '}
-        - Posted by <strong>{author.name}</strong>
-      </p>
-    </header>
+  <Post
+    titleLinkSlug={slug}
+    title={`Saladcast ${episodeNumber} - ${title}`}
+    date={recordingDate}
+    dateFormatted={recordingDateFormatted}
+    authorName={author.name}
+  >
     <audio
       className={s.audio}
       controls
@@ -39,13 +32,13 @@ const PodcastPostTile = ({
       <code>audio</code> element.
     </audio>
     <Markdown ast={body.childMarkdownRemark.htmlAst} />
-  </article>
+  </Post>
 );
 
-export default PodcastPostTile;
+export default PodcastPost;
 
 export const query = graphql`
-  fragment PodcastPostTile on ContentfulPodcastPost {
+  fragment PodcastPost on ContentfulPodcastPost {
     slug
     title
     episodeNumber

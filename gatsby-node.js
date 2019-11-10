@@ -38,7 +38,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
       const type = __typename.replace('Contentful', '');
       createPage({
         path: `/${slug}/`,
-        component: path.resolve(`./src/templates/${type}/${type}.js`),
+        component: path.resolve(`./src/templates/${type}Page/${type}Page.js`),
         context: { slug },
       });
     });

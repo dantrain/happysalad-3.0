@@ -18,12 +18,6 @@
   margin: 0;
 }
 
-.audio {
-  display: block;
-  width: 100%;
-  margin-bottom: 1.5em;
-}
-
 .article p:last-of-type {
   margin-bottom: 0;
 }

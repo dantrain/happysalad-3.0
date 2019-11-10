@@ -1,13 +1,14 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import YouTube from 'react-youtube';
+import Post from '../../components/Post';
 import Markdown from '../../components/Markdown';
 
-import s from './video-post-tile.module.css';
+import s from './video-post.module.css';
 
 const videoIdRegex = /(?:.*|\/|v=)([a-zA-Z\d_-]{11})/;
 
-const VideoPostTile = ({
+const VideoPost = ({
   title,
   slug,
   recordingDateFormatted,
@@ -16,30 +17,25 @@ const VideoPostTile = ({
   youTubeUrl,
   body,
 }) => (
-  <article className={s.article}>
-    <header className={s.header}>
-      <Link to={`/${slug}`}>
-        <h2 className={s.title}>Gameplay - {title}</h2>
-      </Link>
-      <p className={s.byline}>
-        <strong>
-          <time dateTime={recordingDate}>{recordingDateFormatted}</time>
-        </strong>{' '}
-        - Posted by <strong>{author.name}</strong>
-      </p>
-    </header>
+  <Post
+    titleLinkSlug={slug}
+    title={`Gameplay - ${title}`}
+    date={recordingDate}
+    dateFormatted={recordingDateFormatted}
+    authorName={author.name}
+  >
     <YouTube
       className={s.youTubePlayer}
       videoId={videoIdRegex.exec(youTubeUrl)[1]}
     />
     <Markdown ast={body.childMarkdownRemark.htmlAst} />
-  </article>
+  </Post>
 );
 
-export default VideoPostTile;
+export default VideoPost;
 
 export const query = graphql`
-  fragment VideoPostTile on ContentfulVideoPost {
+  fragment VideoPost on ContentfulVideoPost {
     slug
     title
     recordingDateFormatted: recordingDate(formatString: "Do MMMM YYYY")

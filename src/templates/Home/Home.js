@@ -5,8 +5,7 @@ import Helmet from 'react-helmet';
 import { useGlobalState } from '../../components/GlobalState';
 import Page from '../../components/Page';
 import InfiniteScroll from '../../components/InfiniteScroll';
-import PodcastPostTile from '../../components/PodcastPostTile';
-import VideoPostTile from '../../components/VideoPostTile';
+import Tile from '../../components/Tile';
 
 import s from './home.module.css';
 
@@ -36,24 +35,11 @@ const Home = ({
         onLoadMore={loadNextPage}
       >
         <ul className={s.postList}>
-          {flatten(pages).map(({ node }) => {
-            switch (node.__typename) {
-              case 'ContentfulPodcastPost':
-                return (
-                  <li key={node.slug}>
-                    <PodcastPostTile {...node} />
-                  </li>
-                );
-              case 'ContentfulVideoPost':
-                return (
-                  <li key={node.slug}>
-                    <VideoPostTile {...node} />
-                  </li>
-                );
-              default:
-                return null;
-            }
-          })}
+          {flatten(pages).map(({ node }) => (
+            <li key={node.slug}>
+              <Tile node={node} />
+            </li>
+          ))}
         </ul>
       </InfiniteScroll>
     </Page>
@@ -78,8 +64,8 @@ export const pageQuery = graphql`
         node {
           __typename
           slug
-          ...PodcastPostTile
-          ...VideoPostTile
+          ...PodcastPost
+          ...VideoPost
         }
       }
       pageInfo {
