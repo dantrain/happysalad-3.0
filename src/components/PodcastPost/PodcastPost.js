@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Post from '../../components/Post';
 import Markdown from '../../components/Markdown';
+import GamesList from '../../components/GamesList';
 
 import s from './podcast-post.module.css';
 
@@ -14,6 +15,7 @@ const PodcastPost = ({
   author,
   audioFile,
   body,
+  games,
 }) => (
   <Post
     titleLinkSlug={slug}
@@ -32,6 +34,12 @@ const PodcastPost = ({
       <code>audio</code> element.
     </audio>
     <Markdown ast={body.childMarkdownRemark.htmlAst} />
+    {games && games.games && games.games.length && (
+      <>
+        <h3 className={s.gamesListHeading}>In this podcast:</h3>
+        <GamesList games={games.games} />
+      </>
+    )}
   </Post>
 );
 
@@ -58,6 +66,15 @@ export const query = graphql`
     body {
       childMarkdownRemark {
         htmlAst
+      }
+    }
+    games {
+      games {
+        id
+        name
+        image {
+          icon_url
+        }
       }
     }
   }
