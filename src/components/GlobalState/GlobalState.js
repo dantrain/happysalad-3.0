@@ -7,8 +7,11 @@ const reducer = (state, { type, payload }) => {
     case 'DATA_FETCH_START':
       return { ...state, loading: true };
     case 'DATA_FETCH_SUCCESS':
+      const pages = state.pages.slice(0);
+      pages[payload.pageInfo.currentPage - 1] = payload.edges;
+
       return {
-        posts: [...state.posts, ...payload.edges],
+        pages,
         pageInfo: payload.pageInfo,
         loading: false,
       };

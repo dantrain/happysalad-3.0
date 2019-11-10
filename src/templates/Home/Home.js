@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import flatten from 'lodash/flatten';
 import Helmet from 'react-helmet';
 import { useGlobalState } from '../../components/GlobalState';
 import Page from '../../components/Page';
@@ -18,10 +19,10 @@ const Home = ({
   },
 }) => {
   const {
-    state: { posts, pageInfo, loading },
+    state: { pages, pageInfo, loading },
     loadNextPage,
   } = useGlobalState({
-    posts: initialPosts,
+    pages: [initialPosts],
     pageInfo: initialPageInfo,
     loading: false,
   });
@@ -35,7 +36,7 @@ const Home = ({
         onLoadMore={loadNextPage}
       >
         <ul className={s.postList}>
-          {posts.map(({ node }) => {
+          {flatten(pages).map(({ node }) => {
             switch (node.__typename) {
               case 'ContentfulPodcastPost':
                 return (
