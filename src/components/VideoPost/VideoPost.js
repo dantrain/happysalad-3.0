@@ -25,7 +25,8 @@ const VideoPost = ({
     authorName={author.name}
   >
     <YouTube
-      className={s.youTubePlayer}
+      className={s.video}
+      containerClassName={s.videoContainer}
       videoId={videoIdRegex.exec(youTubeUrl)[1]}
     />
     <Markdown ast={body.childMarkdownRemark.htmlAst} />
