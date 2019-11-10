@@ -1,17 +1,6 @@
 const path = require('path');
 const times = require('lodash/times');
 
-// const postTypes = ['ContentfulPodcastPost', 'ContentfulVideoPost'];
-
-// exports.createSchemaCustomization = ({ actions: { createTypes }, schema }) =>
-//   createTypes([
-//     schema.buildUnionType({
-//       name: 'Post',
-//       types: postTypes,
-//       resolveType: node => node.internal.type,
-//     }),
-//   ]);
-
 exports.createSchemaCustomization = ({ actions: { createTypes } }) =>
   createTypes(`
       interface Post @nodeInterface {
@@ -27,32 +16,10 @@ exports.createSchemaCustomization = ({ actions: { createTypes } }) =>
       }
   `);
 
-// exports.createResolvers = ({ createResolvers }) =>
-//   createResolvers({
-//     Query: {
-//       allPost: {
-//         type: `[Post!]!`,
-//         resolve(source, args, context, info) {
-//           return postTypes
-//             .reduce(
-//               (posts, type) => [
-//                 ...posts,
-//                 ...context.nodeModel.getAllNodes({ type }),
-//               ],
-//               []
-//             )
-//             .sort((p1, p2) =>
-//               new Date(p1.recordingDate) > new Date(p2.recordingDate) ? -1 : 1
-//             );
-//         },
-//       },
-//     },
-//   });
-
 exports.createPages = ({ graphql, actions: { createPage } }) =>
   graphql(`
     {
-      allPost(sort: { fields: [recordingDate], order: DESC }) {
+      allPost {
         edges {
           node {
             __typename

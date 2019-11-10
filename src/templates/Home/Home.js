@@ -4,13 +4,14 @@ import Helmet from 'react-helmet';
 import { useGlobalState } from '../../components/GlobalState';
 import Page from '../../components/Page';
 import InfiniteScroll from '../../components/InfiniteScroll';
+import PodcastPostTile from '../../components/PodcastPostTile';
 import VideoPostTile from '../../components/VideoPostTile';
 
 import s from './home.module.css';
 
 const Home = ({
   data: {
-    allContentfulVideoPost: { edges: initialPosts, pageInfo: initialPageInfo },
+    allPost: { edges: initialPosts, pageInfo: initialPageInfo },
     site: {
       siteMetadata: { title: siteTitle },
     },
@@ -35,11 +36,22 @@ const Home = ({
       >
         <ul className={s.postList}>
           {posts.map(({ node }) => {
-            return (
-              <li key={node.slug}>
-                <VideoPostTile {...node} />
-              </li>
-            );
+            switch (node.__typename) {
+              case 'ContentfulPodcastPost':
+                return (
+                  <li key={node.slug}>
+                    <PodcastPostTile {...node} />
+                  </li>
+                );
+              case 'ContentfulVideoPost':
+                return (
+                  <li key={node.slug}>
+                    <VideoPostTile {...node} />
+                  </li>
+                );
+              default:
+                return null;
+            }
           })}
         </ul>
       </InfiniteScroll>
@@ -56,13 +68,16 @@ export const pageQuery = graphql`
         title
       }
     }
-    allContentfulVideoPost(
+    allPost(
       sort: { fields: [recordingDate], order: DESC }
       limit: $limit
       skip: $skip
     ) {
       edges {
         node {
+          __typename
+          slug
+          ...PodcastPostTile
           ...VideoPostTile
         }
       }
