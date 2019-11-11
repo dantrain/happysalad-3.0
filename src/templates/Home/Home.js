@@ -2,7 +2,12 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import flatten from 'lodash/flatten';
 import Helmet from 'react-helmet';
-import { useGlobalState } from '../../components/GlobalState';
+// import { useGlobalState } from '../../components/GlobalState';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  increment,
+  decrement,
+} from '../../features/infiniteScroll/infiniteScrollSlice';
 import Page from '../../components/Page';
 import InfiniteScroll from '../../components/InfiniteScroll';
 import Tile from '../../components/Tile';
@@ -17,14 +22,22 @@ const Home = ({
     },
   },
 }) => {
-  const {
-    state: { pages, pageInfo, loading },
-    loadNextPage,
-  } = useGlobalState({
-    pages: [initialPosts],
-    pageInfo: initialPageInfo,
-    loading: false,
-  });
+  // const {
+  //   state: { pages, pageInfo, loading },
+  //   loadNextPage,
+  // } = useGlobalState({
+  //   pages: [initialPosts],
+  //   pageInfo: initialPageInfo,
+  //   loading: false,
+  // });
+
+  const pages = [initialPosts];
+  const pageInfo = initialPageInfo;
+  const loading = false;
+  const loadNextPage = () => {};
+
+  const state = useSelector(state => state);
+  const dispatch = useDispatch();
 
   return (
     <Page>
