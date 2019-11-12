@@ -21,16 +21,15 @@ const Home = ({
     },
   },
 }) => {
-  const {
-    pages = [firstPage],
-    pageInfo = firstPageInfo,
-    loading,
-  } = useSelector(state => state.infiniteScroll);
+  const state = useSelector(state => state.infiniteScroll);
+  const { pages = [firstPage], pageInfo = firstPageInfo, loading } = state;
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(initialPageLoad({ firstPage, firstPageInfo }));
+    if (!state.pageInfo) {
+      dispatch(initialPageLoad({ firstPage, firstPageInfo }));
+    }
   }, []);
 
   const loadNextPage = useCallback(() => dispatch(fetchPage()), [dispatch]);
