@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { graphql } from 'gatsby';
 import flatten from 'lodash/flatten';
 import Helmet from 'react-helmet';
-// import { useGlobalState } from '../../components/GlobalState';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  increment,
-  decrement,
+  initialPageLoad,
+  fetchPage,
 } from '../../features/infiniteScroll/infiniteScrollSlice';
 import Page from '../../components/Page';
 import InfiniteScroll from '../../components/InfiniteScroll';
@@ -16,28 +15,25 @@ import s from './home.module.css';
 
 const Home = ({
   data: {
-    allPost: { edges: initialPosts, pageInfo: initialPageInfo },
+    allPost: { edges: firstPage, pageInfo: firstPageInfo },
     site: {
       siteMetadata: { title: siteTitle },
     },
   },
 }) => {
-  // const {
-  //   state: { pages, pageInfo, loading },
-  //   loadNextPage,
-  // } = useGlobalState({
-  //   pages: [initialPosts],
-  //   pageInfo: initialPageInfo,
-  //   loading: false,
-  // });
+  const {
+    pages = [firstPage],
+    pageInfo = firstPageInfo,
+    loading,
+  } = useSelector(state => state.infiniteScroll);
 
-  const pages = [initialPosts];
-  const pageInfo = initialPageInfo;
-  const loading = false;
-  const loadNextPage = () => {};
-
-  const state = useSelector(state => state);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(initialPageLoad({ firstPage, firstPageInfo }));
+  }, []);
+
+  const loadNextPage = useCallback(() => dispatch(fetchPage()), [dispatch]);
 
   return (
     <Page>
