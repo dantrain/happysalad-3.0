@@ -56,14 +56,20 @@ export const pageQuery = graphql`
         title
       }
     }
-    allContentfulPodcastPost(filter: { slug: { in: $slugs } }) {
+    allContentfulPodcastPost(
+      filter: { slug: { in: $slugs } }
+      sort: { fields: [recordingDate], order: DESC }
+    ) {
       edges {
         node {
           ...PodcastPost
         }
       }
     }
-    allContentfulVideoPost(filter: { slug: { in: $slugs } }) {
+    allContentfulVideoPost(
+      filter: { slug: { in: $slugs } }
+      sort: { fields: [recordingDate], order: DESC }
+    ) {
       edges {
         node {
           ...VideoPost
