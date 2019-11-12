@@ -1,19 +1,30 @@
 const path = require('path');
 const times = require('lodash/times');
 
+const postTypes = ['PodcastPost', 'VideoPost'];
+
 exports.createSchemaCustomization = ({ actions: { createTypes } }) =>
   createTypes(`
+      union Games = ${postTypes
+        .map(type => `contentful${type}GamesJsonNode`)
+        .join(' | ')}
+
       interface Post @nodeInterface {
         id: ID!
         slug: String
         recordingDate: Date
+        games: Games 
       }
-      type ContentfulPodcastPost implements Node & Post @infer {
-        id: ID!
-      }
-      type ContentfulVideoPost implements Node & Post @infer {
-        id: ID!
-      }
+
+      ${postTypes
+        .map(
+          type => `
+        type Contentful${type} implements Node & Post @infer {
+          id: ID!
+        }
+      `
+        )
+        .join('')}
   `);
 
 exports.createPages = ({ graphql, actions: { createPage } }) =>
@@ -24,6 +35,25 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
           node {
             __typename
             slug
+            games {
+              ${postTypes
+                .map(
+                  type => `
+              ... on contentful${type}GamesJsonNode {
+                games {
+                  id
+                  name
+                  aliases
+                  deck
+                  image {
+                    thumb_url
+                  }
+                }
+              }
+            `
+                )
+                .join('')}
+            }
           }
         }
       }
@@ -34,7 +64,17 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
       throw errors;
     }
 
-    posts.forEach(({ node: { __typename, slug } }) => {
+    const gamesMap = new Map();
+
+    posts.forEach(({ node: { __typename, slug, games } }) => {
+      if (games) {
+        games.games.forEach(game => {
+          const value = gamesMap.get(game.id) || game;
+          value.slugs = value.slugs ? [...value.slugs, slug] : [slug];
+          gamesMap.set(game.id, value);
+        });
+      }
+
       const type = __typename.replace('Contentful', '');
       createPage({
         path: `/${slug}/`,
@@ -54,6 +94,14 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
           limit: postsPerPage,
           skip: i * postsPerPage,
         },
+      });
+    });
+
+    gamesMap.forEach(game => {
+      createPage({
+        path: `/game/${game.id}`,
+        component: path.resolve('./src/templates/GamePage/GamePage.js'),
+        context: game,
       });
     });
   });
