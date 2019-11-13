@@ -1,14 +1,14 @@
 import React from 'react';
 import Header from '../Header';
-import Container from '../Container';
 
 import './base.css';
+import s from './page.module.css';
 
 const Page = ({ children }) => (
   <>
     <Header />
-    <main>
-      <Container>{children}</Container>
+    <main className={s.main}>
+      <div className={s.container}>{children}</div>
     </main>
   </>
 );

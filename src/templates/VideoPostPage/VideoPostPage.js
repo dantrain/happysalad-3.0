@@ -12,10 +12,10 @@ const VideoPostPage = ({
     },
   },
 }) => (
-  <Page>
+  <>
     <Helmet title={`Gameplay - ${contentfulVideoPost.title} · ${siteTitle}`} />
     <VideoPost {...contentfulVideoPost} />
-  </Page>
+  </>
 );
 
 export default VideoPostPage;

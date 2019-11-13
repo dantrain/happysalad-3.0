@@ -21,7 +21,7 @@ const GamePage = ({
     },
   },
 }) => (
-  <Page>
+  <>
     <Helmet title={`${name} · ${siteTitle}`} />
     <section className={s.intro}>
       <img className={s.thumbImg} src={thumb_url} alt={name} />
@@ -44,7 +44,7 @@ const GamePage = ({
         </li>
       ))}
     </ul>
-  </Page>
+  </>
 );
 
 export default GamePage;

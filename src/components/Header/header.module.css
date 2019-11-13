@@ -1,12 +1,20 @@
 .header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
   background-color: white;
   padding: 0.8em 0;
-  margin-bottom: 1.5em;
-  box-shadow: 0 -100vh 0 100vh rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid #89a147;
 }
 
 .logo {
   margin-left: 0.8em;
   height: 44px;
   display: block;
+}
+
+.container {
+  max-width: 858px;
+  margin: 0 auto;
 }

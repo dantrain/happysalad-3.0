@@ -1,9 +1,8 @@
 .intro {
   background-color: white;
-  padding: 2.5em 2em;
-  margin: 1em 0;
-  border-radius: 3px;
+  padding: 3.5em 3em;
   display: flex;
+  margin-bottom: 2px;
 }
 
 .thumbImg {

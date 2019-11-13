@@ -12,12 +12,12 @@ const PodcastPostPage = ({
     },
   },
 }) => (
-  <Page>
+  <>
     <Helmet
       title={`SaladCast ${contentfulPodcastPost.episodeNumber} - ${contentfulPodcastPost.title} · ${siteTitle}`}
     />
     <PodcastPost {...contentfulPodcastPost} />
-  </Page>
+  </>
 );
 
 export default PodcastPostPage;

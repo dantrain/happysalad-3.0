@@ -6,11 +6,11 @@ import s from './header.module.css';
 
 const Header = () => (
   <header className={s.header}>
-    <Container>
+    <div className={s.container}>
       <Link to="/" title="Home">
         <img className={s.logo} src="/images/logo.png" />
       </Link>
-    </Container>
+    </div>
   </header>
 );
 

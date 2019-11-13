@@ -35,7 +35,7 @@ const Home = ({
   const loadNextPage = useCallback(() => dispatch(fetchPage()), [dispatch]);
 
   return (
-    <Page>
+    <>
       <Helmet title={siteTitle} />
       <InfiniteScroll
         isLoading={loading}
@@ -50,7 +50,7 @@ const Home = ({
           ))}
         </ul>
       </InfiniteScroll>
-    </Page>
+    </>
   );
 };
 

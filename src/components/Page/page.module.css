@@ -1,0 +1,9 @@
+.main {
+  padding-top: calc(44px + 1.6em);
+  padding-bottom: 2em;
+}
+
+.container {
+  max-width: 858px;
+  margin: 0 auto;
+}
