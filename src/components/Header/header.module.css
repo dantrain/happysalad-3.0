@@ -4,17 +4,31 @@
   width: 100%;
   z-index: 1000;
   background-color: white;
-  padding: 0.8em 0;
+  padding: 1em 0;
   border-bottom: 2px solid #89a147;
 }
 
 .logo {
+  display: flex;
   margin-left: 0.8em;
-  height: 44px;
+}
+
+.logoImg {
+  flex: 0 0 auto;
+  height: 36px;
+  width: 39px;
+  margin-right: 9px;
   display: block;
 }
 
+.logoText {
+  flex: 0 0 auto;
+  height: 36px;
+  padding: 2px 0;
+  fill: #008500;
+}
+
 .container {
-  max-width: 858px;
+  max-width: 854px;
   margin: 0 auto;
 }
