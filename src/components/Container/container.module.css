@@ -1,0 +1,8 @@
+.container {
+  max-width: 854px;
+  margin: 0 auto;
+}
+
+.pad {
+  padding: 0 0.8em;
+}

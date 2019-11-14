@@ -3,7 +3,7 @@ import throttleFn from 'lodash/throttle';
 
 const InfiniteScroll = ({
   children,
-  threshold = 500,
+  threshold = 800,
   throttle = 100,
   hasMore,
   isLoading,

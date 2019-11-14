@@ -10,7 +10,6 @@
 
 .logo {
   display: flex;
-  margin-left: 0.8em;
 }
 
 .logoImg {
@@ -26,9 +25,4 @@
   height: 36px;
   padding: 2px 0;
   fill: #008500;
-}
-
-.container {
-  max-width: 854px;
-  margin: 0 auto;
 }

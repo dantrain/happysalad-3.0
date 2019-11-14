@@ -1,0 +1,47 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: white;
+  padding: 1em 0 1.5em;
+  border-top: 2px solid #89a147;
+}
+
+.soundPlayer {
+  display: flex;
+  align-items: center;
+}
+
+.playButton,
+.volumeControlButton {
+  flex: 0 0 auto;
+  width: 2.5em;
+  height: 2.5em;
+  padding: 0.5em;
+}
+
+.volumeControl {
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+}
+
+.volumeControlRange {
+}
+
+.progress {
+  flex: 1 1 auto;
+  background-color: #89a147;
+  border-radius: 3px;
+  margin: 0 8px;
+}
+
+.progressInner {
+  height: 8px;
+  background-color: #004d00;
+  border-radius: 3px 0 0 3px;
+}
+
+.timer {
+}

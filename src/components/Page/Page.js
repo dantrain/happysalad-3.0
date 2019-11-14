@@ -1,5 +1,7 @@
 import React from 'react';
+import Container from '../Container';
 import Header from '../Header';
+import Player from '../Player';
 
 import './base.css';
 import s from './page.module.css';
@@ -8,8 +10,9 @@ const Page = ({ children }) => (
   <>
     <Header />
     <main className={s.main}>
-      <div className={s.container}>{children}</div>
+      <Container>{children}</Container>
     </main>
+    <Player />
   </>
 );
 

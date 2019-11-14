@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import Container from '../Container';
 
 import s from './header.module.css';
 
@@ -15,14 +16,14 @@ const LogoText = props => (
 
 const Header = () => (
   <header className={s.header}>
-    <div className={s.container}>
+    <Container pad>
       <Link to="/" title="Home">
         <div className={s.logo}>
           <img className={s.logoImg} src="/images/logo-tomato.png" />
           <LogoText className={s.logoText} />
         </div>
       </Link>
-    </div>
+    </Container>
   </header>
 );
 
