@@ -1,5 +1,7 @@
 const path = require('path');
+const fs = require('fs');
 const times = require('lodash/times');
+const lunr = require('lunr');
 
 const postTypes = ['PodcastPost', 'VideoPost'];
 
@@ -47,6 +49,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
                   deck
                   image {
                     thumb_url
+                    icon_url
                   }
                 }
               }
@@ -104,4 +107,39 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
         context: game,
       });
     });
+
+    const searchIndex = lunr(function() {
+      this.use(builder => {
+        const splitOnNewlines = token =>
+          token
+            .toString()
+            .split('\n')
+            .map(str => token.clone().update(() => str));
+
+        lunr.Pipeline.registerFunction(splitOnNewlines, 'splitOnNewlines');
+        builder.pipeline.before(lunr.stemmer, splitOnNewlines);
+      });
+
+      this.ref('id');
+      this.field('name');
+      this.field('aliases');
+
+      gamesMap.forEach(game => {
+        this.add(game);
+      });
+    });
+
+    gameData = {};
+
+    gamesMap.forEach(({ id, name, image: { icon_url } }) => {
+      gameData[id] = { name, icon_url };
+    });
+
+    fs.writeFileSync(
+      `public/search-data.json`,
+      JSON.stringify({
+        searchIndex,
+        gameData,
+      })
+    );
   });

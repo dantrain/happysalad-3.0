@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import Container from '../Container';
+import Search from '../Search';
 
 import s from './header.module.css';
 
@@ -23,6 +24,7 @@ const Header = () => (
           <LogoText className={s.logoText} />
         </div>
       </Link>
+      <Search />
     </Container>
   </header>
 );
