@@ -3,9 +3,31 @@
   bottom: 0;
   width: 100%;
   z-index: 1000;
+  overflow: hidden;
+}
+
+.footerContent {
   background-color: white;
   padding: 1em 0 1.5em;
   border-top: 2px solid #89a147;
+}
+
+.footerContentEnter {
+  transform: translateY(100%);
+}
+
+.footerContentEnterActive {
+  transition: transform 300ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  transform: translateY(0%);
+}
+
+.footerContentExit {
+  transform: translateY(0%);
+}
+
+.footerContentExitActive {
+  transition: transform 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  transform: translateY(100%);
 }
 
 .soundPlayer {
@@ -14,11 +36,19 @@
 }
 
 .playButton,
-.volumeControlButton {
+.volumeControlButton,
+.closeButton {
   flex: 0 0 auto;
-  width: 2.5em;
-  height: 2.5em;
-  padding: 0.5em;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+}
+
+.closeButton {
+  font-size: 2.4em;
+  line-height: 0.5;
+  padding: 0;
+  overflow: hidden;
 }
 
 .volumeControl {
@@ -35,6 +65,7 @@
   background-color: #89a147;
   border-radius: 3px;
   margin: 0 8px;
+  cursor: pointer;
 }
 
 .progressInner {

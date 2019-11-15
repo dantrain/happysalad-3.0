@@ -19,9 +19,13 @@ const { actions, reducer } = createSlice({
     pause: state => {
       state.playing = false;
     },
+    close: state => {
+      state.playing = false;
+      state.url = null;
+    },
   },
 });
 
-export const { playUrl, togglePlay, pause } = actions;
+export const { playUrl, togglePlay, pause, close } = actions;
 
 export default reducer;

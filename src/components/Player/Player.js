@@ -1,7 +1,8 @@
 import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { togglePlay } from '../../features/player/playerSlice';
+import { togglePlay, close } from '../../features/player/playerSlice';
 import Container from '../Container';
+import { CSSTransition } from 'react-transition-group';
 import {
   PlayButton,
   VolumeControl,
@@ -27,6 +28,7 @@ const SoundPlayer = withCustomAudio(props => {
   }, [url, shouldPlay, playing, soundCloudAudio]);
 
   const onTogglePlay = useCallback(() => dispatch(togglePlay()), [dispatch]);
+  const onClose = useCallback(() => dispatch(close()), [dispatch]);
 
   return (
     <div className={s.soundPlayer}>
@@ -48,16 +50,37 @@ const SoundPlayer = withCustomAudio(props => {
         {...props}
       />
       <Timer className={s.timer} {...props} />
+      <button className={s.closeButton} type="button" onClick={onClose}>
+        &times;
+      </button>
     </div>
   );
 });
 
-const Player = () => (
-  <footer className={s.footer}>
-    <Container pad>
-      <SoundPlayer preloadType="metadata" clientId="x" />
-    </Container>
-  </footer>
-);
+const Player = () => {
+  const { url } = useSelector(state => state.player);
+
+  return (
+    <footer className={s.footer}>
+      <CSSTransition
+        in={!!url}
+        timeout={{ enter: 300, exit: 200 }}
+        classNames={{
+          enter: s.footerContentEnter,
+          enterActive: s.footerContentEnterActive,
+          exit: s.footerContentExit,
+          exitActive: s.footerContentExitActive,
+        }}
+        unmountOnExit
+      >
+        <div className={s.footerContent}>
+          <Container pad>
+            <SoundPlayer preloadType="metadata" clientId="x" />
+          </Container>
+        </div>
+      </CSSTransition>
+    </footer>
+  );
+};
 
 export default Player;
