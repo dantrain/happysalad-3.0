@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect, useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { togglePlay } from '../../features/player/playerSlice';
 import Container from '../Container';
 import {
   PlayButton,
@@ -10,15 +12,30 @@ import { withCustomAudio } from 'react-soundplayer/addons';
 
 import s from './player.module.css';
 
-const streamUrl =
-  'http://downloads.ctfassets.net/pyajqgkn0two/7VWgtDRiru2vHrp70rZgz/9fa8a17caca07a4bd741965e570b97c6/253__02-11-19_.mp3';
-
 const SoundPlayer = withCustomAudio(props => {
-  const { playing, seeking } = props;
+  const { url, playing: shouldPlay } = useSelector(state => state.player);
+  const { soundCloudAudio, playing, seeking } = props;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (shouldPlay && (!playing || soundCloudAudio.audio.currentSrc !== url)) {
+      soundCloudAudio.play({ streamUrl: url });
+    } else if (!shouldPlay && playing) {
+      soundCloudAudio.pause();
+    }
+  }, [url, shouldPlay, playing, soundCloudAudio]);
+
+  const onTogglePlay = useCallback(() => dispatch(togglePlay()), [dispatch]);
 
   return (
     <div className={s.soundPlayer}>
-      <PlayButton className={s.playButton} {...props} />
+      <PlayButton
+        className={s.playButton}
+        playing={playing}
+        seeking={seeking}
+        onTogglePlay={onTogglePlay}
+      />
       <VolumeControl
         className={s.volumeControl}
         buttonClassName={s.volumeControlButton}
@@ -38,7 +55,7 @@ const SoundPlayer = withCustomAudio(props => {
 const Player = () => (
   <footer className={s.footer}>
     <Container pad>
-      <SoundPlayer streamUrl={streamUrl} preloadType="metadata" clientId="x" />
+      <SoundPlayer preloadType="metadata" clientId="x" />
     </Container>
   </footer>
 );

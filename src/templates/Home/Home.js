@@ -7,7 +7,6 @@ import {
   initialPageLoad,
   fetchPage,
 } from '../../features/infiniteScroll/infiniteScrollSlice';
-import Page from '../../components/Page';
 import InfiniteScroll from '../../components/InfiniteScroll';
 import Tile from '../../components/Tile';
 

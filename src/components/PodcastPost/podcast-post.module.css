@@ -1,7 +1,9 @@
-.audio {
-  display: block;
-  width: 100%;
-  margin-bottom: 1.5em;
+.playButton {
+  border: 2px solid currentColor;
+  padding: 1em;
+  line-height: 1.2;
+  border-radius: 0.5em;
+  width: 150px;
 }
 
 .gamesListHeading {
