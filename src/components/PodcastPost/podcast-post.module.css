@@ -1,3 +1,7 @@
+.buttonBar {
+  margin: 1.5em 0;
+}
+
 .playButton {
   border: 2px solid currentColor;
   padding: 1em;

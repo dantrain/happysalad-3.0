@@ -41,7 +41,7 @@ const PodcastPost = ({
       dateFormatted={recordingDateFormatted}
       authorName={author.name}
     >
-      <div>
+      <div className={s.buttonBar}>
         <button className={s.playButton} type="button" onClick={play}>
           {playing && currentUrl === url ? 'Pause' : 'Play'}
         </button>

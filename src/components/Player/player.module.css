@@ -57,7 +57,83 @@
   margin-left: 8px;
 }
 
+.volumeControl div {
+  overflow: hidden;
+  width: 0;
+  transition: width 0.2s ease-out;
+  display: flex;
+  height: 1em;
+}
+
+.volumeControl:hover div {
+  width: 100px;
+}
+
 .volumeControlRange {
+  -webkit-appearance: none;
+  width: 98%;
+}
+
+.volumeControlRange:focus {
+  outline: none;
+}
+
+.volumeControlRange::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: #89a147;
+  border-radius: 3px;
+}
+
+.volumeControlRange::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: #89a147;
+  border-radius: 3px;
+}
+
+.volumeControlRange::-ms-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: #89a147;
+  border-radius: 3px;
+}
+
+.volumeControlRange::-moz-range-thumb {
+  height: 14px;
+  width: 14px;
+  border-radius: 1em;
+  background: #004d00;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -3px;
+}
+
+.volumeControlRange::-webkit-slider-thumb {
+  height: 14px;
+  width: 14px;
+  border-radius: 1em;
+  background: #004d00;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -3px;
+}
+
+.volumeControlRange::-ms-thumb {
+  height: 14px;
+  width: 14px;
+  border-radius: 1em;
+  background: #004d00;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -3px;
+}
+
+.volumeControlRange::-ms-fill-lower {
+  background: #004d00;
 }
 
 .progress {
