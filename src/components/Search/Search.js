@@ -81,7 +81,7 @@ const Search = ({ className }) => {
           gameData &&
           query.length > 2 &&
           searchIndex
-            .search(`${query}~1 ${query}*`)
+            .search(`${query}* ${query}~1`)
             .map(({ ref }) => ({ id: ref, ...gameData[ref] }));
 
         return (
