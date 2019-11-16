@@ -1,16 +1,17 @@
 .intro {
   background-color: white;
-  padding: 3.5em 3em;
+  padding: 3em 3em;
   display: flex;
+  align-items: center;
   border-bottom: 2px solid #89a147;
 }
 
 .thumbImg {
   flex: 0 0 auto;
-  height: 160px;
-  width: 130px;
   object-fit: contain;
-  object-position: 0 0;
+  object-position: left;
+  width: 250px;
+  height: 300px;
 }
 
 .introText {

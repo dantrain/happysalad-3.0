@@ -7,7 +7,7 @@
   height: 36px;
   line-height: 36px;
   padding: 0 30px 0 0.5em;
-  border-radius: 3px;
+  border-radius: 5px;
   border: 2px solid #89a147;
   background-color: #fafffa;
   transition: width 300ms cubic-bezier(0.645, 0.045, 0.355, 1);

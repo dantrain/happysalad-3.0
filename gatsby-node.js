@@ -53,7 +53,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
                   image {
                     icon_url
                     tiny_url
-                    thumb_url
+                    small_url
                   }
                 }
               }
@@ -86,8 +86,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
             DateTime.local().minus({ months: 3 })
           ) {
             if (hotTopicsCounts[game.id]) {
-              hotTopicsCounts[game.id].count =
-                hotTopicsCounts[game.id].count + 1;
+              hotTopicsCounts[game.id].count++;
             } else {
               hotTopicsCounts[game.id] = {
                 id: game.id,
@@ -159,7 +158,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
       });
     });
 
-    gameData = {};
+    const gameData = {};
 
     gamesMap.forEach(({ id, name, image: { tiny_url } }) => {
       gameData[id] = { name, tiny_url };

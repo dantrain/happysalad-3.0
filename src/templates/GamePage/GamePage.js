@@ -11,7 +11,7 @@ const GamePage = ({
   pageContext: {
     name,
     deck,
-    image: { thumb_url },
+    image: { small_url: imgUrl },
     hotTopics,
   },
   data: {
@@ -25,7 +25,7 @@ const GamePage = ({
   <Layout hotTopics={hotTopics}>
     <Helmet title={`${name} · ${siteTitle}`} />
     <section className={s.intro}>
-      <img className={s.thumbImg} src={thumb_url} alt={name} />
+      <img className={s.thumbImg} src={imgUrl} alt={name} />
       <div className={s.introText}>
         <h1 className={s.title}>{name}</h1>
         <p className={s.deck}>{deck}</p>
