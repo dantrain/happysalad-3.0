@@ -18,13 +18,15 @@ const LogoText = props => (
 const Header = () => (
   <header className={s.header}>
     <Container pad>
-      <Link to="/" title="Home">
-        <div className={s.logo}>
-          <img className={s.logoImg} src="/images/logo-tomato.png" />
-          <LogoText className={s.logoText} />
-        </div>
-      </Link>
-      <Search />
+      <div className={s.wrapper}>
+        <Link to="/" title="Home">
+          <div className={s.logo}>
+            <img className={s.logoImg} src="/images/logo-tomato.png" />
+            <LogoText className={s.logoText} />
+          </div>
+        </Link>
+        <Search />
+      </div>
     </Container>
   </header>
 );

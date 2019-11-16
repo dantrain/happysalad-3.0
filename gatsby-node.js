@@ -49,7 +49,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
                   deck
                   image {
                     thumb_url
-                    icon_url
+                    tiny_url
                   }
                 }
               }
@@ -131,8 +131,8 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
 
     gameData = {};
 
-    gamesMap.forEach(({ id, name, image: { icon_url } }) => {
-      gameData[id] = { name, icon_url };
+    gamesMap.forEach(({ id, name, image: { tiny_url } }) => {
+      gameData[id] = { name, tiny_url };
     });
 
     fs.writeFileSync(

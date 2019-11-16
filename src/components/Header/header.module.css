@@ -8,6 +8,11 @@
   border-bottom: 2px solid #89a147;
 }
 
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
 .logo {
   display: flex;
 }

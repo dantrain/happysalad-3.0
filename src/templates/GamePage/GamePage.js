@@ -68,7 +68,7 @@ export const pageQuery = graphql`
     }
     allContentfulVideoPost(
       filter: { slug: { in: $slugs } }
-      sort: { fields: [recordingDate], order: DESC }
+      sort: { fields: [recordingDate], order: ASC }
     ) {
       edges {
         node {
