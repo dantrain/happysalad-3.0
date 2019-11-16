@@ -3,6 +3,7 @@ import { navigate } from 'gatsby';
 import lunr from 'lunr';
 import cn from 'classnames';
 import Downshift from 'downshift';
+import Vh from '../VisuallyHidden';
 
 import s from './search.module.css';
 
@@ -65,7 +66,7 @@ const Search = ({ className }) => {
         highlightedIndex,
         selectedItem,
       }) => {
-        const query = inputValue.trim();
+        const query = inputValue.replace(/[:^*+-]/g, ' ').trim();
 
         const results =
           searchIndex &&
@@ -77,8 +78,15 @@ const Search = ({ className }) => {
 
         return (
           <div className={cn(s.search, className)}>
-            <label {...getLabelProps()}>Search for a game</label>
-            <input ref={inputRef} {...getInputProps()} />
+            <Vh>
+              <label {...getLabelProps()}>Search for a game</label>
+            </Vh>
+            <input
+              className={s.input}
+              ref={inputRef}
+              placeholder="Search for a game"
+              {...getInputProps()}
+            />
             {isOpen && results && results.length ? (
               <ul className={s.resultsList} {...getMenuProps()}>
                 {results.map((item, index) =>
@@ -88,15 +96,17 @@ const Search = ({ className }) => {
                         key: item.id,
                         item,
                         index,
-                        style: {
-                          backgroundColor:
-                            highlightedIndex === index ? 'lightgray' : 'white',
-                          fontWeight: selectedItem === item ? 'bold' : 'normal',
-                        },
+                        className: cn(s.result, {
+                          [s.resultHighlighted]: highlightedIndex === index,
+                        }),
                       })}
                     >
-                      <img src={item.tiny_url} alt={item.name} />
-                      {item.name}
+                      <img
+                        className={s.resultImage}
+                        src={item.tiny_url}
+                        alt={item.name}
+                      />
+                      <p className={s.resultText}>{item.name}</p>
                     </li>
                   ) : null
                 )}
