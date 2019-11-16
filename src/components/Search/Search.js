@@ -65,12 +65,14 @@ const Search = ({ className }) => {
         highlightedIndex,
         selectedItem,
       }) => {
+        const query = inputValue.trim();
+
         const results =
           searchIndex &&
           gameData &&
-          inputValue.length > 2 &&
+          query.length > 2 &&
           searchIndex
-            .search(`${inputValue}*`)
+            .search(`${query}~1 ${query}*`)
             .map(({ ref }) => ({ id: ref, ...gameData[ref] }));
 
         return (
