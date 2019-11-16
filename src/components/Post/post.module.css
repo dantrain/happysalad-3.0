@@ -1,7 +1,7 @@
 .article {
   background-color: white;
   padding: 3em 3em 3.5em;
-  margin-bottom: 2px;
+  border-bottom: 2px solid #89a147;
 }
 
 .header {

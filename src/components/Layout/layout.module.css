@@ -1,0 +1,31 @@
+.layout {
+  display: flex;
+}
+
+.main {
+  flex: 1 1 auto;
+  padding-top: calc(36px + 2em);
+  padding-bottom: 8em;
+  background: #d5e0b8 url('/image/texture.png') fixed;
+  min-height: 100vh;
+}
+
+.sideBarContainer {
+  flex: 0 0 calc(178px + 4em);
+  position: relative;
+}
+
+.sideBar {
+  position: fixed;
+  top: calc(36px + 2em);
+  bottom: 0;
+  width: calc(178px + 4em);
+
+  background-color: white;
+  padding: 2em;
+  border-left: 2px solid #89a147;
+}
+
+.hotTopicsTitle {
+  margin: 0 0 0.8em;
+}

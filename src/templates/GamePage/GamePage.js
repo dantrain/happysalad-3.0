@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
-import Page from '../../components/Page';
+import Layout from '../../components/Layout';
 import VideoPost from '../../components/VideoPost';
 import PodcastPost from '../../components/PodcastPost';
 
@@ -12,6 +12,7 @@ const GamePage = ({
     name,
     deck,
     image: { thumb_url },
+    hotTopics,
   },
   data: {
     allContentfulPodcastPost: { edges: podcastPosts },
@@ -21,7 +22,7 @@ const GamePage = ({
     },
   },
 }) => (
-  <>
+  <Layout hotTopics={hotTopics}>
     <Helmet title={`${name} · ${siteTitle}`} />
     <section className={s.intro}>
       <img className={s.thumbImg} src={thumb_url} alt={name} />
@@ -44,7 +45,7 @@ const GamePage = ({
         </li>
       ))}
     </ul>
-  </>
+  </Layout>
 );
 
 export default GamePage;

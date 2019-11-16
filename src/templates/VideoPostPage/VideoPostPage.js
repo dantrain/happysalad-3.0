@@ -1,10 +1,11 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
-import Page from '../../components/Page';
+import Layout from '../../components/Layout';
 import VideoPost from '../../components/VideoPost';
 
 const VideoPostPage = ({
+  pageContext: { hotTopics },
   data: {
     contentfulVideoPost,
     site: {
@@ -12,10 +13,10 @@ const VideoPostPage = ({
     },
   },
 }) => (
-  <>
+  <Layout hotTopics={hotTopics}>
     <Helmet title={`Gameplay - ${contentfulVideoPost.title} · ${siteTitle}`} />
     <VideoPost {...contentfulVideoPost} />
-  </>
+  </Layout>
 );
 
 export default VideoPostPage;

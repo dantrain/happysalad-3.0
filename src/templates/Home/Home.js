@@ -7,12 +7,14 @@ import {
   initialPageLoad,
   fetchPage,
 } from '../../features/infiniteScroll/infiniteScrollSlice';
+import Layout from '../../components/Layout';
 import InfiniteScroll from '../../components/InfiniteScroll';
 import Tile from '../../components/Tile';
 
 import s from './home.module.css';
 
 const Home = ({
+  pageContext: { hotTopics },
   data: {
     allPost: { edges: firstPage, pageInfo: firstPageInfo },
     site: {
@@ -34,7 +36,7 @@ const Home = ({
   const loadNextPage = useCallback(() => dispatch(fetchPage()), [dispatch]);
 
   return (
-    <>
+    <Layout hotTopics={hotTopics}>
       <Helmet title={siteTitle} />
       <InfiniteScroll
         isLoading={loading}
@@ -49,7 +51,7 @@ const Home = ({
           ))}
         </ul>
       </InfiniteScroll>
-    </>
+    </Layout>
   );
 };
 

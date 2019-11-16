@@ -1,10 +1,11 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
-import Page from '../../components/Page';
+import Layout from '../../components/Layout';
 import PodcastPost from '../../components/PodcastPost';
 
 const PodcastPostPage = ({
+  pageContext: { hotTopics },
   data: {
     contentfulPodcastPost,
     site: {
@@ -12,12 +13,12 @@ const PodcastPostPage = ({
     },
   },
 }) => (
-  <>
+  <Layout hotTopics={hotTopics}>
     <Helmet
       title={`SaladCast ${contentfulPodcastPost.episodeNumber} - ${contentfulPodcastPost.title} · ${siteTitle}`}
     />
     <PodcastPost {...contentfulPodcastPost} />
-  </>
+  </Layout>
 );
 
 export default PodcastPostPage;

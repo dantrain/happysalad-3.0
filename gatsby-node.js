@@ -1,7 +1,9 @@
 const path = require('path');
 const fs = require('fs');
 const times = require('lodash/times');
+const take = require('lodash/take');
 const lunr = require('lunr');
+const { DateTime } = require('luxon');
 
 const postTypes = ['PodcastPost', 'VideoPost'];
 
@@ -37,6 +39,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
           node {
             __typename
             slug
+            recordingDate
             games {
               ${postTypes
                 .map(
@@ -48,8 +51,9 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
                   aliases
                   deck
                   image {
-                    thumb_url
+                    icon_url
                     tiny_url
+                    thumb_url
                   }
                 }
               }
@@ -68,21 +72,46 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
     }
 
     const gamesMap = new Map();
+    const hotTopicsCounts = {};
 
-    posts.forEach(({ node: { __typename, slug, games } }) => {
+    posts.forEach(({ node: { slug, recordingDate, games } }) => {
       if (games) {
         games.games.forEach(game => {
           const value = gamesMap.get(game.id) || game;
           value.slugs = value.slugs ? [...value.slugs, slug] : [slug];
           gamesMap.set(game.id, value);
+
+          if (
+            DateTime.fromISO(recordingDate) >
+            DateTime.local().minus({ months: 3 })
+          ) {
+            if (hotTopicsCounts[game.id]) {
+              hotTopicsCounts[game.id].count =
+                hotTopicsCounts[game.id].count + 1;
+            } else {
+              hotTopicsCounts[game.id] = {
+                id: game.id,
+                name: game.name,
+                image: { icon_url: game.image.icon_url },
+                count: 1,
+              };
+            }
+          }
         });
       }
+    });
 
+    const hotTopics = take(
+      Object.values(hotTopicsCounts).sort((a, b) => b.count - a.count),
+      12
+    );
+
+    posts.forEach(({ node: { __typename, slug } }) => {
       const type = __typename.replace('Contentful', '');
       createPage({
         path: `/${slug}/`,
         component: path.resolve(`./src/templates/${type}Page/${type}Page.js`),
-        context: { slug },
+        context: { slug, hotTopics },
       });
     });
 
@@ -96,6 +125,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
         context: {
           limit: postsPerPage,
           skip: i * postsPerPage,
+          hotTopics,
         },
       });
     });
@@ -104,7 +134,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
       createPage({
         path: `/game/${game.id}`,
         component: path.resolve('./src/templates/GamePage/GamePage.js'),
-        context: game,
+        context: { ...game, hotTopics },
       });
     });
 
