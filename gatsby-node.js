@@ -6,6 +6,7 @@ const lunr = require('lunr');
 const { DateTime } = require('luxon');
 const slugify = require('@sindresorhus/slugify');
 
+let hotTopics;
 const postTypes = ['PodcastPost', 'VideoPost'];
 
 exports.createSchemaCustomization = ({ actions: { createTypes } }) =>
@@ -113,7 +114,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
       }
     });
 
-    const hotTopics = take(
+    hotTopics = take(
       Object.values(hotTopicsCounts).sort((a, b) => b.count - a.count),
       12
     );
@@ -208,6 +209,17 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
       })
     );
   });
+
+exports.onCreatePage = ({ page, actions: { createPage, deletePage } }) => {
+  deletePage(page);
+  createPage({
+    ...page,
+    context: {
+      ...page.context,
+      hotTopics,
+    },
+  });
+};
 
 function createInfinitePages({
   createPage,
