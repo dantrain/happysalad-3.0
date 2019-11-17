@@ -4,8 +4,6 @@ import flatten from 'lodash/flatten';
 import InfiniteScroll from '../InfiniteScroll';
 import Tile from '../Tile';
 
-import s from './infinite-tiles.module.css';
-
 const InfiniteTiles = ({ posts, selector, initialPageLoad, fetchPage }) => {
   const state = useSelector(selector);
   const { pages = [posts.edges], pageInfo = posts.pageInfo, loading } = state;
@@ -31,7 +29,7 @@ const InfiniteTiles = ({ posts, selector, initialPageLoad, fetchPage }) => {
       hasMore={pageInfo.hasNextPage}
       onLoadMore={loadNextPage}
     >
-      <ul className={s.tileList}>
+      <ul>
         {flatten(pages).map(({ node }) => (
           <li key={node.slug}>
             <Tile node={node} />

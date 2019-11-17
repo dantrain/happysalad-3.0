@@ -21,10 +21,17 @@
   bottom: 0;
   width: calc(178px + 4em);
   background-color: white;
-  padding: 2em;
+  padding: 1.5em 2em;
   border-left: 2px solid #89a147;
 }
 
+.navLink {
+  display: block;
+  font-weight: bold;
+  text-align: center;
+}
+
 .hotTopicsTitle {
-  margin: 0 0 0.8em;
+  margin: 1.5em 0 0.8em;
+  text-align: center;
 }

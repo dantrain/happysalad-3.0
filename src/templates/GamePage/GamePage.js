@@ -31,14 +31,14 @@ const GamePage = ({
         <p className={s.deck}>{deck}</p>
       </div>
     </section>
-    <ul className={s.postList}>
+    <ul>
       {videoPosts.map(({ node }) => (
         <li key={node.slug}>
           <VideoPost {...node} />
         </li>
       ))}
     </ul>
-    <ul className={s.postList}>
+    <ul>
       {podcastPosts.map(({ node }) => (
         <li key={node.slug}>
           <PodcastPost {...node} />
