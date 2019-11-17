@@ -155,6 +155,16 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
       context: { hotTopics },
     });
 
+    createInfinitePages({
+      createPage,
+      path: '/video-thing',
+      count: data.allContentfulVideoPost.totalCount,
+      component: path.resolve(
+        './src/templates/VideoCategoryPage/VideoCategoryPage.js'
+      ),
+      context: { hotTopics },
+    });
+
     gamesMap.forEach(game => {
       createPage({
         path: `/game/${slugify(game.name)}`,

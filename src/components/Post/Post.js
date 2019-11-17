@@ -15,11 +15,7 @@ const Post = ({
   return (
     <article className={s.article}>
       <header className={s.header}>
-        {titleLinkUrl ? (
-          <Link to={`/${titleLinkUrl}`}>{heading}</Link>
-        ) : (
-          heading
-        )}
+        {titleLinkUrl ? <Link to={titleLinkUrl}>{heading}</Link> : heading}
         <p className={s.byline}>
           <strong>
             <time dateTime={date}>{dateFormatted}</time>

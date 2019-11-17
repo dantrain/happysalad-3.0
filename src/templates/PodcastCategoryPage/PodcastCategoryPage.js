@@ -1,33 +1,31 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import flatten from 'lodash/flatten';
 import Helmet from 'react-helmet';
+import {
+  initialPageLoad,
+  fetchPage,
+} from '../../features/infiniteScroll/infiniteScrollSlicePodcasts';
 import Layout from '../../components/Layout';
-import Tile from '../../components/Tile';
-
-import s from './podcast-category-page.module.css';
+import InfiniteTiles from '../../components/InfiniteTiles';
 
 const PodcastCategoryPage = ({
   pageContext: { hotTopics },
   data: {
-    allContentfulPodcastPost: { edges: firstPage, pageInfo: firstPageInfo },
+    allContentfulPodcastPost: posts,
     site: {
       siteMetadata: { title: siteTitle },
     },
   },
 }) => {
-  const pages = [firstPage];
-
   return (
     <Layout hotTopics={hotTopics}>
-      <Helmet title={`The Saladcast · ${siteTitle}`} />
-      <ul className={s.postList}>
-        {flatten(pages).map(({ node }) => (
-          <li key={node.slug}>
-            <Tile node={node} />
-          </li>
-        ))}
-      </ul>
+      <Helmet title={siteTitle} />
+      <InfiniteTiles
+        posts={posts}
+        selector={state => state.infiniteScrollPodcasts}
+        initialPageLoad={initialPageLoad}
+        fetchPage={fetchPage}
+      />
     </Layout>
   );
 };

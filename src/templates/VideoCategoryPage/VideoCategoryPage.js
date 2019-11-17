@@ -4,14 +4,14 @@ import Helmet from 'react-helmet';
 import {
   initialPageLoad,
   fetchPage,
-} from '../../features/infiniteScroll/infiniteScrollSliceHome';
+} from '../../features/infiniteScroll/infiniteScrollSliceVideos';
 import Layout from '../../components/Layout';
 import InfiniteTiles from '../../components/InfiniteTiles';
 
-const HomePage = ({
+const VideoCategoryPage = ({
   pageContext: { hotTopics },
   data: {
-    allPost: posts,
+    allContentfulVideoPost: posts,
     site: {
       siteMetadata: { title: siteTitle },
     },
@@ -22,7 +22,7 @@ const HomePage = ({
       <Helmet title={siteTitle} />
       <InfiniteTiles
         posts={posts}
-        selector={state => state.infiniteScrollHome}
+        selector={state => state.infiniteScrollVideos}
         initialPageLoad={initialPageLoad}
         fetchPage={fetchPage}
       />
@@ -30,16 +30,16 @@ const HomePage = ({
   );
 };
 
-export default HomePage;
+export default VideoCategoryPage;
 
 export const pageQuery = graphql`
-  query HomeQuery($limit: Int!, $skip: Int!) {
+  query VideoCategoryQuery($limit: Int!, $skip: Int!) {
     site {
       siteMetadata {
         title
       }
     }
-    allPost(
+    allContentfulVideoPost(
       sort: { fields: [recordingDate], order: DESC }
       limit: $limit
       skip: $skip
@@ -48,7 +48,6 @@ export const pageQuery = graphql`
         node {
           __typename
           slug
-          ...PodcastPost
           ...VideoPost
         }
       }
