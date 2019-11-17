@@ -4,6 +4,7 @@ const times = require('lodash/times');
 const take = require('lodash/take');
 const lunr = require('lunr');
 const { DateTime } = require('luxon');
+const slugify = require('@sindresorhus/slugify');
 
 const postTypes = ['PodcastPost', 'VideoPost'];
 
@@ -154,7 +155,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
 
     gamesMap.forEach(game => {
       createPage({
-        path: `/game/${game.id}`,
+        path: `/game/${slugify(game.name)}`,
         component: path.resolve('./src/templates/GamePage/GamePage.js'),
         context: { ...game, hotTopics },
       });

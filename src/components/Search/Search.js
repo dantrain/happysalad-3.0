@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { navigate } from 'gatsby';
 import lunr from 'lunr';
 import cn from 'classnames';
+import slugify from '@sindresorhus/slugify';
 import Downshift from 'downshift';
 import Vh from '../VisuallyHidden';
 
@@ -58,7 +59,7 @@ const Search = ({ className }) => {
     <Downshift
       onChange={(selection, { clearSelection }) => {
         if (selection) {
-          navigate(`/game/${selection.id}`);
+          navigate(`/game/${slugify(selection.name)}`);
           clearSelection();
         }
       }}
