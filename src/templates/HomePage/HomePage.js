@@ -11,9 +11,9 @@ import Layout from '../../components/Layout';
 import InfiniteScroll from '../../components/InfiniteScroll';
 import Tile from '../../components/Tile';
 
-import s from './home.module.css';
+import s from './home-page.module.css';
 
-const Home = ({
+const HomePage = ({
   pageContext: { hotTopics },
   data: {
     allPost: { edges: firstPage, pageInfo: firstPageInfo },
@@ -55,7 +55,7 @@ const Home = ({
   );
 };
 
-export default Home;
+export default HomePage;
 
 export const pageQuery = graphql`
   query HomeQuery($limit: Int!, $skip: Int!) {

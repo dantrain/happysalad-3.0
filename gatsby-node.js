@@ -138,19 +138,21 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
       }
     });
 
-    const postsPerPage = 5;
-    const numPages = Math.ceil(data.allPost.totalCount / postsPerPage);
+    createInfinitePages({
+      createPage,
+      count: data.allPost.totalCount,
+      component: path.resolve('./src/templates/HomePage/HomePage.js'),
+      context: { hotTopics },
+    });
 
-    times(numPages, i => {
-      createPage({
-        path: `/${i > 0 ? i + 1 : ''}`,
-        component: path.resolve('./src/templates/Home/Home.js'),
-        context: {
-          limit: postsPerPage,
-          skip: i * postsPerPage,
-          hotTopics,
-        },
-      });
+    createInfinitePages({
+      createPage,
+      path: '/saladcast',
+      count: data.allContentfulPodcastPost.totalCount,
+      component: path.resolve(
+        './src/templates/PodcastCategoryPage/PodcastCategoryPage.js'
+      ),
+      context: { hotTopics },
     });
 
     gamesMap.forEach(game => {
@@ -196,3 +198,26 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
       })
     );
   });
+
+function createInfinitePages({
+  createPage,
+  count,
+  path = '',
+  component,
+  context,
+}) {
+  const postsPerPage = 5;
+  const numPages = Math.ceil(count / postsPerPage);
+
+  times(numPages, i => {
+    createPage({
+      path: `${path}/${i > 0 ? i + 1 : ''}`,
+      component,
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        ...context,
+      },
+    });
+  });
+}
