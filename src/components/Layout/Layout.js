@@ -21,6 +21,11 @@ const Layout = ({ children, hotTopics }) => (
                 Video Thing
               </Link>
             </li>
+            <li>
+              <Link className={s.navLink} to="/about">
+                About
+              </Link>
+            </li>
           </ul>
         </nav>
         <h3 className={s.hotTopicsTitle}>Hot Topics</h3>
