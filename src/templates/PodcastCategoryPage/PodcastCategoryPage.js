@@ -1,25 +1,20 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Helmet from 'react-helmet';
 import {
   initialPageLoad,
   fetchPage,
 } from '../../features/infiniteScroll/infiniteScrollSlicePodcasts';
 import Layout from '../../components/Layout';
+import PageTitle from '../../components/PageTitle';
 import InfiniteTiles from '../../components/InfiniteTiles';
 
 const PodcastCategoryPage = ({
   pageContext: { hotTopics },
-  data: {
-    allContentfulPodcastPost: posts,
-    site: {
-      siteMetadata: { title: siteTitle },
-    },
-  },
+  data: { allContentfulPodcastPost: posts },
 }) => {
   return (
     <Layout hotTopics={hotTopics}>
-      <Helmet title={siteTitle} />
+      <PageTitle title="The Saladcast" />
       <InfiniteTiles
         posts={posts}
         selector={state => state.infiniteScrollPodcasts}
@@ -34,11 +29,6 @@ export default PodcastCategoryPage;
 
 export const pageQuery = graphql`
   query PodcastCategoryQuery($limit: Int!, $skip: Int!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     allContentfulPodcastPost(
       sort: { fields: [recordingDate], order: DESC }
       limit: $limit

@@ -1,25 +1,20 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Helmet from 'react-helmet';
 import {
   initialPageLoad,
   fetchPage,
 } from '../../features/infiniteScroll/infiniteScrollSliceVideos';
 import Layout from '../../components/Layout';
+import PageTitle from '../../components/PageTitle';
 import InfiniteTiles from '../../components/InfiniteTiles';
 
 const VideoCategoryPage = ({
   pageContext: { hotTopics },
-  data: {
-    allContentfulVideoPost: posts,
-    site: {
-      siteMetadata: { title: siteTitle },
-    },
-  },
+  data: { allContentfulVideoPost: posts },
 }) => {
   return (
     <Layout hotTopics={hotTopics}>
-      <Helmet title={siteTitle} />
+      <PageTitle title="Video Thing" />
       <InfiniteTiles
         posts={posts}
         selector={state => state.infiniteScrollVideos}
@@ -34,11 +29,6 @@ export default VideoCategoryPage;
 
 export const pageQuery = graphql`
   query VideoCategoryQuery($limit: Int!, $skip: Int!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     allContentfulVideoPost(
       sort: { fields: [recordingDate], order: DESC }
       limit: $limit

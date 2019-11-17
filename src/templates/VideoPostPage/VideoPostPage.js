@@ -1,20 +1,15 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Helmet from 'react-helmet';
 import Layout from '../../components/Layout';
+import PageTitle from '../../components/PageTitle';
 import VideoPost from '../../components/VideoPost';
 
 const VideoPostPage = ({
   pageContext: { hotTopics },
-  data: {
-    contentfulVideoPost,
-    site: {
-      siteMetadata: { title: siteTitle },
-    },
-  },
+  data: { contentfulVideoPost },
 }) => (
   <Layout hotTopics={hotTopics}>
-    <Helmet title={`Gameplay - ${contentfulVideoPost.title} · ${siteTitle}`} />
+    <PageTitle title={`Gameplay - ${contentfulVideoPost.title}`} />
     <VideoPost {...contentfulVideoPost} />
   </Layout>
 );
@@ -23,11 +18,6 @@ export default VideoPostPage;
 
 export const pageQuery = graphql`
   query VideoPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     contentfulVideoPost(slug: { eq: $slug }) {
       ...VideoPost
     }

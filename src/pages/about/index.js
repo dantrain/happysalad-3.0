@@ -1,10 +1,12 @@
 import React from 'react';
 import Layout from '../../components/Layout';
+import PageTitle from '../../components/PageTitle';
 
 import s from './about.module.css';
 
 const AboutPage = ({ pageContext: { hotTopics } }) => (
   <Layout hotTopics={hotTopics}>
+    <PageTitle title="About" />
     <div className={s.about}>
       <h1>About</h1>
       <p>

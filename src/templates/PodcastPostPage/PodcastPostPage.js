@@ -1,21 +1,16 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Helmet from 'react-helmet';
 import Layout from '../../components/Layout';
+import PageTitle from '../../components/PageTitle';
 import PodcastPost from '../../components/PodcastPost';
 
 const PodcastPostPage = ({
   pageContext: { hotTopics },
-  data: {
-    contentfulPodcastPost,
-    site: {
-      siteMetadata: { title: siteTitle },
-    },
-  },
+  data: { contentfulPodcastPost },
 }) => (
   <Layout hotTopics={hotTopics}>
-    <Helmet
-      title={`SaladCast ${contentfulPodcastPost.episodeNumber} - ${contentfulPodcastPost.title} · ${siteTitle}`}
+    <PageTitle
+      title={`Saladcast ${contentfulPodcastPost.episodeNumber} - ${contentfulPodcastPost.title}`}
     />
     <PodcastPost {...contentfulPodcastPost} />
   </Layout>
@@ -25,11 +20,6 @@ export default PodcastPostPage;
 
 export const pageQuery = graphql`
   query PodcastPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     contentfulPodcastPost(slug: { eq: $slug }) {
       ...PodcastPost
     }

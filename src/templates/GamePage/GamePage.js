@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Helmet from 'react-helmet';
 import Layout from '../../components/Layout';
+import PageTitle from '../../components/PageTitle';
 import VideoPost from '../../components/VideoPost';
 import PodcastPost from '../../components/PodcastPost';
 
@@ -17,13 +17,10 @@ const GamePage = ({
   data: {
     allContentfulPodcastPost: { edges: podcastPosts },
     allContentfulVideoPost: { edges: videoPosts },
-    site: {
-      siteMetadata: { title: siteTitle },
-    },
   },
 }) => (
   <Layout hotTopics={hotTopics}>
-    <Helmet title={`${name} · ${siteTitle}`} />
+    <PageTitle title={name} />
     <section className={s.intro}>
       <img className={s.thumbImg} src={imgUrl} alt={name} />
       <div className={s.introText}>
@@ -52,11 +49,6 @@ export default GamePage;
 
 export const pageQuery = graphql`
   query PostsBySlugs($slugs: [String]) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     allContentfulPodcastPost(
       filter: { slug: { in: $slugs } }
       sort: { fields: [recordingDate], order: DESC }
