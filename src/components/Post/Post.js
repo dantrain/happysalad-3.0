@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 import s from './post.module.css';
 
 const Post = ({
-  titleLinkSlug,
+  titleLinkUrl,
   title,
   date,
   dateFormatted,
@@ -15,8 +15,8 @@ const Post = ({
   return (
     <article className={s.article}>
       <header className={s.header}>
-        {titleLinkSlug ? (
-          <Link to={`/${titleLinkSlug}`}>{heading}</Link>
+        {titleLinkUrl ? (
+          <Link to={`/${titleLinkUrl}`}>{heading}</Link>
         ) : (
           heading
         )}

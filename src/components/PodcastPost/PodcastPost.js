@@ -35,7 +35,7 @@ const PodcastPost = ({
 
   return (
     <Post
-      titleLinkSlug={slug}
+      titleLinkUrl={`/saladcast/${episodeNumber}-${slug}`}
       title={`Saladcast ${episodeNumber} - ${title}`}
       date={recordingDate}
       dateFormatted={recordingDateFormatted}

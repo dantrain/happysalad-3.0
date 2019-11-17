@@ -39,7 +39,7 @@ const VideoPost = ({
 
   return (
     <Post
-      titleLinkSlug={slug}
+      titleLinkUrl={`/video-thing/${slug}`}
       title={`Gameplay - ${title}`}
       date={recordingDate}
       dateFormatted={recordingDateFormatted}

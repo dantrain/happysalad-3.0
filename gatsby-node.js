@@ -40,6 +40,9 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
             __typename
             slug
             recordingDate
+            ... on ContentfulPodcastPost {
+              episodeNumber
+            }
             games {
               ${postTypes
                 .map(
@@ -63,13 +66,22 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
             }
           }
         }
+        totalCount
+      }
+      allContentfulPodcastPost {
+        totalCount
+      }
+      allContentfulVideoPost {
+        totalCount
       }
     }
-  `).then(({ errors, data: { allPost: { edges: posts } } }) => {
+  `).then(({ errors, data }) => {
     if (errors) {
       console.log(errors);
       throw errors;
     }
+
+    const posts = data.allPost.edges;
 
     const gamesMap = new Map();
     const hotTopicsCounts = {};
@@ -105,17 +117,28 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
       12
     );
 
-    posts.forEach(({ node: { __typename, slug } }) => {
-      const type = __typename.replace('Contentful', '');
-      createPage({
-        path: `/${slug}/`,
-        component: path.resolve(`./src/templates/${type}Page/${type}Page.js`),
-        context: { slug, hotTopics },
-      });
+    posts.forEach(({ node: { __typename, slug, episodeNumber } }) => {
+      if (__typename === 'ContentfulPodcastPost') {
+        createPage({
+          path: `/saladcast/${episodeNumber}-${slug}/`,
+          component: path.resolve(
+            './src/templates/PodcastPostPage/PodcastPostPage.js'
+          ),
+          context: { slug, hotTopics },
+        });
+      } else if (__typename === 'ContentfulVideoPost') {
+        createPage({
+          path: `/video-thing/${slug}/`,
+          component: path.resolve(
+            './src/templates/VideoPostPage/VideoPostPage.js'
+          ),
+          context: { slug, hotTopics },
+        });
+      }
     });
 
     const postsPerPage = 5;
-    const numPages = Math.ceil(posts.length / postsPerPage);
+    const numPages = Math.ceil(data.allPost.totalCount / postsPerPage);
 
     times(numPages, i => {
       createPage({
