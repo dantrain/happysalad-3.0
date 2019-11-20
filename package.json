@@ -26,6 +26,7 @@
     "react-youtube": "^7.9.0",
     "redux-starter-kit": "^1.0.1",
     "rehype-react": "^4.0.1",
+    "remark-parse": "^7.0.2",
     "remark-rehype": "^5.0.0",
     "sharp": "^0.23.1",
     "unified": "^8.4.1"

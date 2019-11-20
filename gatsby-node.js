@@ -6,6 +6,19 @@ const lunr = require('lunr');
 const { DateTime } = require('luxon');
 const slugify = require('@sindresorhus/slugify');
 
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    module: {
+      rules: [
+        {
+          test: /\.md$/,
+          use: path.resolve(__dirname, './markdown-loader.js'),
+        },
+      ],
+    },
+  });
+};
+
 let hotTopics;
 const postTypes = ['PodcastPost', 'VideoPost'];
 
