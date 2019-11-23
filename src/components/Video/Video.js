@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import { CSSTransition } from 'react-transition-group';
 import YouTube from 'react-youtube';
 import { pause } from '../../features/player/playerSlice';
+import Vh from '../VisuallyHidden';
 
 import s from './video.module.css';
 
@@ -89,6 +90,7 @@ const Video = ({ youTubeUrl }) => {
         >
           <button className={s.playButton} onClick={() => setShowEmbed(true)}>
             <PlayIcon />
+            <Vh>Play video</Vh>
           </button>
         </CSSTransition>
         {showEmbed && <YouTubeEmbed videoId={videoId} />}
