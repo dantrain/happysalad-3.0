@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { useSelector, useDispatch } from 'react-redux';
-import { playUrl, pause } from '../../features/player/playerSlice';
+import { playTrack, pause } from '../../features/player/playerSlice';
 import Post from '../../components/Post';
 import Markdown from '../../components/Markdown';
 import GamesList from '../../components/GamesList';
@@ -29,7 +29,7 @@ const PodcastPost = ({
     if (playing && currentUrl === url) {
       dispatch(pause());
     } else {
-      dispatch(playUrl(url));
+      dispatch(playTrack({ url, title }));
     }
   };
 

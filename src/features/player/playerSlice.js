@@ -4,11 +4,13 @@ const { actions, reducer } = createSlice({
   name: 'player',
   initialState: {
     url: null,
+    title: null,
     playing: false,
   },
   reducers: {
-    playUrl: (state, { payload }) => {
-      state.url = payload;
+    playTrack: (state, { payload: { url, title } }) => {
+      state.url = url;
+      state.title = title;
       state.playing = true;
     },
     togglePlay: state => {
@@ -22,10 +24,11 @@ const { actions, reducer } = createSlice({
     close: state => {
       state.playing = false;
       state.url = null;
+      state.title = null;
     },
   },
 });
 
-export const { playUrl, togglePlay, pause, close } = actions;
+export const { playTrack, togglePlay, pause, close } = actions;
 
 export default reducer;
