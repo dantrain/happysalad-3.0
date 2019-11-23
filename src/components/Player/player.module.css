@@ -38,6 +38,27 @@
   overflow: hidden;
 }
 
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.loading {
+  animation: shimmer 1000ms linear 200ms infinite;
+  background: linear-gradient(
+    to right,
+    #89a147 4%,
+    hsl(76, 39%, 38%) 25%,
+    #89a147 36%
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+}
+
 .button {
   width: 40px;
   height: 40px;
