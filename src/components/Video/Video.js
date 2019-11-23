@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import { CSSTransition } from 'react-transition-group';
 import YouTube from 'react-youtube';
 import { pause } from '../../features/player/playerSlice';
 
@@ -73,18 +74,24 @@ const Video = ({ youTubeUrl }) => {
           <link key={url} rel="preconnect" href={url} crossOrigin="anonymous" />
         ))}
       </Helmet>
-      <div className={s.videoContainer}>
-        {showEmbed ? (
-          <YouTubeEmbed videoId={videoId} />
-        ) : (
-          <button
-            className={s.playButton}
-            onClick={() => setShowEmbed(true)}
-            style={{ backgroundImage: `url(${posterUrl})` }}
-          >
+      <div
+        className={s.videoContainer}
+        style={{ backgroundImage: `url(${posterUrl})` }}
+      >
+        <CSSTransition
+          in={!showEmbed}
+          timeout={200}
+          classNames={{
+            exit: s.playButtonExit,
+            exitActive: s.playButtonExitActive,
+          }}
+          unmountOnExit
+        >
+          <button className={s.playButton} onClick={() => setShowEmbed(true)}>
             <PlayIcon />
           </button>
-        )}
+        </CSSTransition>
+        {showEmbed && <YouTubeEmbed videoId={videoId} />}
       </div>
     </>
   );
