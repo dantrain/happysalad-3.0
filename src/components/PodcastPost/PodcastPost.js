@@ -22,6 +22,7 @@ const PodcastPost = ({
   games,
 }) => {
   const { playing, url: currentUrl } = useSelector(state => state.player);
+  const fullTitle = `Saladcast ${episodeNumber} - ${title}`;
 
   const dispatch = useDispatch();
 
@@ -29,14 +30,14 @@ const PodcastPost = ({
     if (playing && currentUrl === url) {
       dispatch(pause());
     } else {
-      dispatch(playTrack({ url, title }));
+      dispatch(playTrack({ url, title: fullTitle }));
     }
   };
 
   return (
     <Post
       titleLinkUrl={`/saladcast/${episodeNumber}-${slug}`}
-      title={`Saladcast ${episodeNumber} - ${title}`}
+      title={fullTitle}
       date={recordingDate}
       dateFormatted={recordingDateFormatted}
       authorName={author.name}

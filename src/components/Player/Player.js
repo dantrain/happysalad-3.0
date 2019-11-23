@@ -1,5 +1,6 @@
-import React, { useEffect, useCallback, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import cn from 'classnames';
 import defer from 'lodash/defer';
 import clamp from 'lodash/clamp';
 import { togglePlay, close } from '../../features/player/playerSlice';
@@ -8,10 +9,14 @@ import { CSSTransition } from 'react-transition-group';
 import { PlayerContextProvider } from '@cassette/core';
 import { VolumeControl, MediaProgress } from '@cassette/player';
 import { usePlayerContext } from '@cassette/hooks';
+import { Play, Pause, Forward, Backward, Close } from '../Icon';
 
-import '@cassette/player/dist/css/cassette-player.css';
-
+import './cassette-player.css';
 import s from './player.module.css';
+
+const Button = ({ className, ...rest }) => (
+  <button className={cn(s.button, className)} type="button" {...rest} />
+);
 
 const MediaPlayer = () => {
   const { playing: shouldPlay } = useSelector(state => state.player);
@@ -32,6 +37,7 @@ const MediaPlayer = () => {
     'duration',
     'onSeekComplete',
   ]);
+  const loading = trackLoading || awaitingPlayResume;
 
   const dispatch = useDispatch();
 
@@ -54,33 +60,24 @@ const MediaPlayer = () => {
 
   return (
     <>
-      <div>
-        <button onClick={onSkipBackward}>-10s</button>
-        <button onClick={onTogglePlay}>
-          {paused
-            ? 'Play'
-            : trackLoading || awaitingPlayResume
-            ? 'Loading...'
-            : 'Pause'}
-        </button>
-        <button onClick={onSkipForward}>+10s</button>
-        <button onClick={onClose}>Close</button>
-        <div
-          style={{
-            background: '#333',
-            display: 'inline-block',
-          }}
-        >
-          <VolumeControl />
+      <div className={s.playerControls}>
+        <VolumeControl />
+        <div className={s.centerControls}>
+          <Button onClick={onSkipBackward}>
+            <Backward />
+          </Button>
+          <Button className={s.playButton} onClick={onTogglePlay}>
+            {paused ? <Play /> : <Pause />}
+          </Button>
+          <Button onClick={onSkipForward}>
+            <Forward />
+          </Button>
         </div>
+        <Button onClick={onClose}>
+          <Close />
+        </Button>
       </div>
-      <div
-        style={{
-          background: '#333',
-          height: 50,
-          display: 'flex',
-        }}
-      >
+      <div className={s.progressContainer}>
         <MediaProgress />
       </div>
     </>
@@ -101,7 +98,7 @@ const Player = () => {
     <footer className={s.footer}>
       <CSSTransition
         in={!!url && !!playlist}
-        timeout={{ enter: 300, exit: 200 }}
+        timeout={{ enter: 300, exit: 300 }}
         classNames={{
           enter: s.footerContentEnter,
           enterActive: s.footerContentEnterActive,
