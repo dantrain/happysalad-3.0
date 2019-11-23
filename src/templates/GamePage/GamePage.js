@@ -22,7 +22,13 @@ const GamePage = ({
   <Layout hotTopics={hotTopics}>
     <PageTitle title={name} />
     <section className={s.intro}>
-      <img className={s.thumbImg} src={imgUrl} alt={name} />
+      <img
+        className={s.thumbImg}
+        src={imgUrl}
+        alt={name}
+        crossOrigin="anonymous"
+        referrerPolicy="no-referrer"
+      />
       <div className={s.introText}>
         <h1 className={s.title}>{name}</h1>
         <p className={s.deck}>{deck}</p>

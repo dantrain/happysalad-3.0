@@ -9,7 +9,13 @@ const GamesList = ({ games }) => (
     {games.map(({ id, name, image: { icon_url } }) => (
       <li key={id} className={s.item}>
         <Link to={`/game/${slugify(name)}`}>
-          <img className={s.image} src={icon_url} alt={name} />
+          <img
+            className={s.image}
+            src={icon_url}
+            alt={name}
+            crossOrigin="anonymous"
+            referrerPolicy="no-referrer"
+          />
           <div className={s.overlay}>
             <p className={s.text}>{name}</p>
           </div>

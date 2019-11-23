@@ -115,6 +115,8 @@ const Search = ({ className }) => {
                         className={s.resultImage}
                         src={item.tiny_url}
                         alt={item.name}
+                        crossOrigin="anonymous"
+                        referrerPolicy="no-referrer"
                       />
                       <p className={s.resultText}>{item.name}</p>
                     </li>
