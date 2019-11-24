@@ -8,6 +8,7 @@
 
 .footerContent {
   visibility: hidden;
+  height: 0;
   background-color: white;
   border-top: 2px solid #89a147;
 }
@@ -16,6 +17,7 @@
 .footerContentEnterDone,
 .footerContentExit {
   visibility: visible;
+  height: 114px;
 }
 
 .footerContentEnter {
