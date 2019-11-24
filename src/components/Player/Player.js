@@ -88,30 +88,24 @@ const MediaPlayer = () => {
 
 const Player = () => {
   const { url, title } = useSelector(state => state.player);
-  const [playlist, setPlaylist] = useState(null);
-
-  useEffect(() => {
-    if (url && title) {
-      setPlaylist([{ url, title }]);
-    }
-  }, [url, title]);
+  const playlist = url && title ? [{ url, title }] : [];
 
   return (
     <footer className={s.footer}>
       <CSSTransition
-        in={!!url && !!playlist}
+        in={!!playlist.length}
         timeout={{ enter: 300, exit: 300 }}
         classNames={{
           enter: s.footerContentEnter,
           enterActive: s.footerContentEnterActive,
+          enterDone: s.footerContentEnterDone,
           exit: s.footerContentExit,
           exitActive: s.footerContentExitActive,
         }}
-        unmountOnExit
       >
         <div className={s.footerContent}>
           <Container pad>
-            <PlayerContextProvider playlist={playlist}>
+            <PlayerContextProvider playlist={playlist} autoplay>
               <MediaPlayer />
             </PlayerContextProvider>
           </Container>

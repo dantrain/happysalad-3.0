@@ -7,8 +7,15 @@
 }
 
 .footerContent {
+  visibility: hidden;
   background-color: white;
   border-top: 2px solid #89a147;
+}
+
+.footerContentEnter,
+.footerContentEnterDone,
+.footerContentExit {
+  visibility: visible;
 }
 
 .footerContentEnter {
