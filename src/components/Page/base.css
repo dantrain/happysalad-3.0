@@ -2,6 +2,7 @@
 
 html {
   box-sizing: border-box;
+  height: 100%;
 }
 
 *,
@@ -17,7 +18,9 @@ body {
   color: #004d00;
   background: #89a147 url('/image/texture.png') fixed;
   margin: 0;
+  height: 100%;
   overflow-y: scroll;
+  overscroll-behavior-y: none;
 }
 
 h1,

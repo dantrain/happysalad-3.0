@@ -9,15 +9,16 @@
 .footerContent {
   visibility: hidden;
   height: 0;
-  background-color: white;
   border-top: 2px solid #89a147;
+  background-color: white;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .footerContentEnter,
 .footerContentEnterDone,
 .footerContentExit {
   visibility: visible;
-  height: 114px;
+  height: auto;
 }
 
 .footerContentEnter {

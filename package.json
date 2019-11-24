@@ -50,6 +50,6 @@
     "clean": "gatsby clean",
     "serve": "http-server -o -s -c-1 -a localhost",
     "prod": "npm run clean && npm run build && npm run serve",
-    "start": "gatsby develop"
+    "start": "gatsby develop -H 0.0.0.0"
   }
 }
