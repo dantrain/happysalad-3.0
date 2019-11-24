@@ -11,6 +11,18 @@
   margin: 8px;
   background-color: #f1f3f4;
 
+  @media (width < 480px) {
+    margin: 8px calc((100% - (4 * 80px)) / 8);
+  }
+
+  @media (width < 384px) {
+    margin: 8px calc((100% - (3 * 80px)) / 6);
+  }
+
+  @media (width < 288px) {
+    margin: 8px calc((100% - (2 * 80px)) / 4);
+  }
+
   &::before {
     display: block;
     content: '';

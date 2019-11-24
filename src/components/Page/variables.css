@@ -1,0 +1,42 @@
+@custom-media --phone-only (width < 600px);
+@custom-media --tablet-portrait-up (width >= 600px);
+@custom-media --tablet-landscape-up (width >= 980px);
+@custom-media --desktop-up (width >= 1100px);
+
+:root {
+  --max-width: 1100px;
+  --unitScale: 100px;
+
+  @media (--phone-only) {
+    --unitScale: 0px;
+  }
+
+  @media (--tablet-portrait-up) {
+    --unitScale: calc(100 * (100vw - 600px) / (1100 - 600));
+  }
+
+  @media (--desktop-up) {
+    --unitScale: 100px;
+  }
+
+  --unit0: calc(0.5rem + (8 * var(--unitScale) / 100));
+  --unit1: calc(1rem + (34 * var(--unitScale) / 100));
+  --unit2: calc(2rem + (18 * var(--unitScale) / 100));
+  --unit3: calc(2.5rem + (18 * var(--unitScale) / 100));
+
+  --fontSize1: calc(1rem + (1 * var(--unitScale) / 100));
+  --lineHeight1: calc(1.5rem + (3 * var(--unitScale) / 100));
+
+  --fontSize2: calc(1.3125rem + (5 * var(--unitScale) / 100));
+  --fontSize3: calc(1.75rem + (4 * var(--unitScale) / 100));
+}
+
+:root {
+  --greenBackground: #89a147;
+  --greenProgress: #618832;
+  --greenBodyText: #004d00;
+  --greenHighlight: #d5e0b8;
+  --greenWash: #fafffa;
+  --greenLogo: #008500;
+  --redHeadingText: #992516;
+}

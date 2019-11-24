@@ -39,6 +39,10 @@
   transform: translateY(100%);
 }
 
+.container {
+  padding: 0 8px;
+}
+
 .progressContainer {
   display: flex;
   height: 48px;

@@ -104,7 +104,7 @@ const Player = () => {
         }}
       >
         <div className={s.footerContent}>
-          <Container pad>
+          <Container className={s.container}>
             <PlayerContextProvider playlist={playlist} autoplay>
               <MediaPlayer />
             </PlayerContextProvider>

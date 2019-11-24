@@ -4,15 +4,20 @@
 
 .main {
   flex: 1 1 auto;
-  padding-top: calc(36px + 2em);
+  padding-top: calc(36px + 2 * var(--unit0));
   padding-bottom: 8em;
   background: var(--greenHighlight) url('/image/texture.png') fixed;
   min-height: 100vh;
 }
 
 .sideBarContainer {
+  display: none;
   flex: 0 0 calc(178px + 4em);
   position: relative;
+
+  @media (--tablet-landscape-up) {
+    display: block;
+  }
 }
 
 .sideBar {

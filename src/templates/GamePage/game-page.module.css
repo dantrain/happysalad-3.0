@@ -1,9 +1,13 @@
 .intro {
   background-color: white;
-  padding: 3em 3em;
+  padding: var(--unit1);
   display: flex;
   align-items: center;
   border-bottom: 2px solid var(--greenBackground);
+
+  @media (--phone-only) {
+    flex-direction: column;
+  }
 }
 
 .thumbImg {
@@ -12,15 +16,26 @@
   object-position: left;
   width: 250px;
   height: 300px;
+
+  @media (--phone-only) {
+    object-position: center;
+  }
 }
 
 .introText {
   padding: 0.4em 0 0 2em;
+
+  @media (--phone-only) {
+    padding: 2em 0 1em;
+  }
 }
 
 .title {
   margin: 0 0 0.8em;
-  line-height: 1;
+
+  @media (--phone-only) {
+    text-align: center;
+  }
 }
 
 .deck {

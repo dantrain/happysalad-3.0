@@ -1,8 +1,0 @@
-@custom-media --phone-only (width < 600px);
-@custom-media --tablet-portrait-up (width >= 600px);
-@custom-media --tablet-landscape-up (width >= 980px);
-@custom-media --desktop-up (width >= 1100px);
-
-:root {
-  --max-width: 1100px;
-}

@@ -5,8 +5,7 @@ import Player from '../Player';
 
 import 'normalize.css';
 
-import './media-queries.css';
-import './colors.css';
+import './variables.css';
 import './base.css';
 
 const Page = ({ children }) => (

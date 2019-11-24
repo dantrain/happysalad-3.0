@@ -4,7 +4,7 @@
   width: 100%;
   z-index: 1000;
   background-color: white;
-  padding: 1em 0;
+  padding: var(--unit0) 0;
   border-bottom: 2px solid var(--greenBackground);
 }
 

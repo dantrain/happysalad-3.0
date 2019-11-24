@@ -1,5 +1,9 @@
 .search {
   position: relative;
+
+  @media (--phone-only) {
+    display: none;
+  }
 }
 
 .input {
