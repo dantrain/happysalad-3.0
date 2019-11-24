@@ -69,7 +69,7 @@ const MediaPlayer = () => {
             <Backward />
           </Button>
           <Button className={s.playButton} onClick={onTogglePlay}>
-            {paused ? <Play /> : <Pause />}
+            {shouldPlay ? <Pause /> : <Play />}
           </Button>
           <Button onClick={onSkipForward}>
             <Forward />
