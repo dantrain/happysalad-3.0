@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import cn from 'classnames';
-import defer from 'lodash/defer';
 import clamp from 'lodash/clamp';
 import { togglePlay, close } from '../../features/player/playerSlice';
 import Container from '../Container';
@@ -42,11 +41,14 @@ const MediaPlayer = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    let timeout;
     if (shouldPlay && paused) {
-      defer(() => onTogglePause(false));
+      timeout = setTimeout(() => onTogglePause(false), 10);
     } else if (!shouldPlay && !paused) {
-      defer(() => onTogglePause(true));
+      timeout = setTimeout(() => onTogglePause(true), 10);
     }
+
+    return () => clearTimeout(timeout);
   }, [shouldPlay, paused]);
 
   const onTogglePlay = () => dispatch(togglePlay());
