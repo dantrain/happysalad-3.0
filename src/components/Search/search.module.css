@@ -11,24 +11,23 @@
   border: 2px solid var(--greenBackground);
   background-color: var(--greenWash);
   transition: width 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
-}
+  &::placeholder {
+    color: var(--greenBackground);
+  }
 
-.input::placeholder {
-  color: var(--greenBackground);
-}
+  &:focus,
+  &:hover {
+    border-color: var(--greenBodyText);
+    outline: none;
+  }
 
-.input:focus,
-.input:hover {
-  border-color: var(--greenBodyText);
-  outline: none;
-}
+  &:focus {
+    width: 350px;
+  }
 
-.input:focus {
-  width: 350px;
-}
-
-.input:focus + .searchIcon {
-  fill: var(--greenBodyText);
+  &:focus + .searchIcon {
+    fill: var(--greenBodyText);
+  }
 }
 
 .searchIcon {

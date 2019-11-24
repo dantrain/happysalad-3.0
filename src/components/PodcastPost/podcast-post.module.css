@@ -9,10 +9,10 @@
   border-radius: 0.5em;
   width: 150px;
   background-color: var(--greenWash);
-}
 
-.playButton:hover {
-  border-color: var(--greenBodyText);
+  &:hover {
+    border-color: var(--greenBodyText);
+  }
 }
 
 .gamesListHeading {

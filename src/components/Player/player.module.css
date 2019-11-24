@@ -84,31 +84,31 @@
   margin: 0 8px;
 }
 
-.playerControls path,
-.playerControls polygon {
-  fill: var(--greenBodyText);
-}
-
-.playerControls path[fill='none'] {
-  fill: none;
-}
-
 .playerControls {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 8px 0 8px 8px;
+
+  & path,
+  & polygon {
+    fill: var(--greenBodyText);
+  }
+
+  & path[fill='none'] {
+    fill: none;
+  }
 }
 
 .centerControls {
   display: flex;
   align-items: center;
-}
 
-.centerControls .button {
-  transition: transform 80ms ease-in-out;
-}
+  & .button {
+    transition: transform 80ms ease-in-out;
 
-.centerControls .button:hover {
-  transform: scale(1.1);
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 }

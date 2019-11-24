@@ -4,7 +4,9 @@ import Header from '../Header';
 import Player from '../Player';
 
 import 'normalize.css';
-import './variables.css';
+
+import './media-queries.css';
+import './colors.css';
 import './base.css';
 
 const Page = ({ children }) => (
