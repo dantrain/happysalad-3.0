@@ -27,7 +27,7 @@
   --fontSize1: calc(1rem + (1 * var(--unitScale) / 100));
   --lineHeight1: calc(1.5rem + (3 * var(--unitScale) / 100));
 
-  --fontSize2: calc(1.3125rem + (5 * var(--unitScale) / 100));
+  --fontSize2: calc(1.375rem + (6 * var(--unitScale) / 100));
   --fontSize3: calc(1.75rem + (4 * var(--unitScale) / 100));
 }
 

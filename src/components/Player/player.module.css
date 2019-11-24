@@ -44,15 +44,16 @@
 }
 
 .progressContainer {
-  display: flex;
   height: 48px;
+}
+
+.progress {
+  display: flex;
+  height: 52px;
   background-color: var(--greenBackground);
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
   overflow: hidden;
-  border-top: 2px solid var(--greenProgress);
-  border-left: 2px solid var(--greenProgress);
-  border-right: 2px solid var(--greenProgress);
+  border: 2px solid var(--greenProgress);
+  border-radius: 4px;
 }
 
 @keyframes shimmer {
@@ -108,11 +109,13 @@
   display: flex;
   align-items: center;
 
-  & .button {
-    transition: transform 80ms ease-in-out;
+  @media (--desktop-up) {
+    & .button {
+      transition: transform 80ms ease-in-out;
 
-    &:hover {
-      transform: scale(1.1);
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 }

@@ -79,8 +79,10 @@ const MediaPlayer = () => {
           <Close />
         </Button>
       </div>
-      <div className={cn(s.progressContainer, { [s.loading]: loading })}>
-        <MediaProgress />
+      <div className={s.progressContainer}>
+        <div className={cn(s.progress, { [s.loading]: loading })}>
+          <MediaProgress />
+        </div>
       </div>
     </>
   );
