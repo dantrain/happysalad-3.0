@@ -1,9 +1,17 @@
 .footer {
   position: fixed;
-  bottom: 0;
   width: 100%;
   z-index: 1000;
   max-width: 100vw;
+
+  @media (--tablet-portrait-up) {
+    bottom: 0;
+  }
+
+  @media (--phone-only) {
+    top: calc(100vh - 230px + (2.5 * env(safe-area-inset-bottom)));
+    transition: top 35ms;
+  }
 }
 
 .footerContent {
