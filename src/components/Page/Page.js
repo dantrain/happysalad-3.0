@@ -4,6 +4,7 @@ import Header from '../Header';
 import Player from '../Player';
 
 import 'normalize.css';
+import './variables.css';
 import './base.css';
 
 const Page = ({ children }) => (

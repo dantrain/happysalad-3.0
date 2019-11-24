@@ -132,7 +132,7 @@
 .cassette__volume_control__volume_bar {
   position: absolute;
   border-radius: 11px;
-  background-color: #004d00;
+  background-color: var(--greenBodyText);
   box-shadow: 1px 1px 6px 2px rgba(36, 36, 36, 0.8);
 }
 

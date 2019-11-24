@@ -3,7 +3,7 @@
   padding: 3em 3em;
   display: flex;
   align-items: center;
-  border-bottom: 2px solid #89a147;
+  border-bottom: 2px solid var(--greenBackground);
 }
 
 .thumbImg {

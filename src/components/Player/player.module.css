@@ -9,7 +9,7 @@
 .footerContent {
   visibility: hidden;
   height: 0;
-  border-top: 2px solid #89a147;
+  border-top: 2px solid var(--greenBackground);
   background-color: white;
   padding-bottom: env(safe-area-inset-bottom);
 }
@@ -42,13 +42,13 @@
 .progressContainer {
   display: flex;
   height: 48px;
-  background-color: #89a147;
+  background-color: var(--greenBackground);
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   overflow: hidden;
-  border-top: 2px solid #618832;
-  border-left: 2px solid #618832;
-  border-right: 2px solid #618832;
+  border-top: 2px solid var(--greenProgress);
+  border-left: 2px solid var(--greenProgress);
+  border-right: 2px solid var(--greenProgress);
 }
 
 @keyframes shimmer {
@@ -64,9 +64,9 @@
   animation: shimmer 1000ms linear 200ms infinite;
   background: linear-gradient(
     to right,
-    #89a147 4%,
+    var(--greenBackground) 4%,
     hsl(76, 39%, 38%) 25%,
-    #89a147 36%
+    var(--greenBackground) 36%
   );
   background-size: 200% 100%;
   background-position: 100% 0;
@@ -86,7 +86,7 @@
 
 .playerControls path,
 .playerControls polygon {
-  fill: #004d00;
+  fill: var(--greenBodyText);
 }
 
 .playerControls path[fill='none'] {

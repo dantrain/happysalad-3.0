@@ -3,16 +3,16 @@
 }
 
 .playButton {
-  border: 2px solid #89a147;
+  border: 2px solid var(--greenBackground);
   padding: 1em;
   line-height: 1.2;
   border-radius: 0.5em;
   width: 150px;
-  background-color: #fafffa;
+  background-color: var(--greenWash);
 }
 
 .playButton:hover {
-  border-color: #004d00;
+  border-color: var(--greenBodyText);
 }
 
 .gamesListHeading {

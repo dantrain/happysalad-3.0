@@ -8,18 +8,18 @@
   line-height: 36px;
   padding: 0 30px 0 0.5em;
   border-radius: 5px;
-  border: 2px solid #89a147;
-  background-color: #fafffa;
+  border: 2px solid var(--greenBackground);
+  background-color: var(--greenWash);
   transition: width 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .input::placeholder {
-  color: #89a147;
+  color: var(--greenBackground);
 }
 
 .input:focus,
 .input:hover {
-  border-color: #004d00;
+  border-color: var(--greenBodyText);
   outline: none;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .input:focus + .searchIcon {
-  fill: #004d00;
+  fill: var(--greenBodyText);
 }
 
 .searchIcon {
@@ -38,7 +38,7 @@
   right: 4px;
   top: 50%;
   transform: translateY(-50%);
-  fill: #89a147;
+  fill: var(--greenBackground);
   transition: fill 200ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
@@ -47,7 +47,7 @@
   top: calc(100% + 0.3em);
   right: 0;
   width: 350px;
-  border: 2px solid #004d00;
+  border: 2px solid var(--greenBodyText);
   border-radius: 3px;
   background-color: white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
@@ -79,9 +79,9 @@
 }
 
 .result:not(:last-child) .resultText {
-  border-bottom: 1px solid #d5e0b8;
+  border-bottom: 1px solid var(--greenHighlight);
 }
 
 .resultHighlighted {
-  background-color: #d5e0b8;
+  background-color: var(--greenHighlight);
 }

@@ -52,10 +52,10 @@
 }
 
 .playButton:hover .playIconOuter {
-  fill: #f00;
+  fill: red;
   fill-opacity: 1;
 }
 
 .playIconInner {
-  fill: #ffffff;
+  fill: white;
 }
