@@ -1,4 +1,4 @@
-import { createSlice } from 'redux-starter-kit';
+import { createSlice } from '@reduxjs/toolkit';
 
 export default ({ name, type, path = '' }) => {
   const { actions, reducer } = createSlice({

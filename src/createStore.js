@@ -1,4 +1,4 @@
-import { configureStore } from 'redux-starter-kit';
+import { configureStore } from '@reduxjs/toolkit';
 import infiniteScrollHome from './features/infiniteScroll/infiniteScrollSliceHome';
 import infiniteScrollPodcasts from './features/infiniteScroll/infiniteScrollSlicePodcasts';
 import infiniteScrollVideos from './features/infiniteScroll/infiniteScrollSliceVideos';
