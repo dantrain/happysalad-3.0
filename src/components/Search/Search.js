@@ -30,7 +30,7 @@ const Search = ({ className }) => {
       }
     };
 
-    document.addEventListener('keyup', focusInput);
+    document.addEventListener('keyup', focusInput, { passive: true });
 
     return () => {
       document.removeEventListener('keyup', focusInput);

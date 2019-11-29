@@ -21,7 +21,11 @@ const Header = () => (
       <div className={s.wrapper}>
         <Link to="/" title="Home">
           <div className={s.logo}>
-            <img className={s.logoImg} src="/images/logo-tomato.png" />
+            <img
+              className={s.logoImg}
+              src="/images/logo-tomato.png"
+              alt="Cherry tomato"
+            />
             <LogoText className={s.logoText} />
           </div>
         </Link>

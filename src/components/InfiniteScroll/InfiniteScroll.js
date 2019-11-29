@@ -25,8 +25,8 @@ const InfiniteScroll = ({
 
     const scrollHandler = throttleFn(checkWindowScroll, throttle);
 
-    window.addEventListener('scroll', scrollHandler);
-    window.addEventListener('resize', scrollHandler);
+    window.addEventListener('scroll', scrollHandler, { passive: true });
+    window.addEventListener('resize', scrollHandler, { passive: true });
 
     checkWindowScroll();
 
