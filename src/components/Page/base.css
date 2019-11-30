@@ -14,8 +14,6 @@ html {
 body {
   font-family: 'Lato', sans-serif;
   line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
   color: var(--greenBodyText);
   margin: 0;
   height: 100%;

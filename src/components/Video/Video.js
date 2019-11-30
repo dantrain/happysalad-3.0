@@ -9,6 +9,7 @@ import Vh from '../VisuallyHidden';
 import s from './video.module.css';
 
 const videoIdRegex = /(?:.*|\/|v=)([a-zA-Z\d_-]{11})/;
+const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
 
 const prefetchUrls = [
   'https://www.youtube.com',
@@ -67,7 +68,7 @@ const Video = ({ youTubeUrl }) => {
   const videoId = encodeURIComponent(videoIdRegex.exec(youTubeUrl)[1]);
   const posterUrl = `https://i.ytimg.com/vi/${videoId}/sddefault.jpg`;
 
-  const [showEmbed, setShowEmbed] = useState(false);
+  const [showEmbed, setShowEmbed] = useState(iOS);
 
   return (
     <>

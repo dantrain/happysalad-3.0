@@ -18,16 +18,7 @@
   background-color: black;
 }
 
-.playButtonExit {
-  opacity: 1;
-}
-
-.playButtonExitActive {
-  opacity: 0;
-  transition: opacity 200ms cubic-bezier(0, 0, 0.2, 1);
-}
-
-.playButton::before {
+.videoContainer::before {
   content: '';
   display: block;
   position: absolute;
@@ -37,6 +28,15 @@
   background-repeat: repeat-x;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAADGCAYAAAAT+OqFAAAAdklEQVQoz42QQQ7AIAgEF/T/D+kbq/RWAlnQyyazA4aoAB4FsBSA/bFjuF1EOL7VbrIrBuusmrt4ZZORfb6ehbWdnRHEIiITaEUKa5EJqUakRSaEYBJSCY2dEstQY7AuxahwXFrvZmWl2rh4JZ07z9dLtesfNj5q0FU3A5ObbwAAAABJRU5ErkJggg==);
   background-position: top;
+}
+
+.playButtonExit {
+  opacity: 1;
+}
+
+.playButtonExitActive {
+  opacity: 0;
+  transition: opacity 200ms cubic-bezier(0, 0, 0.2, 1);
 }
 
 .playIcon {
