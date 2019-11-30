@@ -4,10 +4,13 @@
 
 .main {
   flex: 1 1 auto;
-  padding-top: calc(36px + 2 * var(--unit0));
+  margin-top: calc(36px + 2 * var(--unit0));
   padding-bottom: 8em;
-  background: var(--greenHighlight) url('/images/texture.png') fixed;
-  min-height: 100vh;
+
+  @media (--tablet-landscape-up) {
+    background: var(--greenHighlight) url('/images/texture.png') fixed;
+    min-height: calc(100vh - (36px + 2 * var(--unit0)));
+  }
 }
 
 .sideBarContainer {

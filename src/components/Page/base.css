@@ -17,11 +17,14 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   color: var(--greenBodyText);
-  background: var(--greenBackground) url('/images/texture.png') fixed;
   margin: 0;
   height: 100%;
   overflow-y: scroll;
-  overscroll-behavior-y: none;
+  overscroll-behavior: none;
+
+  @media (--desktop-up) {
+    background: var(--greenBackground) url('/images/texture.png') fixed;
+  }
 }
 
 p {
