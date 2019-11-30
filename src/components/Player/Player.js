@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import cn from 'classnames';
 import clamp from 'lodash/clamp';
-import { togglePlay, close } from '../../features/player/playerSlice';
-import Container from '../Container';
 import { CSSTransition } from 'react-transition-group';
 import { PlayerContextProvider } from '@cassette/core';
 import { VolumeControl, MediaProgress } from '@cassette/player';
 import { usePlayerContext } from '@cassette/hooks';
+import Container from '../Container';
+import Vh from '../VisuallyHidden';
 import { Play, Pause, Forward, Backward, Close } from '../Icon';
+import { togglePlay, close } from '../../features/player/playerSlice';
 
 import './cassette-player.css';
 import s from './player.module.css';
@@ -67,16 +68,29 @@ const MediaPlayer = () => {
         <div className={s.centerControls}>
           <Button onClick={onSkipBackward}>
             <Backward />
+            <Vh>Skip back 10 seconds</Vh>
           </Button>
           <Button className={s.playButton} onClick={onTogglePlay}>
-            {shouldPlay ? <Pause /> : <Play />}
+            {shouldPlay ? (
+              <>
+                <Pause />
+                <Vh>Pause</Vh>
+              </>
+            ) : (
+              <>
+                <Play />
+                <Vh>Play</Vh>
+              </>
+            )}
           </Button>
           <Button onClick={onSkipForward}>
             <Forward />
+            <Vh>Skip forward 10 seconds</Vh>
           </Button>
         </div>
         <Button onClick={onClose}>
           <Close />
+          <Vh>Close player</Vh>
         </Button>
       </div>
       <div className={s.progressContainer}>
