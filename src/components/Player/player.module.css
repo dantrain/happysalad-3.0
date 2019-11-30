@@ -18,7 +18,7 @@
 .footerContentEnterDone,
 .footerContentExit {
   visibility: visible;
-  height: auto;
+  height: calc(114px + env(safe-area-inset-bottom));
 }
 
 .footerContentEnter {

@@ -14,23 +14,46 @@
 }
 
 .sideBarContainer {
-  display: none;
+  /* display: none; */
   flex: 0 0 calc(178px + 4em);
   position: relative;
+  background-color: white;
 
   @media (--tablet-landscape-up) {
-    display: block;
+    /* display: block; */
+  }
+
+  @media (--tablet-portrait-down) {
+    position: fixed;
+    top: calc(36px + 2 * var(--unit0));
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 }
 
 .sideBar {
-  position: fixed;
-  top: calc(36px + 2em);
-  bottom: 0;
-  width: calc(178px + 4em);
-  background-color: white;
   padding: 1.5em 2em;
-  border-left: 2px solid var(--greenBackground);
+  overflow-y: scroll;
+  bottom: 0;
+
+  &.playerOpen {
+    bottom: calc(114px + env(safe-area-inset-bottom));
+  }
+
+  @media (--tablet-landscape-up) {
+    position: fixed;
+    top: calc(36px + 2 * var(--unit0));
+    width: calc(178px + 4em);
+    border-left: 2px solid var(--greenBackground);
+  }
+
+  @media (--tablet-portrait-down) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
 }
 
 .navLink {
