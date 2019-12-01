@@ -1,18 +1,3 @@
-.layout {
-  display: flex;
-}
-
-.main {
-  flex: 1 1 auto;
-  margin-top: calc(36px + 2 * var(--unit0));
-  padding-bottom: 8em;
-
-  @media (--tablet-landscape-up) {
-    background: var(--greenHighlight) url('/images/texture.png') fixed;
-    min-height: calc(100vh - (36px + 2 * var(--unit0)));
-  }
-}
-
 .sideBarContainer {
   flex: 0 0 calc(178px + 4em);
   position: relative;

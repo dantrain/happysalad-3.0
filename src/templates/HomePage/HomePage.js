@@ -4,13 +4,12 @@ import {
   initialPageLoad,
   fetchPage,
 } from '../../features/infiniteScroll/infiniteScrollSliceHome';
-import Layout from '../../components/Layout';
 import PageTitle from '../../components/PageTitle';
 import InfiniteTiles from '../../components/InfiniteTiles';
 
-const HomePage = ({ pageContext: { hotTopics }, data: { allPost: posts } }) => {
+const HomePage = ({ data: { allPost: posts } }) => {
   return (
-    <Layout hotTopics={hotTopics}>
+    <>
       <PageTitle />
       <InfiniteTiles
         posts={posts}
@@ -18,7 +17,7 @@ const HomePage = ({ pageContext: { hotTopics }, data: { allPost: posts } }) => {
         initialPageLoad={initialPageLoad}
         fetchPage={fetchPage}
       />
-    </Layout>
+    </>
   );
 };
 

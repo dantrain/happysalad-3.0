@@ -1,19 +1,15 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Layout from '../../components/Layout';
 import PageTitle from '../../components/PageTitle';
 import PodcastPost from '../../components/PodcastPost';
 
-const PodcastPostPage = ({
-  pageContext: { hotTopics },
-  data: { contentfulPodcastPost },
-}) => (
-  <Layout hotTopics={hotTopics}>
+const PodcastPostPage = ({ data: { contentfulPodcastPost } }) => (
+  <>
     <PageTitle
       title={`Saladcast ${contentfulPodcastPost.episodeNumber} - ${contentfulPodcastPost.title}`}
     />
     <PodcastPost {...contentfulPodcastPost} />
-  </Layout>
+  </>
 );
 
 export default PodcastPostPage;

@@ -4,16 +4,12 @@ import {
   initialPageLoad,
   fetchPage,
 } from '../../features/infiniteScroll/infiniteScrollSlicePodcasts';
-import Layout from '../../components/Layout';
 import PageTitle from '../../components/PageTitle';
 import InfiniteTiles from '../../components/InfiniteTiles';
 
-const PodcastCategoryPage = ({
-  pageContext: { hotTopics },
-  data: { allContentfulPodcastPost: posts },
-}) => {
+const PodcastCategoryPage = ({ data: { allContentfulPodcastPost: posts } }) => {
   return (
-    <Layout hotTopics={hotTopics}>
+    <>
       <PageTitle title="The Saladcast" />
       <InfiniteTiles
         posts={posts}
@@ -21,7 +17,7 @@ const PodcastCategoryPage = ({
         initialPageLoad={initialPageLoad}
         fetchPage={fetchPage}
       />
-    </Layout>
+    </>
   );
 };
 

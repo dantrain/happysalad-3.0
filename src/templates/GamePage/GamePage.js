@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Layout from '../../components/Layout';
 import PageTitle from '../../components/PageTitle';
 import VideoPost from '../../components/VideoPost';
 import PodcastPost from '../../components/PodcastPost';
@@ -12,14 +11,13 @@ const GamePage = ({
     name,
     deck,
     image: { small_url: imgUrl },
-    hotTopics,
   },
   data: {
     allContentfulPodcastPost: { edges: podcastPosts },
     allContentfulVideoPost: { edges: videoPosts },
   },
 }) => (
-  <Layout hotTopics={hotTopics}>
+  <>
     <PageTitle title={name} />
     <section className={s.intro}>
       <img
@@ -48,7 +46,7 @@ const GamePage = ({
         </li>
       ))}
     </ul>
-  </Layout>
+  </>
 );
 
 export default GamePage;
