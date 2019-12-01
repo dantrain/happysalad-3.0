@@ -31,7 +31,7 @@ const Header = () => (
             <LogoText className={s.logoText} />
           </div>
         </Link>
-        <Search />
+        <Search inHeader />
       </div>
     </Container>
   </header>

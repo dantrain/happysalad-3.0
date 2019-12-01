@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'gatsby';
 import cn from 'classnames';
 import GamesList from '../GamesList';
+import Search from '../Search';
 
 import s from './layout.module.css';
 
@@ -14,6 +15,7 @@ const Layout = ({ children, hotTopics }) => {
       <main className={s.main}>{children}</main>
       <section className={s.sideBarContainer}>
         <div className={cn(s.sideBar, { [s.playerOpen]: url && title })}>
+          <Search inSideBar />
           <nav>
             <ul>
               <li>

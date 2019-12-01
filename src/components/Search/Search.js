@@ -8,6 +8,8 @@ import Vh from '../VisuallyHidden';
 
 import s from './search.module.css';
 
+const onMobile = window.matchMedia('(max-width: 600px)');
+
 const SearchIcon = props => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" {...props}>
     <path
@@ -17,7 +19,7 @@ const SearchIcon = props => (
   </svg>
 );
 
-const Search = ({ className }) => {
+const Search = ({ inHeader, inSideBar, className }) => {
   const [searchIndex, setSearchIndex] = useState(null);
   const [gameData, setGameData] = useState(null);
 
@@ -86,7 +88,12 @@ const Search = ({ className }) => {
             .map(({ ref }) => ({ id: ref, ...gameData[ref] }));
 
         return (
-          <div className={cn(s.search, className)}>
+          <div
+            className={cn(s.search, className, {
+              [s.inHeader]: inHeader,
+              [s.inSideBar]: inSideBar,
+            })}
+          >
             <Vh>
               <label {...getLabelProps()}>Search for a game</label>
             </Vh>
@@ -94,13 +101,14 @@ const Search = ({ className }) => {
               className={s.input}
               ref={inputRef}
               placeholder="Search for a game"
+              type="text"
               {...getInputProps()}
             />
             <SearchIcon className={s.searchIcon} />
             {isOpen && results && results.length ? (
               <ul className={s.resultsList} {...getMenuProps()}>
                 {results.map((item, index) =>
-                  index < 8 ? (
+                  index < (onMobile ? 4 : 8) ? (
                     <li
                       {...getItemProps({
                         key: item.id,
