@@ -36,7 +36,7 @@ const Layout = ({ children, hotTopics }) => {
             </ul>
           </nav>
           <h3 className={s.hotTopicsTitle}>Hot Topics</h3>
-          <GamesList games={hotTopics} />
+          <GamesList className={s.gamesList} games={hotTopics} />
         </div>
       </section>
     </div>

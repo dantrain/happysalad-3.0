@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import cn from 'classnames';
 import slugify from '@sindresorhus/slugify';
 
 import s from './games-list.module.css';
 
-const GamesList = ({ games }) => (
-  <ul className={s.list}>
+const GamesList = ({ games, className }) => (
+  <ul className={cn(s.list, className)}>
     {games.map(({ id, name, image: { icon_url } }) => (
       <li key={id} className={s.item}>
         <Link to={`/game/${slugify(name)}`}>
