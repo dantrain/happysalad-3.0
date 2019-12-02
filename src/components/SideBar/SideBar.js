@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 import { Link } from 'gatsby';
 import {
@@ -8,10 +8,14 @@ import {
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock';
 import cn from 'classnames';
+import { close } from '../../features/mobileMenu/mobileMenuSlice';
 import GamesList from '../GamesList';
 import Search from '../Search';
 
 import s from './side-bar.module.css';
+
+const tabletLandscapeUp =
+  typeof window !== 'undefined' && window.matchMedia('(min-width: 980px)');
 
 const SideBar = ({ hotTopics }) => {
   const { url, title } = useSelector(state => state.player);
@@ -28,6 +32,20 @@ const SideBar = ({ hotTopics }) => {
 
     return () => clearAllBodyScrollLocks();
   }, [open]);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const listener = e => {
+      if (e.matches) {
+        dispatch(close());
+      }
+    };
+
+    tabletLandscapeUp.addListener(listener);
+
+    return () => tabletLandscapeUp.removeListener(listener);
+  }, []);
 
   return (
     <CSSTransition

@@ -10,7 +10,7 @@ import Vh from '../VisuallyHidden';
 
 import s from './search.module.css';
 
-const onMobile =
+const phoneOnly =
   typeof window !== 'undefined' &&
   window.matchMedia('(max-width: 600px)').matches;
 
@@ -106,7 +106,7 @@ const Search = ({ inHeader, inSideBar, className }) => {
             {isOpen && results && results.length ? (
               <ul className={s.resultsList} {...getMenuProps()}>
                 {results.map((item, index) =>
-                  index < (onMobile ? 4 : 8) ? (
+                  index < (phoneOnly ? 4 : 8) ? (
                     <li
                       {...getItemProps({
                         key: item.id,
