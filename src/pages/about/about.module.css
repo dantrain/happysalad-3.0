@@ -1,5 +1,9 @@
 .about {
   background-color: white;
-  padding: 1em 3em 3em;
+  padding: var(--unit2) var(--unit1) var(--unit3);
   border-bottom: 2px solid var(--greenBackground);
+
+  & > div > h1:first-child {
+    margin-top: 0;
+  }
 }
