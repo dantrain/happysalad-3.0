@@ -1,9 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { navigate } from 'gatsby';
 import lunr from 'lunr';
 import cn from 'classnames';
 import slugify from '@sindresorhus/slugify';
 import Downshift from 'downshift';
+import { fetchData } from '../../features/searchData/searchDataSlice';
 import Vh from '../VisuallyHidden';
 
 import s from './search.module.css';
@@ -22,8 +24,18 @@ const SearchIcon = props => (
 );
 
 const Search = ({ inHeader, inSideBar, className }) => {
-  const [searchIndex, setSearchIndex] = useState(null);
-  const [gameData, setGameData] = useState(null);
+  const { searchIndex, gameData } = useSelector(state => state.searchData);
+
+  const lunrSearchIndex = useMemo(
+    () => searchIndex && lunr.Index.load(searchIndex),
+    [searchIndex]
+  );
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchData());
+  }, []);
 
   const inputRef = useRef(null);
 
@@ -31,6 +43,8 @@ const Search = ({ inHeader, inSideBar, className }) => {
     const focusInput = event => {
       if (event.code === 'Slash') {
         inputRef.current.focus();
+      } else if (event.code === 'Escape') {
+        inputRef.current.blur();
       }
     };
 
@@ -39,24 +53,6 @@ const Search = ({ inHeader, inSideBar, className }) => {
     return () => {
       document.removeEventListener('keyup', focusInput);
     };
-  }, []);
-
-  useEffect(() => {
-    const fetchSearchData = async () => {
-      try {
-        const response = await fetch('/search-data.json');
-        const data = await response.json();
-
-        const searchIndex = lunr.Index.load(data.searchIndex);
-        setSearchIndex(searchIndex);
-
-        setGameData(data.gameData);
-      } catch (err) {
-        console.error('Fetch search data failure', err);
-      }
-    };
-
-    fetchSearchData();
   }, []);
 
   return (
@@ -82,10 +78,10 @@ const Search = ({ inHeader, inSideBar, className }) => {
         const query = inputValue.replace(/[:^*+-]/g, ' ').trim();
 
         const results =
-          searchIndex &&
+          lunrSearchIndex &&
           gameData &&
           query.length > 2 &&
-          searchIndex
+          lunrSearchIndex
             .search(`${query}* ${query}~1`)
             .map(({ ref }) => ({ id: ref, ...gameData[ref] }));
 

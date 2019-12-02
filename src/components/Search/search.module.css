@@ -18,6 +18,7 @@
 }
 
 .input {
+  width: 220px;
   height: 36px;
   line-height: 36px;
   padding: 0 30px 0 0.5em;
@@ -43,10 +44,6 @@
   &:focus + .searchIcon {
     fill: var(--greenBodyText);
   }
-}
-
-.inHeader .input {
-  width: 220px;
 }
 
 .inSideBar .input {
