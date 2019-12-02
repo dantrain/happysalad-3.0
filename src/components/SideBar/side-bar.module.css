@@ -6,6 +6,25 @@
   padding: 1.5em 0;
   background-color: white;
 
+  &::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--greenBackground);
+  }
+
+  &::-webkit-scrollbar-track-piece {
+    background: var(--greenHighlight);
+  }
+
+  &::-webkit-scrollbar-thumb,
+  &::-webkit-scrollbar-track-piece {
+    -webkit-border-radius: 7px;
+    background-clip: padding-box;
+    border: 4px solid transparent;
+  }
+
   &.playerOpen {
     bottom: calc(114px + env(safe-area-inset-bottom));
   }
