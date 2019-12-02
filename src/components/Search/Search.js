@@ -60,6 +60,7 @@ const Search = ({ inHeader, inSideBar, className }) => {
       onChange={(selection, { clearSelection }) => {
         if (selection) {
           navigate(`/game/${slugify(selection.name)}`);
+          inputRef.current.blur();
           clearSelection();
         }
       }}

@@ -32,37 +32,6 @@
       transform: translateX(0%);
       transition: transform 200ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
     }
-
-    &.enter::after,
-    &.enterDone::after,
-    &.exit::after {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 0;
-      bottom: -1000px;
-      left: 0;
-      right: 0;
-    }
-
-    &.enter::after {
-      background-color: rgba(137, 161, 71, 0);
-    }
-
-    &.enterActive::after,
-    &.enterDone::after {
-      background-color: rgba(137, 161, 71, 0.4);
-      transition: background-color 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
-
-    &.exit::after {
-      background-color: rgba(137, 161, 71, 0.4);
-    }
-
-    &.exitActive::after {
-      background-color: rgba(137, 161, 71, 0);
-      transition: background-color 150ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
-    }
   }
 }
 
