@@ -71,7 +71,17 @@ const Video = ({ youTubeUrl }) => {
   const videoId = encodeURIComponent(videoIdRegex.exec(youTubeUrl)[1]);
   const posterUrl = `https://i.ytimg.com/vi/${videoId}/sddefault.jpg`;
 
-  const [showEmbed, setShowEmbed] = useState(iOS);
+  const [showEmbed, setShowEmbed] = useState(false);
+
+  useEffect(() => {
+    let timeout;
+
+    if (iOS) {
+      timeout = setTimeout(() => setShowEmbed(true), 300);
+    }
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
     <>
