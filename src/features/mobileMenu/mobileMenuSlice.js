@@ -13,6 +13,6 @@ const { actions, reducer } = createSlice({
   },
 });
 
-export const { toggle, open } = actions;
+export const { toggle, close } = actions;
 
 export default reducer;

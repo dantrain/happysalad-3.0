@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import cn from 'classnames';
 import slugify from '@sindresorhus/slugify';
+import Link from '../Link';
 
 import s from './games-list.module.css';
 

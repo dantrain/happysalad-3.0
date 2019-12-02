@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'gatsby';
 import { CSSTransition } from 'react-transition-group';
 import {
   disableBodyScroll,
@@ -10,6 +9,7 @@ import {
 import cn from 'classnames';
 import GamesList from '../GamesList';
 import Search from '../Search';
+import Link from '../Link';
 
 import s from './side-bar.module.css';
 

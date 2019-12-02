@@ -6,6 +6,7 @@ import cn from 'classnames';
 import slugify from '@sindresorhus/slugify';
 import Downshift from 'downshift';
 import { fetchData } from '../../features/searchData/searchDataSlice';
+import { close } from '../../features/mobileMenu/mobileMenuSlice';
 import Vh from '../VisuallyHidden';
 
 import s from './search.module.css';
@@ -61,6 +62,7 @@ const Search = ({ inHeader, inSideBar, className }) => {
         if (selection) {
           navigate(`/game/${slugify(selection.name)}`);
           clearSelection();
+          setTimeout(() => dispatch(close()), 150);
         }
       }}
       itemToString={item => (item ? item.id : '')}

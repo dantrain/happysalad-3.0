@@ -51,12 +51,12 @@
 
     &.enterActive::after,
     &.enterDone::after {
-      background-color: rgba(137, 161, 71, 0.3);
+      background-color: rgba(137, 161, 71, 0.4);
       transition: background-color 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
     }
 
     &.exit::after {
-      background-color: rgba(137, 161, 71, 0.3);
+      background-color: rgba(137, 161, 71, 0.4);
     }
 
     &.exitActive::after {

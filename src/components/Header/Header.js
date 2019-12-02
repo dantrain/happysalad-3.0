@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'gatsby';
 import { toggle } from '../../features/mobileMenu/mobileMenuSlice';
 import Container from '../Container';
 import Search from '../Search';
+import Link from '../Link';
 
 import s from './header.module.css';
 
