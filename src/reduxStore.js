@@ -6,14 +6,13 @@ import searchData from './features/searchData/searchDataSlice';
 import player from './features/player/playerSlice';
 import mobileMenu from './features/mobileMenu/mobileMenuSlice';
 
-export default () =>
-  configureStore({
-    reducer: {
-      infiniteScrollHome,
-      infiniteScrollPodcasts,
-      infiniteScrollVideos,
-      searchData,
-      player,
-      mobileMenu,
-    },
-  });
+export default configureStore({
+  reducer: {
+    infiniteScrollHome,
+    infiniteScrollPodcasts,
+    infiniteScrollVideos,
+    searchData,
+    player,
+    mobileMenu,
+  },
+});

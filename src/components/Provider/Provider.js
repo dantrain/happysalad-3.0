@@ -1,14 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import createStore from '../../createStore';
+import store from '../../reduxStore';
 
-const wrapWithProvider = ({ element }) => {
-  // Instantiating store in `wrapRootElement` handler ensures:
-  //  - there is fresh store for each SSR page
-  //  - it will be called only once in browser, when React mounts
-  const store = createStore();
-  return <Provider store={store}>{element}</Provider>;
-};
+const wrapWithProvider = ({ element }) => (
+  <Provider store={store}>{element}</Provider>
+);
 
 export default wrapWithProvider;

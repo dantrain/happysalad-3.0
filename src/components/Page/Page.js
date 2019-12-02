@@ -21,11 +21,6 @@ const Page = ({ children, pageContext: { hotTopics } }) => {
     <>
       <Helmet>
         <html lang="en" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1"
-        />
-        >
       </Helmet>
       <Header />
       <Container>
