@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'gatsby';
 import { CSSTransition } from 'react-transition-group';
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from 'body-scroll-lock';
 import cn from 'classnames';
 import GamesList from '../GamesList';
 import Search from '../Search';
@@ -11,6 +16,18 @@ import s from './side-bar.module.css';
 const SideBar = ({ hotTopics }) => {
   const { url, title } = useSelector(state => state.player);
   const { open } = useSelector(state => state.mobileMenu);
+
+  const sideBarRef = useRef(null);
+
+  useEffect(() => {
+    if (open) {
+      disableBodyScroll(sideBarRef.current);
+    } else {
+      enableBodyScroll(sideBarRef.current);
+    }
+
+    return () => clearAllBodyScrollLocks();
+  }, [open]);
 
   return (
     <CSSTransition
@@ -24,7 +41,10 @@ const SideBar = ({ hotTopics }) => {
         exitActive: s.exitActive,
       }}
     >
-      <div className={cn(s.sideBar, { [s.playerOpen]: url && title })}>
+      <div
+        className={cn(s.sideBar, { [s.playerOpen]: url && title })}
+        ref={sideBarRef}
+      >
         <Search inSideBar />
         <nav>
           <ul>
