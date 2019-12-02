@@ -4,17 +4,24 @@
   width: 100%;
   z-index: 1000;
   background-color: white;
-  padding: var(--unit0) 0;
   border-bottom: 2px solid var(--greenBackground);
+  padding: 0 0.8em;
+
+  @media (--tablet-portrait-down) {
+    padding: 0 0 0 0.8em;
+  }
 }
 
 .wrapper {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  position: relative;
 }
 
 .logo {
   display: flex;
+  padding: var(--unit0) 0;
 }
 
 .logoImg {
@@ -30,4 +37,16 @@
   height: 36px;
   padding: 2px 0;
   fill: var(--greenLogo);
+}
+
+.hamburger {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+
+  @media (--tablet-landscape-up) {
+    display: none;
+  }
 }

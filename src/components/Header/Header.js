@@ -1,9 +1,8 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'gatsby';
-import { toggle } from '../../features/mobileMenu/mobileMenuSlice';
 import Container from '../Container';
 import Search from '../Search';
+import Hamburger from '../Hamburger';
 
 import s from './header.module.css';
 
@@ -19,32 +18,25 @@ const LogoText = props => (
   </svg>
 );
 
-const Header = () => {
-  const { open } = useSelector(state => state.mobileMenu);
-  const dispatch = useDispatch();
-
-  return (
-    <header className={s.header}>
-      <Container pad>
-        <div className={s.wrapper}>
-          <Link to="/" title="Home">
-            <div className={s.logo}>
-              <img
-                className={s.logoImg}
-                src="/images/logo-tomato.png"
-                alt="Cherry tomato"
-              />
-              <LogoText className={s.logoText} />
-            </div>
-          </Link>
-          <Search inHeader />
-          <button type="button" onClick={() => dispatch(toggle())}>
-            {JSON.stringify(open)}
-          </button>
-        </div>
-      </Container>
-    </header>
-  );
-};
+const Header = () => (
+  <header className={s.header}>
+    <Container>
+      <div className={s.wrapper}>
+        <Link to="/" title="Home">
+          <div className={s.logo}>
+            <img
+              className={s.logoImg}
+              src="/images/logo-tomato.png"
+              alt="Cherry tomato"
+            />
+            <LogoText className={s.logoText} />
+          </div>
+        </Link>
+        <Search inHeader />
+        <Hamburger className={s.hamburger} />
+      </div>
+    </Container>
+  </header>
+);
 
 export default Header;

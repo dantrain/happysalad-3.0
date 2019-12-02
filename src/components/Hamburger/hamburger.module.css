@@ -1,0 +1,74 @@
+.button {
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 52px;
+}
+
+.container {
+  height: 24px;
+  width: 24px;
+  position: relative;
+}
+
+.bar {
+  position: absolute;
+  height: 4px;
+  border-radius: 2px;
+  width: 100%;
+  left: 0;
+  background-color: var(--greenLogo);
+  transition: all 200ms ease-in-out;
+}
+
+.bar1 {
+  top: 0%;
+}
+
+.bar3 {
+  visibility: hidden;
+}
+
+.bar2,
+.bar3 {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.bar1,
+.bar4 {
+  opacity: 1;
+}
+
+.bar4 {
+  bottom: 0;
+}
+
+.open {
+  & .bar1,
+  & .bar4 {
+    left: 50%;
+    width: 0%;
+    opacity: 0;
+  }
+
+  & .bar1 {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  & .bar4 {
+    bottom: 50%;
+    transform: translateY(50%);
+  }
+
+  & .bar2 {
+    transform: translateY(-50%) rotate(45deg) scaleX(1.2);
+  }
+
+  & .bar3 {
+    visibility: visible;
+    transform: translateY(-50%) rotate(-45deg) scaleX(1.2);
+  }
+}
