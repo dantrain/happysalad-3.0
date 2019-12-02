@@ -12,3 +12,9 @@
     min-height: calc(100vh - (36px + 2 * var(--unit0)));
   }
 }
+
+.sideBarContainer {
+  @media (--tablet-landscape-up) {
+    flex: 0 0 calc(178px + 4em);
+  }
+}

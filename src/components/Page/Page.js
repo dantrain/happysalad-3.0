@@ -16,12 +16,19 @@ const Page = ({ children, pageContext: { hotTopics } }) => (
   <>
     <Helmet>
       <html lang="en" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      >
     </Helmet>
     <Header />
     <Container>
       <div className={s.layout}>
         <main className={s.main}>{children}</main>
-        <SideBar hotTopics={hotTopics} />
+        <section className={s.sideBarContainer}>
+          <SideBar hotTopics={hotTopics} />
+        </section>
       </div>
     </Container>
     <Player />

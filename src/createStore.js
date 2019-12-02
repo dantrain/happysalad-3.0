@@ -3,6 +3,7 @@ import infiniteScrollHome from './features/infiniteScroll/infiniteScrollSliceHom
 import infiniteScrollPodcasts from './features/infiniteScroll/infiniteScrollSlicePodcasts';
 import infiniteScrollVideos from './features/infiniteScroll/infiniteScrollSliceVideos';
 import player from './features/player/playerSlice';
+import mobileMenu from './features/mobileMenu/mobileMenuSlice';
 
 export default () =>
   configureStore({
@@ -11,5 +12,6 @@ export default () =>
       infiniteScrollPodcasts,
       infiniteScrollVideos,
       player,
+      mobileMenu,
     },
   });
