@@ -9,7 +9,10 @@ import Vh from '../VisuallyHidden';
 import s from './video.module.css';
 
 const videoIdRegex = /(?:.*|\/|v=)([a-zA-Z\d_-]{11})/;
-const iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+const iOS =
+  typeof navigator !== 'undefined' &&
+  !!navigator.platform &&
+  /iPad|iPhone|iPod/.test(navigator.platform);
 
 const prefetchUrls = [
   'https://www.youtube.com',
