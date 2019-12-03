@@ -10,19 +10,20 @@
     width: 14px;
   }
 
-  &::-webkit-scrollbar-thumb {
-    background: var(--greenBackground);
-  }
-
-  &::-webkit-scrollbar-track-piece {
-    background: var(--greenHighlight);
-  }
-
   &::-webkit-scrollbar-thumb,
   &::-webkit-scrollbar-track-piece {
     -webkit-border-radius: 7px;
     background-clip: padding-box;
     border: 4px solid transparent;
+    background-color: transparent;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: var(--greenBackground);
+  }
+
+  &:hover::-webkit-scrollbar-track-piece {
+    background-color: var(--greenHighlight);
   }
 
   &.playerOpen {

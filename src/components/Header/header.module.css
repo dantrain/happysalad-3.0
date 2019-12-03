@@ -5,11 +5,6 @@
   z-index: 1000;
   background-color: white;
   border-bottom: 2px solid var(--greenBackground);
-  padding: 0 0.8em;
-
-  @media (--tablet-portrait-down) {
-    padding: 0 0 0 0.8em;
-  }
 }
 
 .wrapper {
@@ -17,6 +12,11 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
+  padding: 0 0.8em;
+
+  @media (--tablet-portrait-down) {
+    padding: 0 0 0 0.8em;
+  }
 }
 
 .logo {
