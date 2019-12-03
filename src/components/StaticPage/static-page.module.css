@@ -1,9 +1,9 @@
-.about {
+.static-page {
   background-color: white;
   padding: var(--unit2) var(--unit1) var(--unit3);
   border-bottom: 2px solid var(--greenBackground);
 
-  & > div > h1:first-child {
+  & h1:first-child {
     margin-top: 0;
   }
 }

@@ -1,17 +1,15 @@
 import React from 'react';
 import PageTitle from '../../components/PageTitle';
 import Markdown from '../../components/Markdown';
+import StaticPage from '../../components/StaticPage';
 
-import s from './about.module.css';
 import content from './about.md';
 
 const AboutPage = () => (
-  <>
+  <StaticPage>
     <PageTitle title="About" />
-    <div className={s.about}>
-      <Markdown ast={content} />
-    </div>
-  </>
+    <Markdown ast={content} />
+  </StaticPage>
 );
 
 export default AboutPage;
