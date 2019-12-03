@@ -11,6 +11,7 @@ import cn from 'classnames';
 import { close } from '../../features/mobileMenu/mobileMenuSlice';
 import GamesList from '../GamesList';
 import Search from '../Search';
+import { YouTube, Twitter, Facebook } from '../Icon';
 
 import s from './side-bar.module.css';
 
@@ -63,28 +64,61 @@ const SideBar = ({ hotTopics }) => {
         className={cn(s.sideBar, { [s.playerOpen]: url && title })}
         ref={sideBarRef}
       >
-        <Search inSideBar />
-        <nav>
-          <ul>
-            <li>
-              <Link className={s.navLink} to="/saladcast">
-                Saladcast
-              </Link>
+        <div className={s.top}>
+          <Search inSideBar />
+          <nav>
+            <ul>
+              <li>
+                <Link className={s.navLink} to="/saladcast">
+                  Saladcast
+                </Link>
+              </li>
+              <li>
+                <Link className={s.navLink} to="/video-thing">
+                  Video Thing
+                </Link>
+              </li>
+              <li>
+                <Link className={s.navLink} to="/about">
+                  About
+                </Link>
+              </li>
+            </ul>
+          </nav>
+          <h3 className={s.hotTopicsTitle}>Hot Topics</h3>
+          <GamesList className={s.gamesList} games={hotTopics} />
+        </div>
+        <div className={s.bottom}>
+          <ul className={s.socialLinkList}>
+            <li className={s.socialLink}>
+              <a
+                className={s.youTube}
+                title="YouTube Channel"
+                href="https://www.youtube.com/channel/UCeibGWITwPHuSe5-qfGDAGw"
+              >
+                <YouTube />
+              </a>
             </li>
-            <li>
-              <Link className={s.navLink} to="/video-thing">
-                Video Thing
-              </Link>
+            <li className={s.socialLink}>
+              <a
+                className={s.twitter}
+                title="Twitter Feed"
+                href="https://twitter.com/SaladCast"
+              >
+                <Twitter />
+              </a>
             </li>
-            <li>
-              <Link className={s.navLink} to="/about">
-                About
-              </Link>
+            <li className={s.socialLink}>
+              <a
+                className={s.facebook}
+                title="Facebook Page"
+                href="https://www.facebook.com/happysaladnet/"
+              >
+                <Facebook />
+              </a>
             </li>
           </ul>
-        </nav>
-        <h3 className={s.hotTopicsTitle}>Hot Topics</h3>
-        <GamesList className={s.gamesList} games={hotTopics} />
+        </div>
       </div>
     </CSSTransition>
   );

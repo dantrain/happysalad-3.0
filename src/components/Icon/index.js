@@ -1,1 +1,10 @@
-export { Play, Pause, Forward, Backward, Close } from './Icon';
+export {
+  Play,
+  Pause,
+  Forward,
+  Backward,
+  Close,
+  YouTube,
+  Twitter,
+  Facebook,
+} from './Icon';

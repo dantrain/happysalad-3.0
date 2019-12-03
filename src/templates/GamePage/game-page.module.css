@@ -7,6 +7,7 @@
 
   @media (--phone-only) {
     flex-direction: column;
+    padding: var(--unit2) var(--unit1) var(--unit1);
   }
 }
 
@@ -23,7 +24,7 @@
 }
 
 .introText {
-  padding: 0.4em 0 0 2em;
+  padding: 0.4em 0 0 var(--unit1);
 
   @media (--phone-only) {
     padding: 2em 0 1em;
