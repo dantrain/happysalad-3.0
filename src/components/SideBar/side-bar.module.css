@@ -32,6 +32,7 @@
   }
 
   &.playerOpen {
+    bottom: 114px;
     bottom: calc(114px + env(safe-area-inset-bottom));
   }
 
@@ -110,6 +111,7 @@
   & a,
   & svg {
     display: block;
+    width: 100%;
   }
 
   & path {

@@ -11,6 +11,7 @@
   height: 0;
   border-top: 2px solid var(--greenBackground);
   background-color: white;
+  padding-bottom: 0;
   padding-bottom: env(safe-area-inset-bottom);
 }
 
@@ -18,6 +19,7 @@
 .footerContentEnterDone,
 .footerContentExit {
   visibility: visible;
+  height: 114px;
   height: calc(114px + env(safe-area-inset-bottom));
 }
 

@@ -36,6 +36,8 @@
 }
 
 .sideBarContainer {
+  background-color: white;
+
   @media (--tablet-landscape-up) {
     flex: 0 0 calc(178px + 4em);
   }
