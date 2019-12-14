@@ -119,14 +119,30 @@
   }
 }
 
-.youTube:hover path {
-  fill: red;
+@media (--tablet-landscape-up) {
+  .youTube:hover path {
+    fill: red;
+  }
+
+  .twitter:hover path {
+    fill: #1da1f2;
+  }
+
+  .facebook:hover path {
+    fill: #4172b8;
+  }
 }
 
-.twitter:hover path {
-  fill: #1da1f2;
-}
+@media (--tablet-portrait-down) {
+  .youTube path {
+    fill: red;
+  }
 
-.facebook:hover path {
-  fill: #4172b8;
+  .twitter path {
+    fill: #1da1f2;
+  }
+
+  .facebook path {
+    fill: #4172b8;
+  }
 }

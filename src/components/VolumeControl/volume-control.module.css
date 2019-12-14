@@ -96,6 +96,7 @@
   background: var(--greenBackground);
   border-radius: 10px;
 }
+
 .slider::-ms-fill-upper {
   background: var(--greenBackground);
   border-radius: 10px;
