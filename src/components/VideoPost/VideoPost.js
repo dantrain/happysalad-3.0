@@ -1,8 +1,8 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Post from '../../components/Post';
-import Video from '../../components/Video';
-import Markdown from '../../components/Markdown';
+import Post from '../Post';
+import Video from '../Video';
+import Markdown from '../Markdown';
 
 const VideoPost = ({
   title,

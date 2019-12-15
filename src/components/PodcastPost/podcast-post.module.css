@@ -1,17 +1,54 @@
 .buttonBar {
-  margin: 1.5em 0;
+  margin: 1.5em -8px;
+  display: flex;
+
+  @media (--phone-only) {
+    margin: 1.5em -4px;
+  }
 }
 
-.playButton {
+.button {
+  display: flex;
+  justify-content: center;
+  line-height: 1.5;
   border: 2px solid var(--greenBackground);
-  padding: 1em;
-  line-height: 1.2;
+  padding: 0.8em 1.5em;
+  min-width: 130px;
   border-radius: 0.5em;
-  width: 150px;
   background-color: var(--greenWash);
+  color: var(--greenBodyText);
+  margin: 0 8px;
 
   &:hover {
     border-color: var(--greenBodyText);
+    text-decoration: none;
+  }
+
+  & svg {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    align-self: center;
+
+    & path {
+      fill: var(--greenBodyText);
+    }
+  }
+
+  @media (--phone-only) {
+    padding: 0.8em 0;
+    flex: 1 1 auto;
+    margin: 0 4px;
+  }
+}
+
+.playButton svg {
+  margin-right: 4px;
+}
+
+@media (--phone-only) {
+  .downloadLink {
+    display: none;
   }
 }
 

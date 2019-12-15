@@ -4,12 +4,12 @@ import cn from 'classnames';
 import clamp from 'lodash/clamp';
 import { CSSTransition } from 'react-transition-group';
 import { PlayerContextProvider } from '@cassette/core';
-import { /* VolumeControl, */ MediaProgress } from '@cassette/player';
+import { MediaProgress } from '@cassette/player';
 import { usePlayerContext } from '@cassette/hooks';
 import Container from '../Container';
 import Vh from '../VisuallyHidden';
 import VolumeControl from '../VolumeControl';
-import { Play, Pause, Forward, Backward, Close } from '../Icon';
+import { PlayCircle, PauseCircle, Forward, Backward, Close } from '../Icon';
 import { togglePlay, close } from '../../features/player/playerSlice';
 
 import './cassette-player.css';
@@ -74,12 +74,12 @@ const MediaPlayer = () => {
           <Button className={s.playButton} onClick={onTogglePlay}>
             {shouldPlay ? (
               <>
-                <Pause />
+                <PauseCircle />
                 <Vh>Pause</Vh>
               </>
             ) : (
               <>
-                <Play />
+                <PlayCircle />
                 <Vh>Play</Vh>
               </>
             )}
