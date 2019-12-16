@@ -1,8 +1,13 @@
 {
-  "name": "gatsby-contentful-starter",
-  "description": "Starter Contentful Gatsby Blog",
-  "version": "0.1.0",
+  "name": "happysalad-3.0",
+  "description": "The third iteration of the Salad",
+  "version": "1.0.0",
   "author": "Dan Train",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dantrain/happysalad-3.0.git"
+  },
   "dependencies": {
     "@cassette/core": "^2.0.0-beta.4",
     "@cassette/hooks": "^2.0.0-beta.4",
