@@ -26,6 +26,7 @@ const SideBar = ({ hotTopics }) => {
 
   useEffect(() => {
     if (open) {
+      sideBarRef.current.scrollTop = 0;
       disableBodyScroll(sideBarRef.current);
     } else {
       enableBodyScroll(sideBarRef.current);
