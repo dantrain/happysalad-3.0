@@ -43,6 +43,9 @@ const PodcastPost = ({
       date={recordingDate}
       dateFormatted={recordingDateFormatted}
       authorName={author.name}
+      imageSlot={
+        <img src="/images/saladcast-post.png" alt="Lettuce microphone" />
+      }
     >
       <div className={s.buttonBar}>
         <button

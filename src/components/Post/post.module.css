@@ -6,6 +6,15 @@
 
 .header {
   margin-bottom: 1.5em;
+  display: flex;
+}
+
+.headerText {
+  flex: 1 1 auto;
+}
+
+.image {
+  margin-left: 0.8em;
 }
 
 .title {
