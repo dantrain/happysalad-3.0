@@ -35,7 +35,7 @@ const GamePage = ({
     <ul>
       {videoPosts.map(({ node }) => (
         <li key={node.slug}>
-          <VideoPost {...node} />
+          <VideoPost {...node} gameLink={false} />
         </li>
       ))}
     </ul>

@@ -16,7 +16,7 @@ const Post = ({
   return (
     <article className={s.article}>
       <header className={s.header}>
-        <div className={s.headerText}>
+        <div>
           {titleLinkUrl ? <Link to={titleLinkUrl}>{heading}</Link> : heading}
           <p className={s.byline}>
             <strong>
