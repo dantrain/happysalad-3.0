@@ -85,7 +85,7 @@ module.exports = {
               ),
             query: `
               {
-                allPost(sort: {fields: [recordingDate], order: DESC}) {
+                allPost(sort: {fields: [recordingDate], order: DESC}, limit: 20) {
                   edges {
                     node {
                       __typename
