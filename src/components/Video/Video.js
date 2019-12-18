@@ -44,11 +44,7 @@ const YouTubeEmbed = ({ videoId }) => {
   const { playing } = useSelector(state => state.player);
 
   useEffect(() => {
-    if (
-      playing &&
-      playerRef.current &&
-      playerRef.current.getPlayerState() === 1
-    ) {
+    if (playing && playerRef.current?.getPlayerState() === 1) {
       playerRef.current.pauseVideo();
     }
   }, [playing]);

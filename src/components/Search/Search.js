@@ -76,11 +76,10 @@ const Search = ({ inHeader, inSideBar, className }) => {
         const query = inputValue.replace(/[:^*+-]/g, ' ').trim();
 
         const results =
-          lunrSearchIndex &&
           gameData &&
           query.length > 2 &&
           lunrSearchIndex
-            .search(`${query}* ${query}~1`)
+            ?.search(`${query}* ${query}~1`)
             .map(({ ref }) => ({ id: ref, ...gameData[ref] }));
 
         return (
@@ -101,7 +100,7 @@ const Search = ({ inHeader, inSideBar, className }) => {
               {...getInputProps()}
             />
             <SearchIcon className={s.searchIcon} />
-            {isOpen && results && results.length ? (
+            {isOpen && results?.length ? (
               <ul className={s.resultsList} {...getMenuProps()}>
                 {results.map((item, index) =>
                   index < (onMobile ? 4 : 8) ? (

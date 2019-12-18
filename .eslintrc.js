@@ -7,12 +7,5 @@ module.exports = {
   globals: {
     graphql: false,
   },
-  parserOptions: {
-    ecmaVersion: 2020,
-    sourceType: 'module',
-    ecmaFeatures: {
-      experimentalObjectRestSpread: true,
-      jsx: true,
-    },
-  },
+  parser: 'babel-eslint',
 };

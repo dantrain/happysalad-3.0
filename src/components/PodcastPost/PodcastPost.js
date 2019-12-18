@@ -82,7 +82,7 @@ const PodcastPost = ({
         </a>
       </div>
       <Markdown ast={body.childMarkdownRemark.htmlAst} />
-      {games && games.games && games.games.length && (
+      {games?.games?.length && (
         <>
           <h3 className={s.gamesListHeading}>In this podcast:</h3>
           <GamesList games={games.games} />

@@ -24,9 +24,7 @@ const VideoPost = ({
     authorName={author.name}
     imageSlot={
       gameLink &&
-      games &&
-      games.games &&
-      games.games.length && (
+      games?.games?.length && (
         <GameLink
           name={games.games[0].name}
           image={games.games[0].image.icon_url}
