@@ -28,11 +28,25 @@ exports.createSchemaCustomization = ({ actions: { createTypes } }) =>
         .map(type => `contentful${type}GamesJsonNode`)
         .join(' | ')}
 
+      interface Body {
+        childMarkdownRemark: MarkdownRemark
+      }
+
+      ${postTypes.map(
+        type => `
+        type contentful${type}BodyTextNode implements Node & Body @infer {
+          childMarkdown: MarkdownRemark
+        }
+      `
+      )}
+
       interface Post @nodeInterface {
         id: ID!
         slug: String
+        title: String
         recordingDate: Date
         games: Games 
+        body: Body
       }
 
       ${postTypes

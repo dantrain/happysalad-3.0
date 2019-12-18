@@ -17,6 +17,7 @@ if (!spaceId || !accessToken) {
 module.exports = {
   siteMetadata: {
     title: 'Happysalad',
+    siteUrl: 'https://happysalad.netlify.com/',
   },
   plugins: [
     'gatsby-transformer-remark',
@@ -28,5 +29,87 @@ module.exports = {
       options: contentfulConfig,
     },
     'gatsby-plugin-postcss',
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({
+              query: {
+                site: {
+                  siteMetadata: { siteUrl },
+                },
+                allPost,
+              },
+            }) =>
+              allPost.edges.map(
+                ({
+                  node: {
+                    __typename,
+                    slug,
+                    title,
+                    recordingDate,
+                    episodeNumber,
+                    body: {
+                      childMarkdownRemark: { excerpt, html },
+                    },
+                  },
+                }) => {
+                  let url;
+
+                  if (__typename === 'ContentfulPodcastPost') {
+                    url = `${siteUrl}/saladcast/${episodeNumber}-${slug}/`;
+                  } else if (__typename === 'ContentfulVideoPost') {
+                    url = `${siteUrl}/video-thing/${slug}/`;
+                  }
+
+                  return {
+                    title,
+                    url,
+                    description: excerpt,
+                    date: recordingDate,
+                    custom_elements: [{ 'content:encoded': html }],
+                  };
+                }
+              ),
+            query: `
+              {
+                allPost(sort: {fields: [recordingDate], order: DESC}) {
+                  edges {
+                    node {
+                      __typename
+                      slug
+                      title
+                      recordingDate
+                      ... on ContentfulPodcastPost {
+                        episodeNumber
+                      }
+                      body {
+                        childMarkdownRemark {
+                          excerpt
+                          html
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: '/rss.xml',
+            title: 'Happysalad',
+          },
+        ],
+      },
+    },
   ],
 };
