@@ -7,8 +7,8 @@
 }
 
 .container {
-  height: 22px;
-  width: 22px;
+  height: 21px;
+  width: 21px;
   position: relative;
 }
 
@@ -26,14 +26,9 @@
   top: 0%;
 }
 
-.bar3 {
-  visibility: hidden;
-}
-
 .bar2,
 .bar3 {
-  top: 50%;
-  transform: translateY(-50%);
+  top: 9px;
 }
 
 .bar1,
@@ -64,11 +59,10 @@
   }
 
   & .bar2 {
-    transform: translateY(-50%) rotate(45deg) scaleX(1.2);
+    transform: rotate(45deg) scaleX(1.2);
   }
 
   & .bar3 {
-    visibility: visible;
-    transform: translateY(-50%) rotate(-45deg) scaleX(1.2);
+    transform: rotate(-45deg) scaleX(1.2);
   }
 }
