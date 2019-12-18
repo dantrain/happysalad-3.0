@@ -7,12 +7,9 @@ import slugify from '@sindresorhus/slugify';
 import Downshift from 'downshift';
 import { fetchData } from '../../features/searchData/searchDataSlice';
 import Vh from '../VisuallyHidden';
+import onMobile from '../../utils/onMobile';
 
 import s from './search.module.css';
-
-const phoneOnly =
-  typeof window !== 'undefined' &&
-  window.matchMedia('(max-width: 600px)').matches;
 
 const SearchIcon = props => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" {...props}>
@@ -107,7 +104,7 @@ const Search = ({ inHeader, inSideBar, className }) => {
             {isOpen && results && results.length ? (
               <ul className={s.resultsList} {...getMenuProps()}>
                 {results.map((item, index) =>
-                  index < (phoneOnly ? 4 : 8) ? (
+                  index < (onMobile ? 4 : 8) ? (
                     <li
                       {...getItemProps({
                         key: item.id,

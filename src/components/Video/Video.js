@@ -5,14 +5,11 @@ import { CSSTransition } from 'react-transition-group';
 import YouTube from 'react-youtube';
 import { pause } from '../../features/player/playerSlice';
 import Vh from '../VisuallyHidden';
+import onMobile from '../../utils/onMobile';
 
 import s from './video.module.css';
 
 const videoIdRegex = /(?:.*|\/|v=)([a-zA-Z\d_-]{11})/;
-const iOS =
-  typeof navigator !== 'undefined' &&
-  !!navigator.platform &&
-  /iPad|iPhone|iPod/.test(navigator.platform);
 
 const prefetchUrls = [
   'https://www.youtube.com',
@@ -76,7 +73,7 @@ const Video = ({ youTubeUrl }) => {
   useEffect(() => {
     let timeout;
 
-    if (iOS) {
+    if (onMobile) {
       timeout = setTimeout(() => setShowEmbed(true), 300);
     }
 
