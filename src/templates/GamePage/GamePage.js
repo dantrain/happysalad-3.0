@@ -30,7 +30,7 @@ const GamePage = ({
       />
       <div className={s.introText}>
         <h1 className={s.title}>{name}</h1>
-        {deck !== name && <p className={s.deck}>{decode(deck)}</p>}
+        {deck && deck !== name && <p className={s.deck}>{decode(deck)}</p>}
       </div>
     </section>
     <ul>
