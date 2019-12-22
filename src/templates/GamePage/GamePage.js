@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import { decode } from 'he';
 import PageTitle from '../../components/PageTitle';
 import VideoPost from '../../components/VideoPost';
 import PodcastPost from '../../components/PodcastPost';
@@ -29,7 +30,7 @@ const GamePage = ({
       />
       <div className={s.introText}>
         <h1 className={s.title}>{name}</h1>
-        {deck !== name && <p className={s.deck}>{deck}</p>}
+        {deck !== name && <p className={s.deck}>{decode(deck)}</p>}
       </div>
     </section>
     <ul>
