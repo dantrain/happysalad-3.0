@@ -110,7 +110,7 @@ module.exports = {
             title: 'The Saladcast',
             description: 'A public display of unhinged gaming waffle',
             language: 'en',
-            copyright: `© ${new Date().getUTCFullYear()} Happysalad`,
+            copyright: `© Copyright 2010-${new Date().getUTCFullYear()} Happysalad`,
             managingEditor: 'Rob Kemp',
             webMaster: 'Dan Train',
             custom_namespaces: {
