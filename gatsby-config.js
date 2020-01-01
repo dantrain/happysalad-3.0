@@ -106,7 +106,7 @@ module.exports = {
               ),
           },
           {
-            output: '/podcast.xml',
+            output: '/saladcast.xml',
             title: 'The Saladcast',
             description: 'A public display of unhinged gaming waffle',
             language: 'en',
