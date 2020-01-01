@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+const siteUrl = 'https://happysalad.netlify.com/';
+
 const contentfulConfig = {
   spaceId: process.env.CONTENTFUL_SPACE_ID,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
@@ -17,7 +19,7 @@ if (!spaceId || !accessToken) {
 module.exports = {
   siteMetadata: {
     title: 'Happysalad',
-    siteUrl: 'https://happysalad.netlify.com/',
+    siteUrl,
   },
   plugins: [
     'gatsby-transformer-remark',
@@ -45,14 +47,33 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({
-              query: {
-                site: {
-                  siteMetadata: { siteUrl },
-                },
-                allPost,
-              },
-            }) =>
+            output: '/rss.xml',
+            title: 'Happysalad',
+            language: 'en',
+            query: `
+              {
+                allPost(sort: {fields: [recordingDate], order: DESC}, limit: 20) {
+                  edges {
+                    node {
+                      __typename
+                      slug
+                      title
+                      recordingDate
+                      ... on ContentfulPodcastPost {
+                        episodeNumber
+                      }
+                      body {
+                        childMarkdownRemark {
+                          excerpt
+                          html
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            serialize: ({ query: { allPost } }) =>
               allPost.edges.map(
                 ({
                   node: {
@@ -83,17 +104,83 @@ module.exports = {
                   };
                 }
               ),
+          },
+          {
+            output: '/podcast.xml',
+            title: 'The Saladcast',
+            description: 'A public display of unhinged gaming waffle',
+            language: 'en',
+            copyright: `© ${new Date().getUTCFullYear()} Happysalad`,
+            managingEditor: 'Rob Kemp',
+            webMaster: 'Dan Train',
+            custom_namespaces: {
+              itunes: 'http://www.itunes.com/dtds/podcast-1.0.dtd',
+              googleplay: 'http://www.google.com/schemas/play-podcasts/1.0',
+            },
+            custom_elements: [
+              {
+                'itunes:subtitle': 'A public display of unhinged gaming waffle',
+              },
+              {
+                'itunes:summary': `A gaming podcast featuring the views and opinions of 3 unhinged personalities. We put forward our impressions of the world of gaming, entertainment and anything else that's mildly interesting.`,
+              },
+              { 'itunes:author': 'Happysalad' },
+              { 'itunes:type': 'episodic' },
+              {
+                'itunes:owner': [
+                  { 'itunes:name': 'Happysalad' },
+                  { 'itunes:email': 'webmaster@happysalad.net' },
+                ],
+              },
+              { 'itunes:image': `${siteUrl}images/podcast-image.png` },
+              {
+                'itunes:category': [
+                  {
+                    _attr: {
+                      text: 'Leisure',
+                    },
+                  },
+                  {
+                    'itunes:category': {
+                      _attr: {
+                        text: 'Games',
+                      },
+                    },
+                  },
+                ],
+              },
+              {
+                'itunes:category': {
+                  _attr: {
+                    text: 'Comedy',
+                  },
+                },
+              },
+              {
+                'itunes:category': {
+                  _attr: {
+                    text: 'Technology',
+                  },
+                },
+              },
+              { 'itunes:explicit': 'yes' },
+            ],
             query: `
               {
-                allPost(sort: {fields: [recordingDate], order: DESC}, limit: 20) {
+                allContentfulPodcastPost(sort: {fields: [recordingDate], order: DESC}) {
                   edges {
                     node {
-                      __typename
-                      slug
                       title
+                      slug
+                      episodeNumber
                       recordingDate
-                      ... on ContentfulPodcastPost {
-                        episodeNumber
+                      audioFile {
+                        file {
+                          url
+                          details {
+                            size
+                          }
+                        }
                       }
                       body {
                         childMarkdownRemark {
@@ -106,8 +193,44 @@ module.exports = {
                 }
               }
             `,
-            output: '/rss.xml',
-            title: 'Happysalad',
+            serialize: ({ query: { allContentfulPodcastPost } }) =>
+              allContentfulPodcastPost.edges.map(
+                ({
+                  node: {
+                    title,
+                    slug,
+                    episodeNumber,
+                    recordingDate,
+                    audioFile: {
+                      file: {
+                        url,
+                        details: { size },
+                      },
+                    },
+                    body: {
+                      childMarkdownRemark: { excerpt, html },
+                    },
+                  },
+                }) => ({
+                  title: `Saladcast ${episodeNumber} - ${title}`,
+                  url: `${siteUrl}/saladcast/${episodeNumber}-${slug}/`,
+                  description: excerpt,
+                  date: recordingDate,
+                  enclosure: {
+                    url: `${siteUrl}assets${new URL(`https:${url}`).pathname}`,
+                    size,
+                    type: 'audio/mpeg',
+                  },
+                  custom_elements: [
+                    { 'itunes:title': title },
+                    { 'itunes:episode': episodeNumber },
+                    { 'itunes:episodeType': 'full' },
+                    { 'itunes:summary': excerpt },
+                    { 'itunes:explicit': 'yes' },
+                    { 'content:encoded': html },
+                  ],
+                })
+              ),
           },
         ],
       },
