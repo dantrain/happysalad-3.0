@@ -132,7 +132,13 @@ module.exports = {
                   { 'itunes:email': 'webmaster@happysalad.net' },
                 ],
               },
-              { 'itunes:image': `${siteUrl}images/podcast-image.png` },
+              {
+                'itunes:image': {
+                  _attr: {
+                    href: `${siteUrl}images/podcast-image.png`,
+                  },
+                },
+              },
               {
                 'itunes:category': [
                   {
@@ -148,13 +154,6 @@ module.exports = {
                     },
                   },
                 ],
-              },
-              {
-                'itunes:category': {
-                  _attr: {
-                    text: 'Comedy',
-                  },
-                },
               },
               {
                 'itunes:category': {
