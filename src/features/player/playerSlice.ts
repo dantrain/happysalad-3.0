@@ -1,10 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type PlayerState = {
+interface PlayerTrack {
   url: string | null;
   title: string | null;
+}
+
+type PlayerState = {
   playing: boolean;
-};
+} & PlayerTrack;
 
 const { actions, reducer } = createSlice({
   name: 'player',
@@ -14,7 +17,10 @@ const { actions, reducer } = createSlice({
     playing: false,
   } as PlayerState,
   reducers: {
-    playTrack: (state, { payload: { url, title } }): void => {
+    playTrack: (
+      state,
+      { payload: { url, title } }: PayloadAction<PlayerTrack>
+    ): void => {
       state.url = url;
       state.title = title;
       state.playing = true;
