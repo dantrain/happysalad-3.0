@@ -16,6 +16,11 @@ module.exports = {
   parserOptions: {
     sourceType: 'module',
   },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
   overrides: [
     {
       files: ['**/*.ts', '**/*.tsx'],
