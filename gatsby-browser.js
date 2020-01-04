@@ -1,6 +1,6 @@
 import wrapWithProvider from './src/components/Provider';
 import wrapWithPage from './src/components/Page';
-import store from './src/reduxStore';
+import store from './src/store';
 import { close } from './src/features/mobileMenu/mobileMenuSlice';
 
 export const wrapRootElement = wrapWithProvider;

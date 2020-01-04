@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AppThunk } from '../../reduxStore';
+import { AppThunk } from '../../store';
 
 type GameData = {
   name: string;
