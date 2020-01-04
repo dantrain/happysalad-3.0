@@ -7,7 +7,7 @@ module.exports = {
   plugins: ['@typescript-eslint', 'react'],
   extends: ['eslint:recommended', 'plugin:react/recommended'],
   rules: {
-    'react/prop-types': 0,
+    'react/prop-types': 'off',
   },
   globals: {
     graphql: false,
@@ -30,6 +30,12 @@ module.exports = {
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
       ],
+      rules: {
+        '@typescript-eslint/explicit-function-return-type': [
+          'warn',
+          { allowExpressions: true, allowTypedFunctionExpressions: true },
+        ],
+      },
     },
   ],
 };

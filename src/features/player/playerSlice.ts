@@ -20,20 +20,20 @@ const { actions, reducer } = createSlice({
     playTrack: (
       state,
       { payload: { url, title } }: PayloadAction<PlayerTrack>
-    ): void => {
+    ) => {
       state.url = url;
       state.title = title;
       state.playing = true;
     },
-    togglePlay: (state): void => {
+    togglePlay: state => {
       if (state.url) {
         state.playing = !state.playing;
       }
     },
-    pause: (state): void => {
+    pause: state => {
       state.playing = false;
     },
-    close: (state): void => {
+    close: state => {
       state.playing = false;
       state.url = null;
       state.title = null;
