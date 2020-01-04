@@ -13,7 +13,7 @@ const HomePage = ({ data: { allPost: posts } }) => {
       <PageTitle />
       <InfiniteTiles
         posts={posts}
-        selector={state => state.infiniteScrollHome}
+        selector={state => state.infiniteScroll.home}
         initialPageLoad={initialPageLoad}
         fetchPage={fetchPage}
       />

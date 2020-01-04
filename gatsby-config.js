@@ -27,11 +27,15 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-typescript',
     'gatsby-plugin-sharp',
+    'gatsby-plugin-postcss',
     {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
     },
-    'gatsby-plugin-postcss',
+    {
+      resolve: `gatsby-plugin-graphql-codegen`,
+      options: { fileName: `types/graphql-types.ts` },
+    },
     {
       resolve: `gatsby-plugin-feed`,
       options: {

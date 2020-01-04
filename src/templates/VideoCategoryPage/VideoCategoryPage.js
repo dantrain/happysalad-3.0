@@ -13,7 +13,7 @@ const VideoCategoryPage = ({ data: { allContentfulVideoPost: posts } }) => {
       <PageTitle title="Video Thing" />
       <InfiniteTiles
         posts={posts}
-        selector={state => state.infiniteScrollVideos}
+        selector={state => state.infiniteScroll.videos}
         initialPageLoad={initialPageLoad}
         fetchPage={fetchPage}
       />

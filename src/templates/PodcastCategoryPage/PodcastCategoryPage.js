@@ -13,7 +13,7 @@ const PodcastCategoryPage = ({ data: { allContentfulPodcastPost: posts } }) => {
       <PageTitle title="The Saladcast" />
       <InfiniteTiles
         posts={posts}
-        selector={state => state.infiniteScrollPodcasts}
+        selector={state => state.infiniteScroll.podcasts}
         initialPageLoad={initialPageLoad}
         fetchPage={fetchPage}
       />
