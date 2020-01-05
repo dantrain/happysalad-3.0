@@ -32,6 +32,7 @@ module.exports = {
       ],
       rules: {
         'react/prop-types': 'off',
+        '@typescript-eslint/camelcase': 'off',
         '@typescript-eslint/explicit-function-return-type': [
           'warn',
           { allowExpressions: true, allowTypedFunctionExpressions: true },

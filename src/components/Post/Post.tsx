@@ -3,7 +3,16 @@ import { Link } from 'gatsby';
 
 import s from './post.module.css';
 
-const Post = ({
+type PostProps = {
+  titleLinkUrl: string;
+  title: string;
+  date: string;
+  dateFormatted: string;
+  authorName: string;
+  imageSlot: React.ReactNode;
+};
+
+const Post: React.FC<PostProps> = ({
   titleLinkUrl,
   title,
   date,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { usePlayerContext } from '@cassette/hooks';
-import { VolumeUp, VolumeMute, VolumeDown, VolumeOff } from '../Icon';
+import { VolumeUp, VolumeMute, VolumeDown, VolumeOff } from '../Icon/Icon';
 
 import s from './volume-control.module.css';
 

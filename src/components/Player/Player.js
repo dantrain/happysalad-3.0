@@ -7,9 +7,15 @@ import { PlayerContextProvider } from '@cassette/core';
 import { MediaProgress } from '@cassette/player';
 import { usePlayerContext } from '@cassette/hooks';
 import Container from '../Container';
-import Vh from '../VisuallyHidden';
+import Vh from '../VisuallyHidden/VisuallyHidden';
 import VolumeControl from '../VolumeControl';
-import { PlayCircle, PauseCircle, Forward, Backward, Close } from '../Icon';
+import {
+  PlayCircle,
+  PauseCircle,
+  Forward,
+  Backward,
+  Close,
+} from '../Icon/Icon';
 import { togglePlay, close } from '../../features/player/playerSlice';
 
 import './cassette-player.css';

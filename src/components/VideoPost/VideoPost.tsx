@@ -1,9 +1,9 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { VideoPostFragment } from '../../../types/graphql-types';
-import Post from '../Post';
-import GameLink from '../GameLink';
-import Video from '../Video';
+import Post from '../Post/Post';
+import GameLink from '../GameLink/GameLink';
+import Video from '../Video/Video';
 import Markdown from '../Markdown/Markdown';
 
 type VideoPostProps = {
@@ -26,13 +26,13 @@ const VideoPost: React.FC<VideoPostProps> = ({
     title={`Gameplay - ${title}`}
     date={recordingDate}
     dateFormatted={recordingDateFormatted}
-    authorName={author?.name}
+    authorName={author.name}
     imageSlot={
       gameLink &&
       games?.games?.length && (
         <GameLink
-          name={games?.games[0]?.name}
-          image={games?.games[0]?.image?.icon_url}
+          name={games.games[0].name}
+          image={games.games[0].image.icon_url}
         />
       )
     }

@@ -2,33 +2,36 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { useSelector, useDispatch } from 'react-redux';
 import cn from 'classnames';
+import { PodcastPostFragment } from '../../../types/graphql-types';
+import { RootState } from '../../store';
 import { playTrack, pause } from '../../features/player/playerSlice';
-import Post from '../Post';
+import Post from '../Post/Post';
 import Markdown from '../Markdown/Markdown';
-import GamesList from '../GamesList';
-import { Play, Pause, Download, ApplePodcasts } from '../Icon';
+import GamesList from '../GamesList/GamesList';
+import { Play, Pause, Download, ApplePodcasts } from '../Icon/Icon';
 
 import s from './podcast-post.module.css';
 
-const PodcastPost = ({
+const PodcastPost: React.FC<PodcastPostFragment> = ({
   title,
   slug,
   episodeNumber,
   recordingDateFormatted,
   recordingDate,
   author,
-  audioFile: {
-    file: { url },
-  },
+  audioFile,
   body,
   games,
 }) => {
-  const { playing, url: currentUrl } = useSelector(state => state.player);
+  const { playing, url: currentUrl } = useSelector(
+    (state: RootState) => state.player
+  );
   const fullTitle = `Saladcast ${episodeNumber} - ${title}`;
+  const url = audioFile.file.url;
 
   const dispatch = useDispatch();
 
-  const play = () => {
+  const play = (): void => {
     if (playing && currentUrl === url) {
       dispatch(pause());
     } else {
@@ -107,9 +110,6 @@ export const query = graphql`
     audioFile {
       file {
         url
-        details {
-          size
-        }
       }
     }
     body {

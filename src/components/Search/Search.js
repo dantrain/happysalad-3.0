@@ -6,7 +6,7 @@ import cn from 'classnames';
 import slugify from '@sindresorhus/slugify';
 import Downshift from 'downshift';
 import { fetchData } from '../../features/searchData/searchDataSlice';
-import Vh from '../VisuallyHidden';
+import Vh from '../VisuallyHidden/VisuallyHidden';
 import onMobile from '../../utils/onMobile';
 
 import s from './search.module.css';

@@ -9,9 +9,9 @@ import {
 } from 'body-scroll-lock';
 import cn from 'classnames';
 import { close } from '../../features/mobileMenu/mobileMenuSlice';
-import GamesList from '../GamesList';
+import GamesList from '../GamesList/GamesList';
 import Search from '../Search';
-import { YouTube, Twitter, Facebook } from '../Icon';
+import { YouTube, Twitter, Facebook } from '../Icon/Icon';
 
 import s from './side-bar.module.css';
 

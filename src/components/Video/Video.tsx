@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { CSSTransition } from 'react-transition-group';
 import YouTube from 'react-youtube';
+import { RootState } from '../../store';
 import { pause } from '../../features/player/playerSlice';
-import Vh from '../VisuallyHidden';
+import Vh from '../VisuallyHidden/VisuallyHidden';
 import onMobile from '../../utils/onMobile';
 
 import s from './video.module.css';
@@ -18,13 +19,12 @@ const prefetchUrls = [
   'https://static.doubleclick.net',
 ];
 
-const PlayIcon = props => (
+const PlayIcon: React.FC = () => (
   <svg
     className={s.playIcon}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 68 48"
     role="img"
-    {...props}
   >
     <path
       className={s.playIconOuter}
@@ -34,17 +34,22 @@ const PlayIcon = props => (
   </svg>
 );
 
-const YouTubeEmbed = ({ videoId }) => {
+interface YouTubePlayer {
+  getPlayerState: () => number;
+  pauseVideo: () => void;
+}
+
+const YouTubeEmbed: React.FC<{ videoId: string }> = ({ videoId }) => {
   const dispatch = useDispatch();
   const onPlay = useCallback(() => dispatch(pause()), [dispatch]);
 
-  const playerRef = useRef(null);
+  const playerRef = useRef<YouTubePlayer | null>(null);
   const onReady = useCallback(event => (playerRef.current = event.target), []);
 
-  const { playing } = useSelector(state => state.player);
+  const { playing } = useSelector((state: RootState) => state.player);
 
   useEffect(() => {
-    if (playing && playerRef.current?.getPlayerState() === 1) {
+    if (playing && playerRef.current.getPlayerState() === 1) {
       playerRef.current.pauseVideo();
     }
   }, [playing]);
@@ -60,14 +65,14 @@ const YouTubeEmbed = ({ videoId }) => {
   );
 };
 
-const Video = ({ youTubeUrl }) => {
+const Video: React.FC<{ youTubeUrl: string }> = ({ youTubeUrl }) => {
   const videoId = encodeURIComponent(videoIdRegex.exec(youTubeUrl)[1]);
   const posterUrl = `https://i.ytimg.com/vi/${videoId}/sddefault.jpg`;
 
   const [showEmbed, setShowEmbed] = useState(false);
 
   useEffect(() => {
-    let timeout;
+    let timeout: NodeJS.Timeout;
 
     if (onMobile) {
       timeout = setTimeout(() => setShowEmbed(true), 300);

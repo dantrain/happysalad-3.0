@@ -40,14 +40,14 @@ const GamePage: React.FC<GamePageProps> = ({
     </section>
     <ul>
       {videoPosts.map(({ node }) => (
-        <li key={node.slug as string}>
+        <li key={node.slug}>
           <VideoPost {...node} gameLink={false} />
         </li>
       ))}
     </ul>
     <ul>
       {podcastPosts.map(({ node }) => (
-        <li key={node.slug as string}>
+        <li key={node.slug}>
           <PodcastPost {...node} />
         </li>
       ))}
