@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import PageTitle from '../../components/PageTitle';
+import PageTitle from '../../components/PageTitle/PageTitle';
 import PodcastPost from '../../components/PodcastPost';
 
 const PodcastPostPage = ({ data: { contentfulPodcastPost } }) => (

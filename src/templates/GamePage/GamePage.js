@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { decode } from 'he';
-import PageTitle from '../../components/PageTitle';
+import PageTitle from '../../components/PageTitle/PageTitle';
 import VideoPost from '../../components/VideoPost';
 import PodcastPost from '../../components/PodcastPost';
 

@@ -4,7 +4,7 @@ import {
   initialPageLoad,
   fetchPage,
 } from '../../features/infiniteScroll/infiniteScrollSliceHome';
-import PageTitle from '../../components/PageTitle';
+import PageTitle from '../../components/PageTitle/PageTitle';
 import InfiniteTiles from '../../components/InfiniteTiles';
 
 const HomePage = ({ data: { allPost: posts } }) => {

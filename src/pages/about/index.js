@@ -1,7 +1,7 @@
 import React from 'react';
-import PageTitle from '../../components/PageTitle';
+import PageTitle from '../../components/PageTitle/PageTitle';
 import Markdown from '../../components/Markdown';
-import StaticPage from '../../components/StaticPage';
+import StaticPage from '../../components/StaticPage/StaticPage';
 
 import content from './about.md';
 

@@ -1,8 +1,8 @@
 import React from 'react';
-import PageTitle from '../../components/PageTitle';
-import StaticPage from '../../components/StaticPage';
+import PageTitle from '../../components/PageTitle/PageTitle';
+import StaticPage from '../../components/StaticPage/StaticPage';
 
-const NotFound = () => (
+const NotFound: React.FC = () => (
   <StaticPage>
     <PageTitle title="Not Found" />
     <h1>404&apos;d!!</h1>
