@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import cn from 'classnames';
 import { playTrack, pause } from '../../features/player/playerSlice';
 import Post from '../Post';
-import Markdown from '../Markdown';
+import Markdown from '../Markdown/Markdown';
 import GamesList from '../GamesList';
 import { Play, Pause, Download, ApplePodcasts } from '../Icon';
 

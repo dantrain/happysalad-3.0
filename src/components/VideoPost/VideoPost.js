@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import Post from '../Post';
 import GameLink from '../GameLink';
 import Video from '../Video';
-import Markdown from '../Markdown';
+import Markdown from '../Markdown/Markdown';
 
 const VideoPost = ({
   title,
