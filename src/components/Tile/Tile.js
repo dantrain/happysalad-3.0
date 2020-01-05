@@ -1,6 +1,6 @@
 import React from 'react';
-import PodcastPost from '../PodcastPost';
-import VideoPost from '../VideoPost';
+import PodcastPost from '../PodcastPost/PodcastPost';
+import VideoPost from '../VideoPost/VideoPost';
 
 const Tile = ({ node }) => {
   switch (node.__typename) {

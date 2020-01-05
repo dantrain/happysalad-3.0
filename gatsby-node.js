@@ -196,7 +196,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
     gamesMap.forEach(game => {
       createPage({
         path: `/game/${slugify(game.name)}`,
-        component: path.resolve('./src/templates/GamePage/GamePage.js'),
+        component: path.resolve('./src/templates/GamePage/GamePage.tsx'),
         context: { ...game, hotTopics },
       });
     });

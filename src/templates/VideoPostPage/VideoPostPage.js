@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import PageTitle from '../../components/PageTitle/PageTitle';
-import VideoPost from '../../components/VideoPost';
+import VideoPost from '../../components/VideoPost/VideoPost';
 
 const VideoPostPage = ({ data: { contentfulVideoPost } }) => (
   <>

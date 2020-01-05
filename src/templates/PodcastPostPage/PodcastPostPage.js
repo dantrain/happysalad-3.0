@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import PageTitle from '../../components/PageTitle/PageTitle';
-import PodcastPost from '../../components/PodcastPost';
+import PodcastPost from '../../components/PodcastPost/PodcastPost';
 
 const PodcastPostPage = ({ data: { contentfulPodcastPost } }) => (
   <>

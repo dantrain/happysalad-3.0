@@ -1,13 +1,19 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { decode } from 'he';
+import { PostsBySlugsQuery } from '../../../types/graphql-types';
 import PageTitle from '../../components/PageTitle/PageTitle';
-import VideoPost from '../../components/VideoPost';
-import PodcastPost from '../../components/PodcastPost';
+import VideoPost from '../../components/VideoPost/VideoPost';
+import PodcastPost from '../../components/PodcastPost/PodcastPost';
 
 import s from './game-page.module.css';
 
-const GamePage = ({
+type GamePageProps = {
+  pageContext: { name: string; deck: string; image: { small_url: string } };
+  data: PostsBySlugsQuery;
+};
+
+const GamePage: React.FC<GamePageProps> = ({
   pageContext: {
     name,
     deck,
@@ -26,7 +32,6 @@ const GamePage = ({
         src={imgUrl}
         alt={name}
         crossOrigin="anonymous"
-        referrerPolicy="no-referrer"
       />
       <div className={s.introText}>
         <h1 className={s.title}>{name}</h1>
@@ -35,14 +40,14 @@ const GamePage = ({
     </section>
     <ul>
       {videoPosts.map(({ node }) => (
-        <li key={node.slug}>
+        <li key={node.slug as string}>
           <VideoPost {...node} gameLink={false} />
         </li>
       ))}
     </ul>
     <ul>
       {podcastPosts.map(({ node }) => (
-        <li key={node.slug}>
+        <li key={node.slug as string}>
           <PodcastPost {...node} />
         </li>
       ))}
