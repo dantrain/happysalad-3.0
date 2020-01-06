@@ -15,12 +15,12 @@ interface PageInfo {
   hasNextPage: boolean;
 }
 
-interface PagePayload {
+export interface PagePayload {
   edges: any[];
   pageInfo: PageInfo;
 }
 
-type InfiniteScrollState = {
+export type InfiniteScrollState = {
   loading: boolean;
   pages: any[];
   pageInfo?: PageInfo;

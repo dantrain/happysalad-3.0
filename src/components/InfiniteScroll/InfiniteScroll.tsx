@@ -1,7 +1,15 @@
 import React, { useRef, useEffect } from 'react';
 import throttleFn from 'lodash/throttle';
 
-const InfiniteScroll = ({
+type InfiniteScrollProps = {
+  threshold?: number;
+  throttle?: number;
+  hasMore: boolean;
+  isLoading: boolean;
+  onLoadMore: () => void;
+};
+
+const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
   children,
   threshold = 800,
   throttle = 100,
@@ -12,7 +20,7 @@ const InfiniteScroll = ({
   const sentinel = useRef(null);
 
   useEffect(() => {
-    const checkWindowScroll = () => {
+    const checkWindowScroll = (): void => {
       if (
         !isLoading &&
         hasMore &&

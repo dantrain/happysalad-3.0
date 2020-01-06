@@ -178,7 +178,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
       path: '/saladcast',
       count: data.allContentfulPodcastPost.totalCount,
       component: path.resolve(
-        './src/templates/PodcastCategoryPage/PodcastCategoryPage.js'
+        './src/templates/PodcastCategoryPage/PodcastCategoryPage.tsx'
       ),
       context: { hotTopics },
     });
@@ -188,7 +188,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
       path: '/video-thing',
       count: data.allContentfulVideoPost.totalCount,
       component: path.resolve(
-        './src/templates/VideoCategoryPage/VideoCategoryPage.js'
+        './src/templates/VideoCategoryPage/VideoCategoryPage.tsx'
       ),
       context: { hotTopics },
     });

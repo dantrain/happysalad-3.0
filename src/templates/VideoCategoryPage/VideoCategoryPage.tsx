@@ -1,19 +1,23 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import { RootState } from '../../store';
+import { VideoCategoryQuery } from '../../../types/graphql-types';
 import {
   initialPageLoad,
   fetchPage,
-} from '../../features/infiniteScroll/infiniteScrollSlicePodcasts';
+} from '../../features/infiniteScroll/infiniteScrollSliceVideos';
 import PageTitle from '../../components/PageTitle/PageTitle';
-import InfiniteTiles from '../../components/InfiniteTiles';
+import InfiniteTiles from '../../components/InfiniteTiles/InfiniteTiles';
 
-const PodcastCategoryPage = ({ data: { allContentfulPodcastPost: posts } }) => {
+const VideoCategoryPage: React.FC<{ data: VideoCategoryQuery }> = ({
+  data: { allContentfulVideoPost: posts },
+}) => {
   return (
     <>
-      <PageTitle title="The Saladcast" />
+      <PageTitle title="Video Thing" />
       <InfiniteTiles
         posts={posts}
-        selector={state => state.infiniteScroll.podcasts}
+        selector={(state: RootState) => state.infiniteScroll.videos}
         initialPageLoad={initialPageLoad}
         fetchPage={fetchPage}
       />
@@ -21,11 +25,11 @@ const PodcastCategoryPage = ({ data: { allContentfulPodcastPost: posts } }) => {
   );
 };
 
-export default PodcastCategoryPage;
+export default VideoCategoryPage;
 
 export const pageQuery = graphql`
-  query PodcastCategoryQuery($limit: Int!, $skip: Int!) {
-    allContentfulPodcastPost(
+  query VideoCategory($limit: Int!, $skip: Int!) {
+    allContentfulVideoPost(
       sort: { fields: [recordingDate], order: DESC }
       limit: $limit
       skip: $skip
@@ -34,7 +38,7 @@ export const pageQuery = graphql`
         node {
           __typename
           slug
-          ...PodcastPost
+          ...VideoPost
         }
       }
       pageInfo {
