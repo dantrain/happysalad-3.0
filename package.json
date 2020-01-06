@@ -70,9 +70,9 @@
     "typescript": "^3.7.4"
   },
   "scripts": {
-    "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
+    "lint": "eslint --ext .js,.ts,.tsx --ignore-pattern public .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prettify": "prettier --write 'src/**/*.js' 'src/**/*.md'",
+    "prettify": "prettier --write 'src/**/*.js' 'src/**/*.ts' 'src/**/*.tsx' 'src/**/*.md'",
     "type-check": "tsc --noEmit",
     "build": "gatsby build",
     "clean": "gatsby clean",

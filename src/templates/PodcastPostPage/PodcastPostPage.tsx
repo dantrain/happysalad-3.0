@@ -1,9 +1,12 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import { PodcastPostBySlugQuery } from '../../../types/graphql-types';
 import PageTitle from '../../components/PageTitle/PageTitle';
 import PodcastPost from '../../components/PodcastPost/PodcastPost';
 
-const PodcastPostPage = ({ data: { contentfulPodcastPost } }) => (
+const PodcastPostPage: React.FC<{ data: PodcastPostBySlugQuery }> = ({
+  data: { contentfulPodcastPost },
+}) => (
   <>
     <PageTitle
       title={`Saladcast ${contentfulPodcastPost.episodeNumber} - ${contentfulPodcastPost.title}`}

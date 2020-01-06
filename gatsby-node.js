@@ -151,7 +151,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
         createPage({
           path: `/saladcast/${episodeNumber}-${slug}/`,
           component: path.resolve(
-            './src/templates/PodcastPostPage/PodcastPostPage.js'
+            './src/templates/PodcastPostPage/PodcastPostPage.tsx'
           ),
           context: { slug, hotTopics },
         });
@@ -159,7 +159,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
         createPage({
           path: `/video-thing/${slug}/`,
           component: path.resolve(
-            './src/templates/VideoPostPage/VideoPostPage.js'
+            './src/templates/VideoPostPage/VideoPostPage.tsx'
           ),
           context: { slug, hotTopics },
         });

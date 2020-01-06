@@ -7,7 +7,7 @@ import Video from '../Video/Video';
 import Markdown from '../Markdown/Markdown';
 
 type VideoPostProps = {
-  gameLink: boolean;
+  gameLink?: boolean;
 } & VideoPostFragment;
 
 const VideoPost: React.FC<VideoPostProps> = ({
