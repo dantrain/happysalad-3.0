@@ -169,7 +169,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
     createInfinitePages({
       createPage,
       count: data.allPost.totalCount,
-      component: path.resolve('./src/templates/HomePage/HomePage.js'),
+      component: path.resolve('./src/templates/HomePage/HomePage.tsx'),
       context: { hotTopics },
     });
 

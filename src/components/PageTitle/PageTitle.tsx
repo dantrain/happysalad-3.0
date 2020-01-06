@@ -1,7 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 
-type PageTitleProps = { title: string };
+type PageTitleProps = { title?: string };
 
 const PageTitle: React.FC<PageTitleProps> = ({ title }) => (
   <Helmet

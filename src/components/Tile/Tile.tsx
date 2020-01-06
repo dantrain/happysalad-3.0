@@ -6,11 +6,11 @@ import {
   VideoPostFragment,
 } from '../../../types/graphql-types';
 
-type TileProps = {
+export type TileEdge = {
   node: (PodcastPostFragment | VideoPostFragment) & { __typename: string };
 };
 
-const Tile: React.FC<TileProps> = ({ node }) => {
+const Tile: React.FC<TileEdge> = ({ node }) => {
   switch (node.__typename) {
     case 'ContentfulPodcastPost':
       return <PodcastPost {...(node as PodcastPostFragment)} />;

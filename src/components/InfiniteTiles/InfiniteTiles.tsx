@@ -8,11 +8,11 @@ import {
   PagePayload,
 } from '../../features/infiniteScroll/createInfiniteScrollSlice';
 import InfiniteScroll from '../InfiniteScroll/InfiniteScroll';
-import Tile from '../Tile/Tile';
+import Tile, { TileEdge } from '../Tile/Tile';
 
 type InfiniteTilesProps = {
   posts: {
-    edges: { node: { slug?: string } }[];
+    edges: TileEdge[];
     pageInfo: { currentPage: number; hasNextPage: boolean };
   };
   selector: (state: RootState) => InfiniteScrollState;

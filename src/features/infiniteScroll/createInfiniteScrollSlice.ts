@@ -6,6 +6,7 @@ import {
   ActionCreatorWithPayload,
 } from '@reduxjs/toolkit';
 import upperFirst from 'lodash/upperFirst';
+import { TileEdge } from '../../components/Tile/Tile';
 import { AppThunk } from '../../store';
 
 type InfiniteScrollSliceName = 'home' | 'podcasts' | 'videos';
@@ -16,13 +17,13 @@ interface PageInfo {
 }
 
 export interface PagePayload {
-  edges: any[];
+  edges: TileEdge[];
   pageInfo: PageInfo;
 }
 
 export type InfiniteScrollState = {
   loading: boolean;
-  pages: any[];
+  pages: TileEdge[][];
   pageInfo?: PageInfo;
 };
 
