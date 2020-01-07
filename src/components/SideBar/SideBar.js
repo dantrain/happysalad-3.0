@@ -10,7 +10,7 @@ import {
 import cn from 'classnames';
 import { close } from '../../features/mobileMenu/mobileMenuSlice';
 import GamesList from '../GamesList/GamesList';
-import Search from '../Search';
+import Search from '../Search/Search';
 import { YouTube, Twitter, Facebook } from '../Icon/Icon';
 
 import s from './side-bar.module.css';

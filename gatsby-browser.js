@@ -1,5 +1,5 @@
-import wrapWithProvider from './src/components/Provider';
-import wrapWithPage from './src/components/Page';
+import wrapWithProvider from './src/components/Provider/Provider';
+import wrapWithPage from './src/components/Page/Page';
 import store from './src/store';
 import { close } from './src/features/mobileMenu/mobileMenuSlice';
 

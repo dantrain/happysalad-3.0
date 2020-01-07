@@ -6,9 +6,9 @@ import { CSSTransition } from 'react-transition-group';
 import { PlayerContextProvider } from '@cassette/core';
 import { MediaProgress } from '@cassette/player';
 import { usePlayerContext } from '@cassette/hooks';
-import Container from '../Container';
+import Container from '../Container/Container';
 import Vh from '../VisuallyHidden/VisuallyHidden';
-import VolumeControl from '../VolumeControl';
+import VolumeControl from '../VolumeControl/VolumeControl';
 import {
   PlayCircle,
   PauseCircle,

@@ -2,10 +2,10 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Helmet from 'react-helmet';
 import { CSSTransition } from 'react-transition-group';
-import Container from '../Container';
-import Header from '../Header';
-import SideBar from '../SideBar';
-import Player from '../Player';
+import Container from '../Container/Container';
+import Header from '../Header/Header';
+import SideBar from '../SideBar/SideBar';
+import Player from '../Player/Player';
 
 import 'normalize.css';
 

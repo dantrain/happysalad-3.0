@@ -1,12 +1,13 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import cn from 'classnames';
+import { RootState } from '../../store';
 import { toggle } from '../../features/mobileMenu/mobileMenuSlice';
 
 import s from './hamburger.module.css';
 
-const Hamburger = ({ className, ...rest }) => {
-  const { open } = useSelector(state => state.mobileMenu);
+const Hamburger: React.FC<{ className: string }> = ({ className }) => {
+  const { open } = useSelector((state: RootState) => state.mobileMenu);
   const dispatch = useDispatch();
 
   return (
@@ -14,7 +15,6 @@ const Hamburger = ({ className, ...rest }) => {
       className={cn(s.button, className)}
       type="button"
       onClick={() => dispatch(toggle())}
-      {...rest}
     >
       <div className={cn(s.container, { [s.open]: open })}>
         <div className={cn(s.bar, s.bar1)}></div>
