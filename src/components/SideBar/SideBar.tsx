@@ -8,8 +8,9 @@ import {
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock';
 import cn from 'classnames';
+import { RootState } from '../../store';
 import { close } from '../../features/mobileMenu/mobileMenuSlice';
-import GamesList from '../GamesList/GamesList';
+import GamesList, { GamesListItems } from '../GamesList/GamesList';
 import Search from '../Search/Search';
 import { YouTube, Twitter, Facebook } from '../Icon/Icon';
 
@@ -18,9 +19,9 @@ import s from './side-bar.module.css';
 const tabletLandscapeUp =
   typeof window !== 'undefined' && window.matchMedia('(min-width: 980px)');
 
-const SideBar = ({ hotTopics }) => {
-  const { url, title } = useSelector(state => state.player);
-  const { open } = useSelector(state => state.mobileMenu);
+const SideBar: React.FC<{ hotTopics: GamesListItems }> = ({ hotTopics }) => {
+  const { url, title } = useSelector((state: RootState) => state.player);
+  const { open } = useSelector((state: RootState) => state.mobileMenu);
 
   const sideBarRef = useRef(null);
 
@@ -38,7 +39,7 @@ const SideBar = ({ hotTopics }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const listener = e => {
+    const listener = (e: MediaQueryListEvent): void => {
       if (e.matches) {
         dispatch(close());
       }

@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 import Helmet from 'react-helmet';
 import { CSSTransition } from 'react-transition-group';
+import { RootState } from '../../store';
+import { GamesListItems } from '../GamesList/GamesList';
 import Container from '../Container/Container';
 import Header from '../Header/Header';
 import SideBar from '../SideBar/SideBar';
@@ -14,8 +16,17 @@ import './base.css';
 
 import s from './page.module.css';
 
-const Page = ({ children, pageContext: { hotTopics } }) => {
-  const { open } = useSelector(state => state.mobileMenu);
+type PageProps = {
+  pageContext: {
+    hotTopics: GamesListItems;
+  };
+};
+
+const Page: React.FC<PageProps> = ({
+  children,
+  pageContext: { hotTopics },
+}) => {
+  const { open } = useSelector((state: RootState) => state.mobileMenu);
 
   return (
     <>
@@ -48,6 +59,9 @@ const Page = ({ children, pageContext: { hotTopics } }) => {
   );
 };
 
-const wrapWithPage = ({ element, props }) => <Page {...props}>{element}</Page>;
+const wrapWithPage: React.FC<{ element: ReactElement; props: PageProps }> = ({
+  element,
+  props,
+}) => <Page {...props}>{element}</Page>;
 
 export default wrapWithPage;
