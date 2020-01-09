@@ -4,7 +4,7 @@ import { VolumeUp, VolumeMute, VolumeDown, VolumeOff } from '../Icon/Icon';
 
 import s from './volume-control.module.css';
 
-const VolumeControl = () => {
+const VolumeControl: React.FC = () => {
   const {
     volume,
     muted,
@@ -27,7 +27,7 @@ const VolumeControl = () => {
     icon = <VolumeOff />;
   }
 
-  const handleChange = ({ target: { value } }) => {
+  const handleChange = ({ target: { value } }): void => {
     onSetVolumeComplete(value / 100);
   };
 
