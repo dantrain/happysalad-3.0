@@ -63,10 +63,13 @@ const MediaPlayer: React.FC = () => {
     return () => clearTimeout(timeout);
   }, [shouldPlay, paused]);
 
-  const onTogglePlay = (): ReturnType<typeof togglePlay> =>
+  const onTogglePlay = (): void => {
     dispatch(togglePlay());
+  };
 
-  const onClose = (): ReturnType<typeof close> => dispatch(close());
+  const onClose = (): void => {
+    dispatch(close());
+  };
 
   const onSkipForward = (): void => {
     onSeekComplete(clamp(currentTime + 10, 0, duration));
