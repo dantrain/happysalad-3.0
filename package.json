@@ -74,6 +74,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettify": "prettier --write 'src/**/*.js' 'src/**/*.ts' 'src/**/*.tsx' 'src/**/*.md'",
     "type-check": "tsc --noEmit",
+    "verify": "npm run lint && npm run type-check",
     "build": "gatsby build",
     "clean": "gatsby clean",
     "serve": "http-server -o -s -c-1 -a localhost",
