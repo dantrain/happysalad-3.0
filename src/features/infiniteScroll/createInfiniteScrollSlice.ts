@@ -23,7 +23,7 @@ export interface PagePayload {
 
 export type InfiniteScrollState = {
   loading: boolean;
-  pages: TileEdge[][];
+  pages?: TileEdge[][];
   pageInfo?: PageInfo;
 };
 
@@ -40,7 +40,7 @@ export default (
 ): InfiniteScrollSlice => {
   const { actions, reducer } = createSlice({
     name: `infiniteScroll${upperFirst(name)}`,
-    initialState: { loading: false, pages: [] } as InfiniteScrollState,
+    initialState: { loading: false } as InfiniteScrollState,
     reducers: {
       initialPageLoad: (
         state,
