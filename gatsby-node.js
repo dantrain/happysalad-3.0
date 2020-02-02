@@ -3,7 +3,7 @@ const fs = require('fs');
 const times = require('lodash/times');
 const take = require('lodash/take');
 const lunr = require('lunr');
-const { DateTime } = require('luxon');
+const { DateTime, Interval } = require('luxon');
 const slugify = require('@sindresorhus/slugify');
 
 exports.onCreateWebpackConfig = ({ actions }) => {
@@ -113,7 +113,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
     const posts = data.allPost.edges;
 
     const gamesMap = new Map();
-    const hotTopicsCounts = {};
+    const hotTopicsScores = {};
 
     posts.forEach(({ node: { slug, recordingDate, games } }) => {
       if (games) {
@@ -122,18 +122,26 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
           value.slugs = value.slugs ? [...value.slugs, slug] : [slug];
           gamesMap.set(game.id, value);
 
-          if (
-            DateTime.fromISO(recordingDate) >
-            DateTime.local().minus({ months: 3 })
-          ) {
-            if (hotTopicsCounts[game.id]) {
-              hotTopicsCounts[game.id].count++;
+          const monthsBack = 3;
+
+          const date = DateTime.fromISO(recordingDate);
+          const monthsBackAgo = DateTime.local().minus({ months: monthsBack });
+
+          if (date > monthsBackAgo) {
+            const score =
+              1 +
+              Interval.fromDateTimes(monthsBackAgo, date).length('month') /
+                monthsBack;
+
+            if (hotTopicsScores[game.id]) {
+              hotTopicsScores[game.id].score =
+                hotTopicsScores[game.id].score + score;
             } else {
-              hotTopicsCounts[game.id] = {
+              hotTopicsScores[game.id] = {
                 id: game.id,
                 name: game.name,
                 image: { icon_url: game.image.icon_url },
-                count: 1,
+                score,
               };
             }
           }
@@ -142,7 +150,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
     });
 
     hotTopics = take(
-      Object.values(hotTopicsCounts).sort((a, b) => b.count - a.count),
+      Object.values(hotTopicsScores).sort((a, b) => b.score - a.score),
       12
     );
 
