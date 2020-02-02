@@ -47,7 +47,11 @@ const PodcastPost: React.FC<PodcastPostFragment> = ({
       dateFormatted={recordingDateFormatted}
       authorName={author.name}
       imageSlot={
-        <img src="/images/saladcast-post.png" alt="Lettuce microphone" />
+        <img
+          className={s.image}
+          src="/images/saladcast-post.png"
+          alt="Lettuce microphone"
+        />
       }
     >
       <div className={s.buttonBar}>

@@ -1,3 +1,8 @@
+.image {
+  width: 42px;
+  height: 64px;
+}
+
 .buttonBar {
   margin: 1.5em -8px;
   display: flex;
