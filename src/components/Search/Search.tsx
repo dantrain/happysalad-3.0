@@ -74,7 +74,7 @@ const Search: React.FC<SearchProps> = ({ inHeader, inSideBar, className }) => {
           clearSelection();
         }
       }}
-      itemToString={item => (item ? item.id : '')}
+      itemToString={(item) => (item ? item.id : '')}
       defaultHighlightedIndex={0}
     >
       {({

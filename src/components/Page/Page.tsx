@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { useSelector } from 'react-redux';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import { CSSTransition } from 'react-transition-group';
 import { RootState } from '../../store';
 import { GamesListItems } from '../GamesList/GamesList';

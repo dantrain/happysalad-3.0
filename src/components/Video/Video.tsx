@@ -44,7 +44,10 @@ const YouTubeEmbed: React.FC<{ videoId: string }> = ({ videoId }) => {
   const onPlay = useCallback(() => dispatch(pause()), [dispatch]);
 
   const playerRef = useRef<YouTubePlayer | null>(null);
-  const onReady = useCallback(event => (playerRef.current = event.target), []);
+  const onReady = useCallback(
+    (event) => (playerRef.current = event.target),
+    []
+  );
 
   const { playing } = useSelector((state: RootState) => state.player);
 
@@ -84,7 +87,7 @@ const Video: React.FC<{ youTubeUrl: string }> = ({ youTubeUrl }) => {
   return (
     <>
       <Helmet>
-        {prefetchUrls.map(url => (
+        {prefetchUrls.map((url) => (
           <link key={url} rel="preconnect" href={url} crossOrigin="anonymous" />
         ))}
       </Helmet>

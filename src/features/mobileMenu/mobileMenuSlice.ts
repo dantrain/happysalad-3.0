@@ -8,10 +8,10 @@ const { actions, reducer } = createSlice({
   name: 'mobileMenu',
   initialState: { open: false } as MobileMenuState,
   reducers: {
-    toggle: state => {
+    toggle: (state) => {
       state.open = !state.open;
     },
-    close: state => {
+    close: (state) => {
       state.open = false;
     },
   },

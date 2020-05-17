@@ -23,7 +23,7 @@ const { actions, reducer } = createSlice({
     searchIndex: null,
   } as SearchDataState,
   reducers: {
-    fetchDataStart: state => {
+    fetchDataStart: (state) => {
       state.loading = true;
     },
     fetchDataSuccess: (
@@ -34,7 +34,7 @@ const { actions, reducer } = createSlice({
       state.gameData = gameData;
       state.loading = false;
     },
-    fetchDataFailure: state => {
+    fetchDataFailure: (state) => {
       state.loading = false;
     },
   },

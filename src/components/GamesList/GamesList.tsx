@@ -7,7 +7,7 @@ import s from './games-list.module.css';
 export type GamesListItems = {
   id?: number;
   name?: string;
-  image?: { icon_url: string };
+  image?: { icon_url?: string };
 }[];
 
 type GamesListProps = {

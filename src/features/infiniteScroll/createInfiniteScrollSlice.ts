@@ -49,7 +49,7 @@ export default (
         state.pages = [edges];
         state.pageInfo = pageInfo;
       },
-      fetchPageStart: state => {
+      fetchPageStart: (state) => {
         state.loading = true;
       },
       fetchPageSuccess: (
@@ -60,7 +60,7 @@ export default (
         state.pageInfo = pageInfo;
         state.loading = false;
       },
-      fetchPageFailure: state => {
+      fetchPageFailure: (state) => {
         state.loading = false;
       },
     },

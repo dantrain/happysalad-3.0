@@ -25,15 +25,15 @@ const { actions, reducer } = createSlice({
       state.title = title;
       state.playing = true;
     },
-    togglePlay: state => {
+    togglePlay: (state) => {
       if (state.url) {
         state.playing = !state.playing;
       }
     },
-    pause: state => {
+    pause: (state) => {
       state.playing = false;
     },
-    close: state => {
+    close: (state) => {
       state.playing = false;
       state.url = null;
       state.title = null;

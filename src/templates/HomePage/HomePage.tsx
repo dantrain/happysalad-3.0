@@ -16,7 +16,7 @@ const HomePage: React.FC<{ data: HomeQuery }> = ({
       <PageTitle />
       <InfiniteTiles
         posts={posts}
-        selector={state => state.infiniteScroll.home}
+        selector={(state) => state.infiniteScroll.home}
         initialPageLoad={initialPageLoad}
         fetchPage={fetchPage}
       />
