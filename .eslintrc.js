@@ -35,8 +35,9 @@ module.exports = {
         '@typescript-eslint/camelcase': 'off',
         '@typescript-eslint/explicit-function-return-type': [
           'warn',
-          { allowExpressions: true, allowTypedFunctionExpressions: true },
+          { allowExpressions: true },
         ],
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
       },
     },
   ],

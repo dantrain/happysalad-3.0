@@ -7,7 +7,7 @@ type GameData = {
 };
 
 interface SearchData {
-  searchIndex: object | null;
+  searchIndex: Record<string, unknown> | null;
   gameData: GameData[] | null;
 }
 
