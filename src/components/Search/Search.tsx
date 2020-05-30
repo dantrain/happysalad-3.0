@@ -5,6 +5,7 @@ import lunr from 'lunr';
 import cn from 'classnames';
 import slugify from '@sindresorhus/slugify';
 import Downshift from 'downshift';
+import Image from '../Image/Image';
 import { RootState } from '../../store';
 import { fetchData } from '../../features/searchData/searchDataSlice';
 import Vh from '../VisuallyHidden/VisuallyHidden';
@@ -127,11 +128,10 @@ const Search: React.FC<SearchProps> = ({ inHeader, inSideBar, className }) => {
                         }),
                       })}
                     >
-                      <img
+                      <Image
                         className={s.resultImage}
                         src={item.tiny_url}
                         alt={item.name}
-                        crossOrigin="anonymous"
                       />
                       <p className={s.resultText}>{item.name}</p>
                     </li>

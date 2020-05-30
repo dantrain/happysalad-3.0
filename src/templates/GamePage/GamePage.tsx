@@ -5,6 +5,7 @@ import { PostsBySlugsQuery } from '../../../types/graphql-types';
 import PageTitle from '../../components/PageTitle/PageTitle';
 import VideoPost from '../../components/VideoPost/VideoPost';
 import PodcastPost from '../../components/PodcastPost/PodcastPost';
+import Image from '../../components/Image/Image';
 
 import s from './game-page.module.css';
 
@@ -27,12 +28,7 @@ const GamePage: React.FC<GamePageProps> = ({
   <>
     <PageTitle title={name} />
     <section className={s.intro}>
-      <img
-        className={s.thumbImg}
-        src={imgUrl}
-        alt={name}
-        crossOrigin="anonymous"
-      />
+      <Image className={s.thumbImg} src={imgUrl} alt={name} />
       <div className={s.introText}>
         <h1 className={s.title}>{name}</h1>
         {deck && deck !== name && <p className={s.deck}>{decode(deck)}</p>}
