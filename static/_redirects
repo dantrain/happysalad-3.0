@@ -1,1 +1,2 @@
 /assets/*  https://downloads.ctfassets.net/:splat  200
+/podcasts/*  https://saladcast.s3-eu-west-1.amazonaws.com/:splat  200

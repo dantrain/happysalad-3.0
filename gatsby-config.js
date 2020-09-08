@@ -184,14 +184,7 @@ module.exports = {
                       slug
                       episodeNumber
                       recordingDate
-                      audioFile {
-                        file {
-                          url
-                          details {
-                            size
-                          }
-                        }
-                      }
+                      audioFileUrl
                       body {
                         childMarkdownRemark {
                           excerpt
@@ -211,12 +204,7 @@ module.exports = {
                     slug,
                     episodeNumber,
                     recordingDate,
-                    audioFile: {
-                      file: {
-                        url,
-                        details: { size },
-                      },
-                    },
+                    audioFileUrl,
                     body: {
                       childMarkdownRemark: { excerpt, html },
                     },
@@ -227,8 +215,7 @@ module.exports = {
                   description: excerpt,
                   date: recordingDate,
                   enclosure: {
-                    url: `${siteUrl}assets${new URL(`https:${url}`).pathname}`,
-                    size,
+                    url: `${siteUrl}podcasts${new URL(audioFileUrl).pathname}`,
                     type: 'audio/mpeg',
                   },
                   custom_elements: [

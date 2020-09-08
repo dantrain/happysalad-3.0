@@ -19,7 +19,7 @@ const PodcastPost: React.FC<PodcastPostFragment> = ({
   recordingDateFormatted,
   recordingDate,
   author,
-  audioFile,
+  audioFileUrl: url,
   body,
   games,
 }) => {
@@ -27,7 +27,6 @@ const PodcastPost: React.FC<PodcastPostFragment> = ({
     (state: RootState) => state.player
   );
   const fullTitle = `Saladcast ${episodeNumber} - ${title}`;
-  const url = audioFile.file.url;
 
   const dispatch = useDispatch();
 
@@ -74,7 +73,7 @@ const PodcastPost: React.FC<PodcastPostFragment> = ({
         </button>
         <a
           className={cn(s.button, s.downloadLink)}
-          href={`/assets${new URL(`https:${url}`).pathname}`}
+          href={`/podcasts${new URL(url).pathname}`}
           download
         >
           <Download />
@@ -111,11 +110,7 @@ export const query = graphql`
     author {
       name
     }
-    audioFile {
-      file {
-        url
-      }
-    }
+    audioFileUrl
     body {
       childMarkdownRemark {
         htmlAst
