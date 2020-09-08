@@ -114,9 +114,11 @@ const Video: React.FC<{ youTubeUrl: string }> = ({ youTubeUrl }) => {
       </Helmet>
       <div
         className={s.videoContainer}
-        style={{
-          backgroundImage: `url(${posterUrl})`,
-        }}
+        style={
+          posterUrl && {
+            backgroundImage: `url(${posterUrl})`,
+          }
+        }
       >
         <CSSTransition
           in={!showEmbed}
