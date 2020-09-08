@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { CSSTransition } from 'react-transition-group';
 import YouTube from 'react-youtube';
+import { useImage } from 'react-image';
 import { RootState } from '../../store';
 import { pause } from '../../features/player/playerSlice';
 import Vh from '../VisuallyHidden/VisuallyHidden';
@@ -74,7 +75,23 @@ const YouTubeEmbed: React.FC<{ videoId: string }> = ({ videoId }) => {
 
 const Video: React.FC<{ youTubeUrl: string }> = ({ youTubeUrl }) => {
   const videoId = encodeURIComponent(videoIdRegex.exec(youTubeUrl)[1]);
-  const posterUrl = `https://i.ytimg.com/vi/${videoId}/sddefault.jpg`;
+
+  const { src: posterUrl } = useImage({
+    srcList: ['sddefault.webp', 'hqdefault.webp'].map(
+      (file) => `https://i.ytimg.com/vi_webp/${videoId}/${file}`
+    ),
+    imgPromise: (src) =>
+      new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => {
+          if (img.naturalWidth < 121) reject();
+          img.decode ? img.decode().then(resolve).catch(reject) : resolve();
+        };
+        img.onerror = reject;
+        img.src = src;
+      }),
+    useSuspense: false,
+  });
 
   const [showEmbed, setShowEmbed] = useState(false);
 
@@ -97,7 +114,9 @@ const Video: React.FC<{ youTubeUrl: string }> = ({ youTubeUrl }) => {
       </Helmet>
       <div
         className={s.videoContainer}
-        style={{ backgroundImage: `url(${posterUrl})` }}
+        style={{
+          backgroundImage: `url(${posterUrl})`,
+        }}
       >
         <CSSTransition
           in={!showEmbed}
