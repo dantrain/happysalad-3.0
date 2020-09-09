@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import cn from 'classnames';
 import { RootState } from '../../store';
 import { toggle } from '../../features/mobileMenu/mobileMenuSlice';
+import VisuallyHidden from '../VisuallyHidden/VisuallyHidden';
 
 import s from './hamburger.module.css';
 
@@ -16,6 +17,7 @@ const Hamburger: React.FC<{ className: string }> = ({ className }) => {
       type="button"
       onClick={() => dispatch(toggle())}
     >
+      <VisuallyHidden>Menu</VisuallyHidden>
       <div className={cn(s.container, { [s.open]: open })}>
         <div className={cn(s.bar, s.bar1)}></div>
         <div className={cn(s.bar, s.bar2)}></div>
