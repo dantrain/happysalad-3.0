@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const siteUrl = 'https://happysalad.netlify.com/';
+const siteUrl = 'https://happysalad.netlify.com';
 
 const contentfulConfig = {
   spaceId: process.env.CONTENTFUL_SPACE_ID,
@@ -146,7 +146,7 @@ module.exports = {
               {
                 'itunes:image': {
                   _attr: {
-                    href: `${siteUrl}images/podcast-image.png`,
+                    href: `${siteUrl}/images/podcast-image.png`,
                   },
                 },
               },
@@ -182,6 +182,7 @@ module.exports = {
                     node {
                       title
                       slug
+                      rssGuid
                       episodeNumber
                       recordingDate
                       audioFileUrl
@@ -202,6 +203,7 @@ module.exports = {
                   node: {
                     title,
                     slug,
+                    rssGuid,
                     episodeNumber,
                     recordingDate,
                     audioFileUrl,
@@ -212,10 +214,11 @@ module.exports = {
                 }) => ({
                   title: `Saladcast ${episodeNumber} - ${title}`,
                   url: `${siteUrl}/saladcast/${episodeNumber}-${slug}/`,
+                  guid: rssGuid || slug,
                   description: excerpt,
                   date: recordingDate,
                   enclosure: {
-                    url: `${siteUrl}podcasts${new URL(audioFileUrl).pathname}`,
+                    url: `${siteUrl}/podcasts${new URL(audioFileUrl).pathname}`,
                     type: 'audio/mpeg',
                   },
                   custom_elements: [
