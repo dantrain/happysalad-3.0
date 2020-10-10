@@ -19,10 +19,14 @@ interface PageInfo {
 export interface PagePayload {
   edges: TileEdge[];
   pageInfo: PageInfo;
+  pageContext: {
+    page: number;
+  };
 }
 
 export type InfiniteScrollState = {
   loading: boolean;
+  currentPage: number;
   pages?: TileEdge[][];
   pageInfo?: PageInfo;
 };
@@ -40,24 +44,42 @@ export default (
 ): InfiniteScrollSlice => {
   const { actions, reducer } = createSlice({
     name: `infiniteScroll${upperFirst(name)}`,
-    initialState: { loading: false } as InfiniteScrollState,
+    initialState: {
+      loading: false,
+      currentPage: 0,
+    } as InfiniteScrollState,
     reducers: {
       initialPageLoad: (
         state,
-        { payload: { edges, pageInfo } }: PayloadAction<PagePayload>
+        {
+          payload: {
+            edges,
+            pageInfo,
+            pageContext: { page },
+          },
+        }: PayloadAction<PagePayload>
       ) => {
-        state.pages = [edges];
+        state.pages = [];
+        state.pages[page] = edges;
         state.pageInfo = pageInfo;
+        state.currentPage = page;
       },
       fetchPageStart: (state) => {
         state.loading = true;
       },
       fetchPageSuccess: (
         state,
-        { payload: { edges, pageInfo } }: PayloadAction<PagePayload>
+        {
+          payload: {
+            edges,
+            pageInfo,
+            pageContext: { page },
+          },
+        }: PayloadAction<PagePayload>
       ) => {
-        state.pages[pageInfo.currentPage - 1] = edges;
+        state.pages[page] = edges;
         state.pageInfo = pageInfo;
+        state.currentPage = page;
         state.loading = false;
       },
       fetchPageFailure: (state) => {
@@ -74,11 +96,16 @@ export default (
 
       try {
         const response = await fetch(
-          `/page-data${path}/${state.pageInfo.currentPage + 1}/page-data.json`
+          `/page-data${path}/${state.currentPage + 1}/page-data.json`
         );
         const data = await response.json();
 
-        dispatch(actions.fetchPageSuccess(data.result.data[type]));
+        dispatch(
+          actions.fetchPageSuccess({
+            ...data.result.data[type],
+            pageContext: data.result.pageContext,
+          })
+        );
       } catch (err) {
         dispatch(actions.fetchPageFailure());
         console.error('Fetch page failure', err);

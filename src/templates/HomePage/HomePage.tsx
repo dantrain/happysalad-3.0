@@ -8,15 +8,17 @@ import {
 import PageTitle from '../../components/PageTitle/PageTitle';
 import InfiniteTiles from '../../components/InfiniteTiles/InfiniteTiles';
 
-const HomePage: React.FC<{ data: HomeQuery }> = ({
-  data: { allPost: posts },
-}) => {
+const HomePage: React.FC<{
+  data: HomeQuery;
+  pageContext: { page: number };
+}> = ({ pageContext: { page }, data: { allPost: posts } }) => {
   return (
     <>
       <PageTitle />
       <InfiniteTiles
         posts={posts}
         selector={(state) => state.infiniteScroll.home}
+        initialPage={page}
         initialPageLoad={initialPageLoad}
         fetchPage={fetchPage}
       />

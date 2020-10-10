@@ -16,6 +16,7 @@ type InfiniteTilesProps = {
     pageInfo: { currentPage: number; hasNextPage: boolean };
   };
   selector: (state: RootState) => InfiniteScrollState;
+  initialPage: number;
   initialPageLoad: ActionCreatorWithPayload<PagePayload>;
   fetchPage: () => AppThunk;
 };
@@ -23,6 +24,7 @@ type InfiniteTilesProps = {
 const InfiniteTiles: React.FC<InfiniteTilesProps> = ({
   posts,
   selector,
+  initialPage,
   initialPageLoad,
   fetchPage,
 }) => {
@@ -37,6 +39,9 @@ const InfiniteTiles: React.FC<InfiniteTilesProps> = ({
         initialPageLoad({
           edges: posts.edges,
           pageInfo: posts.pageInfo,
+          pageContext: {
+            page: initialPage,
+          },
         })
       );
     }
@@ -51,11 +56,13 @@ const InfiniteTiles: React.FC<InfiniteTilesProps> = ({
       onLoadMore={loadNextPage}
     >
       <ul>
-        {flatten(pages).map(({ node }) => (
-          <li key={node.slug}>
-            <Tile node={node} />
-          </li>
-        ))}
+        {flatten(pages)
+          .filter(Boolean)
+          .map(({ node }) => (
+            <li key={node.slug}>
+              <Tile node={node} />
+            </li>
+          ))}
       </ul>
     </InfiniteScroll>
   );
