@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { RootState } from '../../store';
 import { VideoCategoryQuery } from '../../../types/graphql-types';
 import {
   initialPageLoad,
@@ -9,15 +8,17 @@ import {
 import PageTitle from '../../components/PageTitle/PageTitle';
 import InfiniteTiles from '../../components/InfiniteTiles/InfiniteTiles';
 
-const VideoCategoryPage: React.FC<{ data: VideoCategoryQuery }> = ({
-  data: { allContentfulVideoPost: posts },
-}) => {
+const VideoCategoryPage: React.FC<{
+  data: VideoCategoryQuery;
+  pageContext: { page: number };
+}> = ({ pageContext: { page }, data: { allContentfulVideoPost: posts } }) => {
   return (
     <>
       <PageTitle title="Video Thing" />
       <InfiniteTiles
         posts={posts}
-        selector={(state: RootState) => state.infiniteScroll.videos}
+        selector={(state) => state.infiniteScroll.videos}
+        initialPage={page}
         initialPageLoad={initialPageLoad}
         fetchPage={fetchPage}
       />
@@ -42,7 +43,6 @@ export const pageQuery = graphql`
         }
       }
       pageInfo {
-        currentPage
         hasNextPage
       }
     }

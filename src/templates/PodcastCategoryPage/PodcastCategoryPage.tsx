@@ -1,7 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { PodcastCategoryQuery } from '../../../types/graphql-types';
-import { RootState } from '../../store';
 import {
   initialPageLoad,
   fetchPage,
@@ -9,15 +8,17 @@ import {
 import PageTitle from '../../components/PageTitle/PageTitle';
 import InfiniteTiles from '../../components/InfiniteTiles/InfiniteTiles';
 
-const PodcastCategoryPage: React.FC<{ data: PodcastCategoryQuery }> = ({
-  data: { allContentfulPodcastPost: posts },
-}) => {
+const PodcastCategoryPage: React.FC<{
+  data: PodcastCategoryQuery;
+  pageContext: { page: number };
+}> = ({ pageContext: { page }, data: { allContentfulPodcastPost: posts } }) => {
   return (
     <>
       <PageTitle title="The Saladcast" />
       <InfiniteTiles
         posts={posts}
-        selector={(state: RootState) => state.infiniteScroll.podcasts}
+        selector={(state) => state.infiniteScroll.podcasts}
+        initialPage={page}
         initialPageLoad={initialPageLoad}
         fetchPage={fetchPage}
       />
@@ -42,7 +43,6 @@ export const pageQuery = graphql`
         }
       }
       pageInfo {
-        currentPage
         hasNextPage
       }
     }

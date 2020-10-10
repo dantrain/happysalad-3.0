@@ -46,10 +46,18 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
         }
       }
       allContentfulPodcastPost {
-        totalCount
+        edges {
+          node {
+            recordingDate
+          }
+        }
       }
       allContentfulVideoPost {
-        totalCount
+        edges {
+          node {
+            recordingDate
+          }
+        }
       }
     }
   `).then(({ errors, data }) => {
@@ -61,117 +69,72 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
     const posts = data.allPost.edges;
     const gamesMap = getGamesMap(posts);
 
-    const postCountByYear = countBy(
-      posts.map(
-        ({ node: { recordingDate } }) => DateTime.fromISO(recordingDate).year
-      )
-    );
-
-    // { '2018': 7, '2019': 47, '2020': 40 }
-
-    const years = Object.keys(postCountByYear).sort().reverse();
-
-    const postsPerPage = 5;
-    let page = 0;
-    let yearSkip = 0;
-
-    years.forEach((year) => {
-      const numPosts = postCountByYear[year];
-      const numPages = Math.floor(numPosts / postsPerPage);
-
-      times(numPages, (pageInYear) => {
-        createPage({
-          path: `/${page > 0 ? page : ''}`,
-          component: path.resolve(
-            __dirname,
-            '../src/templates/HomePage/HomePage.tsx'
-          ),
-          context: {
-            page,
-            skip: yearSkip + pageInYear * postsPerPage,
-            limit:
-              pageInYear < numPages - 1
-                ? postsPerPage
-                : numPosts - (numPages - 1) * postsPerPage,
-            hotTopics,
-          },
-        });
-
-        page++;
-      });
-
-      yearSkip = yearSkip + numPosts;
+    // Create Home page
+    createInfinitePages({
+      createPage,
+      posts,
+      component: path.resolve(
+        __dirname,
+        '../src/templates/HomePage/HomePage.tsx'
+      ),
     });
 
-    // // Create home page
-    // createInfinitePages({
-    //   createPage,
-    //   count: data.allPost.totalCount,
-    //   component: path.resolve(
-    //     __dirname,
-    //     '../src/templates/HomePage/HomePage.tsx'
-    //   ),
-    //   context: { hotTopics },
-    // });
+    // Create Saladcast page
+    createInfinitePages({
+      createPage,
+      posts: data.allContentfulPodcastPost.edges,
+      basePath: '/saladcast',
+      component: path.resolve(
+        __dirname,
+        '../src/templates/PodcastCategoryPage/PodcastCategoryPage.tsx'
+      ),
+    });
 
-    // // Create saladcast page
-    // createInfinitePages({
-    //   createPage,
-    //   path: '/saladcast',
-    //   count: data.allContentfulPodcastPost.totalCount,
-    //   component: path.resolve(
-    //     __dirname,
-    //     '../src/templates/PodcastCategoryPage/PodcastCategoryPage.tsx'
-    //   ),
-    //   context: { hotTopics },
-    // });
+    // Create Video thing page
+    createInfinitePages({
+      createPage,
+      posts: data.allContentfulVideoPost.edges,
+      basePath: '/video-thing',
+      component: path.resolve(
+        __dirname,
+        '../src/templates/VideoCategoryPage/VideoCategoryPage.tsx'
+      ),
+    });
 
-    // // Create video thing page
-    // createInfinitePages({
-    //   createPage,
-    //   path: '/video-thing',
-    //   count: data.allContentfulVideoPost.totalCount,
-    //   component: path.resolve(
-    //     __dirname,
-    //     '../src/templates/VideoCategoryPage/VideoCategoryPage.tsx'
-    //   ),
-    //   context: { hotTopics },
-    // });
+    // Create individual post pages
+    posts.forEach(({ node: { __typename, slug, episodeNumber } }) => {
+      if (__typename === 'ContentfulPodcastPost') {
+        createPage({
+          path: `/saladcast/${episodeNumber}-${slug}/`,
+          component: path.resolve(
+            __dirname,
+            '../src/templates/PodcastPostPage/PodcastPostPage.tsx'
+          ),
+          context: { slug, hotTopics },
+        });
+      } else if (__typename === 'ContentfulVideoPost') {
+        createPage({
+          path: `/video-thing/${slug}/`,
+          component: path.resolve(
+            __dirname,
+            '../src/templates/VideoPostPage/VideoPostPage.tsx'
+          ),
+          context: { slug, hotTopics },
+        });
+      }
+    });
 
-    // // Create individual post pages
-    // posts.forEach(({ node: { __typename, slug, episodeNumber } }) => {
-    //   if (__typename === 'ContentfulPodcastPost') {
-    //     createPage({
-    //       path: `/saladcast/${episodeNumber}-${slug}/`,
-    //       component: path.resolve(
-    //         __dirname,
-    //         '../src/templates/PodcastPostPage/PodcastPostPage.tsx'
-    //       ),
-    //       context: { slug, hotTopics },
-    //     });
-    //   } else if (__typename === 'ContentfulVideoPost') {
-    //     createPage({
-    //       path: `/video-thing/${slug}/`,
-    //       component: path.resolve(
-    //         __dirname,
-    //         '../src/templates/VideoPostPage/VideoPostPage.tsx'
-    //       ),
-    //       context: { slug, hotTopics },
-    //     });
-    //   }
-    // });
-
-    // // Create individual game pages
-    // gamesMap.forEach((game) => {
-    //   createPage({
-    //     path: `/game/${slugify(game.name)}`,
-    //     component: path.resolve(
-    //       __dirname,
-    //       '../src/templates/GamePage/GamePage.tsx'
-    //     ),
-    //     context: { ...game, hotTopics },
-    //   });
-    // });
+    // Create individual game pages
+    gamesMap.forEach((game) => {
+      createPage({
+        path: `/game/${slugify(game.name)}`,
+        component: path.resolve(
+          __dirname,
+          '../src/templates/GamePage/GamePage.tsx'
+        ),
+        context: { ...game, hotTopics },
+      });
+    });
 
     createSearchData(gamesMap);
   });
@@ -187,26 +150,42 @@ exports.onCreatePage = ({ page, actions: { createPage, deletePage } }) => {
   });
 };
 
-function createInfinitePages({
-  createPage,
-  count,
-  path = '',
-  component,
-  context,
-}) {
-  const postsPerPage = 5;
-  const numPages = Math.ceil(count / postsPerPage);
+function createInfinitePages({ createPage, posts, basePath = '', component }) {
+  const postCountByYear = countBy(
+    posts.map(
+      ({ node: { recordingDate } }) => DateTime.fromISO(recordingDate).year
+    )
+  );
 
-  times(numPages, (i) => {
-    createPage({
-      path: `${path}/${i > 0 ? i + 1 : ''}`,
-      component,
-      context: {
-        limit: postsPerPage,
-        skip: i * postsPerPage,
-        ...context,
-      },
+  const years = Object.keys(postCountByYear).sort().reverse();
+
+  const postsPerPage = 5;
+  let page = 0;
+  let yearSkip = 0;
+
+  years.forEach((year) => {
+    const numPosts = postCountByYear[year];
+    const numPages = Math.floor(numPosts / postsPerPage);
+
+    times(numPages, (pageInYear) => {
+      createPage({
+        path: `${basePath}/${page > 0 ? page : ''}`,
+        component,
+        context: {
+          page,
+          skip: yearSkip + pageInYear * postsPerPage,
+          limit:
+            pageInYear < numPages - 1
+              ? postsPerPage
+              : numPosts - (numPages - 1) * postsPerPage,
+          hotTopics,
+        },
+      });
+
+      page++;
     });
+
+    yearSkip = yearSkip + numPosts;
   });
 }
 
