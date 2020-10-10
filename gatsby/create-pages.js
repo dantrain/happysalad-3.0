@@ -165,11 +165,10 @@ function createInfinitePages({ createPage, posts, basePath = '', component }) {
 
   years.forEach((year) => {
     const numPosts = postCountByYear[year];
-    const numPages = Math.floor(numPosts / postsPerPage);
+    const numPages = Math.max(1, Math.floor(numPosts / postsPerPage));
 
     times(numPages, (pageInYear) => {
-      createPage({
-        path: `${basePath}/${page > 0 ? page : ''}`,
+      const params = {
         component,
         context: {
           page,
@@ -180,8 +179,13 @@ function createInfinitePages({ createPage, posts, basePath = '', component }) {
               : numPosts - (numPages - 1) * postsPerPage,
           hotTopics,
         },
-      });
+      };
 
+      if (pageInYear === 0) {
+        createPage({ path: `${basePath}/${year}`, ...params });
+      }
+
+      createPage({ path: `${basePath}/${page > 0 ? page : ''}`, ...params });
       page++;
     });
 

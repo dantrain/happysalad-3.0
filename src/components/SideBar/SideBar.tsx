@@ -92,12 +92,12 @@ const SideBar: React.FC<{ hotTopics: GamesListItems }> = ({ hotTopics }) => {
           <nav>
             <ul>
               <li>
-                <Link className={s.navLink} to="/8">
+                <Link className={s.navLink} to="/2019">
                   2019
                 </Link>
               </li>
               <li>
-                <Link className={s.navLink} to="/17">
+                <Link className={s.navLink} to="/2018">
                   2018
                 </Link>
               </li>
