@@ -5,9 +5,9 @@ const take = require('lodash/take');
 const lunr = require('lunr');
 const { DateTime, Interval } = require('luxon');
 const slugify = require('@sindresorhus/slugify');
-const { countBy } = require('lodash');
+const { countBy, tail } = require('lodash');
 
-let hotTopics;
+const globalContext = {};
 
 exports.createPages = ({ graphql, actions: { createPage } }) =>
   graphql(`
@@ -110,7 +110,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
             __dirname,
             '../src/templates/PodcastPostPage/PodcastPostPage.tsx'
           ),
-          context: { slug, hotTopics },
+          context: { slug, ...globalContext },
         });
       } else if (__typename === 'ContentfulVideoPost') {
         createPage({
@@ -119,7 +119,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
             __dirname,
             '../src/templates/VideoPostPage/VideoPostPage.tsx'
           ),
-          context: { slug, hotTopics },
+          context: { slug, ...globalContext },
         });
       }
     });
@@ -132,7 +132,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
           __dirname,
           '../src/templates/GamePage/GamePage.tsx'
         ),
-        context: { ...game, hotTopics },
+        context: { ...game, ...globalContext },
       });
     });
 
@@ -145,7 +145,7 @@ exports.onCreatePage = ({ page, actions: { createPage, deletePage } }) => {
     ...page,
     context: {
       ...page.context,
-      hotTopics,
+      ...globalContext,
     },
   });
 };
@@ -158,6 +158,10 @@ function createInfinitePages({ createPage, posts, basePath = '', component }) {
   );
 
   const years = Object.keys(postCountByYear).sort().reverse();
+
+  if (!basePath) {
+    globalContext.years = tail(years);
+  }
 
   const postsPerPage = 5;
   let page = 0;
@@ -177,7 +181,7 @@ function createInfinitePages({ createPage, posts, basePath = '', component }) {
             pageInYear < numPages - 1
               ? postsPerPage
               : numPosts - (numPages - 1) * postsPerPage,
-          hotTopics,
+          ...globalContext,
         },
       };
 
@@ -231,7 +235,7 @@ function getGamesMap(posts) {
     }
   });
 
-  hotTopics = take(
+  globalContext.hotTopics = take(
     Object.values(hotTopicsScores).sort((a, b) => b.score - a.score),
     12
   );

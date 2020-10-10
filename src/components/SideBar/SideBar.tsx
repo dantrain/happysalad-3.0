@@ -12,6 +12,7 @@ import { RootState } from '../../store';
 import { close } from '../../features/mobileMenu/mobileMenuSlice';
 import GamesList, { GamesListItems } from '../GamesList/GamesList';
 import Search from '../Search/Search';
+import TimeMachine from '../TimeMachine/TimeMachine';
 import { YouTube, Twitter, Facebook } from '../Icon/Icon';
 
 import s from './side-bar.module.css';
@@ -19,7 +20,10 @@ import s from './side-bar.module.css';
 const tabletLandscapeUp =
   typeof window !== 'undefined' && window.matchMedia('(min-width: 980px)');
 
-const SideBar: React.FC<{ hotTopics: GamesListItems }> = ({ hotTopics }) => {
+const SideBar: React.FC<{ hotTopics: GamesListItems; years: string[] }> = ({
+  hotTopics,
+  years,
+}) => {
   const { url, title } = useSelector((state: RootState) => state.player);
   const { open } = useSelector((state: RootState) => state.mobileMenu);
 
@@ -89,20 +93,7 @@ const SideBar: React.FC<{ hotTopics: GamesListItems }> = ({ hotTopics }) => {
           </nav>
           <h3 className={s.hotTopicsTitle}>Hot Topics</h3>
           <GamesList className={s.gamesList} games={hotTopics} />
-          <nav>
-            <ul>
-              <li>
-                <Link className={s.navLink} to="/2019">
-                  2019
-                </Link>
-              </li>
-              <li>
-                <Link className={s.navLink} to="/2018">
-                  2018
-                </Link>
-              </li>
-            </ul>
-          </nav>
+          <TimeMachine years={years} />
         </div>
         <div className={s.bottom}>
           <ul className={s.socialLinkList}>

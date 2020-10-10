@@ -19,12 +19,13 @@ import s from './page.module.css';
 type PageProps = {
   pageContext: {
     hotTopics: GamesListItems;
+    years: string[];
   };
 };
 
 const Page: React.FC<PageProps> = ({
   children,
-  pageContext: { hotTopics },
+  pageContext: { hotTopics, years },
 }) => {
   const { open } = useSelector((state: RootState) => state.mobileMenu);
 
@@ -50,7 +51,7 @@ const Page: React.FC<PageProps> = ({
             <main className={s.main}>{children}</main>
           </CSSTransition>
           <section className={s.sideBarContainer}>
-            <SideBar hotTopics={hotTopics} />
+            <SideBar hotTopics={hotTopics} years={years} />
           </section>
         </div>
       </Container>
