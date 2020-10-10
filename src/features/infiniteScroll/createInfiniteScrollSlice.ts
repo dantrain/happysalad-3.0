@@ -12,7 +12,6 @@ import { AppThunk } from '../../store';
 type InfiniteScrollSliceName = 'home' | 'podcasts' | 'videos';
 
 interface PageInfo {
-  currentPage: number;
   hasNextPage: boolean;
 }
 
@@ -26,6 +25,7 @@ export interface PagePayload {
 
 export type InfiniteScrollState = {
   loading: boolean;
+  startPage?: number;
   currentPage: number;
   pages?: TileEdge[][];
   pageInfo?: PageInfo;
@@ -62,6 +62,7 @@ export default (
         state.pages = [];
         state.pages[page] = edges;
         state.pageInfo = pageInfo;
+        state.startPage = page;
         state.currentPage = page;
       },
       fetchPageStart: (state) => {

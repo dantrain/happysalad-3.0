@@ -89,6 +89,20 @@ const SideBar: React.FC<{ hotTopics: GamesListItems }> = ({ hotTopics }) => {
           </nav>
           <h3 className={s.hotTopicsTitle}>Hot Topics</h3>
           <GamesList className={s.gamesList} games={hotTopics} />
+          <nav>
+            <ul>
+              <li>
+                <Link className={s.navLink} to="/8">
+                  2019
+                </Link>
+              </li>
+              <li>
+                <Link className={s.navLink} to="/17">
+                  2018
+                </Link>
+              </li>
+            </ul>
+          </nav>
         </div>
         <div className={s.bottom}>
           <ul className={s.socialLinkList}>

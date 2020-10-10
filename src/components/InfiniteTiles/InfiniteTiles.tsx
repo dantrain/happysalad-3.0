@@ -13,7 +13,7 @@ import Tile, { TileEdge } from '../Tile/Tile';
 type InfiniteTilesProps = {
   posts: {
     edges: TileEdge[];
-    pageInfo: { currentPage: number; hasNextPage: boolean };
+    pageInfo: { hasNextPage: boolean };
   };
   selector: (state: RootState) => InfiniteScrollState;
   initialPage: number;
@@ -29,19 +29,22 @@ const InfiniteTiles: React.FC<InfiniteTilesProps> = ({
   fetchPage,
 }) => {
   const state = useSelector<RootState, InfiniteScrollState>(selector);
-  const { pages = [posts.edges], pageInfo = posts.pageInfo, loading } = state;
+  const {
+    startPage,
+    pages = [posts.edges],
+    pageInfo = posts.pageInfo,
+    loading,
+  } = state;
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!state.pageInfo) {
+    if (initialPage !== startPage) {
       dispatch(
         initialPageLoad({
           edges: posts.edges,
           pageInfo: posts.pageInfo,
-          pageContext: {
-            page: initialPage,
-          },
+          pageContext: { page: initialPage },
         })
       );
     }

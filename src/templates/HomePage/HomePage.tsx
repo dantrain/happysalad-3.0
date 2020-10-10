@@ -44,7 +44,6 @@ export const pageQuery = graphql`
         }
       }
       pageInfo {
-        currentPage
         hasNextPage
       }
     }

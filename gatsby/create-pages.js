@@ -44,7 +44,6 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
             }
           }
         }
-        totalCount
       }
       allContentfulPodcastPost {
         totalCount
