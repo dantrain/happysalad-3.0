@@ -22,7 +22,7 @@
     "gatsby-image": "^2.4.21",
     "gatsby-plugin-feed": "^2.5.14",
     "gatsby-plugin-graphql-codegen": "^2.7.1",
-    "gatsby-plugin-postcss": "^2.3.11",
+    "gatsby-plugin-postcss": "^3.0.1",
     "gatsby-plugin-react-helmet": "^3.3.14",
     "gatsby-plugin-sharp": "^2.6.40",
     "gatsby-plugin-typescript": "^2.4.21",
@@ -44,7 +44,7 @@
     "react-youtube": "^7.11.2",
     "rehype-react": "^6.1.0",
     "remark-parse": "^8.0.2",
-    "remark-rehype": "^7.0.0",
+    "remark-rehype": "^8.0.0",
     "sharp": "^0.26.1",
     "typescript": "^4.0.3",
     "unified": "^9.0.0"
