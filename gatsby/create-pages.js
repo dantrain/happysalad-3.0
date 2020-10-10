@@ -60,48 +60,9 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
 
     const posts = data.allPost.edges;
 
-    const gamesMap = new Map();
-    const hotTopicsScores = {};
+    const gamesMap = getGamesMap(posts);
 
-    posts.forEach(({ node: { slug, recordingDate, games } }) => {
-      if (games) {
-        games.games.forEach((game) => {
-          const value = gamesMap.get(game.id) || game;
-          value.slugs = value.slugs ? [...value.slugs, slug] : [slug];
-          gamesMap.set(game.id, value);
-
-          const monthsBack = 3;
-
-          const date = DateTime.fromISO(recordingDate);
-          const monthsBackAgo = DateTime.local().minus({ months: monthsBack });
-
-          if (date > monthsBackAgo) {
-            const score =
-              1 +
-              Interval.fromDateTimes(monthsBackAgo, date).length('month') /
-                monthsBack;
-
-            if (hotTopicsScores[game.id]) {
-              hotTopicsScores[game.id].score =
-                hotTopicsScores[game.id].score + score;
-            } else {
-              hotTopicsScores[game.id] = {
-                id: game.id,
-                name: game.name,
-                image: { icon_url: game.image.icon_url },
-                score,
-              };
-            }
-          }
-        });
-      }
-    });
-
-    hotTopics = take(
-      Object.values(hotTopicsScores).sort((a, b) => b.score - a.score),
-      12
-    );
-
+    // Create individual post pages
     posts.forEach(({ node: { __typename, slug, episodeNumber } }) => {
       if (__typename === 'ContentfulPodcastPost') {
         createPage({
@@ -124,6 +85,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
       }
     });
 
+    // Create home page
     createInfinitePages({
       createPage,
       count: data.allPost.totalCount,
@@ -134,6 +96,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
       context: { hotTopics },
     });
 
+    // Create saladcast page
     createInfinitePages({
       createPage,
       path: '/saladcast',
@@ -145,6 +108,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
       context: { hotTopics },
     });
 
+    // Create video thing page
     createInfinitePages({
       createPage,
       path: '/video-thing',
@@ -156,6 +120,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
       context: { hotTopics },
     });
 
+    // Create individual game pages
     gamesMap.forEach((game) => {
       createPage({
         path: `/game/${slugify(game.name)}`,
@@ -167,40 +132,7 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
       });
     });
 
-    const searchIndex = lunr(function () {
-      this.use((builder) => {
-        const splitOnNewlines = (token) =>
-          token
-            .toString()
-            .split('\n')
-            .map((str) => token.clone().update(() => str));
-
-        lunr.Pipeline.registerFunction(splitOnNewlines, 'splitOnNewlines');
-        builder.pipeline.before(lunr.stemmer, splitOnNewlines);
-      });
-
-      this.ref('id');
-      this.field('name');
-      this.field('aliases');
-
-      gamesMap.forEach((game) => {
-        this.add(game);
-      });
-    });
-
-    const gameData = {};
-
-    gamesMap.forEach(({ id, name, image: { tiny_url } }) => {
-      gameData[id] = { name, tiny_url };
-    });
-
-    fs.writeFileSync(
-      `public/search-data.json`,
-      JSON.stringify({
-        searchIndex,
-        gameData,
-      })
-    );
+    createSearchData(gamesMap);
   });
 
 exports.onCreatePage = ({ page, actions: { createPage, deletePage } }) => {
@@ -235,4 +167,87 @@ function createInfinitePages({
       },
     });
   });
+}
+
+function getGamesMap(posts) {
+  const gamesMap = new Map();
+  const hotTopicsScores = {};
+
+  posts.forEach(({ node: { slug, recordingDate, games } }) => {
+    if (games) {
+      games.games.forEach((game) => {
+        const value = gamesMap.get(game.id) || game;
+        value.slugs = value.slugs ? [...value.slugs, slug] : [slug];
+        gamesMap.set(game.id, value);
+
+        const monthsBack = 3;
+
+        const date = DateTime.fromISO(recordingDate);
+        const monthsBackAgo = DateTime.local().minus({ months: monthsBack });
+
+        if (date > monthsBackAgo) {
+          const score =
+            1 +
+            Interval.fromDateTimes(monthsBackAgo, date).length('month') /
+              monthsBack;
+
+          if (hotTopicsScores[game.id]) {
+            hotTopicsScores[game.id].score =
+              hotTopicsScores[game.id].score + score;
+          } else {
+            hotTopicsScores[game.id] = {
+              id: game.id,
+              name: game.name,
+              image: { icon_url: game.image.icon_url },
+              score,
+            };
+          }
+        }
+      });
+    }
+  });
+
+  hotTopics = take(
+    Object.values(hotTopicsScores).sort((a, b) => b.score - a.score),
+    12
+  );
+
+  return gamesMap;
+}
+
+function createSearchData(gamesMap) {
+  const searchIndex = lunr(function () {
+    this.use((builder) => {
+      const splitOnNewlines = (token) =>
+        token
+          .toString()
+          .split('\n')
+          .map((str) => token.clone().update(() => str));
+
+      lunr.Pipeline.registerFunction(splitOnNewlines, 'splitOnNewlines');
+      builder.pipeline.before(lunr.stemmer, splitOnNewlines);
+    });
+
+    this.ref('id');
+    this.field('name');
+    this.field('aliases');
+
+    gamesMap.forEach((game) => {
+      this.add(game);
+    });
+  });
+
+  const gameData = {};
+
+  gamesMap.forEach(({ id, name, image: { tiny_url } }) => {
+    gameData[id] = { name, tiny_url };
+  });
+
+  fs.writeFileSync(
+    `public/search-data.json`,
+    JSON.stringify({
+      searchIndex,
+      gameData,
+    })
+  );
 }
