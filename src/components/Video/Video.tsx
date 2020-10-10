@@ -77,9 +77,10 @@ const Video: React.FC<{ youTubeUrl: string }> = ({ youTubeUrl }) => {
   const videoId = encodeURIComponent(videoIdRegex.exec(youTubeUrl)[1]);
 
   const { src: posterUrl } = useImage({
-    srcList: ['sddefault.webp', 'hqdefault.webp'].map(
-      (file) => `https://i.ytimg.com/vi_webp/${videoId}/${file}`
-    ),
+    srcList: [
+      `https://i.ytimg.com/vi/${videoId}/sddefault.jpg`,
+      `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+    ],
     imgPromise: (src) =>
       new Promise((resolve, reject) => {
         const img = new Image();
