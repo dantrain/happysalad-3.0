@@ -1,4 +1,4 @@
-.static-page {
+.staticPage {
   background-color: white;
   padding: var(--unit2) var(--unit1) var(--unit3);
   border-bottom: 2px solid var(--greenBackground);

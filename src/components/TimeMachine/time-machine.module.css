@@ -1,0 +1,34 @@
+.timeMachine {
+  margin: 2em 0 0;
+}
+
+.button {
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  color: var(--redHeadingText);
+  text-align: center;
+  outline: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.chevron {
+  display: inline-block;
+  margin: 0 0 2px 4px;
+}
+
+.nav {
+  margin-top: 0.5em;
+}
+
+.item {
+  text-align: center;
+}
+
+.link {
+  display: block;
+  text-align: center;
+}
