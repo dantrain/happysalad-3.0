@@ -1,0 +1,15 @@
+[build]
+  publish = "public/"
+
+[[plugins]]
+  package = "netlify-plugin-gatsby-cache"
+
+[[redirects]]
+  from = "/assets/*"
+  to = "https://downloads.ctfassets.net/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/podcasts/*"
+  to = "https://saladcast.s3-eu-west-1.amazonaws.com/:splat"
+  status = 200
