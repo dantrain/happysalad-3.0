@@ -31,8 +31,15 @@ const Page: React.FC<PageProps> = ({
 
   return (
     <>
-      <Helmet>
+      <Helmet
+        titleTemplate="%s · Happysalad"
+        defaultTitle="Happysalad · The Saladcast, a podcast about video games"
+      >
         <html lang="en" />
+        <meta
+          name="description"
+          content="The Saladcast, a podcast about video games"
+        />
       </Helmet>
       <Header />
       <Container>

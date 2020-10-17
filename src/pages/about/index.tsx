@@ -1,13 +1,15 @@
 import React from 'react';
-import PageTitle from '../../components/PageTitle/PageTitle';
 import Markdown from '../../components/Markdown/Markdown';
 import StaticPage from '../../components/StaticPage/StaticPage';
 
 import content from './about.md';
+import { Helmet } from 'react-helmet';
 
 const AboutPage: React.FC = () => (
   <StaticPage>
-    <PageTitle title="About" />
+    <Helmet>
+      <title>About</title>
+    </Helmet>
     <Markdown ast={content} />
   </StaticPage>
 );

@@ -5,8 +5,8 @@ import {
   initialPageLoad,
   fetchPage,
 } from '../../features/infiniteScroll/infiniteScrollSliceVideos';
-import PageTitle from '../../components/PageTitle/PageTitle';
 import InfiniteTiles from '../../components/InfiniteTiles/InfiniteTiles';
+import { Helmet } from 'react-helmet';
 
 const VideoCategoryPage: React.FC<{
   data: VideoCategoryQuery;
@@ -14,7 +14,13 @@ const VideoCategoryPage: React.FC<{
 }> = ({ pageContext: { page }, data: { allContentfulVideoPost: posts } }) => {
   return (
     <>
-      <PageTitle title="Video Thing" />
+      <Helmet>
+        <title>Video Thing</title>
+        <meta
+          name="description"
+          content="Video Thing from Happysalad on YouTube"
+        />
+      </Helmet>
       <InfiniteTiles
         posts={posts}
         selector={(state) => state.infiniteScroll.videos}

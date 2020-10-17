@@ -5,8 +5,8 @@ import {
   initialPageLoad,
   fetchPage,
 } from '../../features/infiniteScroll/infiniteScrollSlicePodcasts';
-import PageTitle from '../../components/PageTitle/PageTitle';
 import InfiniteTiles from '../../components/InfiniteTiles/InfiniteTiles';
+import { Helmet } from 'react-helmet';
 
 const PodcastCategoryPage: React.FC<{
   data: PodcastCategoryQuery;
@@ -14,7 +14,9 @@ const PodcastCategoryPage: React.FC<{
 }> = ({ pageContext: { page }, data: { allContentfulPodcastPost: posts } }) => {
   return (
     <>
-      <PageTitle title="The Saladcast" />
+      <Helmet>
+        <title>The Saladcast</title>
+      </Helmet>
       <InfiniteTiles
         posts={posts}
         selector={(state) => state.infiniteScroll.podcasts}

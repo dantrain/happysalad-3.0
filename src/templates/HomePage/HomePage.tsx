@@ -5,7 +5,6 @@ import {
   initialPageLoad,
   fetchPage,
 } from '../../features/infiniteScroll/infiniteScrollSliceHome';
-import PageTitle from '../../components/PageTitle/PageTitle';
 import InfiniteTiles from '../../components/InfiniteTiles/InfiniteTiles';
 
 const HomePage: React.FC<{
@@ -14,7 +13,6 @@ const HomePage: React.FC<{
 }> = ({ pageContext: { page }, data: { allPost: posts } }) => {
   return (
     <>
-      <PageTitle />
       <InfiniteTiles
         posts={posts}
         selector={(state) => state.infiniteScroll.home}
