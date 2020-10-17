@@ -27,6 +27,8 @@ const Header: React.FC = () => (
               className={s.logoImg}
               src="/images/logo-tomato.png"
               alt="Cherry tomato"
+              width={39}
+              height={36}
             />
             <LogoText className={s.logoText} />
           </div>

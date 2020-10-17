@@ -132,6 +132,8 @@ const Search: React.FC<SearchProps> = ({ inHeader, inSideBar, className }) => {
                         className={s.resultImage}
                         src={item.tiny_url}
                         alt={item.name}
+                        width={30}
+                        height={30}
                       />
                       <p className={s.resultText}>{item.name}</p>
                     </li>

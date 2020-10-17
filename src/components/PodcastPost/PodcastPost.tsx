@@ -50,6 +50,8 @@ const PodcastPost: React.FC<PodcastPostFragment> = ({
           className={s.image}
           src="/images/saladcast-post.png"
           alt="Lettuce microphone"
+          width={42}
+          height={64}
         />
       }
     >

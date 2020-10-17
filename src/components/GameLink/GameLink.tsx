@@ -12,7 +12,7 @@ type GameLinkProps = {
 
 const GameLink: React.FC<GameLinkProps> = ({ name, image }) => (
   <Link className={s.gameLink} to={`/game/${slugify(name)}`}>
-    <Image className={s.image} src={image} alt={name} />
+    <Image className={s.image} src={image} alt={name} width={80} height={80} />
     <div className={s.overlay}>
       <p className={s.text}>{name}</p>
     </div>
