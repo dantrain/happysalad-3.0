@@ -31,7 +31,7 @@ module.exports = {
         node: {
           __typename,
           slug,
-          title,
+          title: contentfulTitle,
           recordingDate,
           episodeNumber,
           body: {
@@ -40,11 +40,14 @@ module.exports = {
         },
       }) => {
         let url;
+        let title;
 
         if (__typename === 'ContentfulPodcastPost') {
           url = `${process.env.SITE_URL}/saladcast/${episodeNumber}-${slug}/`;
+          title = `Saladcast ${episodeNumber} - ${contentfulTitle}`;
         } else if (__typename === 'ContentfulVideoPost') {
           url = `${process.env.SITE_URL}/video-thing/${slug}/`;
+          title = `Gameplay - ${contentfulTitle}`;
         }
 
         return {
