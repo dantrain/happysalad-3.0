@@ -12,6 +12,9 @@ module.exports = {
   },
   custom_elements: [
     {
+      'itunes:new-feed-url': `${process.env.SITE_URL}/saladcast.xml`,
+    },
+    {
       'itunes:subtitle': 'A public display of unhinged gaming waffle',
     },
     {
