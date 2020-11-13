@@ -4,6 +4,15 @@
 
 The third iteration of the Salad.
 
+## Tech stack
+
+- [React](https://reactjs.org/)
+- [Gatsby](https://www.gatsbyjs.com/)
+- [Redux](https://redux.js.org/)
+- [Cassette](https://github.com/benwiley4000/cassette)
+- [Lunr](https://lunrjs.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/en/) v12+
