@@ -139,7 +139,11 @@ const Player: React.FC = () => {
       >
         <div className={s.footerContent}>
           <Container className={s.container}>
-            <PlayerContextProvider playlist={playlist} autoplay>
+            <PlayerContextProvider
+              playlist={playlist}
+              defaultRepeatStrategy="none"
+              autoplay
+            >
               <MediaPlayer />
             </PlayerContextProvider>
           </Container>
