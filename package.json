@@ -30,7 +30,7 @@
     "gatsby-transformer-remark": "^2.15.0",
     "gatsby-transformer-sharp": "^2.9.0",
     "he": "^1.2.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "lunr": "^2.3.8",
     "luxon": "^1.26.0",
     "normalize.css": "^8.0.1",
