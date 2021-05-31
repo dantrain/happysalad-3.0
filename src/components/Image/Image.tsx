@@ -12,7 +12,7 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
 
   if (error) return null;
 
-  return <img ref={ref} crossOrigin="anonymous" {...props} onError={onError} />;
+  return <img ref={ref} {...props} onError={onError} />;
 });
 
 export default Image;
