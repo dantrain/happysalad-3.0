@@ -21,10 +21,8 @@ module.exports = {
   },
   plugins: [
     'gatsby-transformer-remark',
-    'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-typescript',
-    'gatsby-plugin-sharp',
     'gatsby-plugin-postcss',
     {
       resolve: 'gatsby-source-contentful',
