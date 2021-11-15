@@ -5,17 +5,13 @@ import { VolumeUp, VolumeMute, VolumeDown, VolumeOff } from '../Icon/Icon';
 import s from './volume-control.module.css';
 
 const VolumeControl: React.FC = () => {
-  const {
-    volume,
-    muted,
-    onSetVolumeComplete,
-    onToggleMuted,
-  } = usePlayerContext([
-    'volume',
-    'muted',
-    'onSetVolumeComplete',
-    'onToggleMuted',
-  ]);
+  const { volume, muted, onSetVolumeComplete, onToggleMuted } =
+    usePlayerContext([
+      'volume',
+      'muted',
+      'onSetVolumeComplete',
+      'onToggleMuted',
+    ]);
 
   let icon = <VolumeUp />;
 
