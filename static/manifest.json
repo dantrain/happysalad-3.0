@@ -1,0 +1,15 @@
+{
+  "name": "Happysalad",
+  "short_name": "Happysalad",
+  "description": "The Saladcast, a podcast about video games",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/android-chrome-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff"
+}

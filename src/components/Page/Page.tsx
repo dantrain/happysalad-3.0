@@ -1,18 +1,18 @@
 import React, { ReactElement } from 'react';
-import { useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import { useSelector } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 import { RootState } from '../../store';
-import { GamesListItems } from '../GamesList/GamesList';
 import Container from '../Container/Container';
+import { GamesListItems } from '../GamesList/GamesList';
 import Header from '../Header/Header';
-import SideBar from '../SideBar/SideBar';
 import Player from '../Player/Player';
+import SideBar from '../SideBar/SideBar';
 
 import 'normalize.css';
 
-import './variables.css';
 import './base.css';
+import './variables.css';
 
 import s from './page.module.css';
 
@@ -40,6 +40,25 @@ const Page: React.FC<PageProps> = ({
           name="description"
           content="The Saladcast, a podcast about video games"
         />
+        <meta name="theme-color" content="#ffffff" />
+        <link
+          rel="apple-touch-icon"
+          sizes="76x76"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/manifest.json" />
       </Helmet>
       <Header />
       <Container>
