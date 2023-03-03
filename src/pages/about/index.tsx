@@ -2,15 +2,20 @@ import React from 'react';
 import Markdown from '../../components/Markdown/Markdown';
 import StaticPage from '../../components/StaticPage/StaticPage';
 
-import content from './about.md';
 import { Helmet } from 'react-helmet';
+import Video from '../../components/Video/Video';
+import content from './about.md';
+import s from './about.module.css';
 
 const AboutPage: React.FC = () => (
   <StaticPage>
     <Helmet>
       <title>About</title>
     </Helmet>
-    <Markdown ast={content} />
+    <div className={s.content}>
+      <Markdown ast={content} />
+    </div>
+    <Video youTubeUrl="https://www.youtube.com/watch?v=PNAFhfumurg" />
   </StaticPage>
 );
 
