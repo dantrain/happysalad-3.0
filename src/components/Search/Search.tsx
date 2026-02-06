@@ -6,7 +6,7 @@ import cn from 'classnames';
 import slugify from '@sindresorhus/slugify';
 import Downshift from 'downshift';
 import Image from '../Image/Image';
-import { RootState } from '../../store';
+import { RootState, AppDispatch } from '../../store';
 import { fetchData } from '../../features/searchData/searchDataSlice';
 import Vh from '../VisuallyHidden/VisuallyHidden';
 import onMobile from '../../utils/onMobile';
@@ -42,7 +42,7 @@ const Search: React.FC<SearchProps> = ({ inHeader, inSideBar, className }) => {
     [searchIndex],
   );
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     dispatch(fetchData());

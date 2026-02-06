@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import flatten from 'lodash/flatten';
-import { RootState, AppThunk } from '../../store';
+import { RootState, AppDispatch, AppThunk } from '../../store';
 import {
   InfiniteScrollState,
   PagePayload,
@@ -36,7 +36,7 @@ const InfiniteTiles: React.FC<InfiniteTilesProps> = ({
     loading,
   } = state;
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     if (initialPage !== startPage) {
