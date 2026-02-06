@@ -79,7 +79,11 @@ const Video: React.FC<{ youTubeUrl: string }> = ({ youTubeUrl }) => {
         const img = new Image();
         img.onload = () => {
           if (img.naturalWidth < 121) reject();
-          img.decode ? img.decode().then(resolve).catch(reject) : resolve();
+          if (img.decode) {
+            img.decode().then(resolve).catch(reject);
+          } else {
+            resolve();
+          }
         };
         img.onerror = reject;
         img.src = src;
