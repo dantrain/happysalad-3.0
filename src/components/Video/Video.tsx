@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { Helmet } from 'react-helmet-async';
 import { CSSTransition } from 'react-transition-group';
 import YouTube from 'react-youtube';
 import { useImage } from 'react-image';
@@ -12,6 +12,13 @@ import onMobile from '../../utils/onMobile';
 import * as s from './video.module.css';
 
 const videoIdRegex = /(?:.*|\/|v=)([a-zA-Z\d_-]{11})/;
+
+const prefetchUrls = [
+  'https://www.youtube.com',
+  'https://www.google.com',
+  'https://googleads.g.doubleclick.net',
+  'https://static.doubleclick.net',
+];
 
 const PlayIcon: React.FC = () => (
   <svg
@@ -105,6 +112,11 @@ const Video: React.FC<{ youTubeUrl: string }> = ({ youTubeUrl }) => {
 
   return (
     <>
+      <Helmet>
+        {prefetchUrls.map((url) => (
+          <link key={url} rel="preconnect" href={url} crossOrigin="anonymous" />
+        ))}
+      </Helmet>
       <div
         className={s.videoContainer}
         style={
