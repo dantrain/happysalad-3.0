@@ -68,16 +68,30 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.54.0"
   },
+  "packageManager": "pnpm@10.28.2",
   "scripts": {
     "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettify": "prettier --write 'src/**/*.ts' 'src/**/*.tsx' 'src/**/*.md'",
     "type-check": "tsc --noEmit",
-    "verify": "npm run lint && npm run type-check",
+    "verify": "pnpm run lint && pnpm run type-check",
     "build": "gatsby build",
     "clean": "gatsby clean",
     "serve": "http-server -p 8080 -o -s -c-1",
-    "prod": "npm run clean && npm run build && npm run serve",
+    "prod": "pnpm run clean && pnpm run build && pnpm run serve",
     "start": "gatsby develop -H 0.0.0.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "core-js",
+      "core-js-pure",
+      "es5-ext",
+      "gatsby",
+      "gatsby-cli",
+      "lmdb",
+      "msgpackr-extract",
+      "sharp"
+    ]
   }
 }

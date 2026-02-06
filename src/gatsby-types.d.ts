@@ -3117,6 +3117,7 @@ type Query_postArgs = {
 
 
 type Query_siteArgs = {
+  adapter: InputMaybe<SiteAdapterFilterInput>;
   buildTime: InputMaybe<DateQueryOperatorInput>;
   children: InputMaybe<NodeFilterListInput>;
   graphqlTypegen: InputMaybe<SiteGraphqlTypegenFilterInput>;
@@ -3291,6 +3292,7 @@ type RemoteFileResizeSortInput = {
 };
 
 type Site = Node & {
+  readonly adapter: Maybe<SiteAdapter>;
   readonly buildTime: Maybe<Scalars['Date']>;
   readonly children: ReadonlyArray<Node>;
   readonly graphqlTypegen: Maybe<SiteGraphqlTypegen>;
@@ -3312,6 +3314,22 @@ type Site_buildTimeArgs = {
   formatString: InputMaybe<Scalars['String']>;
   fromNow: InputMaybe<Scalars['Boolean']>;
   locale: InputMaybe<Scalars['String']>;
+};
+
+type SiteAdapter = {
+  readonly name: Maybe<Scalars['String']>;
+};
+
+type SiteAdapterFieldSelector = {
+  readonly name: InputMaybe<FieldSelectorEnum>;
+};
+
+type SiteAdapterFilterInput = {
+  readonly name: InputMaybe<StringQueryOperatorInput>;
+};
+
+type SiteAdapterSortInput = {
+  readonly name: InputMaybe<SortOrderEnum>;
 };
 
 type SiteBuildMetadata = Node & {
@@ -3486,6 +3504,7 @@ type SiteEdge = {
 };
 
 type SiteFieldSelector = {
+  readonly adapter: InputMaybe<SiteAdapterFieldSelector>;
   readonly buildTime: InputMaybe<FieldSelectorEnum>;
   readonly children: InputMaybe<NodeFieldSelector>;
   readonly graphqlTypegen: InputMaybe<SiteGraphqlTypegenFieldSelector>;
@@ -3502,6 +3521,7 @@ type SiteFieldSelector = {
 };
 
 type SiteFilterInput = {
+  readonly adapter: InputMaybe<SiteAdapterFilterInput>;
   readonly buildTime: InputMaybe<DateQueryOperatorInput>;
   readonly children: InputMaybe<NodeFilterListInput>;
   readonly graphqlTypegen: InputMaybe<SiteGraphqlTypegenFilterInput>;
@@ -4041,6 +4061,7 @@ type SiteSiteMetadataSortInput = {
 };
 
 type SiteSortInput = {
+  readonly adapter: InputMaybe<SiteAdapterSortInput>;
   readonly buildTime: InputMaybe<SortOrderEnum>;
   readonly children: InputMaybe<NodeSortInput>;
   readonly graphqlTypegen: InputMaybe<SiteGraphqlTypegenSortInput>;
