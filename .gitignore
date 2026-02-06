@@ -70,3 +70,7 @@ public
 
 .DS_Store
 types/graphql-types.ts
+
+# Ignoring Claude for now
+.claude
+CLAUDE.md
