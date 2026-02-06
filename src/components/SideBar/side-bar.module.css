@@ -78,6 +78,11 @@
   }
 }
 
+.top,
+.bottom {
+  width: 100%;
+}
+
 .navLink {
   display: block;
   font-weight: bold;
