@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import AnimateHeight from 'react-animate-height';
 import { Link } from 'gatsby';
 
-import s from './time-machine.module.css';
+import * as s from './time-machine.module.css';
 
 const TimeMachine: React.FC<{ years: string[] }> = ({ years }) => {
   const [open, setOpen] = useState(false);

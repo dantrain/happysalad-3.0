@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import slugify from '@sindresorhus/slugify';
 import Image from '../Image/Image';
 
-import s from './game-link.module.css';
+import * as s from './game-link.module.css';
 
 type GameLinkProps = {
   name: string;

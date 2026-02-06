@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 
-import s from './container.module.css';
+import * as s from './container.module.css';
 
 const Container: React.FC<{ className?: string }> = ({
   className,

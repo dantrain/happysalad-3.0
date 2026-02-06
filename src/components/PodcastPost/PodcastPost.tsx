@@ -10,7 +10,7 @@ import Markdown from '../Markdown/Markdown';
 import GamesList from '../GamesList/GamesList';
 import { Play, Pause, Download, ApplePodcasts } from '../Icon/Icon';
 
-import s from './podcast-post.module.css';
+import * as s from './podcast-post.module.css';
 
 const PodcastPost: React.FC<PodcastPostFragment> = ({
   title,

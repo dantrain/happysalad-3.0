@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 import GameLink from '../GameLink/GameLink';
 
-import s from './games-list.module.css';
+import * as s from './games-list.module.css';
 
 export type GamesListItems = {
   id?: number;

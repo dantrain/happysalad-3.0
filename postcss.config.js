@@ -1,8 +1,10 @@
 module.exports = {
   plugins: [
+    require('@csstools/postcss-global-data')({
+      files: ['src/components/Page/variables.css'],
+    }),
     require('postcss-preset-env')({
       stage: 1,
-      importFrom: 'src/components/Page/variables.css',
     }),
     require('cssnano')({
       preset: 'default',

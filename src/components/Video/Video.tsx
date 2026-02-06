@@ -9,7 +9,7 @@ import { pause } from '../../features/player/playerSlice';
 import Vh from '../VisuallyHidden/VisuallyHidden';
 import onMobile from '../../utils/onMobile';
 
-import s from './video.module.css';
+import * as s from './video.module.css';
 
 const videoIdRegex = /(?:.*|\/|v=)([a-zA-Z\d_-]{11})/;
 

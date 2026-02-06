@@ -2,7 +2,7 @@ import React from 'react';
 
 React.createElement('span');
 
-import s from './visually-hidden.module.css';
+import * as s from './visually-hidden.module.css';
 
 type VisuallyHiddenProps = {
   component?: keyof JSX.IntrinsicElements;

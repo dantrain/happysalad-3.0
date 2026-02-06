@@ -11,7 +11,7 @@ import { fetchData } from '../../features/searchData/searchDataSlice';
 import Vh from '../VisuallyHidden/VisuallyHidden';
 import onMobile from '../../utils/onMobile';
 
-import s from './search.module.css';
+import * as s from './search.module.css';
 
 const SearchIcon: React.FC<{ className: string }> = ({ className }) => (
   <svg

@@ -4,7 +4,7 @@ import Container from '../Container/Container';
 import Search from '../Search/Search';
 import Hamburger from '../Hamburger/Hamburger';
 
-import s from './header.module.css';
+import * as s from './header.module.css';
 
 const LogoText: React.FC<{ className: string }> = ({ className }) => (
   <svg

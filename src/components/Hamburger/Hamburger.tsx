@@ -5,7 +5,7 @@ import { RootState } from '../../store';
 import { toggle } from '../../features/mobileMenu/mobileMenuSlice';
 import VisuallyHidden from '../VisuallyHidden/VisuallyHidden';
 
-import s from './hamburger.module.css';
+import * as s from './hamburger.module.css';
 
 const Hamburger: React.FC<{ className: string }> = ({ className }) => {
   const { open } = useSelector((state: RootState) => state.mobileMenu);

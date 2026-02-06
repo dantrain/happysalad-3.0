@@ -15,7 +15,7 @@ import Search from '../Search/Search';
 import TimeMachine from '../TimeMachine/TimeMachine';
 import { YouTube, Twitter, Facebook } from '../Icon/Icon';
 
-import s from './side-bar.module.css';
+import * as s from './side-bar.module.css';
 
 const tabletLandscapeUp =
   typeof window !== 'undefined' && window.matchMedia('(min-width: 980px)');

@@ -14,7 +14,7 @@ import 'normalize.css';
 import './base.css';
 import './variables.css';
 
-import s from './page.module.css';
+import * as s from './page.module.css';
 
 type PageProps = {
   pageContext: {

@@ -5,7 +5,7 @@ import StaticPage from '../../components/StaticPage/StaticPage';
 import { Helmet } from 'react-helmet';
 import Video from '../../components/Video/Video';
 import content from './about.md';
-import s from './about.module.css';
+import * as s from './about.module.css';
 
 const AboutPage: React.FC = () => (
   <StaticPage>

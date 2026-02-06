@@ -20,7 +20,7 @@ import {
 import { togglePlay, close } from '../../features/player/playerSlice';
 
 import './cassette-player.css';
-import s from './player.module.css';
+import * as s from './player.module.css';
 
 const Button: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
   className,

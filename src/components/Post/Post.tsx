@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import s from './post.module.css';
+import * as s from './post.module.css';
 
 type PostProps = {
   titleLinkUrl: string;

@@ -6,7 +6,7 @@ import VideoPost from '../../components/VideoPost/VideoPost';
 import PodcastPost from '../../components/PodcastPost/PodcastPost';
 import Image from '../../components/Image/Image';
 
-import s from './game-page.module.css';
+import * as s from './game-page.module.css';
 import { Helmet } from 'react-helmet';
 
 type GamePageProps = {
