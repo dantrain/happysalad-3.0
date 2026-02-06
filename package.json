@@ -14,7 +14,7 @@
     "@cassette/player": "^2.0.0-beta.4",
     "@csstools/postcss-global-data": "^3.1.0",
     "@reduxjs/toolkit": "^2.11.2",
-    "@sindresorhus/slugify": "1.1.2",
+    "@sindresorhus/slugify": "^2.2.1",
     "body-scroll-lock": "^3.1.5",
     "classnames": "^2.5.1",
     "cssnano": "^5.1.15",
@@ -43,11 +43,11 @@
     "react-redux": "^9.2.0",
     "react-transition-group": "^4.4.5",
     "react-youtube": "^10.1.0",
-    "rehype-react": "^6.2.0",
-    "remark-parse": "^9.0.0",
-    "remark-rehype": "^8.1.0",
+    "rehype-react": "^8.0.0",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
     "rimraf": "^3.0.2",
-    "unified": "^9.2.1"
+    "unified": "^11.0.5"
   },
   "devDependencies": {
     "@types/he": "^1.2.3",

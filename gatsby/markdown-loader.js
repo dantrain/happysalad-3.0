@@ -1,11 +1,27 @@
-const unified = require('unified');
-const remarkParse = require('remark-parse');
-const remarkToRehype = require('remark-rehype');
+let processorPromise;
 
-const processor = unified().use(remarkParse).use(remarkToRehype);
+function getProcessor() {
+  if (!processorPromise) {
+    processorPromise = Promise.all([
+      import('unified'),
+      import('remark-parse'),
+      import('remark-rehype'),
+    ]).then(([{ unified }, remarkParse, remarkToRehype]) =>
+      unified()
+        .use(remarkParse.default)
+        .use(remarkToRehype.default)
+    );
+  }
+  return processorPromise;
+}
 
 module.exports = function (source) {
-  const output = processor.runSync(processor.parse(source));
+  const callback = this.async();
 
-  return `export default ${JSON.stringify(output)}`;
+  getProcessor()
+    .then((processor) => {
+      const output = processor.runSync(processor.parse(source));
+      callback(null, `export default ${JSON.stringify(output)}`);
+    })
+    .catch(callback);
 };

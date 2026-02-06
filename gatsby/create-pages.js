@@ -4,13 +4,15 @@ const times = require('lodash/times');
 const take = require('lodash/take');
 const lunr = require('lunr');
 const { DateTime, Interval } = require('luxon');
-const slugify = require('@sindresorhus/slugify');
+let slugify;
 const { countBy, tail } = require('lodash');
 
 const globalContext = {};
 
-exports.createPages = ({ graphql, actions: { createPage } }) =>
-  graphql(`
+exports.createPages = async ({ graphql, actions: { createPage } }) => {
+  slugify = (await import('@sindresorhus/slugify')).default;
+
+  const { errors, data } = await graphql(`
     {
       allPost {
         edges {
@@ -60,84 +62,85 @@ exports.createPages = ({ graphql, actions: { createPage } }) =>
         }
       }
     }
-  `).then(({ errors, data }) => {
-    if (errors) {
-      console.log(errors);
-      throw errors;
-    }
+  `);
 
-    const posts = data.allPost.edges;
-    const gamesMap = getGamesMap(posts);
+  if (errors) {
+    console.log(errors);
+    throw errors;
+  }
 
-    // Create Home page
-    createInfinitePages({
-      createPage,
-      posts,
-      component: path.resolve(
-        __dirname,
-        '../src/templates/HomePage/HomePage.tsx'
-      ),
-    });
+  const posts = data.allPost.edges;
+  const gamesMap = getGamesMap(posts);
 
-    // Create Saladcast page
-    createInfinitePages({
-      createPage,
-      posts: data.allContentfulPodcastPost.edges,
-      basePath: '/saladcast',
-      component: path.resolve(
-        __dirname,
-        '../src/templates/PodcastCategoryPage/PodcastCategoryPage.tsx'
-      ),
-    });
+  // Create Home page
+  createInfinitePages({
+    createPage,
+    posts,
+    component: path.resolve(
+      __dirname,
+      '../src/templates/HomePage/HomePage.tsx'
+    ),
+  });
 
-    // Create Video thing page
-    createInfinitePages({
-      createPage,
-      posts: data.allContentfulVideoPost.edges,
-      basePath: '/video-thing',
-      component: path.resolve(
-        __dirname,
-        '../src/templates/VideoCategoryPage/VideoCategoryPage.tsx'
-      ),
-    });
+  // Create Saladcast page
+  createInfinitePages({
+    createPage,
+    posts: data.allContentfulPodcastPost.edges,
+    basePath: '/saladcast',
+    component: path.resolve(
+      __dirname,
+      '../src/templates/PodcastCategoryPage/PodcastCategoryPage.tsx'
+    ),
+  });
 
-    // Create individual post pages
-    posts.forEach(({ node: { __typename, slug, episodeNumber } }) => {
-      if (__typename === 'ContentfulPodcastPost') {
-        createPage({
-          path: `/saladcast/${episodeNumber}-${slug}/`,
-          component: path.resolve(
-            __dirname,
-            '../src/templates/PodcastPostPage/PodcastPostPage.tsx'
-          ),
-          context: { slug, ...globalContext },
-        });
-      } else if (__typename === 'ContentfulVideoPost') {
-        createPage({
-          path: `/video-thing/${slug}/`,
-          component: path.resolve(
-            __dirname,
-            '../src/templates/VideoPostPage/VideoPostPage.tsx'
-          ),
-          context: { slug, ...globalContext },
-        });
-      }
-    });
+  // Create Video thing page
+  createInfinitePages({
+    createPage,
+    posts: data.allContentfulVideoPost.edges,
+    basePath: '/video-thing',
+    component: path.resolve(
+      __dirname,
+      '../src/templates/VideoCategoryPage/VideoCategoryPage.tsx'
+    ),
+  });
 
-    // Create individual game pages
-    gamesMap.forEach((game) => {
+  // Create individual post pages
+  posts.forEach(({ node: { __typename, slug, episodeNumber } }) => {
+    if (__typename === 'ContentfulPodcastPost') {
       createPage({
-        path: `/game/${slugify(game.name)}`,
+        path: `/saladcast/${episodeNumber}-${slug}/`,
         component: path.resolve(
           __dirname,
-          '../src/templates/GamePage/GamePage.tsx'
+          '../src/templates/PodcastPostPage/PodcastPostPage.tsx'
         ),
-        context: { ...game, ...globalContext },
+        context: { slug, ...globalContext },
       });
-    });
-
-    createSearchData(gamesMap);
+    } else if (__typename === 'ContentfulVideoPost') {
+      createPage({
+        path: `/video-thing/${slug}/`,
+        component: path.resolve(
+          __dirname,
+          '../src/templates/VideoPostPage/VideoPostPage.tsx'
+        ),
+        context: { slug, ...globalContext },
+      });
+    }
   });
+
+  // Create individual game pages
+  gamesMap.forEach((game) => {
+    createPage({
+      path: `/game/${slugify(game.name)}`,
+      component: path.resolve(
+        __dirname,
+        '../src/templates/GamePage/GamePage.tsx'
+      ),
+      context: { ...game, ...globalContext },
+    });
+  });
+
+  createSearchData(gamesMap);
+};
 
 exports.onCreatePage = ({ page, actions: { createPage, deletePage } }) => {
   deletePage(page);
