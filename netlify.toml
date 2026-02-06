@@ -1,8 +1,10 @@
 [build]
   publish = "public/"
+  command = "npm ci --legacy-peer-deps && gatsby build"
 
-[[plugins]]
-  package = "netlify-plugin-gatsby-cache"
+[build.environment]
+  NODE_VERSION = "24"
+  NPM_FLAGS = "--version"
 
 [[redirects]]
   from = "/assets/*"
