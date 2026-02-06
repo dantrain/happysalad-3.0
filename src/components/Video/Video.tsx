@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Helmet } from 'react-helmet';
+
 import { CSSTransition } from 'react-transition-group';
 import YouTube from 'react-youtube';
 import { useImage } from 'react-image';
@@ -108,11 +108,6 @@ const Video: React.FC<{ youTubeUrl: string }> = ({ youTubeUrl }) => {
 
   return (
     <>
-      <Helmet>
-        {prefetchUrls.map((url) => (
-          <link key={url} rel="preconnect" href={url} crossOrigin="anonymous" />
-        ))}
-      </Helmet>
       <div
         className={s.videoContainer}
         style={

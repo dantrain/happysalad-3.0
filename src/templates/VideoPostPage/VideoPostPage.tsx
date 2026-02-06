@@ -1,26 +1,22 @@
 import React from 'react';
-import { graphql } from 'gatsby';
-import { VideoPostBySlugQuery } from '../../../types/graphql-types';
+import { graphql, HeadFC } from 'gatsby';
 import VideoPost from '../../components/VideoPost/VideoPost';
-import { Helmet } from 'react-helmet';
+import SEO from '../../components/SEO';
 
-const VideoPostPage: React.FC<{ data: VideoPostBySlugQuery }> = ({
+const VideoPostPage: React.FC<{ data: Queries.VideoPostBySlugQuery }> = ({
   data: { contentfulVideoPost },
 }) => {
-  const title = `Gameplay - ${contentfulVideoPost.title}`;
-
-  return (
-    <>
-      <Helmet>
-        <title>{title}</title>
-        <meta name="description" content={title} />
-      </Helmet>
-      <VideoPost {...contentfulVideoPost} />
-    </>
-  );
+  return <VideoPost {...contentfulVideoPost} />;
 };
 
 export default VideoPostPage;
+
+export const Head: HeadFC<Queries.VideoPostBySlugQuery> = ({
+  data: { contentfulVideoPost },
+}) => {
+  const title = `Gameplay - ${contentfulVideoPost.title}`;
+  return <SEO title={title} />;
+};
 
 export const pageQuery = graphql`
   query VideoPostBySlug($slug: String!) {

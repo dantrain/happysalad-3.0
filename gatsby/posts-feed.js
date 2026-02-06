@@ -4,7 +4,7 @@ module.exports = {
   language: 'en',
   query: `
     {
-      allPost(sort: {fields: [recordingDate], order: DESC}, limit: 20) {
+      allPost(sort: {recordingDate: DESC}, limit: 20) {
         edges {
           node {
             __typename

@@ -9,7 +9,9 @@ type InfiniteScrollProps = {
   onLoadMore: () => void;
 };
 
-const InfiniteScroll: React.FC<InfiniteScrollProps> = ({
+const InfiniteScroll: React.FC<
+  React.PropsWithChildren<InfiniteScrollProps>
+> = ({
   children,
   threshold = 800,
   throttle = 100,

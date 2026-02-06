@@ -1,26 +1,18 @@
 import React from 'react';
-import { graphql } from 'gatsby';
-import { VideoCategoryQuery } from '../../../types/graphql-types';
+import { graphql, HeadFC } from 'gatsby';
 import {
   initialPageLoad,
   fetchPage,
 } from '../../features/infiniteScroll/infiniteScrollSliceVideos';
 import InfiniteTiles from '../../components/InfiniteTiles/InfiniteTiles';
-import { Helmet } from 'react-helmet';
+import SEO from '../../components/SEO';
 
 const VideoCategoryPage: React.FC<{
-  data: VideoCategoryQuery;
+  data: Queries.VideoCategoryQuery;
   pageContext: { page: number };
 }> = ({ pageContext: { page }, data: { allContentfulVideoPost: posts } }) => {
   return (
     <>
-      <Helmet>
-        <title>Video Thing</title>
-        <meta
-          name="description"
-          content="Video Thing from Happysalad on YouTube"
-        />
-      </Helmet>
       <InfiniteTiles
         posts={posts}
         selector={(state) => state.infiniteScroll.videos}
@@ -34,10 +26,12 @@ const VideoCategoryPage: React.FC<{
 
 export default VideoCategoryPage;
 
+export const Head: HeadFC = () => <SEO title="Video Thing" />;
+
 export const pageQuery = graphql`
   query VideoCategory($limit: Int!, $skip: Int!) {
     allContentfulVideoPost(
-      sort: { fields: [recordingDate], order: DESC }
+      sort: { recordingDate: DESC }
       limit: $limit
       skip: $skip
     ) {

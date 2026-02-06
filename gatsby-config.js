@@ -15,29 +15,19 @@ if (!spaceId || !accessToken) {
 }
 
 module.exports = {
+  graphqlTypegen: true,
   siteMetadata: {
     title: 'Happysalad',
     siteUrl: process.env.SITE_URL,
   },
   plugins: [
     'gatsby-transformer-remark',
-    'gatsby-plugin-react-helmet',
     'gatsby-plugin-typescript',
     'gatsby-plugin-postcss',
     'gatsby-plugin-image',
     {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
-    },
-    {
-      resolve: `gatsby-plugin-graphql-codegen`,
-      options: {
-        fileName: `types/graphql-types.ts`,
-        documentPaths: [
-          './src/**/*.{ts,tsx}',
-          './node_modules/gatsby-*/**/*.js',
-        ],
-      },
     },
     {
       resolve: `gatsby-plugin-feed`,

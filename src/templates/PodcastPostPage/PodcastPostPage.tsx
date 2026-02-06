@@ -1,26 +1,22 @@
 import React from 'react';
-import { graphql } from 'gatsby';
-import { PodcastPostBySlugQuery } from '../../../types/graphql-types';
+import { graphql, HeadFC } from 'gatsby';
 import PodcastPost from '../../components/PodcastPost/PodcastPost';
-import { Helmet } from 'react-helmet';
+import SEO from '../../components/SEO';
 
-const PodcastPostPage: React.FC<{ data: PodcastPostBySlugQuery }> = ({
+const PodcastPostPage: React.FC<{ data: Queries.PodcastPostBySlugQuery }> = ({
   data: { contentfulPodcastPost },
 }) => {
-  const title = `Saladcast ${contentfulPodcastPost.episodeNumber} - ${contentfulPodcastPost.title}`;
-
-  return (
-    <>
-      <Helmet>
-        <title>{title}</title>
-        <meta name="description" content={title} />
-      </Helmet>
-      <PodcastPost {...contentfulPodcastPost} />
-    </>
-  );
+  return <PodcastPost {...contentfulPodcastPost} />;
 };
 
 export default PodcastPostPage;
+
+export const Head: HeadFC<Queries.PodcastPostBySlugQuery> = ({
+  data: { contentfulPodcastPost },
+}) => {
+  const title = `Saladcast ${contentfulPodcastPost.episodeNumber} - ${contentfulPodcastPost.title}`;
+  return <SEO title={title} />;
+};
 
 export const pageQuery = graphql`
   query PodcastPostBySlug($slug: String!) {

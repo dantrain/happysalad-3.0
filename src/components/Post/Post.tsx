@@ -12,7 +12,7 @@ type PostProps = {
   imageSlot: React.ReactNode;
 };
 
-const Post: React.FC<PostProps> = ({
+const Post: React.FC<React.PropsWithChildren<PostProps>> = ({
   titleLinkUrl,
   title,
   date,

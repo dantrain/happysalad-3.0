@@ -62,7 +62,7 @@ module.exports = {
   ],
   query: `
     {
-      allContentfulPodcastPost(sort: {fields: [recordingDate], order: DESC}) {
+      allContentfulPodcastPost(sort: {recordingDate: DESC}) {
         edges {
           node {
             title

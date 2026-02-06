@@ -1,22 +1,18 @@
 import React from 'react';
-import { graphql } from 'gatsby';
-import { PodcastCategoryQuery } from '../../../types/graphql-types';
+import { graphql, HeadFC } from 'gatsby';
 import {
   initialPageLoad,
   fetchPage,
 } from '../../features/infiniteScroll/infiniteScrollSlicePodcasts';
 import InfiniteTiles from '../../components/InfiniteTiles/InfiniteTiles';
-import { Helmet } from 'react-helmet';
+import SEO from '../../components/SEO';
 
 const PodcastCategoryPage: React.FC<{
-  data: PodcastCategoryQuery;
+  data: Queries.PodcastCategoryQuery;
   pageContext: { page: number };
 }> = ({ pageContext: { page }, data: { allContentfulPodcastPost: posts } }) => {
   return (
     <>
-      <Helmet>
-        <title>The Saladcast</title>
-      </Helmet>
       <InfiniteTiles
         posts={posts}
         selector={(state) => state.infiniteScroll.podcasts}
@@ -30,10 +26,12 @@ const PodcastCategoryPage: React.FC<{
 
 export default PodcastCategoryPage;
 
+export const Head: HeadFC = () => <SEO title="The Saladcast" />;
+
 export const pageQuery = graphql`
   query PodcastCategory($limit: Int!, $skip: Int!) {
     allContentfulPodcastPost(
-      sort: { fields: [recordingDate], order: DESC }
+      sort: { recordingDate: DESC }
       limit: $limit
       skip: $skip
     ) {

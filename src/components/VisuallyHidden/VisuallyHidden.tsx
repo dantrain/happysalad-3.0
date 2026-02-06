@@ -8,9 +8,10 @@ type VisuallyHiddenProps = {
   component?: keyof JSX.IntrinsicElements;
 };
 
-const VisuallyHidden: React.FC<VisuallyHiddenProps> = ({
-  component: Component = 'span',
-  children,
-}) => <Component className={s.visuallyHidden}>{children}</Component>;
+const VisuallyHidden: React.FC<
+  React.PropsWithChildren<VisuallyHiddenProps>
+> = ({ component: Component = 'span', children }) => (
+  <Component className={s.visuallyHidden}>{children}</Component>
+);
 
 export default VisuallyHidden;

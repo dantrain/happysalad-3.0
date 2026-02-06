@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { VideoPostFragment } from '../../../types/graphql-types';
 import Post from '../Post/Post';
 import GameLink from '../GameLink/GameLink';
 import Video from '../Video/Video';
@@ -8,7 +7,7 @@ import Markdown from '../Markdown/Markdown';
 
 type VideoPostProps = {
   gameLink?: boolean;
-} & VideoPostFragment;
+} & Queries.VideoPostFragment;
 
 const VideoPost: React.FC<VideoPostProps> = ({
   title,

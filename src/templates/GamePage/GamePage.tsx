@@ -1,17 +1,16 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, HeadFC } from 'gatsby';
 import { decode } from 'he';
-import { PostsBySlugsQuery } from '../../../types/graphql-types';
 import VideoPost from '../../components/VideoPost/VideoPost';
 import PodcastPost from '../../components/PodcastPost/PodcastPost';
 import Image from '../../components/Image/Image';
+import SEO from '../../components/SEO';
 
 import * as s from './game-page.module.css';
-import { Helmet } from 'react-helmet';
 
 type GamePageProps = {
   pageContext: { name: string; deck: string; image: { small_url: string } };
-  data: PostsBySlugsQuery;
+  data: Queries.PostsBySlugsQuery;
 };
 
 const GamePage: React.FC<GamePageProps> = ({
@@ -29,13 +28,6 @@ const GamePage: React.FC<GamePageProps> = ({
 
   return (
     <>
-      <Helmet>
-        <title>{name}</title>
-        <meta
-          name="description"
-          content={`${name}${description ? ` - ${description}` : ''}`}
-        />
-      </Helmet>
       <section className={s.intro}>
         <Image className={s.thumbImg} src={imgUrl} alt={name} />
         <div className={s.introText}>
@@ -63,11 +55,16 @@ const GamePage: React.FC<GamePageProps> = ({
 
 export default GamePage;
 
+export const Head: HeadFC<
+  Queries.PostsBySlugsQuery,
+  { name: string; deck: string }
+> = ({ pageContext: { name } }) => <SEO title={name} />;
+
 export const pageQuery = graphql`
   query PostsBySlugs($slugs: [String]) {
     allContentfulPodcastPost(
       filter: { slug: { in: $slugs } }
-      sort: { fields: [recordingDate], order: DESC }
+      sort: { recordingDate: DESC }
     ) {
       edges {
         node {
@@ -77,7 +74,7 @@ export const pageQuery = graphql`
     }
     allContentfulVideoPost(
       filter: { slug: { in: $slugs } }
-      sort: { fields: [recordingDate], order: ASC }
+      sort: { recordingDate: ASC }
     ) {
       edges {
         node {

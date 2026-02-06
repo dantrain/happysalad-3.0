@@ -2,7 +2,6 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { useSelector, useDispatch } from 'react-redux';
 import cn from 'classnames';
-import { PodcastPostFragment } from '../../../types/graphql-types';
 import { RootState } from '../../store';
 import { playTrack, pause } from '../../features/player/playerSlice';
 import Post from '../Post/Post';
@@ -12,7 +11,7 @@ import { Play, Pause, Download, ApplePodcasts } from '../Icon/Icon';
 
 import * as s from './podcast-post.module.css';
 
-const PodcastPost: React.FC<PodcastPostFragment> = ({
+const PodcastPost: React.FC<Queries.PodcastPostFragment> = ({
   title,
   slug,
   episodeNumber,
