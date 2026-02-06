@@ -24,6 +24,7 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-typescript',
     'gatsby-plugin-postcss',
+    'gatsby-plugin-image',
     {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,

@@ -18,7 +18,7 @@ exports.createSchemaCustomization = ({ actions: { createTypes } }) =>
       `
       )}
 
-      interface Post @nodeInterface {
+      interface Post implements Node {
         id: ID!
         slug: String
         title: String
