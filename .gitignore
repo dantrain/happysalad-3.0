@@ -74,3 +74,6 @@ types/graphql-types.ts
 # Ignoring Claude for now
 .claude
 CLAUDE.md
+
+# Local Netlify folder
+.netlify
