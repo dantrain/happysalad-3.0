@@ -19,7 +19,7 @@ const { actions, reducer } = createSlice({
   reducers: {
     playTrack: (
       state,
-      { payload: { url, title } }: PayloadAction<PlayerTrack>
+      { payload: { url, title } }: PayloadAction<PlayerTrack>,
     ) => {
       state.url = url;
       state.title = title;

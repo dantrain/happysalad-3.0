@@ -3,7 +3,7 @@ import createInfiniteScrollSlice from './createInfiniteScrollSlice';
 const { reducer, initialPageLoad, fetchPage } = createInfiniteScrollSlice(
   'podcasts',
   'allContentfulPodcastPost',
-  '/saladcast'
+  '/saladcast',
 );
 
 export { initialPageLoad, fetchPage };

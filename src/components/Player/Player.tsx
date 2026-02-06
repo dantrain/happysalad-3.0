@@ -29,7 +29,7 @@ const Button: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
 
 const MediaPlayer: React.FC = () => {
   const { playing: shouldPlay } = useSelector(
-    (state: RootState) => state.player
+    (state: RootState) => state.player,
   );
   const {
     paused,

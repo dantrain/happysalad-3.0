@@ -28,7 +28,7 @@ const { actions, reducer } = createSlice({
     },
     fetchDataSuccess: (
       state,
-      { payload: { searchIndex, gameData } }: PayloadAction<SearchData>
+      { payload: { searchIndex, gameData } }: PayloadAction<SearchData>,
     ) => {
       state.searchIndex = searchIndex;
       state.gameData = gameData;

@@ -34,12 +34,12 @@ type SearchProps = {
 
 const Search: React.FC<SearchProps> = ({ inHeader, inSideBar, className }) => {
   const { searchIndex, gameData } = useSelector(
-    (state: RootState) => state.searchData
+    (state: RootState) => state.searchData,
   );
 
   const lunrSearchIndex = useMemo(
     () => searchIndex && lunr.Index.load(searchIndex),
-    [searchIndex]
+    [searchIndex],
   );
 
   const dispatch = useDispatch();
@@ -137,7 +137,7 @@ const Search: React.FC<SearchProps> = ({ inHeader, inSideBar, className }) => {
                       />
                       <p className={s.resultText}>{item.name}</p>
                     </li>
-                  ) : null
+                  ) : null,
                 )}
               </ul>
             ) : null}

@@ -3,7 +3,7 @@ import createInfiniteScrollSlice from './createInfiniteScrollSlice';
 const { reducer, initialPageLoad, fetchPage } = createInfiniteScrollSlice(
   'videos',
   'allContentfulVideoPost',
-  '/video-thing'
+  '/video-thing',
 );
 
 export { initialPageLoad, fetchPage };

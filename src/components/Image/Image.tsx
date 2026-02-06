@@ -18,7 +18,7 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
       ref={ref}
       src={src.replace(
         'https://giantbomb1.cbsistatic.com/',
-        'https://www.giantbomb.com/a/'
+        'https://www.giantbomb.com/a/',
       )}
       {...rest}
       onError={onError}

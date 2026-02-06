@@ -24,7 +24,7 @@ const PodcastPost: React.FC<PodcastPostFragment> = ({
   games,
 }) => {
   const { playing, url: currentUrl } = useSelector(
-    (state: RootState) => state.player
+    (state: RootState) => state.player,
   );
   const fullTitle = `Saladcast ${episodeNumber} - ${title}`;
 

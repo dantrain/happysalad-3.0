@@ -45,7 +45,7 @@ const InfiniteTiles: React.FC<InfiniteTilesProps> = ({
           edges: posts.edges,
           pageInfo: posts.pageInfo,
           pageContext: { page: initialPage },
-        })
+        }),
       );
     }
   }, []);

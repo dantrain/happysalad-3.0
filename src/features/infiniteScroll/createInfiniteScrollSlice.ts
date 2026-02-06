@@ -40,7 +40,7 @@ type InfiniteScrollSlice = {
 export default (
   name: InfiniteScrollSliceName,
   type: string,
-  path = ''
+  path = '',
 ): InfiniteScrollSlice => {
   const { actions, reducer } = createSlice({
     name: `infiniteScroll${upperFirst(name)}`,
@@ -57,7 +57,7 @@ export default (
             pageInfo,
             pageContext: { page },
           },
-        }: PayloadAction<PagePayload>
+        }: PayloadAction<PagePayload>,
       ) => {
         state.pages = [];
         state.pages[page] = edges;
@@ -76,7 +76,7 @@ export default (
             pageInfo,
             pageContext: { page },
           },
-        }: PayloadAction<PagePayload>
+        }: PayloadAction<PagePayload>,
       ) => {
         state.pages[page] = edges;
         state.pageInfo = pageInfo;
@@ -97,7 +97,7 @@ export default (
 
       try {
         const response = await fetch(
-          `/page-data${path}/${state.currentPage + 1}/page-data.json`
+          `/page-data${path}/${state.currentPage + 1}/page-data.json`,
         );
         const data = await response.json();
 
@@ -105,7 +105,7 @@ export default (
           actions.fetchPageSuccess({
             ...data.result.data[type],
             pageContext: data.result.pageContext,
-          })
+          }),
         );
       } catch (err) {
         dispatch(actions.fetchPageFailure());

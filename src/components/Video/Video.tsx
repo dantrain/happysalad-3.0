@@ -47,7 +47,7 @@ const YouTubeEmbed: React.FC<{ videoId: string }> = ({ videoId }) => {
   const playerRef = useRef<YouTubePlayer | null>(null);
   const onReady = useCallback(
     (event) => (playerRef.current = event.target),
-    []
+    [],
   );
 
   const { playing } = useSelector((state: RootState) => state.player);

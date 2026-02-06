@@ -2,7 +2,7 @@ import createInfiniteScrollSlice from './createInfiniteScrollSlice';
 
 const { reducer, initialPageLoad, fetchPage } = createInfiniteScrollSlice(
   'home',
-  'allPost'
+  'allPost',
 );
 
 export { initialPageLoad, fetchPage };
