@@ -4,10 +4,10 @@ import GameLink from '../GameLink/GameLink';
 
 import * as s from './games-list.module.css';
 
-export type GamesListItems = {
-  id?: number;
-  name?: string;
-  image?: { icon_url?: string };
+export type GamesListItems = readonly {
+  readonly id?: number;
+  readonly name?: string;
+  readonly image?: { readonly icon_url?: string };
 }[];
 
 type GamesListProps = {

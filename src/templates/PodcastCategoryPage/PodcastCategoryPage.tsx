@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, HeadFC } from 'gatsby';
+import { graphql } from 'gatsby';
 import {
   initialPageLoad,
   fetchPage,
@@ -13,6 +13,7 @@ const PodcastCategoryPage: React.FC<{
 }> = ({ pageContext: { page }, data: { allContentfulPodcastPost: posts } }) => {
   return (
     <>
+      <SEO title="The Saladcast" />
       <InfiniteTiles
         posts={posts}
         selector={(state) => state.infiniteScroll.podcasts}
@@ -25,8 +26,6 @@ const PodcastCategoryPage: React.FC<{
 };
 
 export default PodcastCategoryPage;
-
-export const Head: HeadFC = () => <SEO title="The Saladcast" />;
 
 export const pageQuery = graphql`
   query PodcastCategory($limit: Int!, $skip: Int!) {

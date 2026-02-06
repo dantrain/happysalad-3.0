@@ -1,6 +1,6 @@
 declare module '*.module.css' {
-  export const content: { [className: string]: string };
-  export default content;
+  const classes: { [className: string]: string };
+  export = classes;
 }
 
 declare module '*.md' {

@@ -12,8 +12,8 @@ import Tile, { TileEdge } from '../Tile/Tile';
 
 type InfiniteTilesProps = {
   posts: {
-    edges: TileEdge[];
-    pageInfo: { hasNextPage: boolean };
+    readonly edges: readonly TileEdge[];
+    readonly pageInfo: { readonly hasNextPage: boolean };
   };
   selector: (state: RootState) => InfiniteScrollState;
   initialPage: number;

@@ -1,17 +1,18 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 type SEOProps = {
   title?: string;
 };
 
 const SEO: React.FC<SEOProps> = ({ title }) => (
-  <>
+  <Helmet>
     <html lang="en" />
-    {title ? (
-      <title>{title} · Happysalad</title>
-    ) : (
-      <title>Happysalad · The Saladcast, a podcast about video games</title>
-    )}
+    <title>
+      {title
+        ? `${title} · Happysalad`
+        : 'Happysalad · The Saladcast, a podcast about video games'}
+    </title>
     <meta
       name="description"
       content="The Saladcast, a podcast about video games"
@@ -21,7 +22,7 @@ const SEO: React.FC<SEOProps> = ({ title }) => (
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/manifest.json" />
-  </>
+  </Helmet>
 );
 
 export default SEO;

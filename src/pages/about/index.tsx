@@ -1,5 +1,4 @@
 import React from 'react';
-import { HeadFC } from 'gatsby';
 import Markdown from '../../components/Markdown/Markdown';
 import StaticPage from '../../components/StaticPage/StaticPage';
 import Video from '../../components/Video/Video';
@@ -9,6 +8,7 @@ import SEO from '../../components/SEO';
 
 const AboutPage: React.FC = () => (
   <StaticPage>
+    <SEO title="About" />
     <div className={s.content}>
       <Markdown ast={content} />
     </div>
@@ -17,5 +17,3 @@ const AboutPage: React.FC = () => (
 );
 
 export default AboutPage;
-
-export const Head: HeadFC = () => <SEO title="About" />;

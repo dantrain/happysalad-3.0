@@ -16,7 +16,7 @@ interface PageInfo {
 }
 
 export interface PagePayload {
-  edges: TileEdge[];
+  edges: readonly TileEdge[];
   pageInfo: PageInfo;
   pageContext: {
     page: number;
@@ -27,7 +27,7 @@ export type InfiniteScrollState = {
   loading: boolean;
   startPage?: number;
   currentPage: number;
-  pages?: TileEdge[][];
+  pages?: (readonly TileEdge[])[];
   pageInfo?: PageInfo;
 };
 
@@ -60,7 +60,8 @@ export default (
         }: PayloadAction<PagePayload>,
       ) => {
         state.pages = [];
-        state.pages[page] = edges;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (state.pages as any[])[page] = edges;
         state.pageInfo = pageInfo;
         state.startPage = page;
         state.currentPage = page;
@@ -78,7 +79,8 @@ export default (
           },
         }: PayloadAction<PagePayload>,
       ) => {
-        state.pages[page] = edges;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (state.pages as any[])[page] = edges;
         state.pageInfo = pageInfo;
         state.currentPage = page;
         state.loading = false;

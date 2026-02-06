@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, HeadFC } from 'gatsby';
+import { graphql } from 'gatsby';
 import {
   initialPageLoad,
   fetchPage,
@@ -13,6 +13,7 @@ const VideoCategoryPage: React.FC<{
 }> = ({ pageContext: { page }, data: { allContentfulVideoPost: posts } }) => {
   return (
     <>
+      <SEO title="Video Thing" />
       <InfiniteTiles
         posts={posts}
         selector={(state) => state.infiniteScroll.videos}
@@ -25,8 +26,6 @@ const VideoCategoryPage: React.FC<{
 };
 
 export default VideoCategoryPage;
-
-export const Head: HeadFC = () => <SEO title="Video Thing" />;
 
 export const pageQuery = graphql`
   query VideoCategory($limit: Int!, $skip: Int!) {

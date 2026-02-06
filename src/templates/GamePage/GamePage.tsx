@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, HeadFC } from 'gatsby';
+import { graphql } from 'gatsby';
 import { decode } from 'he';
 import VideoPost from '../../components/VideoPost/VideoPost';
 import PodcastPost from '../../components/PodcastPost/PodcastPost';
@@ -28,6 +28,7 @@ const GamePage: React.FC<GamePageProps> = ({
 
   return (
     <>
+      <SEO title={name} />
       <section className={s.intro}>
         <Image className={s.thumbImg} src={imgUrl} alt={name} />
         <div className={s.introText}>
@@ -54,11 +55,6 @@ const GamePage: React.FC<GamePageProps> = ({
 };
 
 export default GamePage;
-
-export const Head: HeadFC<
-  Queries.PostsBySlugsQuery,
-  { name: string; deck: string }
-> = ({ pageContext: { name } }) => <SEO title={name} />;
 
 export const pageQuery = graphql`
   query PostsBySlugs($slugs: [String]) {

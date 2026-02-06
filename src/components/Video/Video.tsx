@@ -13,13 +13,6 @@ import * as s from './video.module.css';
 
 const videoIdRegex = /(?:.*|\/|v=)([a-zA-Z\d_-]{11})/;
 
-const prefetchUrls = [
-  'https://www.youtube.com',
-  'https://www.google.com',
-  'https://googleads.g.doubleclick.net',
-  'https://static.doubleclick.net',
-];
-
 const PlayIcon: React.FC = () => (
   <svg
     className={s.playIcon}

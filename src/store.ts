@@ -1,5 +1,9 @@
-import { combineReducers, configureStore, Action } from '@reduxjs/toolkit';
-import { ThunkAction } from 'redux-thunk';
+import {
+  combineReducers,
+  configureStore,
+  Action,
+  ThunkAction,
+} from '@reduxjs/toolkit';
 import home from './features/infiniteScroll/infiniteScrollSliceHome';
 import podcasts from './features/infiniteScroll/infiniteScrollSlicePodcasts';
 import videos from './features/infiniteScroll/infiniteScrollSliceVideos';

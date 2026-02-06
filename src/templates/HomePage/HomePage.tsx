@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, HeadFC } from 'gatsby';
+import { graphql } from 'gatsby';
 import {
   initialPageLoad,
   fetchPage,
@@ -13,6 +13,7 @@ const HomePage: React.FC<{
 }> = ({ pageContext: { page }, data: { allPost: posts } }) => {
   return (
     <>
+      <SEO />
       <InfiniteTiles
         posts={posts}
         selector={(state) => state.infiniteScroll.home}
@@ -25,8 +26,6 @@ const HomePage: React.FC<{
 };
 
 export default HomePage;
-
-export const Head: HeadFC = () => <SEO />;
 
 export const pageQuery = graphql`
   query Home($limit: Int!, $skip: Int!) {
