@@ -81,7 +81,7 @@ const PodcastPost: React.FC<Queries.PodcastPostFragment> = ({
           Download
         </a>
         <a
-          className={cn(s.button, s.subscribeLink)}
+          className={s.button}
           href="https://podcasts.apple.com/podcast/id367437221"
         >
           <ApplePodcasts />
