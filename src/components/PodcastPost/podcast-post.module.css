@@ -52,7 +52,8 @@
 }
 
 @media (--phone-only) {
-  .downloadLink {
+  .downloadLink,
+  .subscribeLink {
     display: none;
   }
 }
