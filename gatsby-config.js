@@ -15,6 +15,7 @@ if (!spaceId || !accessToken) {
 }
 
 module.exports = {
+  adapter: require('gatsby-adapter-netlify').default(),
   graphqlTypegen: true,
   siteMetadata: {
     title: 'Happysalad',
