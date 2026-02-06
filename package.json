@@ -46,7 +46,6 @@
     "rehype-react": "^8.0.0",
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.2",
-    "rimraf": "^3.0.2",
     "unified": "^11.0.5"
   },
   "devDependencies": {
@@ -63,8 +62,9 @@
     "@typescript-eslint/parser": "^7.2.0",
     "eslint": "^8.57.1",
     "eslint-plugin-react": "^7.37.5",
-    "http-server": "^14.0.0",
+    "http-server": "^14.1.1",
     "prettier": "^3.8.1",
+    "rimraf": "^5.0.10",
     "typescript": "^5.9.3"
   },
   "scripts": {
