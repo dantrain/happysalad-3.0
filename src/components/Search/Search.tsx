@@ -119,8 +119,8 @@ const Search: React.FC<SearchProps> = ({ inHeader, inSideBar, className }) => {
                 {results.map((item, index) =>
                   index < (onMobile ? 4 : 8) ? (
                     <li
+                      key={item.id}
                       {...getItemProps({
-                        key: item.id,
                         item,
                         index,
                         className: cn(s.result, {
