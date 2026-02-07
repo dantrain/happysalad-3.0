@@ -16,7 +16,7 @@ import {
   PagePayload,
 } from '../../features/infiniteScroll/createInfiniteScrollSlice';
 import Tile, { TileEdge } from '../Tile/Tile';
-import heightCache from '../../utils/heightCache';
+import heightCache, { scrollStateCache } from '../../utils/heightCache';
 
 type InfiniteTilesProps = {
   posts: {
@@ -78,6 +78,7 @@ const InfiniteTiles: React.FC<InfiniteTilesProps> = ({
 
   return (
     <VirtualizedList
+      cacheKey={typeof window !== 'undefined' ? window.location.pathname : '/'}
       items={items}
       loading={loading}
       hasMore={pageInfo.hasNextPage}
@@ -87,6 +88,7 @@ const InfiniteTiles: React.FC<InfiniteTilesProps> = ({
 };
 
 type VirtualizedListProps = {
+  cacheKey: string;
   items: TileEdge[];
   loading: boolean;
   hasMore: boolean;
@@ -94,6 +96,7 @@ type VirtualizedListProps = {
 };
 
 const VirtualizedList: React.FC<VirtualizedListProps> = ({
+  cacheKey,
   items,
   loading,
   hasMore,
@@ -108,6 +111,8 @@ const VirtualizedList: React.FC<VirtualizedListProps> = ({
 
   const itemsRef = useRef(items);
   itemsRef.current = items;
+
+  const savedState = scrollStateCache.get(cacheKey);
 
   const virtualizer = useWindowVirtualizer({
     count: items.length,
@@ -126,6 +131,17 @@ const VirtualizedList: React.FC<VirtualizedListProps> = ({
       const slug = itemsRef.current[index]?.node.slug;
       if (slug) heightCache.set(slug, height);
       return height;
+    },
+    initialOffset: savedState?.offset,
+    initialMeasurementsCache: savedState?.measurementsCache,
+    scrollToFn: () => {},
+    onChange: (instance) => {
+      if (!instance.isScrolling) {
+        scrollStateCache.set(cacheKey, {
+          offset: instance.scrollOffset ?? 0,
+          measurementsCache: instance.measurementsCache,
+        });
+      }
     },
   });
 
