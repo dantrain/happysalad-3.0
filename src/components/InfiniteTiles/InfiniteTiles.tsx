@@ -17,6 +17,7 @@ import {
 } from '../../features/infiniteScroll/createInfiniteScrollSlice';
 import Tile, { TileEdge } from '../Tile/Tile';
 import heightCache, { scrollStateCache } from '../../utils/heightCache';
+import onMobile from '../../utils/onMobile';
 
 type InfiniteTilesProps = {
   posts: {
@@ -123,7 +124,7 @@ const VirtualizedList: React.FC<VirtualizedListProps> = ({
         ? 550
         : 350;
     },
-    overscan: 20,
+    overscan: onMobile ? 5 : 15,
     scrollMargin: scrollMarginRef.current,
     measureElement: (el) => {
       const height = el.getBoundingClientRect().height;
