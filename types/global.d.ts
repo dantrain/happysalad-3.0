@@ -3,6 +3,11 @@ declare module '*.module.css' {
   export = classes;
 }
 
+declare module '*.mp3' {
+  const src: string;
+  export default src;
+}
+
 declare module '*.md' {
   import { Node } from 'unist';
   export const content: Node;

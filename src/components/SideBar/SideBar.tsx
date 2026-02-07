@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 import { Link } from 'gatsby';
@@ -13,7 +13,8 @@ import { close } from '../../features/mobileMenu/mobileMenuSlice';
 import GamesList, { GamesListItems } from '../GamesList/GamesList';
 import Search from '../Search/Search';
 import TimeMachine from '../TimeMachine/TimeMachine';
-import { YouTube, Twitter, Facebook } from '../Icon/Icon';
+import { YouTube, X, Facebook } from '../Icon/Icon';
+import xSound from './x.mp3';
 
 import * as s from './side-bar.module.css';
 
@@ -39,6 +40,15 @@ const SideBar: React.FC<{ hotTopics: GamesListItems; years: string[] }> = ({
 
     return () => clearAllBodyScrollLocks();
   }, [open]);
+
+  const lastPlayedRef = useRef(0);
+  const playXSound = useCallback(() => {
+    if (url) return;
+    const now = Date.now();
+    if (now - lastPlayedRef.current < 600) return;
+    lastPlayedRef.current = now;
+    new Audio(xSound).play().catch(() => {});
+  }, [url]);
 
   const dispatch = useDispatch();
 
@@ -108,11 +118,12 @@ const SideBar: React.FC<{ hotTopics: GamesListItems; years: string[] }> = ({
             </li>
             <li className={s.socialLink}>
               <a
-                className={s.twitter}
-                title="Twitter Feed"
-                href="https://twitter.com/SaladCast"
+                className={s.x}
+                title="X Profile"
+                href="https://x.com/SaladCast"
+                onMouseEnter={playXSound}
               >
-                <Twitter />
+                <X />
               </a>
             </li>
             <li className={s.socialLink}>

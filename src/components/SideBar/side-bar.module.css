@@ -124,13 +124,35 @@
   }
 }
 
+@keyframes xPop {
+  0% {
+    scale: 1;
+  }
+  25% {
+    scale: 0.8;
+  }
+  50% {
+    scale: 1;
+  }
+  75% {
+    scale: 0.8;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
 @media (--tablet-landscape-up) {
   .youTube:hover path {
     fill: red;
   }
 
-  .twitter:hover path {
-    fill: #1da1f2;
+  .x:hover path {
+    fill: #0f1419;
+  }
+
+  .x:hover {
+    animation: xPop 250ms ease-in-out;
   }
 
   .facebook:hover path {
@@ -143,8 +165,8 @@
     fill: red;
   }
 
-  .twitter path {
-    fill: #1da1f2;
+  .x path {
+    fill: #0f1419;
   }
 
   .facebook path {
