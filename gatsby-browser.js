@@ -8,6 +8,7 @@ export const wrapPageElement = wrapWithPage;
 
 if (typeof window !== 'undefined') {
   window.addEventListener('popstate', () => {
+    if (window.innerWidth > 768) return;
     const main = document.querySelector('main');
     if (main) {
       main.style.visibility = 'hidden';
