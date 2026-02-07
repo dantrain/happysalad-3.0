@@ -99,15 +99,52 @@ const Video: React.FC<{ youTubeUrl: string }> = ({ youTubeUrl }) => {
   });
 
   const [showEmbed, setShowEmbed] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
+    if (!onMobile) return;
 
-    if (onMobile) {
-      timeout = setTimeout(() => setShowEmbed(true), 300);
-    }
+    const el = containerRef.current;
+    if (!el) return;
 
-    return () => clearTimeout(timeout);
+    let isVisible = false;
+    let isScrollIdle = true;
+    let scrollTimeout: NodeJS.Timeout;
+
+    const SCROLL_IDLE = 150;
+
+    const maybeShow = (): void => {
+      if (isVisible && isScrollIdle) {
+        setShowEmbed(true);
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        maybeShow();
+      },
+      { threshold: 0.5 },
+    );
+
+    observer.observe(el);
+
+    const onScroll = (): void => {
+      isScrollIdle = false;
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        isScrollIdle = true;
+        maybeShow();
+      }, SCROLL_IDLE);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', onScroll);
+      clearTimeout(scrollTimeout);
+    };
   }, []);
 
   return (
@@ -118,6 +155,7 @@ const Video: React.FC<{ youTubeUrl: string }> = ({ youTubeUrl }) => {
         ))}
       </Helmet>
       <div
+        ref={containerRef}
         className={s.videoContainer}
         style={
           posterUrl && {
