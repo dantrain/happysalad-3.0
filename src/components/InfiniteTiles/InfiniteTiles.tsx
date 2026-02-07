@@ -124,7 +124,7 @@ const VirtualizedList: React.FC<VirtualizedListProps> = ({
         ? 550
         : 350;
     },
-    overscan: onMobile ? 5 : 15,
+    overscan: onMobile ? 8 : 15,
     scrollMargin: scrollMarginRef.current,
     measureElement: (el) => {
       const height = el.getBoundingClientRect().height;
