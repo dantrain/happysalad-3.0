@@ -10,7 +10,6 @@
   [headers.values]
     Cache-Control = "public, max-age=300"
     X-Robots-Tag = "noindex"
-    X-Frame-Options = "ALLOW-FROM https://app.contentful.com"
     Content-Security-Policy = "frame-ancestors https://app.contentful.com"
 
 [[redirects]]
