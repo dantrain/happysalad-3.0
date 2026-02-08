@@ -122,7 +122,7 @@ export const query = graphql`
         id
         name
         image {
-          icon_url
+          thumb
         }
       }
     }

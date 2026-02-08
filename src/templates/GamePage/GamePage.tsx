@@ -9,22 +9,22 @@ import SEO from '../../components/SEO';
 import * as s from './game-page.module.css';
 
 type GamePageProps = {
-  pageContext: { name: string; deck: string; image: { small_url: string } };
+  pageContext: { name: string; summary: string; image: { cover: string } };
   data: Queries.PostsBySlugsQuery;
 };
 
 const GamePage: React.FC<GamePageProps> = ({
   pageContext: {
     name,
-    deck,
-    image: { small_url: imgUrl },
+    summary,
+    image: { cover: imgUrl },
   },
   data: {
     allContentfulPodcastPost: { edges: podcastPosts },
     allContentfulVideoPost: { edges: videoPosts },
   },
 }) => {
-  const description = deck && deck !== name && decode(deck);
+  const description = summary && summary !== name && decode(summary);
 
   return (
     <>

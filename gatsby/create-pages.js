@@ -32,11 +32,11 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
                   id
                   name
                   aliases
-                  deck
+                  summary
                   image {
-                    icon_url
-                    tiny_url
-                    small_url
+                    thumb
+                    micro
+                    cover
                   }
                 }
               }
@@ -229,7 +229,7 @@ function getGamesMap(posts) {
             hotTopicsScores[game.id] = {
               id: game.id,
               name: game.name,
-              image: { icon_url: game.image.icon_url },
+              image: { thumb: game.image.thumb },
               score,
             };
           }
@@ -270,8 +270,8 @@ function createSearchData(gamesMap) {
 
   const gameData = {};
 
-  gamesMap.forEach(({ id, name, image: { tiny_url } }) => {
-    gameData[id] = { name, tiny_url };
+  gamesMap.forEach(({ id, name, image: { micro } }) => {
+    gameData[id] = { name, micro };
   });
 
   fs.writeFileSync(

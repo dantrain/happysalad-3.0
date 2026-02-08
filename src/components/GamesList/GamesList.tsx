@@ -7,7 +7,7 @@ import * as s from './games-list.module.css';
 export type GamesListItems = readonly {
   readonly id?: number;
   readonly name?: string;
-  readonly image?: { readonly icon_url?: string };
+  readonly image?: { readonly thumb?: string };
 }[];
 
 type GamesListProps = {
@@ -17,9 +17,9 @@ type GamesListProps = {
 
 const GamesList: React.FC<GamesListProps> = ({ games, className }) => (
   <ul className={cn(s.list, className)}>
-    {games.map(({ id, name, image: { icon_url } }) => (
+    {games.map(({ id, name, image: { thumb } }) => (
       <li key={id} className={s.item}>
-        <GameLink name={name} image={icon_url} />
+        <GameLink name={name} image={thumb} />
       </li>
     ))}
   </ul>

@@ -13,17 +13,7 @@ const Image = forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
 
   if (error) return null;
 
-  return (
-    <img
-      ref={ref}
-      src={src.replace(
-        'https://giantbomb1.cbsistatic.com/',
-        'https://www.giantbomb.com/a/',
-      )}
-      {...rest}
-      onError={onError}
-    />
-  );
+  return <img ref={ref} src={src} {...rest} onError={onError} />;
 });
 
 export default Image;

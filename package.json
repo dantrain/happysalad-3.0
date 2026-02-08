@@ -61,6 +61,7 @@
     "@types/react-dom": "^18.3.7",
     "@types/react-transition-group": "^4.4.12",
     "@types/unist": "^3.0.3",
+    "contentful-management": "^11.69.1",
     "eslint": "^9.39.2",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^17.3.0",

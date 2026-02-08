@@ -4324,29 +4324,26 @@ type contentfulPodcastPostGamesJsonNodeFilterListInput = {
 
 type contentfulPodcastPostGamesJsonNodeGames = {
   readonly aliases: Maybe<Scalars['String']>;
-  readonly deck: Maybe<Scalars['String']>;
   readonly id: Maybe<Scalars['Int']>;
   readonly image: Maybe<contentfulPodcastPostGamesJsonNodeGamesImage>;
   readonly name: Maybe<Scalars['String']>;
-  readonly resource_type: Maybe<Scalars['String']>;
+  readonly summary: Maybe<Scalars['String']>;
 };
 
 type contentfulPodcastPostGamesJsonNodeGamesFieldSelector = {
   readonly aliases: InputMaybe<FieldSelectorEnum>;
-  readonly deck: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly image: InputMaybe<contentfulPodcastPostGamesJsonNodeGamesImageFieldSelector>;
   readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly resource_type: InputMaybe<FieldSelectorEnum>;
+  readonly summary: InputMaybe<FieldSelectorEnum>;
 };
 
 type contentfulPodcastPostGamesJsonNodeGamesFilterInput = {
   readonly aliases: InputMaybe<StringQueryOperatorInput>;
-  readonly deck: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<IntQueryOperatorInput>;
   readonly image: InputMaybe<contentfulPodcastPostGamesJsonNodeGamesImageFilterInput>;
   readonly name: InputMaybe<StringQueryOperatorInput>;
-  readonly resource_type: InputMaybe<StringQueryOperatorInput>;
+  readonly summary: InputMaybe<StringQueryOperatorInput>;
 };
 
 type contentfulPodcastPostGamesJsonNodeGamesFilterListInput = {
@@ -4354,64 +4351,35 @@ type contentfulPodcastPostGamesJsonNodeGamesFilterListInput = {
 };
 
 type contentfulPodcastPostGamesJsonNodeGamesImage = {
-  readonly icon_url: Maybe<Scalars['String']>;
-  readonly image_tags: Maybe<Scalars['String']>;
-  readonly medium_url: Maybe<Scalars['String']>;
-  readonly original_url: Maybe<Scalars['String']>;
-  readonly screen_large_url: Maybe<Scalars['String']>;
-  readonly screen_url: Maybe<Scalars['String']>;
-  readonly small_url: Maybe<Scalars['String']>;
-  readonly super_url: Maybe<Scalars['String']>;
-  readonly thumb_url: Maybe<Scalars['String']>;
-  readonly tiny_url: Maybe<Scalars['String']>;
+  readonly cover: Maybe<Scalars['String']>;
+  readonly micro: Maybe<Scalars['String']>;
+  readonly thumb: Maybe<Scalars['String']>;
 };
 
 type contentfulPodcastPostGamesJsonNodeGamesImageFieldSelector = {
-  readonly icon_url: InputMaybe<FieldSelectorEnum>;
-  readonly image_tags: InputMaybe<FieldSelectorEnum>;
-  readonly medium_url: InputMaybe<FieldSelectorEnum>;
-  readonly original_url: InputMaybe<FieldSelectorEnum>;
-  readonly screen_large_url: InputMaybe<FieldSelectorEnum>;
-  readonly screen_url: InputMaybe<FieldSelectorEnum>;
-  readonly small_url: InputMaybe<FieldSelectorEnum>;
-  readonly super_url: InputMaybe<FieldSelectorEnum>;
-  readonly thumb_url: InputMaybe<FieldSelectorEnum>;
-  readonly tiny_url: InputMaybe<FieldSelectorEnum>;
+  readonly cover: InputMaybe<FieldSelectorEnum>;
+  readonly micro: InputMaybe<FieldSelectorEnum>;
+  readonly thumb: InputMaybe<FieldSelectorEnum>;
 };
 
 type contentfulPodcastPostGamesJsonNodeGamesImageFilterInput = {
-  readonly icon_url: InputMaybe<StringQueryOperatorInput>;
-  readonly image_tags: InputMaybe<StringQueryOperatorInput>;
-  readonly medium_url: InputMaybe<StringQueryOperatorInput>;
-  readonly original_url: InputMaybe<StringQueryOperatorInput>;
-  readonly screen_large_url: InputMaybe<StringQueryOperatorInput>;
-  readonly screen_url: InputMaybe<StringQueryOperatorInput>;
-  readonly small_url: InputMaybe<StringQueryOperatorInput>;
-  readonly super_url: InputMaybe<StringQueryOperatorInput>;
-  readonly thumb_url: InputMaybe<StringQueryOperatorInput>;
-  readonly tiny_url: InputMaybe<StringQueryOperatorInput>;
+  readonly cover: InputMaybe<StringQueryOperatorInput>;
+  readonly micro: InputMaybe<StringQueryOperatorInput>;
+  readonly thumb: InputMaybe<StringQueryOperatorInput>;
 };
 
 type contentfulPodcastPostGamesJsonNodeGamesImageSortInput = {
-  readonly icon_url: InputMaybe<SortOrderEnum>;
-  readonly image_tags: InputMaybe<SortOrderEnum>;
-  readonly medium_url: InputMaybe<SortOrderEnum>;
-  readonly original_url: InputMaybe<SortOrderEnum>;
-  readonly screen_large_url: InputMaybe<SortOrderEnum>;
-  readonly screen_url: InputMaybe<SortOrderEnum>;
-  readonly small_url: InputMaybe<SortOrderEnum>;
-  readonly super_url: InputMaybe<SortOrderEnum>;
-  readonly thumb_url: InputMaybe<SortOrderEnum>;
-  readonly tiny_url: InputMaybe<SortOrderEnum>;
+  readonly cover: InputMaybe<SortOrderEnum>;
+  readonly micro: InputMaybe<SortOrderEnum>;
+  readonly thumb: InputMaybe<SortOrderEnum>;
 };
 
 type contentfulPodcastPostGamesJsonNodeGamesSortInput = {
   readonly aliases: InputMaybe<SortOrderEnum>;
-  readonly deck: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly image: InputMaybe<contentfulPodcastPostGamesJsonNodeGamesImageSortInput>;
   readonly name: InputMaybe<SortOrderEnum>;
-  readonly resource_type: InputMaybe<SortOrderEnum>;
+  readonly summary: InputMaybe<SortOrderEnum>;
 };
 
 type contentfulPodcastPostGamesJsonNodeGroupConnection = {
@@ -4714,29 +4682,26 @@ type contentfulVideoPostGamesJsonNodeFilterListInput = {
 
 type contentfulVideoPostGamesJsonNodeGames = {
   readonly aliases: Maybe<Scalars['String']>;
-  readonly deck: Maybe<Scalars['String']>;
   readonly id: Maybe<Scalars['Int']>;
   readonly image: Maybe<contentfulVideoPostGamesJsonNodeGamesImage>;
   readonly name: Maybe<Scalars['String']>;
-  readonly resource_type: Maybe<Scalars['String']>;
+  readonly summary: Maybe<Scalars['String']>;
 };
 
 type contentfulVideoPostGamesJsonNodeGamesFieldSelector = {
   readonly aliases: InputMaybe<FieldSelectorEnum>;
-  readonly deck: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly image: InputMaybe<contentfulVideoPostGamesJsonNodeGamesImageFieldSelector>;
   readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly resource_type: InputMaybe<FieldSelectorEnum>;
+  readonly summary: InputMaybe<FieldSelectorEnum>;
 };
 
 type contentfulVideoPostGamesJsonNodeGamesFilterInput = {
   readonly aliases: InputMaybe<StringQueryOperatorInput>;
-  readonly deck: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<IntQueryOperatorInput>;
   readonly image: InputMaybe<contentfulVideoPostGamesJsonNodeGamesImageFilterInput>;
   readonly name: InputMaybe<StringQueryOperatorInput>;
-  readonly resource_type: InputMaybe<StringQueryOperatorInput>;
+  readonly summary: InputMaybe<StringQueryOperatorInput>;
 };
 
 type contentfulVideoPostGamesJsonNodeGamesFilterListInput = {
@@ -4744,64 +4709,35 @@ type contentfulVideoPostGamesJsonNodeGamesFilterListInput = {
 };
 
 type contentfulVideoPostGamesJsonNodeGamesImage = {
-  readonly icon_url: Maybe<Scalars['String']>;
-  readonly image_tags: Maybe<Scalars['String']>;
-  readonly medium_url: Maybe<Scalars['String']>;
-  readonly original_url: Maybe<Scalars['String']>;
-  readonly screen_large_url: Maybe<Scalars['String']>;
-  readonly screen_url: Maybe<Scalars['String']>;
-  readonly small_url: Maybe<Scalars['String']>;
-  readonly super_url: Maybe<Scalars['String']>;
-  readonly thumb_url: Maybe<Scalars['String']>;
-  readonly tiny_url: Maybe<Scalars['String']>;
+  readonly cover: Maybe<Scalars['String']>;
+  readonly micro: Maybe<Scalars['String']>;
+  readonly thumb: Maybe<Scalars['String']>;
 };
 
 type contentfulVideoPostGamesJsonNodeGamesImageFieldSelector = {
-  readonly icon_url: InputMaybe<FieldSelectorEnum>;
-  readonly image_tags: InputMaybe<FieldSelectorEnum>;
-  readonly medium_url: InputMaybe<FieldSelectorEnum>;
-  readonly original_url: InputMaybe<FieldSelectorEnum>;
-  readonly screen_large_url: InputMaybe<FieldSelectorEnum>;
-  readonly screen_url: InputMaybe<FieldSelectorEnum>;
-  readonly small_url: InputMaybe<FieldSelectorEnum>;
-  readonly super_url: InputMaybe<FieldSelectorEnum>;
-  readonly thumb_url: InputMaybe<FieldSelectorEnum>;
-  readonly tiny_url: InputMaybe<FieldSelectorEnum>;
+  readonly cover: InputMaybe<FieldSelectorEnum>;
+  readonly micro: InputMaybe<FieldSelectorEnum>;
+  readonly thumb: InputMaybe<FieldSelectorEnum>;
 };
 
 type contentfulVideoPostGamesJsonNodeGamesImageFilterInput = {
-  readonly icon_url: InputMaybe<StringQueryOperatorInput>;
-  readonly image_tags: InputMaybe<StringQueryOperatorInput>;
-  readonly medium_url: InputMaybe<StringQueryOperatorInput>;
-  readonly original_url: InputMaybe<StringQueryOperatorInput>;
-  readonly screen_large_url: InputMaybe<StringQueryOperatorInput>;
-  readonly screen_url: InputMaybe<StringQueryOperatorInput>;
-  readonly small_url: InputMaybe<StringQueryOperatorInput>;
-  readonly super_url: InputMaybe<StringQueryOperatorInput>;
-  readonly thumb_url: InputMaybe<StringQueryOperatorInput>;
-  readonly tiny_url: InputMaybe<StringQueryOperatorInput>;
+  readonly cover: InputMaybe<StringQueryOperatorInput>;
+  readonly micro: InputMaybe<StringQueryOperatorInput>;
+  readonly thumb: InputMaybe<StringQueryOperatorInput>;
 };
 
 type contentfulVideoPostGamesJsonNodeGamesImageSortInput = {
-  readonly icon_url: InputMaybe<SortOrderEnum>;
-  readonly image_tags: InputMaybe<SortOrderEnum>;
-  readonly medium_url: InputMaybe<SortOrderEnum>;
-  readonly original_url: InputMaybe<SortOrderEnum>;
-  readonly screen_large_url: InputMaybe<SortOrderEnum>;
-  readonly screen_url: InputMaybe<SortOrderEnum>;
-  readonly small_url: InputMaybe<SortOrderEnum>;
-  readonly super_url: InputMaybe<SortOrderEnum>;
-  readonly thumb_url: InputMaybe<SortOrderEnum>;
-  readonly tiny_url: InputMaybe<SortOrderEnum>;
+  readonly cover: InputMaybe<SortOrderEnum>;
+  readonly micro: InputMaybe<SortOrderEnum>;
+  readonly thumb: InputMaybe<SortOrderEnum>;
 };
 
 type contentfulVideoPostGamesJsonNodeGamesSortInput = {
   readonly aliases: InputMaybe<SortOrderEnum>;
-  readonly deck: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly image: InputMaybe<contentfulVideoPostGamesJsonNodeGamesImageSortInput>;
   readonly name: InputMaybe<SortOrderEnum>;
-  readonly resource_type: InputMaybe<SortOrderEnum>;
+  readonly summary: InputMaybe<SortOrderEnum>;
 };
 
 type contentfulVideoPostGamesJsonNodeGroupConnection = {
@@ -4876,7 +4812,7 @@ type HomeQueryVariables = Exact<{
 }>;
 
 
-type HomeQuery = { readonly allPost: { readonly edges: ReadonlyArray<{ readonly node: { readonly __typename: 'ContentfulPodcastPost', readonly slug: string | null, readonly title: string | null, readonly episodeNumber: number | null, readonly recordingDate: string | null, readonly audioFileUrl: string | null, readonly recordingDateFormatted: string | null, readonly author: { readonly name: string | null } | null, readonly body: { readonly childMarkdownRemark: { readonly htmlAst: Record<string, unknown> | null } | null } | null, readonly games: { readonly games: ReadonlyArray<{ readonly id: number | null, readonly name: string | null, readonly image: { readonly icon_url: string | null } | null } | null> | null } | null } | { readonly __typename: 'ContentfulVideoPost', readonly slug: string | null, readonly title: string | null, readonly recordingDate: string | null, readonly youTubeUrl: string | null, readonly recordingDateFormatted: string | null, readonly author: { readonly name: string | null } | null, readonly body: { readonly childMarkdownRemark: { readonly htmlAst: Record<string, unknown> | null } | null } | null, readonly games: { readonly games: ReadonlyArray<{ readonly id: number | null, readonly name: string | null, readonly image: { readonly icon_url: string | null } | null } | null> | null } | null } }>, readonly pageInfo: { readonly hasNextPage: boolean } } };
+type HomeQuery = { readonly allPost: { readonly edges: ReadonlyArray<{ readonly node: { readonly __typename: 'ContentfulPodcastPost', readonly slug: string | null, readonly title: string | null, readonly episodeNumber: number | null, readonly recordingDate: string | null, readonly audioFileUrl: string | null, readonly recordingDateFormatted: string | null, readonly author: { readonly name: string | null } | null, readonly body: { readonly childMarkdownRemark: { readonly htmlAst: Record<string, unknown> | null } | null } | null, readonly games: { readonly games: ReadonlyArray<{ readonly id: number | null, readonly name: string | null, readonly image: { readonly thumb: string | null } | null } | null> | null } | null } | { readonly __typename: 'ContentfulVideoPost', readonly slug: string | null, readonly title: string | null, readonly recordingDate: string | null, readonly youTubeUrl: string | null, readonly recordingDateFormatted: string | null, readonly author: { readonly name: string | null } | null, readonly body: { readonly childMarkdownRemark: { readonly htmlAst: Record<string, unknown> | null } | null } | null, readonly games: { readonly games: ReadonlyArray<{ readonly id: number | null, readonly name: string | null, readonly image: { readonly thumb: string | null } | null } | null> | null } | null } }>, readonly pageInfo: { readonly hasNextPage: boolean } } };
 
 type PodcastCategoryQueryVariables = Exact<{
   limit: Scalars['Int'];
@@ -4884,23 +4820,23 @@ type PodcastCategoryQueryVariables = Exact<{
 }>;
 
 
-type PodcastCategoryQuery = { readonly allContentfulPodcastPost: { readonly edges: ReadonlyArray<{ readonly node: { readonly __typename: 'ContentfulPodcastPost', readonly slug: string | null, readonly title: string | null, readonly episodeNumber: number | null, readonly recordingDate: string | null, readonly audioFileUrl: string | null, readonly recordingDateFormatted: string | null, readonly author: { readonly name: string | null } | null, readonly body: { readonly childMarkdownRemark: { readonly htmlAst: Record<string, unknown> | null } | null } | null, readonly games: { readonly games: ReadonlyArray<{ readonly id: number | null, readonly name: string | null, readonly image: { readonly icon_url: string | null } | null } | null> | null } | null } }>, readonly pageInfo: { readonly hasNextPage: boolean } } };
+type PodcastCategoryQuery = { readonly allContentfulPodcastPost: { readonly edges: ReadonlyArray<{ readonly node: { readonly __typename: 'ContentfulPodcastPost', readonly slug: string | null, readonly title: string | null, readonly episodeNumber: number | null, readonly recordingDate: string | null, readonly audioFileUrl: string | null, readonly recordingDateFormatted: string | null, readonly author: { readonly name: string | null } | null, readonly body: { readonly childMarkdownRemark: { readonly htmlAst: Record<string, unknown> | null } | null } | null, readonly games: { readonly games: ReadonlyArray<{ readonly id: number | null, readonly name: string | null, readonly image: { readonly thumb: string | null } | null } | null> | null } | null } }>, readonly pageInfo: { readonly hasNextPage: boolean } } };
 
-type PodcastPostFragment = { readonly slug: string | null, readonly title: string | null, readonly episodeNumber: number | null, readonly recordingDate: string | null, readonly audioFileUrl: string | null, readonly recordingDateFormatted: string | null, readonly author: { readonly name: string | null } | null, readonly body: { readonly childMarkdownRemark: { readonly htmlAst: Record<string, unknown> | null } | null } | null, readonly games: { readonly games: ReadonlyArray<{ readonly id: number | null, readonly name: string | null, readonly image: { readonly icon_url: string | null } | null } | null> | null } | null };
+type PodcastPostFragment = { readonly slug: string | null, readonly title: string | null, readonly episodeNumber: number | null, readonly recordingDate: string | null, readonly audioFileUrl: string | null, readonly recordingDateFormatted: string | null, readonly author: { readonly name: string | null } | null, readonly body: { readonly childMarkdownRemark: { readonly htmlAst: Record<string, unknown> | null } | null } | null, readonly games: { readonly games: ReadonlyArray<{ readonly id: number | null, readonly name: string | null, readonly image: { readonly thumb: string | null } | null } | null> | null } | null };
 
 type PodcastPostBySlugQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-type PodcastPostBySlugQuery = { readonly contentfulPodcastPost: { readonly episodeNumber: number | null, readonly title: string | null, readonly slug: string | null, readonly recordingDate: string | null, readonly audioFileUrl: string | null, readonly recordingDateFormatted: string | null, readonly author: { readonly name: string | null } | null, readonly body: { readonly childMarkdownRemark: { readonly htmlAst: Record<string, unknown> | null } | null } | null, readonly games: { readonly games: ReadonlyArray<{ readonly id: number | null, readonly name: string | null, readonly image: { readonly icon_url: string | null } | null } | null> | null } | null } | null };
+type PodcastPostBySlugQuery = { readonly contentfulPodcastPost: { readonly episodeNumber: number | null, readonly title: string | null, readonly slug: string | null, readonly recordingDate: string | null, readonly audioFileUrl: string | null, readonly recordingDateFormatted: string | null, readonly author: { readonly name: string | null } | null, readonly body: { readonly childMarkdownRemark: { readonly htmlAst: Record<string, unknown> | null } | null } | null, readonly games: { readonly games: ReadonlyArray<{ readonly id: number | null, readonly name: string | null, readonly image: { readonly thumb: string | null } | null } | null> | null } | null } | null };
 
 type PostsBySlugsQueryVariables = Exact<{
   slugs: InputMaybe<ReadonlyArray<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>;
 }>;
 
 
-type PostsBySlugsQuery = { readonly allContentfulPodcastPost: { readonly edges: ReadonlyArray<{ readonly node: { readonly slug: string | null, readonly title: string | null, readonly episodeNumber: number | null, readonly recordingDate: string | null, readonly audioFileUrl: string | null, readonly recordingDateFormatted: string | null, readonly author: { readonly name: string | null } | null, readonly body: { readonly childMarkdownRemark: { readonly htmlAst: Record<string, unknown> | null } | null } | null, readonly games: { readonly games: ReadonlyArray<{ readonly id: number | null, readonly name: string | null, readonly image: { readonly icon_url: string | null } | null } | null> | null } | null } }> }, readonly allContentfulVideoPost: { readonly edges: ReadonlyArray<{ readonly node: { readonly slug: string | null, readonly title: string | null, readonly recordingDate: string | null, readonly youTubeUrl: string | null, readonly recordingDateFormatted: string | null, readonly author: { readonly name: string | null } | null, readonly body: { readonly childMarkdownRemark: { readonly htmlAst: Record<string, unknown> | null } | null } | null, readonly games: { readonly games: ReadonlyArray<{ readonly id: number | null, readonly name: string | null, readonly image: { readonly icon_url: string | null } | null } | null> | null } | null } }> } };
+type PostsBySlugsQuery = { readonly allContentfulPodcastPost: { readonly edges: ReadonlyArray<{ readonly node: { readonly slug: string | null, readonly title: string | null, readonly episodeNumber: number | null, readonly recordingDate: string | null, readonly audioFileUrl: string | null, readonly recordingDateFormatted: string | null, readonly author: { readonly name: string | null } | null, readonly body: { readonly childMarkdownRemark: { readonly htmlAst: Record<string, unknown> | null } | null } | null, readonly games: { readonly games: ReadonlyArray<{ readonly id: number | null, readonly name: string | null, readonly image: { readonly thumb: string | null } | null } | null> | null } | null } }> }, readonly allContentfulVideoPost: { readonly edges: ReadonlyArray<{ readonly node: { readonly slug: string | null, readonly title: string | null, readonly recordingDate: string | null, readonly youTubeUrl: string | null, readonly recordingDateFormatted: string | null, readonly author: { readonly name: string | null } | null, readonly body: { readonly childMarkdownRemark: { readonly htmlAst: Record<string, unknown> | null } | null } | null, readonly games: { readonly games: ReadonlyArray<{ readonly id: number | null, readonly name: string | null, readonly image: { readonly thumb: string | null } | null } | null> | null } | null } }> } };
 
 type VideoCategoryQueryVariables = Exact<{
   limit: Scalars['Int'];
@@ -4908,16 +4844,16 @@ type VideoCategoryQueryVariables = Exact<{
 }>;
 
 
-type VideoCategoryQuery = { readonly allContentfulVideoPost: { readonly edges: ReadonlyArray<{ readonly node: { readonly __typename: 'ContentfulVideoPost', readonly slug: string | null, readonly title: string | null, readonly recordingDate: string | null, readonly youTubeUrl: string | null, readonly recordingDateFormatted: string | null, readonly author: { readonly name: string | null } | null, readonly body: { readonly childMarkdownRemark: { readonly htmlAst: Record<string, unknown> | null } | null } | null, readonly games: { readonly games: ReadonlyArray<{ readonly id: number | null, readonly name: string | null, readonly image: { readonly icon_url: string | null } | null } | null> | null } | null } }>, readonly pageInfo: { readonly hasNextPage: boolean } } };
+type VideoCategoryQuery = { readonly allContentfulVideoPost: { readonly edges: ReadonlyArray<{ readonly node: { readonly __typename: 'ContentfulVideoPost', readonly slug: string | null, readonly title: string | null, readonly recordingDate: string | null, readonly youTubeUrl: string | null, readonly recordingDateFormatted: string | null, readonly author: { readonly name: string | null } | null, readonly body: { readonly childMarkdownRemark: { readonly htmlAst: Record<string, unknown> | null } | null } | null, readonly games: { readonly games: ReadonlyArray<{ readonly id: number | null, readonly name: string | null, readonly image: { readonly thumb: string | null } | null } | null> | null } | null } }>, readonly pageInfo: { readonly hasNextPage: boolean } } };
 
-type VideoPostFragment = { readonly slug: string | null, readonly title: string | null, readonly recordingDate: string | null, readonly youTubeUrl: string | null, readonly recordingDateFormatted: string | null, readonly author: { readonly name: string | null } | null, readonly body: { readonly childMarkdownRemark: { readonly htmlAst: Record<string, unknown> | null } | null } | null, readonly games: { readonly games: ReadonlyArray<{ readonly id: number | null, readonly name: string | null, readonly image: { readonly icon_url: string | null } | null } | null> | null } | null };
+type VideoPostFragment = { readonly slug: string | null, readonly title: string | null, readonly recordingDate: string | null, readonly youTubeUrl: string | null, readonly recordingDateFormatted: string | null, readonly author: { readonly name: string | null } | null, readonly body: { readonly childMarkdownRemark: { readonly htmlAst: Record<string, unknown> | null } | null } | null, readonly games: { readonly games: ReadonlyArray<{ readonly id: number | null, readonly name: string | null, readonly image: { readonly thumb: string | null } | null } | null> | null } | null };
 
 type VideoPostBySlugQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-type VideoPostBySlugQuery = { readonly contentfulVideoPost: { readonly title: string | null, readonly slug: string | null, readonly recordingDate: string | null, readonly youTubeUrl: string | null, readonly recordingDateFormatted: string | null, readonly author: { readonly name: string | null } | null, readonly body: { readonly childMarkdownRemark: { readonly htmlAst: Record<string, unknown> | null } | null } | null, readonly games: { readonly games: ReadonlyArray<{ readonly id: number | null, readonly name: string | null, readonly image: { readonly icon_url: string | null } | null } | null> | null } | null } | null };
+type VideoPostBySlugQuery = { readonly contentfulVideoPost: { readonly title: string | null, readonly slug: string | null, readonly recordingDate: string | null, readonly youTubeUrl: string | null, readonly recordingDateFormatted: string | null, readonly author: { readonly name: string | null } | null, readonly body: { readonly childMarkdownRemark: { readonly htmlAst: Record<string, unknown> | null } | null } | null, readonly games: { readonly games: ReadonlyArray<{ readonly id: number | null, readonly name: string | null, readonly image: { readonly thumb: string | null } | null } | null> | null } | null } | null };
 
 
 }

@@ -130,7 +130,7 @@ const Search: React.FC<SearchProps> = ({ inHeader, inSideBar, className }) => {
                     >
                       <Image
                         className={s.resultImage}
-                        src={item.tiny_url}
+                        src={item.micro}
                         alt={item.name}
                         width={30}
                         height={30}

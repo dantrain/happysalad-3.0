@@ -31,7 +31,7 @@ const VideoPost: React.FC<VideoPostProps> = ({
       games?.games?.length && (
         <GameLink
           name={games.games[0].name}
-          image={games.games[0].image.icon_url}
+          image={games.games[0].image.thumb}
         />
       )
     }
@@ -63,7 +63,7 @@ export const query = graphql`
         id
         name
         image {
-          icon_url
+          thumb
         }
       }
     }

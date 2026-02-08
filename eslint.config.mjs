@@ -5,7 +5,7 @@ import globals from 'globals';
 
 export default tseslint.config(
   {
-    ignores: ['public/**', '.cache/**', 'types/**', 'src/gatsby-types.d.ts'],
+    ignores: ['public/**', '.cache/**', 'types/**', 'src/gatsby-types.d.ts', 'scripts/**'],
   },
   js.configs.recommended,
   {
