@@ -5,6 +5,12 @@
 [build.environment]
   NODE_VERSION = "24"
 
+[[headers]]
+  for = "/extension/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300"
+    X-Robots-Tag = "noindex"
+
 [[redirects]]
   from = "/assets/*"
   to = "https://downloads.ctfassets.net/:splat"
