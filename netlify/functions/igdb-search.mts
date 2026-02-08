@@ -1,10 +1,20 @@
 import type { Context } from '@netlify/functions';
 
-const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': 'https://app.contentful.com',
-  'Access-Control-Allow-Headers': 'Content-Type, X-API-Key',
-  'Access-Control-Allow-Methods': 'GET, OPTIONS',
-};
+const ALLOWED_ORIGINS = [
+  'https://app.contentful.com',
+  'http://localhost:5173',
+];
+
+function getCorsHeaders(req: Request) {
+  const origin = req.headers.get('Origin') || '';
+  return {
+    'Access-Control-Allow-Origin': ALLOWED_ORIGINS.includes(origin)
+      ? origin
+      : ALLOWED_ORIGINS[0],
+    'Access-Control-Allow-Headers': 'Content-Type, X-API-Key',
+    'Access-Control-Allow-Methods': 'GET, OPTIONS',
+  };
+}
 
 async function getTwitchToken(): Promise<string> {
   const res = await fetch('https://id.twitch.tv/oauth2/token', {
@@ -30,15 +40,17 @@ function buildImageUrls(imageId: string) {
 }
 
 export default async (req: Request, _context: Context) => {
+  const corsHeaders = getCorsHeaders(req);
+
   if (req.method === 'OPTIONS') {
-    return new Response(null, { status: 204, headers: CORS_HEADERS });
+    return new Response(null, { status: 204, headers: corsHeaders });
   }
 
   const apiKey = req.headers.get('X-API-Key');
   if (!apiKey || apiKey !== process.env.IGDB_PROXY_KEY) {
     return new Response(JSON.stringify({ error: 'Unauthorized' }), {
       status: 401,
-      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
   }
 
@@ -47,7 +59,7 @@ export default async (req: Request, _context: Context) => {
   if (!query) {
     return new Response(JSON.stringify({ error: 'Missing q parameter' }), {
       status: 400,
-      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
   }
 
@@ -92,14 +104,14 @@ export default async (req: Request, _context: Context) => {
 
     return new Response(JSON.stringify(results), {
       status: 200,
-      headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
   } catch (err) {
     return new Response(
       JSON.stringify({ error: (err as Error).message }),
       {
         status: 502,
-        headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       },
     );
   }
