@@ -31,3 +31,447 @@
   from = "/archives/category/saladcast/feed"
   to = "/saladcast.xml"
   
+[[redirects]]
+  from = "/game/shapez-io"
+  to = "/game/shapez"
+  status = 301
+
+[[redirects]]
+  from = "/game/8-to-glory-the-official-game-of-the-pbr"
+  to = "/game/8-to-glory"
+  status = 301
+
+[[redirects]]
+  from = "/game/roboquest"
+  to = "/game/robo-quest"
+  status = 301
+
+[[redirects]]
+  from = "/game/od"
+  to = "/game/od-knock"
+  status = 301
+
+[[redirects]]
+  from = "/game/headbangers-rhythm-royale"
+  to = "/game/head-bangers-rhythm-royale"
+  status = 301
+
+[[redirects]]
+  from = "/game/f355-challenge-passione-rossa"
+  to = "/game/f355-challenge"
+  status = 301
+
+[[redirects]]
+  from = "/game/overwatch-2"
+  to = "/game/overwatch"
+  status = 301
+
+[[redirects]]
+  from = "/game/wip-eout-fusion"
+  to = "/game/wipeout-fusion"
+  status = 301
+
+[[redirects]]
+  from = "/game/wip-eout-3-special-edition"
+  to = "/game/wipeout-3-special-edition"
+  status = 301
+
+[[redirects]]
+  from = "/game/wip-eout"
+  to = "/game/wipeout"
+  status = 301
+
+[[redirects]]
+  from = "/game/wip-eout-xl"
+  to = "/game/wipeout-xl"
+  status = 301
+
+[[redirects]]
+  from = "/game/superhot-vr"
+  to = "/game/super-hot-vr"
+  status = 301
+
+[[redirects]]
+  from = "/game/pokemon-scarlet-violet"
+  to = "/game/pokemon-scarlet"
+  status = 301
+
+[[redirects]]
+  from = "/game/new-max-payne-1-and-2-project-working-title"
+  to = "/game/max-payne"
+  status = 301
+
+[[redirects]]
+  from = "/game/pokemon-diamond-pearl"
+  to = "/game/pokemon-diamond-version"
+  status = 301
+
+[[redirects]]
+  from = "/game/wip-eout-rush"
+  to = "/game/wipeout-merge"
+  status = 301
+
+[[redirects]]
+  from = "/game/chivalry-ii"
+  to = "/game/chivalry-2"
+  status = 301
+
+[[redirects]]
+  from = "/game/backbone"
+  to = "/game/backbone-artifact-edition"
+  status = 301
+
+[[redirects]]
+  from = "/game/the-matrix-awakens"
+  to = "/game/the-matrix-awakens-an-unreal-engine-5-experience"
+  status = 301
+
+[[redirects]]
+  from = "/game/new-world"
+  to = "/game/new-world-aeternum"
+  status = 301
+
+[[redirects]]
+  from = "/game/trackmania-turbo"
+  to = "/game/track-mania-turbo"
+  status = 301
+
+[[redirects]]
+  from = "/game/pokemon-x-y"
+  to = "/game/pokemon-x"
+  status = 301
+
+[[redirects]]
+  from = "/game/soulcalibur-vi"
+  to = "/game/soul-calibur-vi"
+  status = 301
+
+[[redirects]]
+  from = "/game/time-crisis-2"
+  to = "/game/time-crisis-ii"
+  status = 301
+
+[[redirects]]
+  from = "/game/open-transport-tycoon-deluxe"
+  to = "/game/transport-tycoon-deluxe"
+  status = 301
+
+[[redirects]]
+  from = "/game/pokemon-brilliant-diamond-shining-pearl"
+  to = "/game/pokemon-brilliant-diamond"
+  status = 301
+
+[[redirects]]
+  from = "/game/the-falconeer"
+  to = "/game/the-falconeer-revolution-remaster"
+  status = 301
+
+[[redirects]]
+  from = "/game/project-triangle-strategy-working-title"
+  to = "/game/triangle-strategy"
+  status = 301
+
+[[redirects]]
+  from = "/game/dragon-age"
+  to = "/game/dragon-age-the-veilguard"
+  status = 301
+
+[[redirects]]
+  from = "/game/nie-r-replicant"
+  to = "/game/nier-replicant"
+  status = 301
+
+[[redirects]]
+  from = "/game/project-007-working-title"
+  to = "/game/007-first-light"
+  status = 301
+
+[[redirects]]
+  from = "/game/di-rt-rally"
+  to = "/game/dirt-rally"
+  status = 301
+
+[[redirects]]
+  from = "/game/super-smash-bros-for-wii-u-nintendo-3-ds"
+  to = "/game/super-smash-bros-for-wii-u"
+  status = 301
+
+[[redirects]]
+  from = "/game/dust-514"
+  to = "/game/eve-dust-514"
+  status = 301
+
+[[redirects]]
+  from = "/game/ni-ghts-into-dreams"
+  to = "/game/nights-into-dreams"
+  status = 301
+
+[[redirects]]
+  from = "/game/pokemon-black-white-version-2"
+  to = "/game/pokemon-black-version-2"
+  status = 301
+
+[[redirects]]
+  from = "/game/the-pinball-arcade"
+  to = "/game/pinball-arcade"
+  status = 301
+
+[[redirects]]
+  from = "/game/speed-buggy"
+  to = "/game/buggy-boy"
+  status = 301
+
+[[redirects]]
+  from = "/game/pokemon-black-white"
+  to = "/game/pokemon-black-version"
+  status = 301
+
+[[redirects]]
+  from = "/game/red-dead-redemption-ii"
+  to = "/game/red-dead-redemption-2"
+  status = 301
+
+[[redirects]]
+  from = "/game/destruction-allstars"
+  to = "/game/destruction-all-stars"
+  status = 301
+
+[[redirects]]
+  from = "/game/ghost-wire-tokyo"
+  to = "/game/ghostwire-tokyo"
+  status = 301
+
+[[redirects]]
+  from = "/game/project-athia-working-title"
+  to = "/game/forspoken"
+  status = 301
+
+[[redirects]]
+  from = "/game/hover"
+  to = "/game/hover-revolt-of-gamers"
+  status = 301
+
+[[redirects]]
+  from = "/game/tom-clancys-rainbow-six-siege"
+  to = "/game/tom-clancys-rainbow-six-siege-x"
+  status = 301
+
+[[redirects]]
+  from = "/game/disney-fantasia-music-evolved"
+  to = "/game/fantasia-music-evolved"
+  status = 301
+
+[[redirects]]
+  from = "/game/in-famous-second-son"
+  to = "/game/infamous-second-son"
+  status = 301
+
+[[redirects]]
+  from = "/game/d4-dark-dreams-dont-die"
+  to = "/game/d4-dark-dreams-dont-die-season-1"
+  status = 301
+
+[[redirects]]
+  from = "/game/time-shift"
+  to = "/game/timeshift"
+  status = 301
+
+[[redirects]]
+  from = "/game/di-rt-3"
+  to = "/game/dirt-3"
+  status = 301
+
+[[redirects]]
+  from = "/game/wip-eout-2048"
+  to = "/game/wipeout-2048"
+  status = 301
+
+[[redirects]]
+  from = "/game/soulcalibur-v"
+  to = "/game/soul-calibur-v"
+  status = 301
+
+[[redirects]]
+  from = "/game/modern-warfare-2"
+  to = "/game/call-of-duty-modern-warfare-2"
+  status = 301
+
+[[redirects]]
+  from = "/game/di-rt-2"
+  to = "/game/colin-mc-rae-dirt-2"
+  status = 301
+
+[[redirects]]
+  from = "/game/i-racing-com"
+  to = "/game/i-racing"
+  status = 301
+
+[[redirects]]
+  from = "/game/nelson-tethers-puzzle-agent"
+  to = "/game/puzzle-agent"
+  status = 301
+
+[[redirects]]
+  from = "/game/comic-jumper"
+  to = "/game/comic-jumper-the-adventures-of-captain-smiley"
+  status = 301
+
+[[redirects]]
+  from = "/game/pokemon-red-blue"
+  to = "/game/pokemon-red-version"
+  status = 301
+
+[[redirects]]
+  from = "/game/final-fantasy-xiv-online-a-realm-reborn"
+  to = "/game/final-fantasy-xiv-online"
+  status = 301
+
+[[redirects]]
+  from = "/game/tiger-woods-pga-tour-12-the-masters"
+  to = "/game/tiger-woods-pga-tour-12"
+  status = 301
+
+[[redirects]]
+  from = "/game/wip-eout-pulse"
+  to = "/game/wipeout-pulse"
+  status = 301
+
+[[redirects]]
+  from = "/game/track-mania-canyon"
+  to = "/game/track-mania-2-canyon"
+  status = 301
+
+[[redirects]]
+  from = "/game/in-famous-festival-of-blood"
+  to = "/game/infamous-festival-of-blood"
+  status = 301
+
+[[redirects]]
+  from = "/game/surgeon-simulator"
+  to = "/game/surgeon-simulator-2013"
+  status = 301
+
+[[redirects]]
+  from = "/game/in-famous"
+  to = "/game/infamous"
+  status = 301
+
+[[redirects]]
+  from = "/game/wip-eout-pure"
+  to = "/game/wipeout-pure"
+  status = 301
+
+[[redirects]]
+  from = "/game/wip-eout-hd"
+  to = "/game/wipeout-hd"
+  status = 301
+
+[[redirects]]
+  from = "/game/dead-or-alive-xtreme-3"
+  to = "/game/dead-or-alive-xtreme-3-fortune"
+  status = 301
+
+[[redirects]]
+  from = "/game/matter-fall"
+  to = "/game/matterfall"
+  status = 301
+
+[[redirects]]
+  from = "/game/wild"
+  to = "/game/wi-ld"
+  status = 301
+
+[[redirects]]
+  from = "/game/pokemon-sun-moon"
+  to = "/game/pokemon-sun"
+  status = 301
+
+[[redirects]]
+  from = "/game/fire-emblem-fates"
+  to = "/game/fire-emblem-fates-birthright"
+  status = 301
+
+[[redirects]]
+  from = "/game/superhot"
+  to = "/game/super-hot"
+  status = 301
+
+[[redirects]]
+  from = "/game/di-rt-4"
+  to = "/game/dirt-4"
+  status = 301
+
+[[redirects]]
+  from = "/game/black-desert-online"
+  to = "/game/black-desert"
+  status = 301
+
+[[redirects]]
+  from = "/game/player-unknowns-battlegrounds"
+  to = "/game/pubg-battlegrounds"
+  status = 301
+
+[[redirects]]
+  from = "/game/maniac-mansion-day-of-the-tentacle"
+  to = "/game/day-of-the-tentacle"
+  status = 301
+
+[[redirects]]
+  from = "/game/kingdom-hearts-hd-ii-8-final-chapter-prologue"
+  to = "/game/kingdom-hearts-hd-2-8-final-chapter-prologue"
+  status = 301
+
+[[redirects]]
+  from = "/game/ri-me"
+  to = "/game/rime"
+  status = 301
+
+[[redirects]]
+  from = "/game/skyrim-very-special-edition"
+  to = "/game/the-elder-scrolls-v-skyrim-special-edition"
+  status = 301
+
+[[redirects]]
+  from = "/game/prince-of-persia-the-sands-of-time-remake"
+  to = "/game/prince-of-persia-the-sands-of-time"
+  status = 301
+
+[[redirects]]
+  from = "/game/grip-combat-racing"
+  to = "/game/grip"
+  status = 301
+
+[[redirects]]
+  from = "/game/pokemon-sword-shield"
+  to = "/game/pokemon-sword"
+  status = 301
+
+[[redirects]]
+  from = "/game/jsrf-jet-set-radio-future"
+  to = "/game/jet-set-radio-future"
+  status = 301
+
+[[redirects]]
+  from = "/game/mario-and-sonic-at-the-tokyo-2020-olympic-games"
+  to = "/game/mario-and-sonic-at-the-olympic-games-tokyo-2020"
+  status = 301
+
+[[redirects]]
+  from = "/game/invector"
+  to = "/game/avicii-invector"
+  status = 301
+
+[[redirects]]
+  from = "/game/serious-sam-4-planet-badass"
+  to = "/game/serious-sam-4"
+  status = 301
+
+[[redirects]]
+  from = "/game/s-t-a-l-k-e-r-2"
+  to = "/game/s-t-a-l-k-e-r-2-heart-of-chornobyl"
+  status = 301
+
+[[redirects]]
+  from = "/game/wip-eout-64"
+  to = "/game/wipeout-64"
+  status = 301
