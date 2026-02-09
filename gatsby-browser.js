@@ -66,11 +66,3 @@ export const onRouteUpdate = ({ location }) => {
 
   setTimeout(() => store.dispatch(close()), 100);
 };
-
-export const shouldUpdateScroll = () => {
-  // On back/forward, our virtualizer handles scroll restoration
-  if (isPopNavigation) return false;
-
-  // On all other navigations (links, bookmarks, refresh), scroll to top
-  return [0, 0];
-};
