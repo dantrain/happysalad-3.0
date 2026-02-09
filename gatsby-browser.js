@@ -53,6 +53,11 @@ if (typeof window !== 'undefined') {
 export const onRouteUpdate = ({ location }) => {
   if (!isPopNavigation) {
     scrollStateCache.delete(location.pathname);
+
+    // If scroll is near the top (stale Gatsby/browser restoration), reset to 0
+    if (window.scrollY > 0 && window.scrollY < window.innerHeight / 2) {
+      window.scrollTo(0, 0);
+    }
   }
 
   isPopNavigation = false;
