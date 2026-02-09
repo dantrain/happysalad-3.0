@@ -117,14 +117,58 @@ const GamePage: React.FC<GamePageProps> = ({
   const [isClient, setIsClient] = useState(false);
   useEffect(() => setIsClient(true), []);
 
+  const [expanded, setExpanded] = useState(false);
+  const [needsClamp, setNeedsClamp] = useState(false);
+  const deckRef = useRef<HTMLParagraphElement>(null);
+
+  useLayoutEffect(() => {
+    const el = deckRef.current;
+    if (!el || expanded) return;
+
+    const checkClamp = () => {
+      setNeedsClamp(el.scrollHeight > el.clientHeight + 1);
+    };
+
+    checkClamp();
+
+    const observer = new ResizeObserver(checkClamp);
+    observer.observe(el);
+
+    return () => observer.disconnect();
+  }, [expanded]);
+
   return (
     <>
       <SEO title={name} />
-      <section className={s.intro}>
+      <section className={`${s.intro}${expanded ? ` ${s.introExpanded}` : ''}`}>
         <Image className={s.thumbImg} src={imgUrl} alt={name} />
         <div className={s.introText}>
           <h1 className={s.title}>{name}</h1>
-          {description && <p className={s.deck}>{description}</p>}
+          {description && (
+            <>
+              <p
+                ref={deckRef}
+                className={`${s.deck}${expanded ? '' : ` ${s.deckClamped}`}`}
+              >
+                {description}
+              </p>
+              {needsClamp && (
+                <button
+                  className={s.showMoreButton}
+                  onClick={() => setExpanded((prev) => !prev)}
+                  aria-expanded={expanded}
+                >
+                  {expanded ? 'Show Less' : 'Show More'}
+                  <svg className={s.chevron} width="10" height="6">
+                    <polygon
+                      points={expanded ? '0,6 10,6 5,0' : '0,0 10,0 5,6'}
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              )}
+            </>
+          )}
         </div>
       </section>
       <ul>

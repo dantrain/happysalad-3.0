@@ -11,6 +11,12 @@
   }
 }
 
+.introExpanded {
+  @media (--tablet-portrait-up) {
+    align-items: flex-start;
+  }
+}
+
 .thumbImg {
   flex: 0 0 auto;
   object-fit: contain;
@@ -25,7 +31,7 @@
 }
 
 .introText {
-  padding: 0.4em 0 0 var(--unit1);
+  padding: 0.7em 0 0 var(--unit1);
 
   @media (--phone-only) {
     padding: 2em 0 1em;
@@ -42,4 +48,27 @@
 
 .deck {
   margin-bottom: 0;
+}
+
+.deckClamped {
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  line-clamp: 7;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.showMoreButton {
+  margin-top: 0.5em;
+  font-weight: bold;
+  color: var(--redHeadingText);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.chevron {
+  display: inline-block;
+  margin: 0 0 2px 4px;
 }
