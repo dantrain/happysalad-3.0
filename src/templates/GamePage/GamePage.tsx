@@ -146,7 +146,10 @@ const GamePage: React.FC<GamePageProps> = ({
 }) => {
   const description = summary && summary !== name && decode(summary);
 
-  const [isClient, setIsClient] = useState(false);
+  const [isClient, setIsClient] = useState(
+    typeof window !== 'undefined' &&
+      scrollStateCache.has(window.location.pathname),
+  );
   useEffect(() => setIsClient(true), []);
 
   const [expanded, setExpanded] = useState(false);

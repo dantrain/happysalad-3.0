@@ -62,7 +62,10 @@ const InfiniteTiles: React.FC<InfiniteTilesProps> = ({
   const items = useMemo(() => flatten(pages).filter(Boolean), [pages]);
   const loadNextPage = useCallback(() => dispatch(fetchPage()), [dispatch]);
 
-  const [isClient, setIsClient] = useState(false);
+  const [isClient, setIsClient] = useState(
+    typeof window !== 'undefined' &&
+      scrollStateCache.has(window.location.pathname),
+  );
   useEffect(() => setIsClient(true), []);
 
   if (!isClient) {
