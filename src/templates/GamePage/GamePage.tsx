@@ -45,6 +45,12 @@ const VirtualizedPodcastList: React.FC<{
   const hasScrolled = useRef(false);
   const stateRef = useRef(savedState);
 
+  useLayoutEffect(() => {
+    if (savedState?.offset) {
+      window.scrollTo(0, savedState.offset);
+    }
+  }, []);
+
   const virtualizer = useWindowVirtualizer({
     count: podcastPosts.length,
     estimateSize: (index) => {

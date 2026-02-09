@@ -117,6 +117,12 @@ const VirtualizedList: React.FC<VirtualizedListProps> = ({
   const hasScrolled = useRef(false);
   const stateRef = useRef(savedState);
 
+  useLayoutEffect(() => {
+    if (savedState?.offset) {
+      window.scrollTo(0, savedState.offset);
+    }
+  }, []);
+
   const virtualizer = useWindowVirtualizer({
     count: items.length,
     estimateSize: (index) => {
