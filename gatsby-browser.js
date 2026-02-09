@@ -10,6 +10,18 @@ export const wrapPageElement = wrapWithPage;
 let isPopNavigation = false;
 
 if (typeof window !== 'undefined') {
+  if (window.history.scrollRestoration) {
+    window.history.scrollRestoration = 'manual';
+  }
+
+  // Clear Gatsby's sessionStorage scroll entries so reload starts at top
+  for (let i = sessionStorage.length - 1; i >= 0; i--) {
+    const key = sessionStorage.key(i);
+    if (key && key.startsWith('@@scroll|')) sessionStorage.removeItem(key);
+  }
+
+  window.scrollTo(0, 0);
+
   window.addEventListener('popstate', () => {
     isPopNavigation = true;
 
