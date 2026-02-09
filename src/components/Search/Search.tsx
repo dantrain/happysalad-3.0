@@ -128,13 +128,17 @@ const Search: React.FC<SearchProps> = ({ inHeader, inSideBar, className }) => {
                         }),
                       })}
                     >
-                      <Image
-                        className={s.resultImage}
-                        src={item.micro}
-                        alt={item.name}
-                        width={30}
-                        height={30}
-                      />
+                      {item.micro ? (
+                        <Image
+                          className={s.resultImage}
+                          src={item.micro}
+                          alt={item.name}
+                          width={30}
+                          height={30}
+                        />
+                      ) : (
+                        <div className={s.missingImage} />
+                      )}
                       <p className={s.resultText}>{item.name}</p>
                     </li>
                   ) : null,
