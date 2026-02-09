@@ -42,6 +42,8 @@ const VirtualizedPodcastList: React.FC<{
   const cacheKey =
     typeof window !== 'undefined' ? window.location.pathname : '/';
   const savedState = scrollStateCache.get(cacheKey);
+  const hasScrolled = useRef(false);
+  const stateRef = useRef(savedState);
 
   const virtualizer = useWindowVirtualizer({
     count: podcastPosts.length,
@@ -65,14 +67,30 @@ const VirtualizedPodcastList: React.FC<{
     initialMeasurementsCache: savedState?.measurementsCache,
     scrollToFn: () => {},
     onChange: (instance) => {
-      if (!instance.isScrolling) {
-        scrollStateCache.set(cacheKey, {
+      if (instance.isScrolling) {
+        hasScrolled.current = true;
+      }
+
+      if (hasScrolled.current) {
+        stateRef.current = {
           offset: instance.scrollOffset ?? 0,
           measurementsCache: instance.measurementsCache,
-        });
+        };
+      }
+
+      if (!instance.isScrolling && hasScrolled.current) {
+        scrollStateCache.set(cacheKey, stateRef.current!);
       }
     },
   });
+
+  useEffect(() => {
+    return () => {
+      if (hasScrolled.current && stateRef.current) {
+        scrollStateCache.set(cacheKey, stateRef.current);
+      }
+    };
+  }, [cacheKey]);
 
   const virtualItems = virtualizer.getVirtualItems();
 
