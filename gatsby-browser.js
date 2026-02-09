@@ -2,12 +2,17 @@ import wrapWithProvider from './src/components/Provider/Provider';
 import wrapWithPage from './src/components/Page/Page';
 import store from './src/store';
 import { close } from './src/features/mobileMenu/mobileMenuSlice';
+import { scrollStateCache } from './src/utils/heightCache';
 
 export const wrapRootElement = wrapWithProvider;
 export const wrapPageElement = wrapWithPage;
 
+let isPopNavigation = false;
+
 if (typeof window !== 'undefined') {
   window.addEventListener('popstate', () => {
+    isPopNavigation = true;
+
     if (
       window.innerWidth > 768 &&
       document.documentElement.scrollHeight <= window.innerHeight
@@ -33,7 +38,13 @@ if (typeof window !== 'undefined') {
   });
 }
 
-export const onRouteUpdate = () => {
+export const onRouteUpdate = ({ location }) => {
+  if (!isPopNavigation) {
+    scrollStateCache.delete(location.pathname);
+  }
+
+  isPopNavigation = false;
+
   const main = document.querySelector('main');
 
   if (main) {
