@@ -31,7 +31,7 @@
 }
 
 .introText {
-  padding: 0.7em 0 0 var(--unit1);
+  padding: 0.4em 0 0 var(--unit1);
 
   @media (--phone-only) {
     padding: 2em 0 1em;
@@ -47,7 +47,7 @@
 }
 
 .deck {
-  margin-bottom: 0;
+  margin: 0;
 }
 
 .deckClamped {
