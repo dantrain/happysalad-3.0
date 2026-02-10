@@ -109,8 +109,12 @@ const Search: React.FC<SearchProps> = ({ inHeader, inSideBar, className }) => {
           const name = normalize(item.name);
           let score = lunrScore;
 
-          if (name.startsWith(normalizedQuery)) score += 1000;
-          else if (name.includes(normalizedQuery)) score += 500;
+          if (name.startsWith(normalizedQuery)) {
+            score += 1000;
+            score += 100 / (1 + name.length - normalizedQuery.length);
+          } else if (name.includes(normalizedQuery)) {
+            score += 500;
+          }
 
           score += 10 / name.length;
 
