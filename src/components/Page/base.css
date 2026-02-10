@@ -57,8 +57,14 @@ h3 {
 a {
   text-decoration: none;
 
-  &:hover {
+  &:active {
     text-decoration: underline;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 

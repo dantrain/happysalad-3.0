@@ -31,10 +31,16 @@
     color: var(--greenBackground);
   }
 
-  &:focus,
-  &:hover {
+  &:focus {
     border-color: var(--greenBodyText);
     outline: none;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--greenBodyText);
+      outline: none;
+    }
   }
 
   &:focus {

@@ -36,9 +36,15 @@
   padding: 5px;
 }
 
-.gameLink:hover .overlay,
+.gameLink:active .overlay,
 .overlay.missingImage {
   display: flex;
+}
+
+@media (hover: hover) {
+  .gameLink:hover .overlay {
+    display: flex;
+  }
 }
 
 .text {

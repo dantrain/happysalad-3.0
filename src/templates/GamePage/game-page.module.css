@@ -63,8 +63,14 @@
   font-weight: bold;
   color: var(--redHeadingText);
 
-  &:hover {
+  &:active {
     text-decoration: underline;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 

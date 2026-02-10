@@ -24,9 +24,16 @@
   color: var(--greenBodyText);
   margin: 0 8px;
 
-  &:hover {
+  &:active {
     border-color: var(--greenBodyText);
     text-decoration: none;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--greenBodyText);
+      text-decoration: none;
+    }
   }
 
   & svg {

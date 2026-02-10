@@ -10,8 +10,14 @@
   text-align: center;
   outline: none;
 
-  &:hover {
+  &:active {
     text-decoration: underline;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
