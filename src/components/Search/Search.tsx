@@ -94,6 +94,8 @@ const Search: React.FC<SearchProps> = ({ inHeader, inSideBar, className }) => {
 
         const normalize = (str: string): string =>
           str
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
             .toLowerCase()
             .replace(/[^a-z0-9]+/g, ' ')
             .trim();
