@@ -107,10 +107,10 @@ const Search: React.FC<SearchProps> = ({ inHeader, inSideBar, className }) => {
           lunrScore: number,
         ): number => {
           const name = normalize(item.name);
-          let score = lunrScore * 0.01;
+          let score = lunrScore;
 
-          if (name.startsWith(normalizedQuery)) score += 100;
-          else if (name.includes(normalizedQuery)) score += 50;
+          if (name.startsWith(normalizedQuery)) score += 1000;
+          else if (name.includes(normalizedQuery)) score += 500;
 
           score += 10 / name.length;
 
@@ -124,7 +124,7 @@ const Search: React.FC<SearchProps> = ({ inHeader, inSideBar, className }) => {
           gameData &&
           lunrSearchIndex &&
           terms.length > 0 &&
-          terms.some((t) => t.length > 2)
+          terms.some((t) => t.length > 1)
         ) {
           try {
             const lunrResults = lunrSearchIndex.query((q) => {
