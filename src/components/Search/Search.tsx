@@ -129,16 +129,19 @@ const Search: React.FC<SearchProps> = ({ inHeader, inSideBar, className }) => {
               terms.forEach((term, i) => {
                 const isLast = i === terms.length - 1;
 
-                q.term(term, {
-                  presence: lunr.Query.presence.REQUIRED,
-                });
-
                 if (isLast) {
                   q.term(term, {
                     wildcard: lunr.Query.wildcard.TRAILING,
                     usePipeline: false,
-                    presence: lunr.Query.presence.OPTIONAL,
-                    boost: 2,
+                    presence:
+                      terms.length === 1
+                        ? lunr.Query.presence.REQUIRED
+                        : lunr.Query.presence.OPTIONAL,
+                    boost: 10,
+                  });
+                } else {
+                  q.term(term, {
+                    presence: lunr.Query.presence.REQUIRED,
                   });
                 }
               });
