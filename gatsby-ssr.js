@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react';
 import wrapWithProvider from './src/components/Provider/Provider';
 import wrapWithPage from './src/components/Page/Page';

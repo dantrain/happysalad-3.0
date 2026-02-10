@@ -87,14 +87,85 @@ const Search: React.FC<SearchProps> = ({ inHeader, inSideBar, className }) => {
         inputValue,
         highlightedIndex,
       }) => {
-        const query = inputValue.replace(/[:^*+-]/g, ' ').trim();
+        const terms = inputValue
+          .toLowerCase()
+          .split(/[\s-]+/)
+          .filter(Boolean);
 
-        const results =
+        const normalize = (str: string): string =>
+          str
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, ' ')
+            .trim();
+
+        const normalizedQuery = normalize(inputValue);
+
+        const nameScore = (
+          item: { name: string },
+          lunrScore: number,
+        ): number => {
+          const name = normalize(item.name);
+          let score = lunrScore * 0.01;
+
+          if (name.startsWith(normalizedQuery)) score += 100;
+          else if (name.includes(normalizedQuery)) score += 50;
+
+          score += 10 / name.length;
+
+          return score;
+        };
+
+        let results: { id: string; name: string; micro: string }[] | null =
+          null;
+
+        if (
           gameData &&
-          query.length > 2 &&
-          lunrSearchIndex
-            ?.search(`${query}* ${query}~1`)
-            .map(({ ref }) => ({ id: ref, ...gameData[ref] }));
+          lunrSearchIndex &&
+          terms.length > 0 &&
+          terms.some((t) => t.length > 2)
+        ) {
+          try {
+            const lunrResults = lunrSearchIndex.query((q) => {
+              terms.forEach((term, i) => {
+                const isLast = i === terms.length - 1;
+
+                q.term(term, {
+                  presence: lunr.Query.presence.REQUIRED,
+                });
+
+                if (isLast) {
+                  q.term(term, {
+                    wildcard: lunr.Query.wildcard.TRAILING,
+                    usePipeline: false,
+                    presence: lunr.Query.presence.OPTIONAL,
+                    boost: 2,
+                  });
+                }
+              });
+
+              terms.forEach((term) => {
+                q.term(term, {
+                  editDistance: 1,
+                  presence: lunr.Query.presence.OPTIONAL,
+                  boost: 1,
+                });
+              });
+            });
+
+            results = lunrResults
+              .map(({ ref, score }) => ({
+                id: ref,
+                ...gameData[ref],
+                _lunrScore: score,
+              }))
+              .sort(
+                (a, b) =>
+                  nameScore(b, b._lunrScore) - nameScore(a, a._lunrScore),
+              );
+          } catch {
+            // ignore malformed queries
+          }
+        }
 
         return (
           <div

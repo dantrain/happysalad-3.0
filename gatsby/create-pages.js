@@ -259,6 +259,14 @@ function createSearchData(gamesMap) {
       builder.pipeline.before(lunr.stemmer, splitOnNewlines);
     });
 
+    // Remove stemmer and stop word filter - game names are proper nouns
+    // where stemming causes false positives ("skies" -> "ski") and stop
+    // words are meaningful ("Skies of Arcadia" vs "Crimson Skies")
+    this.pipeline.remove(lunr.stemmer);
+    this.pipeline.remove(lunr.stopWordFilter);
+    this.searchPipeline.remove(lunr.stemmer);
+    this.searchPipeline.remove(lunr.stopWordFilter);
+
     this.ref('id');
     this.field('name');
     this.field('aliases');
