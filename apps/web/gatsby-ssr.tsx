@@ -1,12 +1,14 @@
-// eslint-disable-next-line no-unused-vars
 import React from 'react';
+import type { GatsbySSR } from 'gatsby';
 import wrapWithProvider from './src/components/Provider/Provider';
 import wrapWithPage from './src/components/Page/Page';
 
 export const wrapRootElement = wrapWithProvider;
 export const wrapPageElement = wrapWithPage;
 
-export const onRenderBody = ({ setHeadComponents }) => {
+export const onRenderBody: GatsbySSR['onRenderBody'] = ({
+  setHeadComponents,
+}) => {
   setHeadComponents([
     <script
       key="scroll-restoration"

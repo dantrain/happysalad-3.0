@@ -7,7 +7,7 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
     // Remove Gatsby's built-in ESLint webpack plugin (incompatible with ESLint 9)
     if (plugin.constructor.name === 'ESLintWebpackPlugin') return false;
 
-    // CSS Modules import order doesn't matter — suppress conflicting order warnings
+    // CSS Modules import order doesn't matter - suppress conflicting order warnings
     if (plugin.constructor.name === 'MiniCssExtractPlugin') {
       plugin.options.ignoreOrder = true;
     }

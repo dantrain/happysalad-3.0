@@ -1,3 +1,4 @@
+import type { GatsbyBrowser } from 'gatsby';
 import wrapWithProvider from './src/components/Provider/Provider';
 import wrapWithPage from './src/components/Page/Page';
 import store from './src/store';
@@ -50,7 +51,7 @@ if (typeof window !== 'undefined') {
   });
 }
 
-export const onRouteUpdate = ({ location }) => {
+export const onRouteUpdate: GatsbyBrowser['onRouteUpdate'] = ({ location }) => {
   if (!isPopNavigation) {
     scrollStateCache.delete(location.pathname);
 

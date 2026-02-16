@@ -40,7 +40,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
                   }
                 }
               }
-            `
+            `,
                 )
                 .join('')}
             }
@@ -78,7 +78,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     posts,
     component: path.resolve(
       __dirname,
-      '../src/templates/HomePage/HomePage.tsx'
+      '../src/templates/HomePage/HomePage.tsx',
     ),
   });
 
@@ -89,7 +89,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     basePath: '/saladcast',
     component: path.resolve(
       __dirname,
-      '../src/templates/PodcastCategoryPage/PodcastCategoryPage.tsx'
+      '../src/templates/PodcastCategoryPage/PodcastCategoryPage.tsx',
     ),
   });
 
@@ -100,7 +100,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     basePath: '/video-thing',
     component: path.resolve(
       __dirname,
-      '../src/templates/VideoCategoryPage/VideoCategoryPage.tsx'
+      '../src/templates/VideoCategoryPage/VideoCategoryPage.tsx',
     ),
   });
 
@@ -111,7 +111,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
         path: `/saladcast/${episodeNumber}-${slug}/`,
         component: path.resolve(
           __dirname,
-          '../src/templates/PodcastPostPage/PodcastPostPage.tsx'
+          '../src/templates/PodcastPostPage/PodcastPostPage.tsx',
         ),
         context: { slug, ...globalContext },
       });
@@ -120,7 +120,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
         path: `/video-thing/${slug}/`,
         component: path.resolve(
           __dirname,
-          '../src/templates/VideoPostPage/VideoPostPage.tsx'
+          '../src/templates/VideoPostPage/VideoPostPage.tsx',
         ),
         context: { slug, ...globalContext },
       });
@@ -133,7 +133,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       path: `/game/${slugify(game.name)}`,
       component: path.resolve(
         __dirname,
-        '../src/templates/GamePage/GamePage.tsx'
+        '../src/templates/GamePage/GamePage.tsx',
       ),
       context: { ...game, ...globalContext },
     });
@@ -156,8 +156,8 @@ exports.onCreatePage = ({ page, actions: { createPage, deletePage } }) => {
 function createInfinitePages({ createPage, posts, basePath = '', component }) {
   const postCountByYear = countBy(
     posts.map(
-      ({ node: { recordingDate } }) => DateTime.fromISO(recordingDate).year
-    )
+      ({ node: { recordingDate } }) => DateTime.fromISO(recordingDate).year,
+    ),
   );
 
   const years = Object.keys(postCountByYear).sort().reverse();
@@ -240,7 +240,7 @@ function getGamesMap(posts) {
 
   globalContext.hotTopics = take(
     Object.values(hotTopicsScores).sort((a, b) => b.score - a.score),
-    12
+    12,
   );
 
   return gamesMap;
@@ -287,6 +287,6 @@ function createSearchData(gamesMap) {
     JSON.stringify({
       searchIndex,
       gameData,
-    })
+    }),
   );
 }

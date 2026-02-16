@@ -13,5 +13,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
-  "include": ["./src/**/*", "./types/**/*", "./src/gatsby-types.d.ts"]
+  "include": [
+    "./src/**/*",
+    "./types/**/*",
+    "./src/gatsby-types.d.ts",
+    "./gatsby-*.tsx",
+    "./gatsby/**/*.ts"
+  ]
 }

@@ -15,7 +15,7 @@ exports.createSchemaCustomization = ({ actions: { createTypes } }) =>
         type contentful${type}BodyTextNode implements Node & Body @infer {
           childMarkdown: MarkdownRemark
         }
-      `
+      `,
       )}
 
       interface Post implements Node {
@@ -23,7 +23,7 @@ exports.createSchemaCustomization = ({ actions: { createTypes } }) =>
         slug: String
         title: String
         recordingDate: Date
-        games: Games 
+        games: Games
         body: Body
       }
 
@@ -33,7 +33,7 @@ exports.createSchemaCustomization = ({ actions: { createTypes } }) =>
         type Contentful${type} implements Node & Post @infer {
           id: ID!
         }
-      `
+      `,
         )
         .join('')}
   `);
