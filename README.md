@@ -9,11 +9,11 @@ The third iteration of the Salad.
 - [React](https://react.dev/)
 - [Gatsby](https://www.gatsbyjs.com/)
 - [Redux Toolkit](https://redux-toolkit.js.org/)
-- [Cassette](https://github.com/benwiley4000/cassette)
-- [Lunr](https://lunrjs.com/)
+- [Vite](https://vite.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [PostCSS](https://postcss.org/)
 - [Contentful](https://www.contentful.com/)
+- [Turborepo](https://turborepo.com/)
 
 ## Prerequisites
 
@@ -23,8 +23,8 @@ The third iteration of the Salad.
 ## Getting started
 
 - Clone the repo.
-- Copy `.env.example` to `.env` and fill in the values:
+- Copy `apps/web/.env.example` to `apps/web/.env` and fill in the values:
   - `CONTENTFUL_SPACE_ID` and `CONTENTFUL_ACCESS_TOKEN` - found in Contentful under Settings -> API Keys.
   - `TWITCH_CLIENT_ID` and `TWITCH_CLIENT_SECRET` - from the [Twitch Developer Console](https://dev.twitch.tv/console) (not required for local development).
 - Run `pnpm install`.
-- Run `pnpm start`.
+- Run `pnpm run dev`.

@@ -1,5 +1,5 @@
 [build]
-  publish = "public/"
+  publish = "apps/web/public/"
   command = "pnpm run build"
 
 [build.environment]

@@ -1,0 +1,20 @@
+{
+  "id": "igdb-contentful-ui-extension",
+  "name": "IGDB Game Search",
+  "src": "https://happysalad.net/extension/index.html",
+  "fieldTypes": ["Object"],
+  "parameters": {
+    "installation": [
+      {
+        "id": "igdbProxyUrl",
+        "type": "Symbol",
+        "name": "IGDB Proxy URL"
+      },
+      {
+        "id": "igdbProxyKey",
+        "type": "Symbol",
+        "name": "IGDB Proxy API Key"
+      }
+    ]
+  }
+}

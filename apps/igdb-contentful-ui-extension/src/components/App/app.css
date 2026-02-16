@@ -1,0 +1,69 @@
+.game-list {
+  margin: -5px -5px 15px -5px;
+  padding: 0;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.game-list-item {
+  position: relative;
+  background-color: #e5ebed;
+  width: 90px;
+  height: 90px;
+  margin: 5px;
+}
+
+.game-list-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.game-list-item-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #8091a5;
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.game-list-item-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  padding: 18px 5px 5px 5px;
+}
+
+.game-list-item-overlay .game-list-item-text {
+  font-size: 12px;
+  line-height: 1.2;
+  color: white;
+  text-align: center;
+}
+
+.game-list-item:hover .game-list-item-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-list-item-remove-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.game-list-item-remove-button:hover svg {
+  fill: white !important;
+}

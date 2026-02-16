@@ -1,0 +1,22 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "globalPassThroughEnv": ["*"],
+  "tasks": {
+    "build": {
+      "outputs": ["build/**"]
+    },
+    "happysalad-3.0#build": {
+      "dependsOn": ["igdb-contentful-ui-extension#build"],
+      "outputs": ["public/**"]
+    },
+    "dev": {
+      "persistent": true,
+      "cache": false
+    },
+    "lint": {},
+    "typecheck": {},
+    "format": {
+      "cache": false
+    }
+  }
+}
