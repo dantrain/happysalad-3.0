@@ -73,7 +73,9 @@ export default async (req: Request, _context: Context) => {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'text/plain',
       },
-      body: `search "${query.replace(/"/g, '\\"')}"; fields name,summary,alternative_names.name,cover.image_id; limit 8;`,
+      body: /^\d+$/.test(query)
+        ? `where id = ${query}; fields name,summary,alternative_names.name,cover.image_id; limit 1;`
+        : `search "${query.replace(/"/g, '\\"')}"; fields name,summary,alternative_names.name,cover.image_id; limit 8;`,
     });
 
     if (!igdbRes.ok) {

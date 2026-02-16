@@ -23,8 +23,7 @@ The third iteration of the Salad.
 ## Getting started
 
 - Clone the repo.
-- Copy `apps/web/.env.example` to `apps/web/.env` and fill in the values:
-  - `CONTENTFUL_SPACE_ID` and `CONTENTFUL_ACCESS_TOKEN` - found in Contentful under Settings -> API Keys.
-  - `TWITCH_CLIENT_ID` and `TWITCH_CLIENT_SECRET` - from the [Twitch Developer Console](https://dev.twitch.tv/console) (not required for local development).
+- Copy `apps/web/.env.example` to `apps/web/.env`.
+- Add the CONTENTFUL_SPACE_ID and CONTENTFUL_ACCESS_TOKEN values. These can be found by logging in to Contentful and navigating to Settings -> API Keys.
 - Run `pnpm install`.
 - Run `pnpm run dev`.

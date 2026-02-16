@@ -31,7 +31,7 @@ const SearchIGDB = ({
 
   useEffect(() => {
     const fetchData = async () => {
-      if (debouncedQuery.length > 2) {
+      if (debouncedQuery.length > 2 || /^\d+$/.test(debouncedQuery)) {
         const newCount = ++fetchCount.current;
 
         setError(false);
