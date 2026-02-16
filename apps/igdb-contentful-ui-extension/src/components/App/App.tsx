@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
-import { Paragraph, IconButton } from "@contentful/f36-components";
-import { XIcon } from "@contentful/f36-icons";
-import { FieldAppSDK } from "@contentful/app-sdk";
-import Input from "../Input";
-import { hasImage, type Game } from "../../types";
+import { useState, useEffect } from 'react';
+import { Paragraph, IconButton } from '@contentful/f36-components';
+import { XIcon } from '@contentful/f36-icons';
+import { FieldAppSDK } from '@contentful/app-sdk';
+import Input from '../Input';
+import { hasImage, type Game } from '../../types';
 
-import "./app.css";
+import './app.css';
 
 interface AppProps {
   sdk: FieldAppSDK;

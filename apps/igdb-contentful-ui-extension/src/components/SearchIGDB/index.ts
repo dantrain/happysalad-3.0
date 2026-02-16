@@ -1,1 +1,1 @@
-export { default } from "./SearchIGDB";
+export { default } from './SearchIGDB';

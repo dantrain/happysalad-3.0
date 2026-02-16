@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef, type ReactNode } from "react";
-import { useDebounce } from "use-debounce";
-import type { Game } from "../../types";
+import { useState, useEffect, useRef, type ReactNode } from 'react';
+import { useDebounce } from 'use-debounce';
+import type { Game } from '../../types';
 
 interface SearchResult {
   data: Game[];
@@ -41,7 +41,7 @@ const SearchIGDB = ({
           const response = await fetch(
             `${proxyUrl}?q=${encodeURIComponent(debouncedQuery)}`,
             {
-              headers: { "X-API-Key": proxyKey },
+              headers: { 'X-API-Key': proxyKey },
             },
           );
 

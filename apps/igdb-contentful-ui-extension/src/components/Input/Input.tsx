@@ -3,12 +3,12 @@ import {
   Spinner,
   ValidationMessage,
   Paragraph,
-} from "@contentful/f36-components";
-import Downshift from "downshift";
-import SearchIGDB from "../SearchIGDB";
-import { hasImage, type Game } from "../../types";
+} from '@contentful/f36-components';
+import Downshift from 'downshift';
+import SearchIGDB from '../SearchIGDB';
+import { hasImage, type Game } from '../../types';
 
-import "./input.css";
+import './input.css';
 
 interface InputProps {
   onChange: (game: Game) => void;
@@ -26,7 +26,7 @@ const Input = ({ onChange, proxyUrl, proxyKey, selectedIds }: InputProps) => (
         onChange(value);
       }
     }}
-    itemToString={(item) => (item ? item.name : "")}
+    itemToString={(item) => (item ? item.name : '')}
     defaultHighlightedIndex={0}
   >
     {({
@@ -42,11 +42,11 @@ const Input = ({ onChange, proxyUrl, proxyKey, selectedIds }: InputProps) => (
         <TextInput
           placeholder="Search for a game"
           className="text-input"
-          {...getInputProps({ width: "large" })}
+          {...getInputProps({ width: 'large' })}
         />
         {isOpen ? (
           <SearchIGDB
-            query={inputValue ?? ""}
+            query={inputValue ?? ''}
             proxyUrl={proxyUrl}
             proxyKey={proxyKey}
           >
@@ -76,10 +76,10 @@ const Input = ({ onChange, proxyUrl, proxyKey, selectedIds }: InputProps) => (
                             style: {
                               backgroundColor:
                                 highlightedIndex === index
-                                  ? "#e5ebed"
-                                  : "white",
+                                  ? '#e5ebed'
+                                  : 'white',
                               fontWeight:
-                                selectedItem === item ? "bold" : "normal",
+                                selectedItem === item ? 'bold' : 'normal',
                             },
                           })}
                         >

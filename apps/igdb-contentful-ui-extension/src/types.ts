@@ -11,5 +11,5 @@ export interface Game {
 }
 
 export function hasImage(game: Game): boolean {
-  return game.image.micro !== "";
+  return game.image.micro !== '';
 }
