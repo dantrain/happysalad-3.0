@@ -190,7 +190,7 @@ const App = ({ sdk }: AppProps) => {
             <Paragraph className="filename" marginBottom="none">
               {uploadState.filename}
             </Paragraph>
-            <Button variant="negative" size="small" onClick={handleCancel}>
+            <Button variant="secondary" size="small" onClick={handleCancel}>
               Cancel
             </Button>
           </div>
@@ -227,11 +227,11 @@ const App = ({ sdk }: AppProps) => {
               </Button>
               <Button
                 startIcon={<TrashSimpleIcon />}
-                variant="negative"
+                variant="secondary"
                 size="small"
                 onClick={handleRemove}
               >
-                Remove
+                Delete
               </Button>
             </div>
           </div>

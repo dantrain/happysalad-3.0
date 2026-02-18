@@ -25,8 +25,12 @@
 
 .actions {
   display: flex;
-  gap: 4px;
+  gap: 8px;
   flex-shrink: 0;
+}
+
+.actions button svg {
+  margin-right: 2px;
 }
 
 .upload-row {
