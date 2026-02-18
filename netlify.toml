@@ -12,6 +12,13 @@
     X-Robots-Tag = "noindex"
     Content-Security-Policy = "frame-ancestors https://app.contentful.com"
 
+[[headers]]
+  for = "/s3-uploader/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300"
+    X-Robots-Tag = "noindex"
+    Content-Security-Policy = "frame-ancestors https://app.contentful.com"
+
 [[redirects]]
   from = "/assets/*"
   to = "https://downloads.ctfassets.net/:splat"

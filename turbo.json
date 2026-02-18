@@ -6,7 +6,10 @@
       "outputs": ["build/**"]
     },
     "happysalad-3.0#build": {
-      "dependsOn": ["igdb-contentful-ui-extension#build"],
+      "dependsOn": [
+        "igdb-contentful-ui-extension#build",
+        "s3-uploader-extension#build"
+      ],
       "outputs": ["public/**"]
     },
     "dev": {

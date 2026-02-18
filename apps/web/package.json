@@ -72,7 +72,7 @@
   },
   "scripts": {
     "dev": "gatsby develop -H 0.0.0.0",
-    "build": "mkdir -p static/extension && cp ../igdb-contentful-ui-extension/build/index.html static/extension/index.html && gatsby build",
+    "build": "mkdir -p static/extension static/s3-uploader && cp ../igdb-contentful-ui-extension/build/index.html static/extension/index.html && cp ../s3-uploader-extension/build/index.html static/s3-uploader/index.html && gatsby build",
     "clean": "gatsby clean",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",

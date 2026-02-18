@@ -12,11 +12,13 @@ apps/web/public/
 apps/web/.cache/
 apps/web/src/gatsby-types.d.ts
 
-# Extension
+# Extensions
 apps/igdb-contentful-ui-extension/build/
+apps/s3-uploader-extension/build/
 
-# Generated extension artifact
+# Generated extension artifacts
 apps/web/static/extension/index.html
+apps/web/static/s3-uploader/index.html
 
 # Netlify
 .netlify/

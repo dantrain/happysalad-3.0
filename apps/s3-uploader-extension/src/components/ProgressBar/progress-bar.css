@@ -1,0 +1,15 @@
+.root {
+  position: relative;
+  overflow: hidden;
+  background: #e5e7eb;
+  border-radius: 4px;
+  height: 8px;
+  width: 100%;
+}
+
+.indicator {
+  background: #0059c8;
+  height: 100%;
+  border-radius: 4px;
+  transition: width 150ms ease;
+}
