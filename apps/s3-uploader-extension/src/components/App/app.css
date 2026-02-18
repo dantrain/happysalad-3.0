@@ -4,6 +4,42 @@
   gap: 8px;
 }
 
+.dropzone {
+  padding: 24px 16px;
+  border: 2px dashed #cfd9e0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    background-color 150ms ease;
+}
+
+.dropzone:hover {
+  border-color: #8091a5;
+  background: #f7f9fa;
+}
+
+.dropzone.drag-active {
+  border-color: #0059c8;
+  background: rgba(0, 89, 200, 0.06);
+}
+
+.dropzone-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.dropzone-icon {
+  color: #8091a5;
+}
+
+.drag-active .dropzone-icon,
+.drag-active .dropzone-content p {
+  color: #0059c8;
+}
+
 .file-display {
   display: flex;
   align-items: center;
@@ -49,8 +85,4 @@
   width: 100%;
   height: 32px;
   color-scheme: light;
-}
-
-.hidden-input {
-  display: none;
 }

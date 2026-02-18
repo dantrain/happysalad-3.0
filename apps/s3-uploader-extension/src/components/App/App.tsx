@@ -6,6 +6,7 @@ import {
   TrashSimpleIcon,
 } from '@contentful/f36-icons';
 import { FieldAppSDK } from '@contentful/app-sdk';
+import { useDropzone } from 'react-dropzone';
 import ProgressBar from '../ProgressBar';
 
 import './app.css';
@@ -34,7 +35,6 @@ const App = ({ sdk }: AppProps) => {
   const [uploadState, setUploadState] = useState<UploadState>({
     status: 'idle',
   });
-  const fileInputRef = useRef<HTMLInputElement>(null);
   const xhrRef = useRef<XMLHttpRequest | null>(null);
 
   useEffect(() => {
@@ -52,11 +52,8 @@ const App = ({ sdk }: AppProps) => {
   const presignUrl = sdk.parameters.installation.s3PresignUrl as string;
   const apiKey = sdk.parameters.installation.s3UploaderKey as string;
 
-  const handleFileSelect = useCallback(
-    async (e: React.ChangeEvent<HTMLInputElement>) => {
-      const file = e.target.files?.[0];
-      if (!file) return;
-
+  const uploadFile = useCallback(
+    async (file: File) => {
       if (file.type !== 'audio/mpeg') {
         setUploadState({
           status: 'error',
@@ -142,14 +139,28 @@ const App = ({ sdk }: AppProps) => {
           setUploadState({ status: 'error', message });
         }
       }
-
-      // Reset file input so the same file can be re-selected
-      if (fileInputRef.current) {
-        fileInputRef.current.value = '';
-      }
     },
     [presignUrl, apiKey, sdk.field],
   );
+
+  const onDrop = useCallback(
+    (files: File[]) => {
+      if (files[0]) {
+        uploadFile(files[0]);
+      }
+    },
+    [uploadFile],
+  );
+
+  const showDropzone = uploadState.status !== 'uploading' && !url;
+
+  const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
+    onDrop,
+    accept: { 'audio/mpeg': ['.mp3'] },
+    maxFiles: 1,
+    noClick: !showDropzone,
+    noKeyboard: true,
+  });
 
   const handleCancel = useCallback(() => {
     if (xhrRef.current) {
@@ -165,19 +176,17 @@ const App = ({ sdk }: AppProps) => {
     setUploadState({ status: 'idle' });
   }, [sdk.field]);
 
-  const openFilePicker = useCallback(() => {
-    fileInputRef.current?.click();
-  }, []);
+  const containerClass = [
+    'container',
+    showDropzone ? 'dropzone' : '',
+    isDragActive ? 'drag-active' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
-    <div className="container">
-      <input
-        ref={fileInputRef}
-        type="file"
-        accept="audio/mpeg,.mp3"
-        onChange={handleFileSelect}
-        className="hidden-input"
-      />
+    <div {...getRootProps({ className: containerClass })}>
+      <input {...getInputProps()} />
 
       {uploadState.status === 'error' && (
         <Note variant="negative">{uploadState.message}</Note>
@@ -198,15 +207,15 @@ const App = ({ sdk }: AppProps) => {
         </div>
       )}
 
-      {uploadState.status !== 'uploading' && !url && (
-        <Button
-          startIcon={<CloudArrowUpIcon />}
-          variant="secondary"
-          size="small"
-          onClick={openFilePicker}
-        >
-          Upload audio file
-        </Button>
+      {showDropzone && (
+        <div className="dropzone-content">
+          <CloudArrowUpIcon size="medium" className="dropzone-icon" />
+          <Paragraph marginBottom="none">
+            {isDragActive
+              ? 'Drop audio file here'
+              : 'Drag and drop or click to upload audio file'}
+          </Paragraph>
+        </div>
       )}
 
       {uploadState.status !== 'uploading' && url && (
@@ -221,7 +230,7 @@ const App = ({ sdk }: AppProps) => {
                 startIcon={<CloudArrowUpIcon />}
                 variant="secondary"
                 size="small"
-                onClick={openFilePicker}
+                onClick={open}
               >
                 Replace
               </Button>
@@ -231,7 +240,7 @@ const App = ({ sdk }: AppProps) => {
                 size="small"
                 onClick={handleRemove}
               >
-                Delete
+                Clear
               </Button>
             </div>
           </div>
