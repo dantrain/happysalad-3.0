@@ -15,6 +15,16 @@ exports.onCreateWebpackConfig = ({ actions, getConfig }) => {
     return true;
   });
 
+  // Fix framework chunk for pnpm: Gatsby's default regex uses a negative lookbehind
+  // that fails with pnpm's node_modules/.pnpm/*/node_modules/* path structure
+  const frameworkGroup =
+    config.optimization?.splitChunks?.cacheGroups?.framework;
+
+  if (frameworkGroup) {
+    frameworkGroup.test =
+      /[\\/]node_modules[\\/](?:\.pnpm[\\/].*[\\/]node_modules[\\/])?(react|react-dom|scheduler|prop-types)[\\/]/;
+  }
+
   actions.replaceWebpackConfig(config);
 
   actions.setWebpackConfig({
