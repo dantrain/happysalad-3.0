@@ -40,7 +40,10 @@ interface YouTubePlayer {
   pauseVideo: () => void;
 }
 
-const YouTubeEmbed: React.FC<{ videoId: string }> = ({ videoId }) => {
+const YouTubeEmbed: React.FC<{ videoId: string; autoplay?: boolean }> = ({
+  videoId,
+  autoplay,
+}) => {
   const dispatch = useDispatch();
   const onPlay = useCallback(() => dispatch(pause()), [dispatch]);
 
@@ -68,7 +71,7 @@ const YouTubeEmbed: React.FC<{ videoId: string }> = ({ videoId }) => {
       videoId={videoId}
       onPlay={onPlay}
       onReady={onReady}
-      opts={{ playerVars: { autoplay: 1 } }}
+      opts={{ playerVars: { autoplay: autoplay ? 1 : 0 } }}
     />
   );
 };
@@ -99,6 +102,7 @@ const Video: React.FC<{ youTubeUrl: string }> = ({ youTubeUrl }) => {
   });
 
   const [showEmbed, setShowEmbed] = useState(false);
+  const [autoplay, setAutoplay] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -172,12 +176,18 @@ const Video: React.FC<{ youTubeUrl: string }> = ({ youTubeUrl }) => {
           }}
           unmountOnExit
         >
-          <button className={s.playButton} onClick={() => setShowEmbed(true)}>
+          <button
+            className={s.playButton}
+            onClick={() => {
+              setAutoplay(true);
+              setShowEmbed(true);
+            }}
+          >
             <PlayIcon />
             <Vh>Play video</Vh>
           </button>
         </CSSTransition>
-        {showEmbed && <YouTubeEmbed videoId={videoId} />}
+        {showEmbed && <YouTubeEmbed videoId={videoId} autoplay={autoplay} />}
       </div>
     </>
   );
